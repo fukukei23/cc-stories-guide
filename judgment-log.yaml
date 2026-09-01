@@ -6,3 +6,8 @@ judgments:
     reason: 2事故（正常系のみテスト・ゼロ誤断定）を機械化する3門番を実装・テスト偽PASSも検出
     confidence: 高
     episode: "001"
+  - date: 2026-09-02
+    type: 事故解決
+    reason: 25hookが静かに動いていなかった事件（MSYSパス変換・誤診3件を経て確定）は物語性最高位・パイプライン初回検証実行として選定（heuristic上位の_plan断片は物語性不足でskip）
+    confidence: 高
+    episode: "002"
