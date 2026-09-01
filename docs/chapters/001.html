@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第1話 「テストは充分？」という一言 — CC Stories</title>
+    <meta name="description" content="CC Stories — 作業の物語集: 第1話 「テストは充分？」という一言">
+    <meta property="og:title" content="第1話 「テストは充分？」という一言 — CC Stories">
+    <meta property="og:description" content="第1話 「テストは充分？」という一言 — 専門用語なしの物語と技術解説のペア">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/001.html">
+    <meta property="og:image" content="https://fukukei23.github.io/cc-stories-guide/assets/ogp.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="../assets/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+</head>
+<body>
+    <header class="site-header">
+        <button class="menu-toggle" aria-label="メニュー" id="menuToggle">
+            <span></span><span></span><span></span>
+        </button>
+        <a href="../index.html" class="site-title">📚 CC Stories</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="テーマ切替">
+            <span class="icon-light">☀️</span>
+            <span class="icon-dark">🌙</span>
+        </button>
+    </header>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="../index.html">🏠 ホーム</a>
+        </div>
+        
+        <a href="001.html"
+           class="sidebar-link active">
+            <span class="sidebar-icon">📄</span>
+            第1話 「テストは充分？」という一言
+        </a>
+        
+    </nav>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main class="content">
+        <div class="chapter-nav-top">
+            
+            
+        </div>
+
+        <article class="chapter-body">
+            <h1>第1話 「テストは充分？」という一言</h1>
+<p>&lt;!-- published: 2026-09-02 / 種別: 事故解決+新仕様 --&gt;</p>
+<h2>困ったこと</h2>
+<p>最近、二日続けて同じ形の失敗がありました。一日目は「プログラムのテストを作った」と報告したのに、実は“うまくいく場合だけ”試していて、変な入力のときの確認が抜けていました。二日目は「どこにも使われていないはず」と調べた鍵が、実は大事なソフト（NexusCore）で使われていました。どちらも、ふくけいが「テストは充分？」と一言聞いたことで初めて見つかったのです。</p>
+<h2>どう解決したことになるか</h2>
+<p>「聞かれないと気づけない」のは困るので、この一言を自動化することにしました。ただ「ちゃんとやりなさい」と注意文を増やしても、注意文は読まれるだけで守られません（実際に二日連続で効きませんでした）。そこで方針を「申告させる」から「照合する」へ変えました。やったと書かせるのではなく、本当にやった証拠と突き合わせて機械が確かめる方式です。設計は別のAI三社に合計四回レビューしてもらい、そのたびに「このままだと間違えて止めすぎる」「自動実行では門番が動かない」などの落とし穴を潰しました。</p>
+<h2>何が変わったか</h2>
+<p>完成したのは三つの門番です。①報告の形式と実際の実行記録が一致しているか確かめる係 ②「ゼロ件」と言い切る時に、別の探し方での再確認を要求する係 ③自動開発の間も報告の形式を強制する係。テストは全部で十八個、すべて合格。しかも作業の最中に「テストが合格と表示されているのに、実は試す準備ができておらず何も試していなかった」という失敗を門番の仕組みが見つけて直しました。作った当日に元が取れています。</p>
+<p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどう作ったか&lt;/summary&gt;</p>
+<h3>作ったもの</h3>
+<ul>
+<li><code>check-fail-coverage.sh</code>（既存Stop hook拡張）: 完了宣言に「検証範囲宣言」セクション（タイプI/II/III・正常系/異常系/境界・EXIT証跡のtool_result突合）を必須化。grace期間〜2026-09-15は警告のみ</li>
+<li><code>check-zero-assert.sh</code>（新規Stop hook）: 「ゼロ件」断定語×検索語の共起時に、固定プロトコル再検索（<code>grep -rln --include={py,sh,md,ts,js,json,yaml}</code>・head無し）の実行事実を要求。<code>!override &lt;理由&gt;</code> で人間判断の通過も可能</li>
+<li><code>run-task.sh</code> 拡張: 自動開発ループの検証プロセス出力から宣言セクションを機械抽出・不在なら即NG（自己修復なし・r3レビューで「自己修復1回許可」は逆用可能と判定され撤回）</li>
+</ul>
+<h3>設計の要点</h3>
+<ul>
+<li>設計原則は「書かせるでなく突合する」— 宣言の形式でなく宣言と実態（実行コマンド・exit code証跡・再検索差分）の一致を機械検査。層1ルール文が2日連続で防げなかった事実が根拠</li>
+<li>判定方式はMLR（マルチLLMレビュー）4ラウンド81指摘で確定。r4では「POC（F層発火実証）を先にやれ」というNO-GO指摘を採用し条件付きGO→実際に <code>claude --print</code> 内でもhook発火を実証してから実装した</li>
+<li>TDD（テスト先書き）で18ケース。実装中に「fixture不在でもexit 0で通る偽PASS」を実測発見・修正</li>
+</ul>
+<h3>所在情報（要約・原文リンクなし）</h3>
+<ul>
+<li>設計正典: SSOTの docs/superpowers/specs/（2026-09-01_テストは充分-体系化-design.md）</li>
+<li>レビュー正典: SSOTの 00_SYSTEM/マルチLLMレビュー/2026-09-01_テストは充分-体系化設計レビュー/（4ラウンド81指摘）</li>
+<li>実装記録: SSOTの 01_DECISIONS/claude-code/2026-09-01_テストは充分-体系化実装-POC〜Phase1完走.md</li>
+</ul>
+<p>&lt;/details&gt;</p>
+
+        </article>
+
+        <nav class="chapter-nav-bottom">
+            
+            
+        </nav>
+    </main>
+
+    <footer class="site-footer">
+        <p>CC Stories — <a href="https://github.com/fukukei23/cc-stories-guide">GitHub</a>
+         · <a href="https://fukukei23.github.io/ssot-guide/">SSOT Guide</a>
+         · <a href="https://fukukei23.github.io/loop-engineering-guide/">Loop Engineering Guide</a>
+         · <a href="https://fukukei23.github.io/guides/">技術ガイド集</a>
+         · <a href="https://fukukei23.github.io/">fukukei23</a></p>
+    </footer>
+
+    <script src="../assets/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default',
+            themeVariables: { fontSize: '14px' }
+        });
+    </script>
+</body>
+</html>
