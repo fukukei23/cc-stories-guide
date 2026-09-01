@@ -20,6 +20,12 @@ CC（Claude Code）との作業を「専門用語なしの物語+技術解説」
 3. `python3 convert.py && git add convert.py docs && git commit && git push`
 4. 他のガイドリポジトリにも同様の変更が必要か確認（16リポ運用・N+1保守は受け入れた方針）
 
+## 自動書き溜め（2026-09-02導入・週2回）
+
+- durable cron id=19（火金08:23）が `generate_story_candidates.py`（候補リスト再生成・スコア順）→ 未物語化の最上位候補を物語化 → denylist再走査 → 自動公開（B案・機械チェックのみ）
+- **停止方法**: `bash ~/bin/apply-crons.sh clean` または renew-crons.sh の id=19 行を削除して apply
+- 判定履歴: `judgment-log.yaml`・候補リスト: `story-candidates.yaml`
+
 ## 先送り（Phase 2）
 - new-session締め時の自動提案（判定Phase組込）
 - 記事の鮮度注記ルール・denylist 30日未更新警告
