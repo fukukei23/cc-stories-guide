@@ -1,0 +1,19 @@
+# security-denylist.yaml — 物語原稿の公開前チェック用パターン一覧
+# check_story_public.py がこの YAML を読み込み、ヒット時は終了コード2で差戻す。
+# パターン追加時は test_check_story_public.py の fixture も整合させること。
+patterns:
+  # --- テストと同一の5パターン ---
+  - {name: api_key, regex: "(?i)(api[_-]?key\\s*[=:])\\s*['\\\"]?[A-Za-z0-9_\\-]{16,}"}
+  - {name: token, regex: "(?i)(token\\s*[=:])\\s*['\\\"]?[A-Za-z0-9_\\-]{16,}"}
+  - {name: password, regex: "(?i)password\\s*[=:]\\s*\\S+"}
+  - {name: client_name, regex: "(株式会社|合同会社)[^\\s]{1,20}"}
+  - {name: internal_url, regex: "https?://(localhost|192\\.168\\.|10\\.0\\.)[^\\s]*"}
+  # --- 実運用パターン ---
+  - {name: openai_key, regex: "sk-[A-Za-z0-9]{20,}"}
+  - {name: github_pat, regex: "gh[pousr]_[A-Za-z0-9]{36,}"}
+  - {name: slack_token, regex: "xox[baprs]-[A-Za-z0-9\\-]{10,}"}
+  - {name: aws_key, regex: "AKIA[0-9A-Z]{16}"}
+  - {name: private_key, regex: "-----BEGIN [A-Z ]*PRIVATE KEY-----"}
+  - {name: bearer, regex: "(?i)bearer\\s+[A-Za-z0-9_\\-\\.]{20,}"}
+whitelist:
+  - "株式会社サンプル（ダミー表記）"
