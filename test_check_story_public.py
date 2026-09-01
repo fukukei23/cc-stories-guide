@@ -51,6 +51,12 @@ def test_whitelist_allows(denyfile):
     r = run_check("株式会社サンプル（ダミー表記）の話。", denyfile)
     assert r.returncode == 0
 
+def test_whitelist_does_not_mask_adjacent_real_key():
+    """ダミー社名の近くにある実キーは許可されない（±30字近接抑制の穴塞ぎ）."""
+    real_deny = pathlib.Path(__file__).parent / "security-denylist.yaml"
+    r = run_check("株式会社サンプル（ダミー表記）のAPIキーは sk-REALSECRET1234567890abc", real_deny)
+    assert r.returncode == 2 and "openai_key" in r.stderr, r.stderr
+
 def test_empty_file_passes(denyfile):
     r = run_check("", denyfile)
     assert r.returncode == 0

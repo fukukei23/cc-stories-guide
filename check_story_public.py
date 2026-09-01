@@ -24,7 +24,7 @@ def main() -> int:
     hits = []
     for p in cfg.get("patterns", []):
         for m in re.finditer(p["regex"], text):
-            if any(w in text[max(0, m.start() - 30):m.end() + 30] for w in whitelist):
+            if any(w in m.group(0) for w in whitelist):
                 continue
             hits.append((p["name"], m.group(0)))
     if not hits:
