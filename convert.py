@@ -2,6 +2,7 @@
 """CC Stories: Markdown → モバイル最適化HTML変換スクリプト."""
 
 import re
+import shutil
 from pathlib import Path
 
 from jinja2 import Template
@@ -80,6 +81,16 @@ def _extract_desc_from_h1(text: str) -> str:
     return ""
 
 
+def _episode_number(meta: dict, filename: str) -> str:
+    """カード表示用の話数を返す。frontmatterの `episode:` を最優先し、
+    なければ ep01_*.md 形式のファイル名から抽出。どちらもなければ空文字（ラベル非表示）。"""
+    ep = meta.get("episode")
+    if ep:
+        return ep
+    match = re.match(r"ep(\d+)", Path(filename).stem)
+    return match.group(1) if match else ""
+
+
 def build_chapter_map() -> dict:
     """source/ の実ファイルのみからCHAPTER_MAPを構築。
     CHAPTER_MAPのメタデータを実ファイルに適用。実在しないエントリは表示しない(404防止)。"""
@@ -90,7 +101,8 @@ def build_chapter_map() -> dict:
         if filename.startswith("_"):
             continue  # _README.md等は除外
         if filename == "index.md":
-            continue  # index.mdはトップページの元ネタのため章カード化しない
+            # トップページ本文はINDEX_TEMPLATE側で持つため、source/index.mdは読まず章にもしない
+            continue
 
         text = md_file.read_text(encoding="utf-8")
         meta, body = _extract_frontmatter(text)
@@ -109,191 +121,16 @@ def build_chapter_map() -> dict:
             desc = meta.get("card_desc") or meta.get("desc") or _extract_desc_from_h1(text) or title
             icon = meta.get("icon", "📄")
             slug = meta.get("slug") or _filename_to_slug(filename)
-            result[filename] = {"slug": slug, "title": title, "icon": icon, "desc": desc}
+            result[filename] = {
+                "slug": slug,
+                "title": title,
+                "icon": icon,
+                "desc": desc,
+                "episode": _episode_number(meta, filename),
+            }
             print(f"AUTO: {filename} → {slug} ({title})")
 
     return result
-
-REMOVE_SECTIONS = [
-    "## 関連",
-    "## 関連ドキュメント",
-    "## 次の章",
-    "## あなたの現在のフック構成",
-    "## あなたの環境のメモリ構成",
-    "## あなたの設定ファイル一覧",
-    "## あなたのLLMルーティング",
-    "## あなたの環境での使い方",
-    "## あなたの環境の特記事項",
-    "## あなたのMCPサーバー構成",
-    "## あなたのフック一覧",
-]
-
-REMOVE_PATTERNS = [
-    "あなたの",
-]
-
-INLINE_REPLACEMENTS = [
-    # 個人ルーティング情報 → 汎用化
-    (r"GLM-5\.1にルーティング", "Anthropic APIまたは代替プロバイダー経由で利用可能"),
-    (r"GLM-4\.7にルーティング", "Anthropic APIまたは代替プロバイダー経由で利用可能"),
-    (r"GLM-4\.5-Airにルーティング", "Anthropic APIまたは代替プロバイダー経由で利用可能"),
-    (r"GLM-5\.1がデフォルト", "デフォルトモデルが自動選択"),
-    (r"あなたの環境:\s*GLM-5\.1\s*→\s*MiniMax\s*→\s*Sonnet", "モデルは /model コマンドで切替可能"),
-    (r"あなたの環境ではGLM-5\.1にルーティング", "API経由で利用可能"),
-    (r"あなたの環境ではGLM-4\.7にルーティング", "API経由で利用可能"),
-    (r"GLM-4\.5-Air に切替", "Haiku に切替"),
-    (r"GLM-4\.7 に戻す", "Sonnet に戻す"),
-    (r"通常タスク → 🟡 GLM-5\.1（glm_ask経由）", "通常タスク → Opus または Sonnet"),
-    (r"フォールバック → 🟠 MiniMax（minimax_ask経由）", "フォールバック → Haiku"),
-    (r"大量処理委譲 → 🟠 MiniMax（自動委譲）", "大量処理 → Haiku等の軽量モデル"),
-    # 内部パス参照 → 除去
-    (r"→ `00_SYSTEM/共通ルール/LLMルーティング\.md`", ""),
-    (r"→ `00_SYSTEM/MCPツール使い分けガイド\.md`", ""),
-    (r"あなたのobsidian-ssotリポジトリがこれに該当。", "単一リポジトリで一元管理する構成がこれに該当。"),
-    (r"あなたのグローバルCLAUDE\.mdに含まれるもの:", "グローバルCLAUDE.mdに含まれるもの:"),
-    (r"あなたの現在のメイン環境（WSL2）", "Linuxターミナル環境"),
-    (r"LLMルーティング（GLM → MiniMax → Sonnet）", "モデルルーティング（上位モデル → バランス型 → 軽量型）"),
-    (r"バッジ表示ルール（🟡\[GLM\]等）", "使用モデル表示ルール"),
-    (r"GLM-5\.1", "Claude"),
-    (r"GLM-4\.7", "Claude"),
-    (r"GLM-4\.5-Air", "Claude"),
-    (r"LLM（Claude / GLM / MiniMax）", "LLM（Claude）"),
-    (r"Claude, GLM, MiniMax等", "Claude等"),
-    (r"Opus/Sonnet/Haiku \+ GLM", "Opus / Sonnet / Haiku"),
-    # obsidian-ssot / 00_SYSTEM パス（スキル内コードブロック）
-    (r"obsidian-ssot/00_SYSTEM/handoff/", "claude-code/handoff/"),
-    (r"obsidian-ssot", "knowledge-base"),
-    (r"00_SYSTEM/", "00★SYSTEM/"),
-    # 「あなたの設定」テーブル列 → 行ごと書き換え
-    (r"\| あなたの設定 \|.*?\|", "| 備考 | なし |"),
-]
-
-TABLE_COL_SANITIZE = [
-    # テーブルヘッダーから「あなたの設定」列を除去するパターン
-    (r"\|\s*あなたの設定\s*\|", "| 備考 |"),
-    (r"\|\s*`~/.secrets\.env`\s+からAPIキーを注入.*?\|", "| APIキーは環境変数で管理 |"),
-    (r"\|\s*`check-command-safety\.py`\s+が危険コマンドを自動ブロック.*?\|", "| 危険コマンドを自動ブロック |"),
-    (r"\|\s*MCP設定変更時の使い分けガイド自動更新.*?\|", "| 設定変更を自動検知 |"),
-    (r"\|\s*セッション終了時のサマリー記録.*?\|", "| セッション終了時に記録 |"),
-    (r"\|\s*Anthropic APIまたは代替プロバイダー経由で利用可能\s*\|", "| API経由で利用可能 |"),
-]
-
-MERMAID_DIAGRAMS = {
-    "01_基礎概念.md": [
-        (
-            "## アーキテクチャ",
-            """graph TD
-    User["👤 ユーザー"] --> CLI["💻 Claude Code CLI"]
-    CLI --> SP["📋 システムプロンプト"]
-    CLI --> MCP["🔌 MCPツール定義"]
-    CLI --> SK["🎯 スキル定義"]
-    CLI --> MEM["🧠 メモリ読込"]
-    CLI --> LLM["🤖 LLM"]
-    LLM --> Tools["🔧 ツール実行"]
-    Tools --> Files["📁 ファイル操作"]
-    Tools --> Shell["💻 シェル実行"]
-    Tools --> API["🌐 API呼出"]
-    Tools --> Agent["🤖 サブエージェント"]
-    LLM --> Resp["💬 レスポンス"]
-    Resp --> User""",
-        ),
-        (
-            "## コンテキストの仕組み",
-            """graph LR
-    subgraph "200K トークン コンテキストウィンドウ"
-        A["システムプロンプト<br/>~3%"]
-        B["ツール定義<br/>~20%"]
-        C["メモリ・スキル<br/>~4%"]
-        D["会話履歴<br/>~3%"]
-        E["空き容量<br/>~70%"]
-    end""",
-        ),
-    ],
-    "05_フック.md": [
-        (
-            "## 4種のフック",
-            """sequenceDiagram
-    participant U as ユーザー
-    participant CC as Claude Code
-    participant Pre as PreToolUse
-    participant Tool as ツール
-    participant Post as PostToolUse
-
-    Note over CC: 🔄 SessionStart Hook発火
-    U->>CC: リクエスト送信
-    CC->>Pre: ツール実行前チェック
-    alt チェックOK
-        Pre->>Tool: ✅ ツール実行
-        Tool->>Post: 実行完了
-        Post->>CC: ログ記録
-    else チェックNG
-        Pre-->>CC: 🚫 ブロック
-    end
-    CC->>U: レスポンス
-    Note over CC: 🔄 Stop Hook発火""",
-        ),
-    ],
-    "06_メモリ.md": [
-        (
-            "## メモリの種類",
-            """graph TD
-    subgraph "🧠 メモリシステム"
-        AUTO["Auto Memory<br/>~/.claude/projects/"]
-        USER["User Memory<br/>~/.claude/CLAUDE.md"]
-        PROJ["Project Memory<br/>repo/CLAUDE.md"]
-        IDX["MEMORY.md<br/>インデックス"]
-    end
-    AUTO --> T1["user: 役割・目標"]
-    AUTO --> T2["feedback: 指導"]
-    AUTO --> T3["project: 決定事項"]
-    AUTO --> T4["reference: 外部参照"]
-    IDX --> AUTO""",
-        ),
-    ],
-    "07_エージェント.md": [
-        (
-            "## 並列実行の例",
-            """graph TD
-    MAIN["🖥️ メインセッション"] --> A1["🔍 エージェントA<br/>コード探索"]
-    MAIN --> A2["📝 エージェントB<br/>レビュー"]
-    MAIN --> A3["🧪 エージェントC<br/>テスト実行"]
-    A1 --> |"結果"| MAIN
-    A2 --> |"結果"| MAIN
-    A3 --> |"結果"| MAIN
-    MAIN --> |"統合表示"| USER["👤 ユーザー"]""",
-        ),
-    ],
-    "08_設定ファイル.md": [
-        (
-            "## 設定の3層構造",
-            """graph BT
-    L1["Layer 1: グローバル<br/>~/.claude/CLAUDE.md<br/>全プロジェクト共通"]
-    L2["Layer 2: プロジェクト<br/>repo/CLAUDE.md<br/>プロジェクト固有"]
-    L3["Layer 3: ディレクトリ<br/>repo/dir/CLAUDE.md<br/>特定ディレクトリ"]
-    L3 -->|"上書き"| L2
-    L2 -->|"上書き"| L1
-    style L3 fill:#e8f5e9
-    style L2 fill:#fff3e0
-    style L1 fill:#e3f2fd""",
-        ),
-    ],
-    "09_統合.md": [
-        (
-            "## モデル切替",
-            """graph TD
-    A["📋 タスク受付"] --> B{"Opus<br/>デフォルト"}
-    B -->|"成功"| C["✅ 結果返却"]
-    B -->|"失敗"| D{"Haiku<br/>フォールバック"}
-    D -->|"成功"| C
-    B -->|"大量処理"| E["軽量モデルに委譲"]
-    E --> C
-    B -->|"高品質必要"| F{"👤 ユーザー確認"}
-    F -->|"許可"| G["上位モデルで処理"]
-    G --> C
-    F -->|"拒否"| B""",
-        ),
-    ],
-}
 
 # --- HTMLテンプレート ---
 
@@ -430,7 +267,7 @@ INDEX_TEMPLATE = Template("""\
                 {% for ch in cat.chapters %}
                 <a href="chapters/{{ ch.slug }}.html" class="chapter-card">
                     <div class="card-icon">{{ ch.icon }}</div>
-                    {% if ch.number %}<div class="card-number">第{{ ch.number }}章</div>{% endif %}
+                    {% if ch.number %}<div class="card-number">第{{ ch.number }}話</div>{% endif %}
                     <h2 class="card-title">{{ ch.title }}</h2>
                     <p class="card-desc">{{ ch.desc }}</p>
                 </a>
@@ -480,66 +317,6 @@ INDEX_TEMPLATE = Template("""\
 """, autoescape=True)
 
 
-# --- フィルタリング ---
-
-def filter_sections(text: str) -> str:
-    """個人情報・環境固有セクションを除去."""
-    lines = text.split("\n")
-    result = []
-    skip = False
-
-    for line in lines:
-        stripped = line.strip()
-
-        # 除去対象セクションの開始（## または ### セクション）
-        if stripped.startswith("## ") and any(stripped.startswith(s) for s in REMOVE_SECTIONS):
-            skip = True
-            continue
-
-        # 「あなたの」で始まる## / ### セクションも除去
-        if (stripped.startswith("## ") or stripped.startswith("### ")) and any(p in stripped for p in REMOVE_PATTERNS):
-            skip = True
-            continue
-
-        # 次の ## セクションでスキップ解除（### はスキップ解除しない）
-        if skip and stripped.startswith("## ") and not any(p in stripped for p in REMOVE_PATTERNS):
-            skip = False
-
-        if not skip:
-            result.append(line)
-
-    text = "\n".join(result)
-
-    # 個人識別子のサニタイズ
-    # ※公開URL（https://fukukei23.github.io/...）は置換対象外（リンク壊れ防止・公開GitHub Pages URL）
-    public_urls = set(re.findall(r'https?://fukukei23\.github\.io[^\s)）]*', text))
-    url_placeholders = {}
-    for i, url in enumerate(sorted(public_urls)):
-        ph = f"__PUBLIC_URL_{i}__"
-        url_placeholders[ph] = url
-        text = text.replace(url, ph)
-
-    text = text.replace("yn4416", "<USER>")
-    text = text.replace("fukukei23", "<USERNAME>")
-    text = text.replace("fukukei", "<USERNAME>")
-
-    # 公開URL復元
-    for ph, url in url_placeholders.items():
-        text = text.replace(ph, url)
-
-    # インライン個人情報のサニタイズ
-    for pattern, replacement in INLINE_REPLACEMENTS:
-        text = re.sub(pattern, replacement, text)
-    for pattern, replacement in TABLE_COL_SANITIZE:
-        text = re.sub(pattern, replacement, text)
-
-    # 未処理の「あなたの」を行内テキストから除去
-    text = re.sub(r"あなたの環境では", "", text)
-    text = re.sub(r"あなたの環境:", "", text)
-
-    return text
-
-
 # --- Markdown → HTML変換 ---
 
 def convert_md_to_html(md_text: str) -> str:
@@ -563,29 +340,6 @@ def _attach_heading_ids(html: str) -> str:
         _repl,
         html,
     )
-
-
-def inject_mermaid(html: str, filename: str) -> str:
-    """Mermaid図を指定位置に挿入."""
-    diagrams = MERMAID_DIAGRAMS.get(filename, [])
-    if not diagrams:
-        return html
-
-    for heading, diagram_code in diagrams:
-        # HTMLの見出しタグを検索（<a id>タグ込みも対応）
-        heading_text = heading.replace("## ", "").strip()
-        mermaid_block = (
-            f'<div class="mermaid-wrapper">'
-            f'<div class="mermaid">\n{diagram_code}\n</div>'
-            f'</div>'
-        )
-
-        # <h2 id="...">テキスト</h2> の前に挿入（{#id}記法 → id属性化に対応）
-        pattern = f'(<h2[^>]*>{re.escape(heading_text)}</h2>)'
-        if re.search(pattern, html):
-            html = re.sub(pattern, mermaid_block + r"\1", html, count=1)
-
-    return html
 
 
 def rewrite_links(html: str, chapter_map: dict | None = None) -> str:
@@ -630,7 +384,7 @@ def rewrite_links(html: str, chapter_map: dict | None = None) -> str:
 
     html = re.sub(r'href="([^"]*\.md[^"]*)"', replace_md_link, html)
 
-    # 外部リンク（obsidian-ssot内の他ファイル）を除去
+    # 外部リンク（他リポジトリ内のファイルへの相対リンク）を除去
     html = re.sub(r'href="\.\./[^"]*"', 'href="#"', html)
     html = re.sub(r'href="01_DECISIONS[^"]*"', 'href="#"', html)
 
@@ -713,6 +467,8 @@ def group_chapters_by_category(chapters: list) -> list:
         buckets[category_name].append(ch)
 
     ordered_names = [name for name, _, _ in INDEX_CATEGORIES] + [INDEX_CATEGORY_FALLBACK]
+    # INDEX_CATEGORIESとフォールバックが同名だと重複して2回表示されるため排除
+    ordered_names = list(dict.fromkeys(ordered_names))
     return [{"name": name, "chapters": buckets[name]} for name in ordered_names if buckets[name]]
 
 
@@ -727,10 +483,19 @@ def main():
 
     # 章リストを構築（自動スキャン込み）
     effective_map = build_chapter_map()
+
+    # slug衝突は後勝ち上書きではなく検知して落とす（ chapters/{slug}.html が壊れるため）
+    slug_counts: dict[str, int] = {}
+    for info in effective_map.values():
+        slug_counts[info["slug"]] = slug_counts.get(info["slug"], 0) + 1
+    duplicates = {slug for slug, count in slug_counts.items() if count > 1}
+    if duplicates:
+        raise SystemExit(f"slug重複: {', '.join(sorted(duplicates))}")
+
     chapters = []
     for filename, info in sorted(effective_map.items()):
         chapters.append({
-            "number": info["slug"][:2] if info["slug"][:2].isdigit() else "",
+            "number": info.get("episode", ""),  # 「第N話」ラベル（frontmatter episode 優先）
             "slug": info["slug"],
             "title": info["title"],
             "icon": info["icon"],
@@ -746,9 +511,7 @@ def main():
             continue
 
         md_text = src.read_text(encoding="utf-8")
-        md_text = filter_sections(md_text)
         html_body = convert_md_to_html(md_text)
-        html_body = inject_mermaid(html_body, ch["filename"])
         html_body = rewrite_links(html_body, effective_map)
         html_body = convert_tldr(html_body)
         html_body = enhance_html(html_body)
@@ -776,7 +539,11 @@ def main():
     (OUTPUT_DIR / "index.html").write_text(index_html, encoding="utf-8")
     print("OK: index.html")
 
-    print(f"\n完了: {len(chapters)}章 + index → {OUTPUT_DIR}/")
+    # repo直下 assets/ を docs/ へコピー（CSS/JS/OGP無しで公開される事故防止）
+    shutil.copytree(Path(__file__).parent / "assets", OUTPUT_DIR / "assets", dirs_exist_ok=True)
+    print("OK: assets copy → docs/assets/")
+
+    print(f"\n完了: {len(chapters)}話 + index → {OUTPUT_DIR}/")
 
 
 if __name__ == "__main__":
