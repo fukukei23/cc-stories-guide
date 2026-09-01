@@ -1,0 +1,8 @@
+# 物語化判定ログ（週次で偏りレビューするため全判定を記録する）
+# 形式: - date / type / reason / confidence / episode（未提案なら "none"）
+judgments:
+  - date: 2026-09-01
+    type: 事故解決+新仕様
+    reason: 2事故（正常系のみテスト・ゼロ誤断定）を機械化する3門番を実装・テスト偽PASSも検出
+    confidence: 高
+    episode: "001"
