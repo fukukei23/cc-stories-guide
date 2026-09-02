@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第4話 スキル物語 「マルチLLMレビューして」と言ったら別々の目で見てくれる話 — CC Stories</title>
+    <meta name="description" content="CC Stories — 作業の物語集: 第4話 スキル物語 「マルチLLMレビューして」と言ったら別々の目で見てくれる話">
+    <meta property="og:title" content="第4話 スキル物語 「マルチLLMレビューして」と言ったら別々の目で見てくれる話 — CC Stories">
+    <meta property="og:description" content="第4話 スキル物語 「マルチLLMレビューして」と言ったら別々の目で見てくれる話 — 専門用語なしの物語と技術解説のペア">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/002-llm.html">
+    <meta property="og:image" content="https://fukukei23.github.io/cc-stories-guide/assets/ogp.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="../assets/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+</head>
+<body>
+    <header class="site-header">
+        <button class="menu-toggle" aria-label="メニュー" id="menuToggle">
+            <span></span><span></span><span></span>
+        </button>
+        <a href="../index.html" class="site-title">📚 CC Stories</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="テーマ切替">
+            <span class="icon-light">☀️</span>
+            <span class="icon-dark">🌙</span>
+        </button>
+    </header>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="../index.html">🏠 ホーム</a>
+        </div>
+        
+        <a href="001.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第1話 「テストは充分？」という一言
+        </a>
+        
+        <a href="002-llm.html"
+           class="sidebar-link active">
+            <span class="sidebar-icon">📄</span>
+            第4話 スキル物語 「マルチLLMレビューして」と言ったら別々の目で見てくれる話
+        </a>
+        
+        <a href="002.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第2話 防災フックが鳴らなかった話
+        </a>
+        
+        <a href="003.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第3話 スキル物語 「おはよう」と言ったら昨日が戻ってきた話
+        </a>
+        
+        <a href="003-ssot.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第5話 スキル物語 「記録して」と言ったらSSOTに勝手に入る話
+        </a>
+        
+    </nav>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main class="content">
+        <div class="chapter-nav-top">
+            
+            <a href="001.html" class="nav-prev">← 第1話 「テストは充分？」という一言</a>
+            
+            
+            <a href="002.html" class="nav-next">第2話 防災フックが鳴らなかった話 →</a>
+            
+        </div>
+
+        <article class="chapter-body">
+            <p>&lt;!-- published: 2026-09-03 / 種別: 使い方解説 / 対象スキル: multi-llm-review --&gt;</p>
+<h1>第4話 スキル物語 「マルチLLMレビューして」と言ったら別々の目で見てくれる話</h1>
+<h2>いつ困る？</h2>
+<p>設計を書き上げた瞬間「これでいいのか不安」になる。自分の目で3回読み直しても、慣れで見落として怖い。同じLLMに「ツッコんで」と頼んでも、同じ死角を同じように見落とす。堅牢に見せたいのに、別の視点が足りない——完成前の判断が甘くなる瞬間、毎回の不安が膨らむ。</p>
+<h2>こう言うと起こること</h2>
+<p>「マルチLLMレビューして」「複数LLMでレビュー」を CC に投げる。裏側では別々の LLM（WSL CLI 版では既定で MiniMax と Gemini、「各LLMに」と付け加えれば OpenRouter の無料枠も加わって3機）が<strong>互いに一切相手の回答を見ずに</strong>同じ設計を叩く。レビュアーの間で引用の奪い合いは起きず、それぞれ独立に欠陥を見つける。そして CC がその指摘を「当初目的」という唯一の基準で取捨選択して、構造を保ったまま統合した改訂案を作る。直交した目で見た結果が、1つの解答として返ってくる。</p>
+<h2>何が変わるか</h2>
+<p>「同じ LLM の独り言」では届かなかった死角を、複数モデルが独立に埋めてくれる。1ラウンドで2視点、3機モードで3視点が同じコストでそろう。「思ったより深掘りが出た」という驚きが、設計の底力を一段上げてくれる。出力された改訂案は面接資料・設計書・外向き文面など、判断の重さが要る全てのもののリハーサルとして使える——発表前に「別々の目」を通す習慣が身につく。</p>
+<p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどうなってるか&lt;/summary&gt;</p>
+<h3>仕組み</h3>
+<ul>
+<li>同じプロンプトを2〜3機のLLMに<strong>並列独立</strong>で送出し、各自の指摘のみを集める</li>
+<li>統合はCC自身が「LLM内のステップ」として行うため、外部LLMを追加呼び出ししない（独立性命題を維持）</li>
+<li>8ステップ（JSON抽出→severity正規化→Fact Check→ペルソナ切替→3 tier分類→メタ中断→競合調停→統合）で改訂案を作る</li>
+<li>統合の最終段で「もう一度各LLMでレビューしますか？」と添える Step9 が2026-09-02 追加（収束自己判定の封じ）</li>
+</ul>
+<h3>lite（multi-llm-review-lite）との使い分け</h3>
+<ul>
+<li>「軽く」「サクッと」が発話に入れば lite（箇条書きツッコミ・会話内完結・改訂案なし）</li>
+<li>「しっかり」「3機で」「改訂案が欲しい」は本スキル normal モード</li>
+<li>曖昧なら迷う必要はなく CC が確認する</li>
+</ul>
+<h3>注意点</h3>
+<ul>
+<li>レビュー対象本文はプロンプトにインラインで貼る（ファイルパス渡しではない・LLMはテキスト生成APIでファイルを読めないため）</li>
+<li>「ゼロ件」「見つからない」等の断定をするときは再検索プロトコルが必要（<code>grep -rln</code> head無し）</li>
+<li>機密情報のレビューは LLM 送信前にマスク・リスク警告が出る</li>
+</ul>
+<h3>由来情報（要約のみ・原文URLなし）</h3>
+<ul>
+<li>設計正典: SSOTの <code>~/.claude/skills/multi-llm-review/SKILL.md</code>（2026-09-02 Step9追加）</li>
+<li>共用記録: SSOTの <code>00_SYSTEM/マルチLLMレビュー/</code> 配下の全レビュー正典フォルダ</li>
+<li>関連スキル: <code>multi-llm-review-lite</code>（軽量版・「軽く」発話用）</li>
+</ul>
+<p>&lt;/details&gt;</p>
+
+        </article>
+
+        <nav class="chapter-nav-bottom">
+            
+            <a href="001.html" class="nav-card prev">
+                <span class="nav-label">← 前の章</span>
+                <span class="nav-title">📄 第1話 「テストは充分？」という一言</span>
+            </a>
+            
+            
+            <a href="002.html" class="nav-card next">
+                <span class="nav-label">次の章 →</span>
+                <span class="nav-title">📄 第2話 防災フックが鳴らなかった話</span>
+            </a>
+            
+        </nav>
+    </main>
+
+    <footer class="site-footer">
+        <p>CC Stories — <a href="https://github.com/fukukei23/cc-stories-guide">GitHub</a>
+         · <a href="https://fukukei23.github.io/ssot-guide/">SSOT Guide</a>
+         · <a href="https://fukukei23.github.io/loop-engineering-guide/">Loop Engineering Guide</a>
+         · <a href="https://fukukei23.github.io/guides/">技術ガイド集</a>
+         · <a href="https://fukukei23.github.io/">fukukei23</a></p>
+    </footer>
+
+    <script src="../assets/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default',
+            themeVariables: { fontSize: '14px' }
+        });
+    </script>
+</body>
+</html>
