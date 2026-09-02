@@ -462,31 +462,30 @@ def convert_tldr(html: str) -> str:
 
 # published コメントの「種別」フィールドで2セクションに分岐（2026-09-02）
 # 固定レンジの章番号→カテゴリは廃止（番号体系が固定でないため）
-INDEX_CATEGORIES = [
-    "📖 作業の物語",
-    "🔧 スキルの使い方",
-]
-INDEX_CATEGORY_FALLBACK = "📖 作業の物語"  # 種別無しの旧ファイルは作業の物語側
-CATEGORY_ORDER = {"📖 作業の物語": 0, "🔧 スキルの使い方": 1}
+# 表示名=絵文字付き/内部値=絵文字なし（_extract_category_from_published_comment が返す値）
+INDEX_CATEGORIES_INTERNAL = ["作業の物語", "スキルの使い方"]  # 内部値（chapter.category 比較用）
+INDEX_CATEGORIES_DISPLAY = ["📖 作業の物語", "🔧 スキルの使い方"]  # 表示順（HTML出力用）
+INDEX_CATEGORY_FALLBACK = "作業の物語"  # 種別無しの旧ファイルは作業の物語側
 
 
 def group_chapters_by_category(chapters: list) -> list:
-    """各話の category フィールドに基づき、トップページ表示用にカテゴリへグルーピング.
+    """各話の category フィールド（内部値）に基づき、トップページ表示用にカテゴリへグルーピング.
     章番号レンジは廃止・2026-09-02。
     """
-    buckets: dict[str, list] = {name: [] for name in INDEX_CATEGORIES}
-    buckets[INDEX_CATEGORY_FALLBACK] = []  # 後方互換
+    internal_to_display = dict(zip(INDEX_CATEGORIES_INTERNAL, INDEX_CATEGORIES_DISPLAY))
+    buckets: dict[str, list] = {name: [] for name in INDEX_CATEGORIES_INTERNAL}
 
     for ch in chapters:
         cat = ch.get("category", INDEX_CATEGORY_FALLBACK)
         if cat not in buckets:
-            # 未知のカテゴリは出さず無視（仕様逸脱データを画面に出さない安全側）
-            continue
+            continue  # 未知のカテゴリは出さない（仕様逸脱データを画面に出さない安全側）
         buckets[cat].append(ch)
 
-    # INDEX_CATEGORIESの定義順で表示（フォールバックが同名の時は重複排除）
-    ordered_names = list(dict.fromkeys(INDEX_CATEGORIES + [INDEX_CATEGORY_FALLBACK]))
-    return [{"name": name, "chapters": buckets[name]} for name in ordered_names if buckets[name]]
+    # INDEX_CATEGORIES_INTERNAL の定義順で表示（表示名は DISPLAY と対応）
+    return [
+        {"name": internal_to_display[name], "chapters": buckets[name]}
+        for name in INDEX_CATEGORIES_INTERNAL if buckets[name]
+    ]
 
 
 # --- メイン ---
