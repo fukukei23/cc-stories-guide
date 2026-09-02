@@ -22,7 +22,7 @@ CC（Claude Code）との作業を「専門用語なしの物語+技術解説」
 
 ## 自動書き溜め（2026-09-02導入・週2回）
 
-- durable cron id=19（火金08:23）が `generate_story_candidates.py`（候補リスト再生成・スコア順）→ 未物語化の最上位候補を物語化 → denylist再走査 → 自動公開（B案・機械チェックのみ）
+- durable cron id=19（火金16:23・MiniMax時間帯）が `generate_story_candidates.py`（候補リスト再生成・スコア順）→ 未物語化の最上位候補を物語化 → denylist再走査 → 自動公開（B案・機械チェックのみ）
 - **停止方法**: `bash ~/bin/apply-crons.sh clean` または renew-crons.sh の id=19 行を削除して apply
 - 判定履歴: `judgment-log.yaml`・候補リスト: `story-candidates.yaml`
 
