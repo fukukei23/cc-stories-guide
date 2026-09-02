@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第3話 スキル物語 「おはよう」と言ったら昨日が戻ってきた話 — CC Stories</title>
-    <meta name="description" content="CC Stories — 作業の物語集: 第3話 スキル物語 「おはよう」と言ったら昨日が戻ってきた話">
-    <meta property="og:title" content="第3話 スキル物語 「おはよう」と言ったら昨日が戻ってきた話 — CC Stories">
-    <meta property="og:description" content="第3話 スキル物語 「おはよう」と言ったら昨日が戻ってきた話 — 専門用語なしの物語と技術解説のペア">
+    <title>第10話 スキル物語 「dev-cycle」と言うと開発のサイクルが一巡する話 — CC Stories</title>
+    <meta name="description" content="CC Stories — 作業の物語集: 第10話 スキル物語 「dev-cycle」と言うと開発のサイクルが一巡する話">
+    <meta property="og:title" content="第10話 スキル物語 「dev-cycle」と言うと開発のサイクルが一巡する話 — CC Stories">
+    <meta property="og:description" content="第10話 スキル物語 「dev-cycle」と言うと開発のサイクルが一巡する話 — 専門用語なしの物語と技術解説のペア">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/003.html">
+    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/010-dev-cycle.html">
     <meta property="og:image" content="https://fukukei23.github.io/cc-stories-guide/assets/ogp.png">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="../assets/style.css">
@@ -50,7 +50,7 @@
         </a>
         
         <a href="003.html"
-           class="sidebar-link active">
+           class="sidebar-link">
             <span class="sidebar-icon">📄</span>
             第3話 スキル物語 「おはよう」と言ったら昨日が戻ってきた話
         </a>
@@ -86,7 +86,7 @@
         </a>
         
         <a href="010-dev-cycle.html"
-           class="sidebar-link">
+           class="sidebar-link active">
             <span class="sidebar-icon">📄</span>
             第10話 スキル物語 「dev-cycle」と言うと開発のサイクルが一巡する話
         </a>
@@ -97,41 +97,38 @@
     <main class="content">
         <div class="chapter-nav-top">
             
-            <a href="002.html" class="nav-prev">← 第2話 防災フックが鳴らなかった話</a>
+            <a href="009.html" class="nav-prev">← 第9話 スキル物語 「リポジトリレビューして」と言ったら品質を点数で出してくれる話</a>
             
-            
-            <a href="003-ssot.html" class="nav-next">第5話 スキル物語 「記録して」と言ったらSSOTに勝手に入る話 →</a>
             
         </div>
 
         <article class="chapter-body">
-            <p>&lt;!-- published: 2026-09-02 / 種別: 使い方解説 / 対象スキル: resume-session --&gt;</p>
-<h1>第3話 スキル物語 「おはよう」と言ったら昨日が戻ってきた話</h1>
+            <p>&lt;!-- published: 2026-09-03 / 種別: 使い方解説 / 対象スキル: dev-cycle --&gt;</p>
+<h1>第10話 スキル物語 「dev-cycle」と言うと開発のサイクルが一巡する話</h1>
 <h2>いつ困る？</h2>
-<p>深夜に作業を区切って寝て、翌日の朝。「さて、どこまでやってたっけ？」と過去のファイルをひっくり返して、また「あの警告もどこかで見た記憶がある…」を探す羽目になる。長いスレッドはスクロールしても見つからないし、対話の全体感は掴めない。コードを書く前の状態で「もう一日分の助走」が要る——これが毎朝5分のロスになっている。</p>
+<p>品質の懸念が溜まってきた時、「どこかでまとめて直したい」と思う。テスト書き・Lint・型チェック・依存更新・Issue整理・PR運用——ひとつずつ手を出そうとすると、どれから手を付けていいか分からず、結局放置する。個人プロジェクトほど「いつかやる」が積み上がり、形骸化していく。</p>
 <h2>こう言うと起こること</h2>
-<p>「おはよう」「再開」「restart」の一言を CC に投げる。裏では <code>resume-session</code> スキルが動き、最新5件のひと言まとめ（handoff）を順番に読み込んで、その日の作業がここからだったと場所を示してくれる。忘れないためだけの場所ではなく、「ここを解くべき、今日はここから」の地図を渡される感覚。朝の助走が消える。</p>
+<p>「dev-cycle」「開発サイクル」「品質改善」「自律ループ」を CC に投げる。裏側の dev-cycle スキルは5フェーズを一巡する: 品質スイープ → コードレビュー → Issue化 → 自律実装ループ → 完了通知。各フェーズは明確な受け入れ条件を持ち、前のフェーズの成果が次への入力になる。例: 品質スイープで Found issues が拾われ、コードレビューで設計判断がレビューされ、Issue化されたものが自律ループに渡され、テスト緑まで実行されて人間に届く。人間は「結果の妥当性チェック」と「承認」のみ。</p>
 <h2>何が変わるか</h2>
-<p>5分の「思い出し」が0分になる。それより大きいのは、「昨日の自分に何を任せていたか」を思い出して引き受ける動作が、毎朝の儀式として身につくこと。長期プロジェクトのヘリープレーが軽くなり、作業の中断回数が増えても戻りが速い。忙しい日でも、朝の一言で「今日はここまで仕上げよう」と冷静に立て直せるようになる。</p>
+<p>「いつかやりたい品質改善」が予約不要で着手できる。1日1サイクルでPJを回すと、放置PJの鮮度が保たれる。セルフレビューを待たずに人に見せられる品質に保たれる——面談・相談・コラボのスピードが落ちない。「今月の改善テーマ」をAIに任せて、自分の手は判断と承認に集中できる。</p>
 <p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどうなってるか&lt;/summary&gt;</p>
 <h3>仕組み</h3>
 <ul>
-<li>~/.claude/skills/resume-session/SKILL.md が発動起点</li>
-<li>最新5件の handoff（<code>~/projects/obsidian-ssot/00_SYSTEM/handoff/</code>）を自動取得</li>
-<li>内容要約を会話冒頭に注入・前回の作業状態（占有中タスク・🟢行・未解決・構想メモ・自動発火ループの状態）を1ブロックで提示</li>
-<li>「おはよう」等のトリガーワードが自然文に紛れても誤作動しない（pattern厳密一致）</li>
+<li>5フェーズがツール呼び出しで実行: 品質スイープ（Lint/静的解析）→ コードレビュー（multi-llm-review 連動）→ Issue化（GitHub Issues 起票）→ 自律実装ループ（run-task.sh）→ 完了通知（Discord）</li>
+<li>各フェーズは受け入れ条件（A/D/F層）あり・次フェーズにバトンを渡す前に検証</li>
+<li>自律ループ側は approve.py + run-task.sh で「テスト必須・3件まで自動停止・失敗で停止」のフェイルセーフ</li>
+<li>途中で人間が判断を挟むポイント（確認ゲート）が明示されている</li>
 </ul>
 <h3>注意点</h3>
 <ul>
-<li>handoff ファイルが無い深夜セッション直後でも「状態ゼロ」で正常動作</li>
-<li>並行セッションが 🟢 状態の時は soft 警告表示・「他セッションと同名タスク着手」の誤重複防止</li>
-<li>記憶より正典優先・memory 過信ルール（CLAUDE.md）に整合</li>
+<li>サイクル1周 = 数時間〜1日が目安（小規模PJなら短く、大規模なら分割して1日1フェーズずつ）</li>
+<li>自律ループは最大3タスクで自動停止するため、長時間放置のリスク無し</li>
+<li>完了報告にはテスト緑証跡とコミットハッシュが必須（テストだけ緑で確認無しは完了扱いせず）</li>
 </ul>
-<h3>由来情報（要約のみ・原文URL なし）</h3>
+<h3>由来情報</h3>
 <ul>
-<li>設計正典: SSOTの <code>~/.claude/skills/resume-session/SKILL.md</code> v4（発動条件の自然言語化）</li>
-<li>運用ルール: SSOTの <code>00_SYSTEM/handoff使い方.md</code></li>
-<li>初回実装の経緯: SSOTの <code>01_DECISIONS/claude-code/</code> 配下の関連記録（セッション間の状態保存＝日常業務に必ず付いて回る定例の手間を毎回こなさない設計の由来）</li>
+<li>設計正典: SSOTの<code>~/.claude/skills/dev-cycle/SKILL.md</code></li>
+<li>関連スキル: code-reviewer（レビュー専門）, code-simplify（簡素化専門）, multi-llm-review（多機レビュー）, repo-review（品質全体の入口）</li>
 </ul>
 <p>&lt;/details&gt;</p>
 
@@ -139,16 +136,11 @@
 
         <nav class="chapter-nav-bottom">
             
-            <a href="002.html" class="nav-card prev">
+            <a href="009.html" class="nav-card prev">
                 <span class="nav-label">← 前の章</span>
-                <span class="nav-title">📄 第2話 防災フックが鳴らなかった話</span>
+                <span class="nav-title">📄 第9話 スキル物語 「リポジトリレビューして」と言ったら品質を点数で出してくれる話</span>
             </a>
             
-            
-            <a href="003-ssot.html" class="nav-card next">
-                <span class="nav-label">次の章 →</span>
-                <span class="nav-title">📄 第5話 スキル物語 「記録して」と言ったらSSOTに勝手に入る話</span>
-            </a>
             
         </nav>
     </main>

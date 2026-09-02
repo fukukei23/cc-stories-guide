@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第3話 スキル物語 「おはよう」と言ったら昨日が戻ってきた話 — CC Stories</title>
-    <meta name="description" content="CC Stories — 作業の物語集: 第3話 スキル物語 「おはよう」と言ったら昨日が戻ってきた話">
-    <meta property="og:title" content="第3話 スキル物語 「おはよう」と言ったら昨日が戻ってきた話 — CC Stories">
-    <meta property="og:description" content="第3話 スキル物語 「おはよう」と言ったら昨日が戻ってきた話 — 専門用語なしの物語と技術解説のペア">
+    <title>第9話 スキル物語 「リポジトリレビューして」と言ったら品質を点数で出してくれる話 — CC Stories</title>
+    <meta name="description" content="CC Stories — 作業の物語集: 第9話 スキル物語 「リポジトリレビューして」と言ったら品質を点数で出してくれる話">
+    <meta property="og:title" content="第9話 スキル物語 「リポジトリレビューして」と言ったら品質を点数で出してくれる話 — CC Stories">
+    <meta property="og:description" content="第9話 スキル物語 「リポジトリレビューして」と言ったら品質を点数で出してくれる話 — 専門用語なしの物語と技術解説のペア">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/003.html">
+    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/009.html">
     <meta property="og:image" content="https://fukukei23.github.io/cc-stories-guide/assets/ogp.png">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="../assets/style.css">
@@ -50,7 +50,7 @@
         </a>
         
         <a href="003.html"
-           class="sidebar-link active">
+           class="sidebar-link">
             <span class="sidebar-icon">📄</span>
             第3話 スキル物語 「おはよう」と言ったら昨日が戻ってきた話
         </a>
@@ -80,7 +80,7 @@
         </a>
         
         <a href="009.html"
-           class="sidebar-link">
+           class="sidebar-link active">
             <span class="sidebar-icon">📄</span>
             第9話 スキル物語 「リポジトリレビューして」と言ったら品質を点数で出してくれる話
         </a>
@@ -97,41 +97,40 @@
     <main class="content">
         <div class="chapter-nav-top">
             
-            <a href="002.html" class="nav-prev">← 第2話 防災フックが鳴らなかった話</a>
+            <a href="008-5.html" class="nav-prev">← 第8話 スキル物語 「返信文を書いて」と言ったら5禁止に気をつけて整えてくれる話</a>
             
             
-            <a href="003-ssot.html" class="nav-next">第5話 スキル物語 「記録して」と言ったらSSOTに勝手に入る話 →</a>
+            <a href="010-dev-cycle.html" class="nav-next">第10話 スキル物語 「dev-cycle」と言うと開発のサイクルが一巡する話 →</a>
             
         </div>
 
         <article class="chapter-body">
-            <p>&lt;!-- published: 2026-09-02 / 種別: 使い方解説 / 対象スキル: resume-session --&gt;</p>
-<h1>第3話 スキル物語 「おはよう」と言ったら昨日が戻ってきた話</h1>
+            <p>&lt;!-- published: 2026-09-03 / 種別: 使い方解説 / 対象スキル: repo-review --&gt;</p>
+<h1>第9話 スキル物語 「リポジトリレビューして」と言ったら品質を点数で出してくれる話</h1>
 <h2>いつ困る？</h2>
-<p>深夜に作業を区切って寝て、翌日の朝。「さて、どこまでやってたっけ？」と過去のファイルをひっくり返して、また「あの警告もどこかで見た記憶がある…」を探す羽目になる。長いスレッドはスクロールしても見つからないし、対話の全体感は掴めない。コードを書く前の状態で「もう一日分の助走」が要る——これが毎朝5分のロスになっている。</p>
+<p>作ったリポジトリが他人に見せられる品質か不安になる。コミット履歴が整理されず・README が古い・テストがない・依存ライブラリは古いまま・CIは通っていないか赤のまま——自覚はあるが、どこから手を付けるべきか分からない。自信を持って公開できない・面談で提出できない・人に渡せない状態が、作ったプロジェクトを長く棚上げしてしまう。</p>
 <h2>こう言うと起こること</h2>
-<p>「おはよう」「再開」「restart」の一言を CC に投げる。裏では <code>resume-session</code> スキルが動き、最新5件のひと言まとめ（handoff）を順番に読み込んで、その日の作業がここからだったと場所を示してくれる。忘れないためだけの場所ではなく、「ここを解くべき、今日はここから」の地図を渡される感覚。朝の助走が消える。</p>
+<p>「リポジトリレビューして」「コード品質を評価して」「アーキテクチャ評価して」を CC に投げる。裏側の repo-review スキルは、種別（アプリ/ライブラリ/運用スクリプト/コンテンツ）を判定し、各言語用の品質評価軸（Python は AST 詳細・他言語は近似）を「実測ベース」で走査する。テストケース数・コード行数・commit hash まで、推測ではなく計測値を返す。優先度付き改善案が「最重要3点」に絞って並び、根拠は出力ログと行番号で示される。</p>
 <h2>何が変わるか</h2>
-<p>5分の「思い出し」が0分になる。それより大きいのは、「昨日の自分に何を任せていたか」を思い出して引き受ける動作が、毎朝の儀式として身につくこと。長期プロジェクトのヘリープレーが軽くなり、作業の中断回数が増えても戻りが速い。忙しい日でも、朝の一言で「今日はここまで仕上げよう」と冷静に立て直せるようになる。</p>
+<p>「見せる前にどこを直すべきか」で迷う時間が消える。計測値を根拠に直されるので「直した感」のための手戻りではなく、本当の品質が上がる。「点数（N/100）・fail 条件・観測出力」の3点セットで判定するので、改善が前に進んだかも自分で確認できる。定期的にリポジトリをレビュー運用に組み込めば、面談提出物がいつも1週間以内に整う——前向きに公開できる習慣が回る。</p>
 <p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどうなってるか&lt;/summary&gt;</p>
 <h3>仕組み</h3>
 <ul>
-<li>~/.claude/skills/resume-session/SKILL.md が発動起点</li>
-<li>最新5件の handoff（<code>~/projects/obsidian-ssot/00_SYSTEM/handoff/</code>）を自動取得</li>
-<li>内容要約を会話冒頭に注入・前回の作業状態（占有中タスク・🟢行・未解決・構想メモ・自動発火ループの状態）を1ブロックで提示</li>
-<li>「おはよう」等のトリガーワードが自然文に紛れても誤作動しない（pattern厳密一致）</li>
+<li>種別判定 → 種別ごと評価軸選択（アプリ=テスト/Lint/CI連動、ライブラリ=公開API/バージョン、運用スクリプト=冪等/監視、コンテンツ=リンク切れ/鮮度）</li>
+<li>計測値ベース: コード行数・テスト数・commit hash はツール出力で実測・推測禁止</li>
+<li>fail条件: 「検証した範囲」内の最悪ケースを再現可能にする</li>
+<li>言語別: Python は AST 詳細解析・他言語は近似カウントで算出（誤差は明示）</li>
 </ul>
 <h3>注意点</h3>
 <ul>
-<li>handoff ファイルが無い深夜セッション直後でも「状態ゼロ」で正常動作</li>
-<li>並行セッションが 🟢 状態の時は soft 警告表示・「他セッションと同名タスク着手」の誤重複防止</li>
-<li>記憶より正典優先・memory 過信ルール（CLAUDE.md）に整合</li>
+<li>改善案は「重要3点」に絞る（幅広浅バイアスを構造的に封じる）</li>
+<li>「修正しました」の報告にはコミットハッシュ等を添えて再現可能にする</li>
+<li>検証網羅性ゲート:「exit code N=合格」のみならず「fail 条件ケース」の検証有無も明示</li>
 </ul>
-<h3>由来情報（要約のみ・原文URL なし）</h3>
+<h3>由来情報</h3>
 <ul>
-<li>設計正典: SSOTの <code>~/.claude/skills/resume-session/SKILL.md</code> v4（発動条件の自然言語化）</li>
-<li>運用ルール: SSOTの <code>00_SYSTEM/handoff使い方.md</code></li>
-<li>初回実装の経緯: SSOTの <code>01_DECISIONS/claude-code/</code> 配下の関連記録（セッション間の状態保存＝日常業務に必ず付いて回る定例の手間を毎回こなさない設計の由来）</li>
+<li>設計正典: SSOTの<code>~/.claude/skills/repo-review/SKILL.md</code></li>
+<li>関連スキル:なし（単独で品質を上げる入口）</li>
 </ul>
 <p>&lt;/details&gt;</p>
 
@@ -139,15 +138,15 @@
 
         <nav class="chapter-nav-bottom">
             
-            <a href="002.html" class="nav-card prev">
+            <a href="008-5.html" class="nav-card prev">
                 <span class="nav-label">← 前の章</span>
-                <span class="nav-title">📄 第2話 防災フックが鳴らなかった話</span>
+                <span class="nav-title">📄 第8話 スキル物語 「返信文を書いて」と言ったら5禁止に気をつけて整えてくれる話</span>
             </a>
             
             
-            <a href="003-ssot.html" class="nav-card next">
+            <a href="010-dev-cycle.html" class="nav-card next">
                 <span class="nav-label">次の章 →</span>
-                <span class="nav-title">📄 第5話 スキル物語 「記録して」と言ったらSSOTに勝手に入る話</span>
+                <span class="nav-title">📄 第10話 スキル物語 「dev-cycle」と言うと開発のサイクルが一巡する話</span>
             </a>
             
         </nav>
