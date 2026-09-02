@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第7話 スキル物語 「今夜はミニマックス」と言ったら裏側のレート制限を切り替えてくれる話 — CC Stories</title>
+    <meta name="description" content="CC Stories — 作業の物語集: 第7話 スキル物語 「今夜はミニマックス」と言ったら裏側のレート制限を切り替えてくれる話">
+    <meta property="og:title" content="第7話 スキル物語 「今夜はミニマックス」と言ったら裏側のレート制限を切り替えてくれる話 — CC Stories">
+    <meta property="og:description" content="第7話 スキル物語 「今夜はミニマックス」と言ったら裏側のレート制限を切り替えてくれる話 — 専門用語なしの物語と技術解説のペア">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/007.html">
+    <meta property="og:image" content="https://fukukei23.github.io/cc-stories-guide/assets/ogp.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="../assets/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+</head>
+<body>
+    <header class="site-header">
+        <button class="menu-toggle" aria-label="メニュー" id="menuToggle">
+            <span></span><span></span><span></span>
+        </button>
+        <a href="../index.html" class="site-title">📚 CC Stories</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="テーマ切替">
+            <span class="icon-light">☀️</span>
+            <span class="icon-dark">🌙</span>
+        </button>
+    </header>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="../index.html">🏠 ホーム</a>
+        </div>
+        
+        <a href="001.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第1話 「テストは充分？」という一言
+        </a>
+        
+        <a href="002-llm.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第4話 スキル物語 「マルチLLMレビューして」と言ったら別々の目で見てくれる話
+        </a>
+        
+        <a href="002.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第2話 防災フックが鳴らなかった話
+        </a>
+        
+        <a href="003.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第3話 スキル物語 「おはよう」と言ったら昨日が戻ってきた話
+        </a>
+        
+        <a href="003-ssot.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第5話 スキル物語 「記録して」と言ったらSSOTに勝手に入る話
+        </a>
+        
+        <a href="006.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第6話 スキル物語 「定期実行作って」と言ったら排他込みで組んでくれる話
+        </a>
+        
+        <a href="007.html"
+           class="sidebar-link active">
+            <span class="sidebar-icon">📄</span>
+            第7話 スキル物語 「今夜はミニマックス」と言ったら裏側のレート制限を切り替えてくれる話
+        </a>
+        
+    </nav>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main class="content">
+        <div class="chapter-nav-top">
+            
+            <a href="006.html" class="nav-prev">← 第6話 スキル物語 「定期実行作って」と言ったら排他込みで組んでくれる話</a>
+            
+            
+        </div>
+
+        <article class="chapter-body">
+            <p>&lt;!-- published: 2026-09-03 / 種別: 使い方解説 / 対象スキル: proxy-mode --&gt;</p>
+<h1>第7話 スキル物語 「今夜はミニマックス」と言ったら裏側のレート制限を切り替えてくれる話</h1>
+<h2>いつ困る？</h2>
+<p>週の真ん中辺りから「LLMが重いな…」と感じ始める。同じCCのはずなのに、長文要約・複雑なコード生成だけ体感速度が落ちる。ベストなモデルを引き続き使いたいのに、枠が足りない日は待つしかないと諦めがち。回復タイミングを待つ間も思考は止まらず、勿体無い時間が積もる。</p>
+<h2>こう言うと起こること</h2>
+<p>「今夜はミニマックス」「明日の朝までミニマックスにして」「GLMに戻して」「自動に戻して」「プロキシの状態見て」を CC に投げる。裏側の glm-rate-proxy に「今夜はMiniMax・明朝6時まで」と時刻指定でモード切替をPOSTし、対話だけ・裏側だけ・WSL CLI版だけのいずれかを守って切替える。status で現在のモード・残枠・回復時刻を確認でき、明朝6時の自動復帰も予約される。「プロキシ切替」を専門用語無しで扱える。作った LLM プロダクトの枠残りを、スマホから確認できる安心感。</p>
+<h2>何が変わるか</h2>
+<p>「プロキシが落ちてる？」「上限近い？」を読むことを止められる。明示の言葉だけで動かして、戻す言葉も明示で一発。深夜作業・週末作業・集中セッション前の予習で「軽さが間に合う」状態が自分で用意できる。知らないうちにLLM側を詰めていて本体が止まる事故を、ユーザーの判断で防げる——「重さ」を感じ始めたら声を出す、それだけで世界が軽くなる。</p>
+<p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどうなってるか&lt;/summary&gt;</p>
+<h3>仕組み</h3>
+<ul>
+<li>裏側API: <code>localhost:8787</code> の glm-rate-proxy が認証トークンを守りつつ ZAI / MiniMax への振り分けを切替え</li>
+<li>動作 URL: POST <code>/proxy/mode</code>（例: <code>{&quot;mode&quot;: &quot;minimax&quot;, &quot;until&quot;: &quot;06:00&quot;}</code>・<code>until</code> 省略時は手動復帰まで）</li>
+<li>status URL: GET <code>/proxy/status</code> で「モード・provider・使用率・明朝の予定」を返す</li>
+<li>自動切替: GLM週間消費が95%超に達するとプロキシがMiniMaxへ自動切替（緊急モード・ふくけいに無断で切替しない配慮付き）</li>
+</ul>
+<h3>注意点</h3>
+<ul>
+<li>「プロキシ切替」は誰にも見えないサーバー設定変更。言語プロンプト自体は変えない（Gemini・SonnetのMCP経路は別の話）</li>
+<li>「プロキシの状態見て」と入れれば各LLMの現在接続先・消費率・明朝予定を表示</li>
+</ul>
+<h3>由来情報</h3>
+<ul>
+<li>設計正典: SSOTの<code>~/.claude/skills/proxy-mode/SKILL.md</code>（2026-08-20新設・日本語トリガー手動モード切替）</li>
+<li>動作仕様: SSOTの<code>docs/superpowers/specs/2026-08-20-proxy-mode-skill-design.md</code></li>
+<li>状態・履歴: SSOTの<code>00_SYSTEM/参考資料/glm-rate-proxy/</code></li>
+</ul>
+<p>&lt;/details&gt;</p>
+
+        </article>
+
+        <nav class="chapter-nav-bottom">
+            
+            <a href="006.html" class="nav-card prev">
+                <span class="nav-label">← 前の章</span>
+                <span class="nav-title">📄 第6話 スキル物語 「定期実行作って」と言ったら排他込みで組んでくれる話</span>
+            </a>
+            
+            
+        </nav>
+    </main>
+
+    <footer class="site-footer">
+        <p>CC Stories — <a href="https://github.com/fukukei23/cc-stories-guide">GitHub</a>
+         · <a href="https://fukukei23.github.io/ssot-guide/">SSOT Guide</a>
+         · <a href="https://fukukei23.github.io/loop-engineering-guide/">Loop Engineering Guide</a>
+         · <a href="https://fukukei23.github.io/guides/">技術ガイド集</a>
+         · <a href="https://fukukei23.github.io/">fukukei23</a></p>
+    </footer>
+
+    <script src="../assets/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default',
+            themeVariables: { fontSize: '14px' }
+        });
+    </script>
+</body>
+</html>

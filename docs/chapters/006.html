@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第6話 スキル物語 「定期実行作って」と言ったら排他込みで組んでくれる話 — CC Stories</title>
+    <meta name="description" content="CC Stories — 作業の物語集: 第6話 スキル物語 「定期実行作って」と言ったら排他込みで組んでくれる話">
+    <meta property="og:title" content="第6話 スキル物語 「定期実行作って」と言ったら排他込みで組んでくれる話 — CC Stories">
+    <meta property="og:description" content="第6話 スキル物語 「定期実行作って」と言ったら排他込みで組んでくれる話 — 専門用語なしの物語と技術解説のペア">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/006.html">
+    <meta property="og:image" content="https://fukukei23.github.io/cc-stories-guide/assets/ogp.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="../assets/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+</head>
+<body>
+    <header class="site-header">
+        <button class="menu-toggle" aria-label="メニュー" id="menuToggle">
+            <span></span><span></span><span></span>
+        </button>
+        <a href="../index.html" class="site-title">📚 CC Stories</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="テーマ切替">
+            <span class="icon-light">☀️</span>
+            <span class="icon-dark">🌙</span>
+        </button>
+    </header>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="../index.html">🏠 ホーム</a>
+        </div>
+        
+        <a href="001.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第1話 「テストは充分？」という一言
+        </a>
+        
+        <a href="002-llm.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第4話 スキル物語 「マルチLLMレビューして」と言ったら別々の目で見てくれる話
+        </a>
+        
+        <a href="002.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第2話 防災フックが鳴らなかった話
+        </a>
+        
+        <a href="003.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第3話 スキル物語 「おはよう」と言ったら昨日が戻ってきた話
+        </a>
+        
+        <a href="003-ssot.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第5話 スキル物語 「記録して」と言ったらSSOTに勝手に入る話
+        </a>
+        
+        <a href="006.html"
+           class="sidebar-link active">
+            <span class="sidebar-icon">📄</span>
+            第6話 スキル物語 「定期実行作って」と言ったら排他込みで組んでくれる話
+        </a>
+        
+        <a href="007.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第7話 スキル物語 「今夜はミニマックス」と言ったら裏側のレート制限を切り替えてくれる話
+        </a>
+        
+    </nav>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main class="content">
+        <div class="chapter-nav-top">
+            
+            <a href="003-ssot.html" class="nav-prev">← 第5話 スキル物語 「記録して」と言ったらSSOTに勝手に入る話</a>
+            
+            
+            <a href="007.html" class="nav-next">第7話 スキル物語 「今夜はミニマックス」と言ったら裏側のレート制限を切り替えてくれる話 →</a>
+            
+        </div>
+
+        <article class="chapter-body">
+            <p>&lt;!-- published: 2026-09-03 / 種別: 使い方解説 / 対象スキル: cron-setup --&gt;</p>
+<h1>第6話 スキル物語 「定期実行作って」と言ったら排他込みで組んでくれる話</h1>
+<h2>いつ困る？</h2>
+<p>「毎日○○を動かしたい」「このコマンドを毎週○曜に回し続けたい」と思う瞬間がくる。シェルで毎朝叩くのも覚束ない。durable cron の設定を直接いじるのは怖くて、後回しにしていると、ずっと手動で同じ作業を抱え続ける。設定をしくじる不安が、定期実行を「こわいもの」にしてしまう。</p>
+<h2>こう言うと起こること</h2>
+<p>「定期実行作って」「cron-setup」「cron 新設して」を CC に投げる。裏側では同一日内に複数回動かない排他（同時の flock ＋ 時間差の当日成功スタンプ）と、実行ログ（複数発を計測可能にする）と、durable cron の正典 renew-crons.sh への <code># @cron</code> 追記まで一気に組まれる。apply-crons.sh reconcile が AI 直の CronCreate より先に正規登録し、同日 2 回目は実行ログでEXIT=3 skip になることを生コマンドで実測確認してから「完了」と報告する。設計・実装・登録・実測・記録まで、抜けなくワンストップ。</p>
+<h2>何が変わるか</h2>
+<p>「怖いから手動で回す」が終わる。同じ日に2回走る事故が構造的になくなり、ログから実行回数が読み取れる。新設のたびに「排他どうする？」を考えなくていい。忙しくて定期実行を考える余裕がない日でも、「定期実行作って」の一言で着手でき、形にしてから寝られる——運用設計を AI に任せられる安心感が身につく。</p>
+<p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどうなってるか&lt;/summary&gt;</p>
+<h3>仕組み</h3>
+<ul>
+<li>実行形態で排他方式を自動選定: スクリプト1本完結=flock+当日成功スタンプ+実行ログ / LLMセッション介在=stamp-lock</li>
+<li>7-Step: 既存横断確認 → 排他方式選定 → スクリプト実装 → renew-crons.sh正典追記 → apply-crons reconcile → 同日skip実測 → 自動化.md更新 → 記録</li>
+<li>同日2回目skip確認がfail条件:「実装済み」と報告する前に必ず実行</li>
+<li>実行ログが必須: 多重発火を「観測しているか」の計測自体を担保</li>
+</ul>
+<h3>注意点</h3>
+<ul>
+<li><code># @cron</code> タグのフォーマットが正規系（renew-crons.shのヘッダコメント参照）</li>
+<li>AIのCronCreate経由は廃止済・apply-crons.sh reconcileが正規系（ID整合+ghost検知）</li>
+<li>ログは専用jsonl 1行/回、既存の消費者があるファイルには混ぜない（2026-09-02 openrouter-refresh の KeyError 教訓）</li>
+</ul>
+<h3>由来情報</h3>
+<ul>
+<li>設計正典: SSOTの<code>~/.claude/skills/cron-setup/SKILL.md</code>（2026-09-02新設・規定路線化）</li>
+<li>運用ルール: SSOTの<code>00_SYSTEM/自動化.md</code>「Cron永続化（apply-crons.sh）」節</li>
+<li>関連スキル:なし（シェル直使いの方が必要に応じて<code>apply-crons.sh</code>を呼ぶ）</li>
+</ul>
+<p>&lt;/details&gt;</p>
+
+        </article>
+
+        <nav class="chapter-nav-bottom">
+            
+            <a href="003-ssot.html" class="nav-card prev">
+                <span class="nav-label">← 前の章</span>
+                <span class="nav-title">📄 第5話 スキル物語 「記録して」と言ったらSSOTに勝手に入る話</span>
+            </a>
+            
+            
+            <a href="007.html" class="nav-card next">
+                <span class="nav-label">次の章 →</span>
+                <span class="nav-title">📄 第7話 スキル物語 「今夜はミニマックス」と言ったら裏側のレート制限を切り替えてくれる話</span>
+            </a>
+            
+        </nav>
+    </main>
+
+    <footer class="site-footer">
+        <p>CC Stories — <a href="https://github.com/fukukei23/cc-stories-guide">GitHub</a>
+         · <a href="https://fukukei23.github.io/ssot-guide/">SSOT Guide</a>
+         · <a href="https://fukukei23.github.io/loop-engineering-guide/">Loop Engineering Guide</a>
+         · <a href="https://fukukei23.github.io/guides/">技術ガイド集</a>
+         · <a href="https://fukukei23.github.io/">fukukei23</a></p>
+    </footer>
+
+    <script src="../assets/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default',
+            themeVariables: { fontSize: '14px' }
+        });
+    </script>
+</body>
+</html>
