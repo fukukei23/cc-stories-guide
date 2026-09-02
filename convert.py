@@ -81,6 +81,23 @@ def _extract_desc_from_h1(text: str) -> str:
     return ""
 
 
+def _extract_category_from_published_comment(text: str) -> str:
+    """先頭の `<!-- published: ... / 種別: 使い方解説 / ... -->` コメントから
+    カテゴリ名を取り出す。ヒットしなければ '作業の物語' を返す。
+
+    使い方解説 / 作業の物語 の2カテゴリ対応（2026-09-02拡張）。
+    種別フィールドに '使い方' を含むかで判定（前方一致で広く受け入れる）。
+    """
+    for line in text.splitlines():
+        if not line.startswith("<!--"):
+            continue
+        m = re.search(r"種別[:：]\s*([^\s/]+)", line)
+        if m:
+            return "スキルの使い方" if "使い方" in m.group(1) else "作業の物語"
+        break
+    return "作業の物語"
+
+
 def _episode_number(meta: dict, filename: str) -> str:
     """カード表示用の話数を返す。frontmatterの `episode:` を最優先し、
     なければ ep01_*.md 形式のファイル名から抽出。どちらもなければ空文字（ラベル非表示）。"""
@@ -127,8 +144,9 @@ def build_chapter_map() -> dict:
                 "icon": icon,
                 "desc": desc,
                 "episode": _episode_number(meta, filename),
+                "category": _extract_category_from_published_comment(text),
             }
-            print(f"AUTO: {filename} → {slug} ({title})")
+            print(f"AUTO: {filename} → {slug} ({title}) [{result[filename]['category']}]")
 
     return result
 
@@ -442,33 +460,32 @@ def convert_tldr(html: str) -> str:
 
 # --- トップページのカテゴリ分け ---
 
-# 章番号→カテゴリの境界（番号レンジは閉区間）
-# storiesは全話を1カテゴリで表示（番号体系が固定でないため）
+# published コメントの「種別」フィールドで2セクションに分岐（2026-09-02）
+# 固定レンジの章番号→カテゴリは廃止（番号体系が固定でないため）
 INDEX_CATEGORIES = [
-    ("📚 話一覧", 0, 9999),
+    "📖 作業の物語",
+    "🔧 スキルの使い方",
 ]
-INDEX_CATEGORY_FALLBACK = "📚 話一覧"
+INDEX_CATEGORY_FALLBACK = "📖 作業の物語"  # 種別無しの旧ファイルは作業の物語側
+CATEGORY_ORDER = {"📖 作業の物語": 0, "🔧 スキルの使い方": 1}
 
 
 def group_chapters_by_category(chapters: list) -> list:
-    """章番号レンジに基づき、トップページ表示用にカテゴリへグルーピング."""
-    buckets = {name: [] for name, _, _ in INDEX_CATEGORIES}
-    buckets[INDEX_CATEGORY_FALLBACK] = []
+    """各話の category フィールドに基づき、トップページ表示用にカテゴリへグルーピング.
+    章番号レンジは廃止・2026-09-02。
+    """
+    buckets: dict[str, list] = {name: [] for name in INDEX_CATEGORIES}
+    buckets[INDEX_CATEGORY_FALLBACK] = []  # 後方互換
 
     for ch in chapters:
-        number = ch["number"]
-        category_name = INDEX_CATEGORY_FALLBACK
-        if number.isdigit():
-            n = int(number)
-            for name, lo, hi in INDEX_CATEGORIES:
-                if lo <= n <= hi:
-                    category_name = name
-                    break
-        buckets[category_name].append(ch)
+        cat = ch.get("category", INDEX_CATEGORY_FALLBACK)
+        if cat not in buckets:
+            # 未知のカテゴリは出さず無視（仕様逸脱データを画面に出さない安全側）
+            continue
+        buckets[cat].append(ch)
 
-    ordered_names = [name for name, _, _ in INDEX_CATEGORIES] + [INDEX_CATEGORY_FALLBACK]
-    # INDEX_CATEGORIESとフォールバックが同名だと重複して2回表示されるため排除
-    ordered_names = list(dict.fromkeys(ordered_names))
+    # INDEX_CATEGORIESの定義順で表示（フォールバックが同名の時は重複排除）
+    ordered_names = list(dict.fromkeys(INDEX_CATEGORIES + [INDEX_CATEGORY_FALLBACK]))
     return [{"name": name, "chapters": buckets[name]} for name in ordered_names if buckets[name]]
 
 
@@ -501,6 +518,7 @@ def main():
             "icon": info["icon"],
             "desc": info["desc"],
             "filename": filename,
+            "category": info.get("category", INDEX_CATEGORY_FALLBACK),
         })
 
     # 各章を変換
