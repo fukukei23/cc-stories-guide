@@ -18,3 +18,8 @@ entries:
   date: '2026-09-04'
   auto: true
   cron_id: 19
+- date: 2026-09-06
+  type: 事故解決
+  reason: 巻き込み事故6週間11件を犯人特定→3層機械防御(検品enforce化/宣言include化/commit-scoped)で解決・導入初日に本物を捕捉
+  confidence: 高
+  episode: '012'
