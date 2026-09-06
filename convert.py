@@ -104,7 +104,8 @@ def _episode_number(meta: dict, filename: str) -> str:
     ep = meta.get("episode")
     if ep:
         return ep
-    match = re.match(r"ep(\d+)", Path(filename).stem)
+    # ep01_ 形式と 013_ 形式の両方に対応（2026-09-07・013話で番号非表示を指摘されたため）
+    match = re.match(r"(?:ep)?(\d+)", Path(filename).stem)
     return match.group(1) if match else ""
 
 
@@ -205,6 +206,7 @@ CHAPTER_TEMPLATE = Template("""\
             {% endif %}
         </div>
 
+        {% if number %}<div class="episode-badge">第{{ number }}話</div>{% endif %}
         <article class="chapter-body">
             {{ content|safe }}
         </article>
@@ -548,6 +550,7 @@ def main():
 
         full_html = CHAPTER_TEMPLATE.render(
             title=ch["title"],
+            number=ch["number"],
             slug=ch["slug"],
             current_slug=ch["slug"],
             content=html_body,

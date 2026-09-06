@@ -103,6 +103,12 @@
             他の作業を巻き込んでcommitする事故を3つの見張り役で潰した話
         </a>
         
+        <a href="013-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AIにファイルを書き換えさせる前に「いいですか？」と聞かせる話
+        </a>
+        
     </nav>
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
@@ -112,8 +118,11 @@
             <a href="011-youtubeai.html" class="nav-prev">← 第11話 スキル物語 「YouTubeを投げる」と言ったら生成AI用プロンプト仕様書が出てくる話</a>
             
             
+            <a href="013-ai.html" class="nav-next">AIにファイルを書き換えさせる前に「いいですか？」と聞かせる話 →</a>
+            
         </div>
 
+        <div class="episode-badge">第012話</div>
         <article class="chapter-body">
             <p>&lt;!-- published: 2026-09-06 / 種別: 事故解決 --&gt;</p>
 <h1>他の作業を巻き込んでcommitする事故を3つの見張り役で潰した話</h1>
@@ -126,6 +135,15 @@
 <p>2つ目は<strong>自動送信を賢くする</strong>こと。30分ごとの自動送信は「触ると宣言したものだけ」を送ります。そもそも混ざりません。</p>
 <p>3つ目は<strong>専用の送信コマンド</strong>。宣言外は受け付けず、他の人の荷物には触りません。宣言し忘れは拒否されました。</p>
 <p>さらに3つのAIに検品してもらい、特別な名前のファイルで壊れる等の弱点を3回指摘され・直しては試験を増やし、ゼロに減りました。</p>
+<pre class="mermaid">flowchart TB
+    A[&quot;😱 別タブの作業がcommitに混ざった&quot;] --&gt; B[&quot;見張り役を3つに&quot;]
+    B --&gt; C[&quot;1️⃣ commit前の中身点検&quot;]
+    B --&gt; D[&quot;2️⃣ 触るファイルの事前宣言&quot;]
+    B --&gt; E[&quot;3️⃣ 宣言した分だけcommit&quot;]
+    C --&gt; F[&quot;混ざったら止まる 🛑&quot;]
+    D --&gt; F
+    E --&gt; F
+</pre>
 <h2>何が変わったか</h2>
 <p>夜中に誰かが間違えても、機械が止めてくれます。導入初日に本物の事故を1回防ぎ、記録の保存も新しいコマンドで他の作業を一切巻き込まずに終わりました。</p>
 <p>正直に言うと完璧ではありません。古い方法なら通ってしまいますし、別の環境にはまだ見張り役がいません。そこは「1週間動かして実害ゼロか確かめ、だめなら作業ごとに倉庫を分ける方式へ変える」と条件を付けて手帳に書きました。完璧を狙って複雑にするより、止まった時に気づける仕組みと一緒に育てる方が正解でした。</p>
@@ -148,6 +166,11 @@
                 <span class="nav-title">📄 第11話 スキル物語 「YouTubeを投げる」と言ったら生成AI用プロンプト仕様書が出てくる話</span>
             </a>
             
+            
+            <a href="013-ai.html" class="nav-card next">
+                <span class="nav-label">次の章 →</span>
+                <span class="nav-title">📄 AIにファイルを書き換えさせる前に「いいですか？」と聞かせる話</span>
+            </a>
             
         </nav>
     </main>

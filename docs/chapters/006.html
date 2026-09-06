@@ -103,6 +103,12 @@
             他の作業を巻き込んでcommitする事故を3つの見張り役で潰した話
         </a>
         
+        <a href="013-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AIにファイルを書き換えさせる前に「いいですか？」と聞かせる話
+        </a>
+        
     </nav>
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
@@ -116,6 +122,7 @@
             
         </div>
 
+        <div class="episode-badge">第006話</div>
         <article class="chapter-body">
             <p>&lt;!-- published: 2026-09-03 / 種別: 使い方解説 / 対象スキル: cron-setup --&gt;</p>
 <h1>第6話 スキル物語 「定期実行作って」と言ったら排他込みで組んでくれる話</h1>
@@ -123,6 +130,13 @@
 <p>「毎日○○を動かしたい」「このコマンドを毎週○曜に回し続けたい」と思う瞬間がくる。シェルで毎朝叩くのも覚束ない。durable cron の設定を直接いじるのは怖くて、後回しにしていると、ずっと手動で同じ作業を抱え続ける。設定をしくじる不安が、定期実行を「こわいもの」にしてしまう。</p>
 <h2>こう言うと起こること</h2>
 <p>「定期実行作って」「cron-setup」「cron 新設して」を CC に投げる。裏側では同一日内に複数回動かない排他（同時の flock ＋ 時間差の当日成功スタンプ）と、実行ログ（複数発を計測可能にする）と、durable cron の正典 renew-crons.sh への <code># @cron</code> 追記まで一気に組まれる。apply-crons.sh reconcile が AI 直の CronCreate より先に正規登録し、同日 2 回目は実行ログでEXIT=3 skip になることを生コマンドで実測確認してから「完了」と報告する。設計・実装・登録・実測・記録まで、抜けなくワンストップ。</p>
+<pre class="mermaid">flowchart TB
+    A[&quot;⏰「定期実行作って」&quot;] --&gt; B[&quot;同時実行防止の鍵付きで設計&quot;]
+    B --&gt; C[&quot;動いたら記録を残す&quot;]
+    C --&gt; D{&quot;同じ日に2回目？&quot;}
+    D --&gt;|&quot;はい&quot;| E[&quot;静かにスキップ&quot;]
+    D --&gt;|&quot;いいえ&quot;| F[&quot;実行 🔁&quot;]
+</pre>
 <h2>何が変わるか</h2>
 <p>「怖いから手動で回す」が終わる。同じ日に2回走る事故が構造的になくなり、ログから実行回数が読み取れる。新設のたびに「排他どうする？」を考えなくていい。忙しくて定期実行を考える余裕がない日でも、「定期実行作って」の一言で着手でき、形にしてから寝られる——運用設計を AI に任せられる安心感が身につく。</p>
 <p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどうなってるか&lt;/summary&gt;</p>
