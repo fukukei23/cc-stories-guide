@@ -23,3 +23,8 @@ entries:
   reason: 巻き込み事故6週間11件を犯人特定→3層機械防御(検品enforce化/宣言include化/commit-scoped)で解決・導入初日に本物を捕捉
   confidence: 高
   episode: '012'
+- date: 2026-09-06
+  type: 新仕様
+  reason: AIにファイル書換/コマンド実行の道具を渡す際の「人間に聞いてから実行」の門番(ask確認フロー)をPhase 1-3で実装・テストでは動くのに本番で必ず落ちるcritical実バグを別AIレビュアーが発見・レビュアーの勘違い1件は実コードで反証
+  confidence: 高
+  episode: '013'
