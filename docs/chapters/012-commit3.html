@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第10話 スキル物語 「dev-cycle」と言うと開発のサイクルが一巡する話 — CC Stories</title>
-    <meta name="description" content="CC Stories — 作業の物語集: 第10話 スキル物語 「dev-cycle」と言うと開発のサイクルが一巡する話">
-    <meta property="og:title" content="第10話 スキル物語 「dev-cycle」と言うと開発のサイクルが一巡する話 — CC Stories">
-    <meta property="og:description" content="第10話 スキル物語 「dev-cycle」と言うと開発のサイクルが一巡する話 — 専門用語なしの物語と技術解説のペア">
+    <title>他の作業を巻き込んでcommitする事故を3つの見張り役で潰した話 — CC Stories</title>
+    <meta name="description" content="CC Stories — 作業の物語集: 他の作業を巻き込んでcommitする事故を3つの見張り役で潰した話">
+    <meta property="og:title" content="他の作業を巻き込んでcommitする事故を3つの見張り役で潰した話 — CC Stories">
+    <meta property="og:description" content="他の作業を巻き込んでcommitする事故を3つの見張り役で潰した話 — 専門用語なしの物語と技術解説のペア">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/010-dev-cycle.html">
+    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/012-commit3.html">
     <meta property="og:image" content="https://fukukei23.github.io/cc-stories-guide/assets/ogp.png">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="../assets/style.css">
@@ -86,7 +86,7 @@
         </a>
         
         <a href="010-dev-cycle.html"
-           class="sidebar-link active">
+           class="sidebar-link">
             <span class="sidebar-icon">📄</span>
             第10話 スキル物語 「dev-cycle」と言うと開発のサイクルが一巡する話
         </a>
@@ -98,7 +98,7 @@
         </a>
         
         <a href="012-commit3.html"
-           class="sidebar-link">
+           class="sidebar-link active">
             <span class="sidebar-icon">📄</span>
             他の作業を巻き込んでcommitする事故を3つの見張り役で潰した話
         </a>
@@ -109,57 +109,45 @@
     <main class="content">
         <div class="chapter-nav-top">
             
-            <a href="009.html" class="nav-prev">← 第9話 スキル物語 「リポジトリレビューして」と言ったら品質を点数で出してくれる話</a>
+            <a href="011-youtubeai.html" class="nav-prev">← 第11話 スキル物語 「YouTubeを投げる」と言ったら生成AI用プロンプト仕様書が出てくる話</a>
             
-            
-            <a href="011-youtubeai.html" class="nav-next">第11話 スキル物語 「YouTubeを投げる」と言ったら生成AI用プロンプト仕様書が出てくる話 →</a>
             
         </div>
 
         <article class="chapter-body">
-            <p>&lt;!-- published: 2026-09-03 / 種別: 使い方解説 / 対象スキル: dev-cycle --&gt;</p>
-<h1>第10話 スキル物語 「dev-cycle」と言うと開発のサイクルが一巡する話</h1>
-<h2>いつ困る？</h2>
-<p>品質の懸念が溜まってきた時、「どこかでまとめて直したい」と思う。テスト書き・Lint・型チェック・依存更新・Issue整理・PR運用——ひとつずつ手を出そうとすると、どれから手を付けていいか分からず、結局放置する。個人プロジェクトほど「いつかやる」が積み上がり、形骸化していく。</p>
-<h2>こう言うと起こること</h2>
-<p>「dev-cycle」「開発サイクル」「品質改善」「自律ループ」を CC に投げる。裏側の dev-cycle スキルは5フェーズを一巡する: 品質スイープ → コードレビュー → Issue化 → 自律実装ループ → 完了通知。各フェーズは明確な受け入れ条件を持ち、前のフェーズの成果が次への入力になる。例: 品質スイープで Found issues が拾われ、コードレビューで設計判断がレビューされ、Issue化されたものが自律ループに渡され、テスト緑まで実行されて人間に届く。人間は「結果の妥当性チェック」と「承認」のみ。</p>
-<h2>何が変わるか</h2>
-<p>「いつかやりたい品質改善」が予約不要で着手できる。1日1サイクルでPJを回すと、放置PJの鮮度が保たれる。セルフレビューを待たずに人に見せられる品質に保たれる——面談・相談・コラボのスピードが落ちない。「今月の改善テーマ」をAIに任せて、自分の手は判断と承認に集中できる。</p>
-<p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどうなってるか&lt;/summary&gt;</p>
-<h3>仕組み</h3>
-<ul>
-<li>5フェーズがツール呼び出しで実行: 品質スイープ（Lint/静的解析）→ コードレビュー（multi-llm-review 連動）→ Issue化（GitHub Issues 起票）→ 自律実装ループ（run-task.sh）→ 完了通知（Discord）</li>
-<li>各フェーズは受け入れ条件（A/D/F層）あり・次フェーズにバトンを渡す前に検証</li>
-<li>自律ループ側は approve.py + run-task.sh で「テスト必須・3件まで自動停止・失敗で停止」のフェイルセーフ</li>
-<li>途中で人間が判断を挟むポイント（確認ゲート）が明示されている</li>
-</ul>
-<h3>注意点</h3>
-<ul>
-<li>サイクル1周 = 数時間〜1日が目安（小規模PJなら短く、大規模なら分割して1日1フェーズずつ）</li>
-<li>自律ループは最大3タスクで自動停止するため、長時間放置のリスク無し</li>
-<li>完了報告にはテスト緑証跡とコミットハッシュが必須（テストだけ緑で確認無しは完了扱いせず）</li>
-</ul>
-<h3>由来情報</h3>
-<ul>
-<li>設計正典: SSOTの<code>~/.claude/skills/dev-cycle/SKILL.md</code></li>
-<li>関連スキル: code-reviewer（レビュー専門）, code-simplify（簡素化専門）, multi-llm-review（多機レビュー）, repo-review（品質全体の入口）</li>
-</ul>
+            <p>&lt;!-- published: 2026-09-06 / 種別: 事故解決 --&gt;</p>
+<h1>他の作業を巻き込んでcommitする事故を3つの見張り役で潰した話</h1>
+<h2>困ったこと</h2>
+<p>夜中に動いていた別の作業が、みんなで使う記録帳を「自分の記録だけが書かれた状態」で上書き保存しました。さらに別の作業がそこに追い書きして保存したため、2日分の記録が消えるところでした。幸い「追記なのに消えている」という保存の統計の違和感で、その日のうちに元通りにできました。</p>
+<p>同じ手の事故が6週間で11回。根っこは「保存待ちの置き場」が全作業で共有の1か所だったことです。「自分の分だけ持ってきてね」というマナーでは、夜中に忙しく動いている限り誰かが必ず間違えます。</p>
+<h2>どう解決したか</h2>
+<p>3つの見張り役を置きました。</p>
+<p>1つ目は<strong>送信前の検品</strong>。他の人の荷物が混ざったまま送信しようとしたら機械が止めます。導入初日に本物を捕まえました。</p>
+<p>2つ目は<strong>自動送信を賢くする</strong>こと。30分ごとの自動送信は「触ると宣言したものだけ」を送ります。そもそも混ざりません。</p>
+<p>3つ目は<strong>専用の送信コマンド</strong>。宣言外は受け付けず、他の人の荷物には触りません。宣言し忘れは拒否されました。</p>
+<p>さらに3つのAIに検品してもらい、特別な名前のファイルで壊れる等の弱点を3回指摘され・直しては試験を増やし、ゼロに減りました。</p>
+<h2>何が変わったか</h2>
+<p>夜中に誰かが間違えても、機械が止めてくれます。導入初日に本物の事故を1回防ぎ、記録の保存も新しいコマンドで他の作業を一切巻き込まずに終わりました。</p>
+<p>正直に言うと完璧ではありません。古い方法なら通ってしまいますし、別の環境にはまだ見張り役がいません。そこは「1週間動かして実害ゼロか確かめ、だめなら作業ごとに倉庫を分ける方式へ変える」と条件を付けて手帳に書きました。完璧を狙って複雑にするより、止まった時に気づける仕組みと一緒に育てる方が正解でした。</p>
+<p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどう作ったか&lt;/summary&gt;</p>
+<p>複数のClaude Codeセッションが同一git worktreeで並行作業する環境で、stage（index）が全セッション共有の単一状態であることが事故の根因。3層の機械防御を実装した。</p>
+<ol>
+<li><strong>検品hook（git-commit-diff-check.sh の enforce化）</strong>: paths.json（セッション別の「触るファイル宣言」）とstageの突合で、他🟢セッション宣言一致+自タブ宣言外のcommitをblock（PATHS_BLOCK_MODE=enforce・DRY_RUN除去）。実戦で別セッション残置stage（±126行）をblock実測。</li>
+<li><strong>auto-sync宣言include化（ssot-auto-sync.sh+active-declarations.py）</strong>: 30分cronの自動commitを「🟢宣言pathに変更がある時だけcommit」に反転。未宣言ファイルは取り込まない。旧exclude方式は絶対/相対パス混在で静かに壊れていたためrepo-root正規化を新設。</li>
+<li><strong>git-commit-scoped.sh（新ラッパー）</strong>: 宣言検証+<code>git commit -- &lt;paths&gt;</code>（git内部でHEAD+指定パスのみの一時indexを作り共有indexを参照しない）を同梱。検証はactive-declarations.py <code>--mode check</code>（値をすべて環境変数渡し＝インジェクション面なし）で正規化済みpathspecをcommit。untracked新規ファイルは <code>git add &lt;file&gt;</code> 後の2段手順。</li>
+</ol>
+<p>9skill+CLAUDE.mdのcommit手順を一斉移行。設計レビュー3ラウンド（3機51件）+実装レビュー2ラウンド（3機32件・critical 3→1→0で収束）。設計正典: obsidian-ssot <code>docs/superpowers/specs/2026-09-05_並行セッション巻き込み再設計-design.md</code>（詳細は01_DECISIONS/claude-code/2026-09-06_並行セッション巻き込み再設計実装.md）。Phase 3（worktree完全分離）は再評価条件付きでバックログ起票済み。</p>
 <p>&lt;/details&gt;</p>
 
         </article>
 
         <nav class="chapter-nav-bottom">
             
-            <a href="009.html" class="nav-card prev">
+            <a href="011-youtubeai.html" class="nav-card prev">
                 <span class="nav-label">← 前の章</span>
-                <span class="nav-title">📄 第9話 スキル物語 「リポジトリレビューして」と言ったら品質を点数で出してくれる話</span>
-            </a>
-            
-            
-            <a href="011-youtubeai.html" class="nav-card next">
-                <span class="nav-label">次の章 →</span>
                 <span class="nav-title">📄 第11話 スキル物語 「YouTubeを投げる」と言ったら生成AI用プロンプト仕様書が出てくる話</span>
             </a>
+            
             
         </nav>
     </main>
