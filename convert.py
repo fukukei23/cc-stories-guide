@@ -419,6 +419,16 @@ def enhance_html(html: str) -> str:
         flags=re.DOTALL,
     )
 
+    # mermaidコードブロックを図へ（013話から・mermaid.jsは全テンプレートで読込済み）
+    # markdown-itは ```mermaid を <pre><code class="language-mermaid"> に出すが、
+    # mermaid.jsが描画対象にするのは class="mermaid" のため置換する
+    html = re.sub(
+        r'<pre><code class="language-mermaid">(.*?)</code></pre>',
+        r'<pre class="mermaid">\1</pre>',
+        html,
+        flags=re.DOTALL,
+    )
+
     # 引用ブロックをコールアウトに変換
     def callout_replace(match):
         content = match.group(1)
