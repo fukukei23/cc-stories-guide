@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第6話 スキル物語 「定期実行作って」と言ったら排他込みで組んでくれる話 — CC Stories</title>
-    <meta name="description" content="CC Stories — 作業の物語集: 第6話 スキル物語 「定期実行作って」と言ったら排他込みで組んでくれる話">
-    <meta property="og:title" content="第6話 スキル物語 「定期実行作って」と言ったら排他込みで組んでくれる話 — CC Stories">
-    <meta property="og:description" content="第6話 スキル物語 「定期実行作って」と言ったら排他込みで組んでくれる話 — 専門用語なしの物語と技術解説のペア">
+    <title>検問の穴を塞ぐと別の穴が開いて、最後は自分の違和感が正しかった話 — CC Stories</title>
+    <meta name="description" content="CC Stories — 作業の物語集: 検問の穴を塞ぐと別の穴が開いて、最後は自分の違和感が正しかった話">
+    <meta property="og:title" content="検問の穴を塞ぐと別の穴が開いて、最後は自分の違和感が正しかった話 — CC Stories">
+    <meta property="og:description" content="検問の穴を塞ぐと別の穴が開いて、最後は自分の違和感が正しかった話 — 専門用語なしの物語と技術解説のペア">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/006.html">
+    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/018.html">
     <meta property="og:image" content="https://fukukei23.github.io/cc-stories-guide/assets/ogp.png">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="../assets/style.css">
@@ -62,7 +62,7 @@
         </a>
         
         <a href="006.html"
-           class="sidebar-link active">
+           class="sidebar-link">
             <span class="sidebar-icon">📄</span>
             第6話 スキル物語 「定期実行作って」と言ったら排他込みで組んでくれる話
         </a>
@@ -134,7 +134,7 @@
         </a>
         
         <a href="018.html"
-           class="sidebar-link">
+           class="sidebar-link active">
             <span class="sidebar-icon">📄</span>
             検問の穴を塞ぐと別の穴が開いて、最後は自分の違和感が正しかった話
         </a>
@@ -145,66 +145,43 @@
     <main class="content">
         <div class="chapter-nav-top">
             
-            <a href="003-ssot.html" class="nav-prev">← 第5話 スキル物語 「記録して」と言ったらSSOTに勝手に入る話</a>
+            <a href="017-ai.html" class="nav-prev">← AIに下調べの省略をさせない検問を作った話</a>
             
-            
-            <a href="007.html" class="nav-next">第7話 スキル物語 「今夜はミニマックス」と言ったら裏側のレート制限を切り替えてくれる話 →</a>
             
         </div>
 
-        <div class="episode-badge">第6話</div>
+        <div class="episode-badge">第18話</div>
         <article class="chapter-body">
-            <p>&lt;!-- published: 2026-09-03 / 種別: 使い方解説 / 対象スキル: cron-setup --&gt;</p>
-<h1>第6話 スキル物語 「定期実行作って」と言ったら排他込みで組んでくれる話</h1>
-<h2>いつ困る？</h2>
-<p>「毎日○○を動かしたい」「このコマンドを毎週○曜に回し続けたい」と思う瞬間がくる。シェルで毎朝叩くのも覚束ない。durable cron の設定を直接いじるのは怖くて、後回しにしていると、ずっと手動で同じ作業を抱え続ける。設定をしくじる不安が、定期実行を「こわいもの」にしてしまう。</p>
-<h2>こう言うと起こること</h2>
-<p>「定期実行作って」「cron-setup」「cron 新設して」を CC に投げる。裏側では同一日内に複数回動かない排他（同時の flock ＋ 時間差の当日成功スタンプ）と、実行ログ（複数発を計測可能にする）と、durable cron の正典 renew-crons.sh への <code># @cron</code> 追記まで一気に組まれる。apply-crons.sh reconcile が AI 直の CronCreate より先に正規登録し、同日 2 回目は実行ログでEXIT=3 skip になることを生コマンドで実測確認してから「完了」と報告する。設計・実装・登録・実測・記録まで、抜けなくワンストップ。</p>
-<pre class="mermaid">flowchart TB
-    A[&quot;⏰「定期実行作って」&quot;] --&gt; B[&quot;同時実行防止の鍵付きで設計&quot;]
-    B --&gt; C[&quot;動いたら記録を残す&quot;]
-    C --&gt; D{&quot;同じ日に2回目？&quot;}
-    D --&gt;|&quot;はい&quot;| E[&quot;静かにスキップ&quot;]
-    D --&gt;|&quot;いいえ&quot;| F[&quot;実行 🔁&quot;]
-</pre>
-<h2>何が変わるか</h2>
-<p>「怖いから手動で回す」が終わる。同じ日に2回走る事故が構造的になくなり、ログから実行回数が読み取れる。新設のたびに「排他どうする？」を考えなくていい。忙しくて定期実行を考える余裕がない日でも、「定期実行作って」の一言で着手でき、形にしてから寝られる——運用設計を AI に任せられる安心感が身につく。</p>
-<p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどうなってるか&lt;/summary&gt;</p>
-<h3>仕組み</h3>
+            <p>&lt;!-- published: 2026-09-08 / 種別: 事故解決 --&gt;</p>
+<h1>検問の穴を塞ぐと別の穴が開いて、最後は自分の違和感が正しかった話</h1>
+<p>前回、「書き物を保存する前に必ず通る検問」を作った話をした。今回はその続き。検問をさらに固くする改修をしたら、<strong>穴を塞ぐたびに別の穴が開く</strong>という連鎖に巻き込まれ、最後は「全部の点検が合格になった後」に、点検係であるこのAI自身の違和感を掘ったら、ずっと前から壊れていた部分が出てきた——という話。</p>
+<h2>困ったこと</h2>
+<p>検問を作った直後、審査員役のAIたちから「もっと細かい抜け道がある」と指摘が来た。直して「これで完璧」と思ったら、別の審査員が「その直し方だと、特別扱いフォルダと<strong>名前の一部だけ</strong>同じ場所を通すと、また素通りできる」と指摘する。直し方を変えると、今度はその直し方が別の抜け道を作っていた。水漏れパイプのテープを巻き直すたびに、漏れる場所が少し移動していく——そういう感覚だった。</p>
+<h2>どう解決したか</h2>
+<p>3種類のAI審査員に、**毎回「前回の審査内容は教えずに」**3回見てもらった。1回目と2回目で本当に新しい穴が2つ見つかり、直し方は「入り口から測るか、出口から測るかを混ぜない」という一本の規則にまとまった。3回目は新しい穴ゼロ。ところが最後に、点検係のこのAI自身が引っかいた。「エラーの説明文が、いつも同じ決まり文句しか出ないな」。掘ってみると、検問本体とは別の場所で、<strong>検問を作った時から説明文が壊れ続けていた</strong>のが分かった。直すと、かつて「間違っていた」と捨てた審査員の指摘まで、実は正しかったことが分かった。</p>
+<h2>何が変わったか</h2>
+<p>点検が全部緑になっても、安心しなくなった。「直すと別のところが壊れる」のは異常ではなく普通のことになり、直し方そのものに一本の規則を持つようになった。一番大きいのは、<strong>「指摘の一部が間違っていても、指摘の結論は正しいことがある」と知った</strong>こと。機械の点検は全部通った。でもその後も「あれ？」という違和感は、掘る価値があった。違和感は、根拠になる。</p>
+<p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどう作ったか&lt;/summary&gt;</p>
+<p>対象は自作の記録強制検問（PreToolUse hook・enforce-ssot-record.sh）。M2改修として、ハブ対象ファイルの照合をfnmatch化（bash case・スラッシュ無しglob単体はbasename照合で過剰block解消）+file_path契約外入力（欠落・非文字列・空・不正JSON）のfail-closed化を実装。</p>
+<p>3機MLR（MiniMax/Gemini/OpenRouter無料枠・blind・triple）3ラウンドの経過:</p>
 <ul>
-<li>実行形態で排他方式を自動選定: スクリプト1本完結=flock+当日成功スタンプ+実行ログ / LLMセッション介在=stamp-lock</li>
-<li>7-Step: 既存横断確認 → 排他方式選定 → スクリプト実装 → renew-crons.sh正典追記 → apply-crons reconcile → 同日skip実測 → 自動化.md更新 → 記録</li>
-<li>同日2回目skip確認がfail条件:「実装済み」と報告する前に必ず実行</li>
-<li>実行ログが必須: 多重発火を「観測しているか」の計測自体を担保</li>
+<li>r1（32指摘・採用6）: 相対パス <code>00_SYSTEM/...</code> で <code>${x##*/00_SYSTEM/}</code> が先頭プレフィックスを剥がせずfail-open（critical・bash実測で再現）→ <code>#*00_SYSTEM/</code> に修正</li>
+<li>r2（28指摘・採用4）: その修復が <code>my_00_SYSTEM/00_SYSTEM/...</code> 型の前方部分一致ディレクトリ名で誤剥がしする<strong>2個目のfail-open</strong>を産んでいたことが判明 → 先頭相対のみ <code>#00_SYSTEM/</code>・それ以外 <code>##*/00_SYSTEM/</code> のハイブリッドに修正</li>
+<li>r3（13指摘・採用2）: 新規fail-openゼロで収束打ち切り。採用はmarker検証応答のok二重確認など防御経路の二重化</li>
+<li>事後（CC自己点検）: VERIFY_REASON抽出のbash二重クォート内 <code>replace('\\','/')</code> がエスケープで Python SyntaxError になり、M1導入時から block 文面の理由が常に常套句化していたのを発見・chr(92)で修復。この発見により、r2で「実測否定」したMiniMax指摘（M2R3）の<strong>結論は正しかった</strong>ことが確定し、遅延採用として再分類（メカニズムの否定を実測できた安心感で結論の下流検証を省略した自己バイアスを事例として実例集に記録）</li>
 </ul>
-<h3>注意点</h3>
-<ul>
-<li><code># @cron</code> タグのフォーマットが正規系（renew-crons.shのヘッダコメント参照）</li>
-<li>AIのCronCreate経由は廃止済・apply-crons.sh reconcileが正規系（ID整合+ghost検知）</li>
-<li>ログは専用jsonl 1行/回、既存の消費者があるファイルには混ぜない（2026-09-02 openrouter-refresh の KeyError 教訓）</li>
-</ul>
-<h3>由来情報</h3>
-<ul>
-<li>設計正典: SSOTの<code>~/.claude/skills/cron-setup/SKILL.md</code>（2026-09-02新設・規定路線化）</li>
-<li>運用ルール: SSOTの<code>00_SYSTEM/自動化.md</code>「Cron永続化（apply-crons.sh）」節</li>
-<li>関連スキル:なし（シェル直使いの方が必要に応じて<code>apply-crons.sh</code>を呼ぶ）</li>
-</ul>
+<p>累計: 73指摘・採用12・fail-open実バグ2個+表示バグ1個修復・回帰テスト47件全緑・本番発火テスト（block/allow両経路）実測。詳細記録はSSOT内部に保存（非公開）。</p>
 <p>&lt;/details&gt;</p>
 
         </article>
 
         <nav class="chapter-nav-bottom">
             
-            <a href="003-ssot.html" class="nav-card prev">
+            <a href="017-ai.html" class="nav-card prev">
                 <span class="nav-label">← 前の章</span>
-                <span class="nav-title">📄 第5話 スキル物語 「記録して」と言ったらSSOTに勝手に入る話</span>
+                <span class="nav-title">📄 AIに下調べの省略をさせない検問を作った話</span>
             </a>
             
-            
-            <a href="007.html" class="nav-card next">
-                <span class="nav-label">次の章 →</span>
-                <span class="nav-title">📄 第7話 スキル物語 「今夜はミニマックス」と言ったら裏側のレート制限を切り替えてくれる話</span>
-            </a>
             
         </nav>
     </main>

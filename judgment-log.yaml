@@ -41,3 +41,8 @@ entries:
   reason: フェーズ0.5省略事故の物理阻止ゲート(marker発行+書込検問)を実装し・3機査読2ラウンドですり抜け穴2個を実測発見して塞いだ
   confidence: 高
   episode: '017'
+- date: 2026-09-08
+  type: 事故解決
+  reason: 検問(M2)の3機レビュー3ラウンドで「修復が次の穴を作る」連鎖(fail-open 2個)を止め・自己点検でM1由来の表示バグ(VERIFY_REASON SyntaxError)と自分の誤却下を発見訂正した
+  confidence: 高
+  episode: '018'
