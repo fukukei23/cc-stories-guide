@@ -30,3 +30,14 @@ entries:
   episode: '013'
 - date: 2026-09-07 / type: できごと（判断収束）/ reason: CCの防御設計提案（sha256焼き込み=読了保証）が3レビュアー一致で否定され撤回した判断収束ループを物語化・AIが間違いを認めるプロセスの実例 / confidence: 高 / episode: '014'
 - date: 2026-09-07 / type: できごと（反復解消）/ reason: ポリシー値の2重管理による片方直し忘れ事故をYAML正本集約+pre-commitゲートで潰したG1〜G3完遂を物語化・commit拒否実測あり / confidence: 高 / episode: '015'
+- date: 2026-09-07 / type: できごと（事故解決+反復解消） / reason: AI審査員3機がdiff外の未テスト領域を列挙できず人間が「テストは充分？」1問で3穴発見・multi-llm-review SKILL.mdに観点追加+入力素材注記+banner機械監視で再発防止した一連の解決を物語化 / confidence: 高 / episode: '016'
+- date: 2026-09-07
+  type: 検証
+  reason: 9ケースtestのr1-r5修正確認レビュー+GLM自己点検2回+mutation check・high 1件(Case7二重安全経路)修正で収束判定
+  confidence: 高
+  episode: 'test-review-r1-r5'
+- date: 2026-09-07
+  type: 事故解決
+  reason: フェーズ0.5省略事故の物理阻止ゲート(marker発行+書込検問)を実装し・3機査読2ラウンドですり抜け穴2個を実測発見して塞いだ
+  confidence: 高
+  episode: '017'

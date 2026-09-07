@@ -722,6 +722,7 @@ img {
     font-size: 0.8rem;
     font-weight: 700;
     color: var(--accent, #4a6da7);
+    background: rgba(99, 102, 241, 0.12); /* color-mix非対応ブラウザのフォールバック */
     background: color-mix(in srgb, var(--accent, #4a6da7) 12%, transparent);
     border: 1px solid color-mix(in srgb, var(--accent, #4a6da7) 35%, transparent);
     border-radius: 999px;

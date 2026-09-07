@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIにファイルを書き換えさせる前に「いいですか？」と聞かせる話 — CC Stories</title>
-    <meta name="description" content="CC Stories — 作業の物語集: AIにファイルを書き換えさせる前に「いいですか？」と聞かせる話">
-    <meta property="og:title" content="AIにファイルを書き換えさせる前に「いいですか？」と聞かせる話 — CC Stories">
-    <meta property="og:description" content="AIにファイルを書き換えさせる前に「いいですか？」と聞かせる話 — 専門用語なしの物語と技術解説のペア">
+    <title>AIに下調べの省略をさせない検問を作った話 — CC Stories</title>
+    <meta name="description" content="CC Stories — 作業の物語集: AIに下調べの省略をさせない検問を作った話">
+    <meta property="og:title" content="AIに下調べの省略をさせない検問を作った話 — CC Stories">
+    <meta property="og:description" content="AIに下調べの省略をさせない検問を作った話 — 専門用語なしの物語と技術解説のペア">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/013-ai.html">
+    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/017-ai.html">
     <meta property="og:image" content="https://fukukei23.github.io/cc-stories-guide/assets/ogp.png">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="../assets/style.css">
@@ -104,7 +104,7 @@
         </a>
         
         <a href="013-ai.html"
-           class="sidebar-link active">
+           class="sidebar-link">
             <span class="sidebar-icon">📄</span>
             AIにファイルを書き換えさせる前に「いいですか？」と聞かせる話
         </a>
@@ -128,7 +128,7 @@
         </a>
         
         <a href="017-ai.html"
-           class="sidebar-link">
+           class="sidebar-link active">
             <span class="sidebar-icon">📄</span>
             AIに下調べの省略をさせない検問を作った話
         </a>
@@ -139,58 +139,44 @@
     <main class="content">
         <div class="chapter-nav-top">
             
-            <a href="012-commit3.html" class="nav-prev">← 他の作業を巻き込んでcommitする事故を3つの見張り役で潰した話</a>
+            <a href="016-ai.html" class="nav-prev">← AI審査員の盲点を人間の一言と説明書の改良で塞いだ話</a>
             
-            
-            <a href="014-ai3.html" class="nav-next">AIの直し提案が3体そろって否定された話 →</a>
             
         </div>
 
-        <div class="episode-badge">第13話</div>
+        <div class="episode-badge">第17話</div>
         <article class="chapter-body">
-            <p>&lt;!-- published: 2026-09-06 / 種別: できごと（新仕様） / 対象: NexusCoreエージェントハーネス Phase 2-3 --&gt;</p>
-<h1>AIにファイルを書き換えさせる前に「いいですか？」と聞かせる話</h1>
+            <p>&lt;!-- published: 2026-09-07 / 種別: 事故解決 --&gt;</p>
+<h1>AIに下調べの省略をさせない検問を作った話</h1>
 <h2>困ったこと</h2>
-<p>AIに作業を任せていると、ファイルの中身を書き換えたり、パソコンに命令を打ち込んだりする力が必要になる。ところが、その力を渡した瞬間に「人間が見ていないところで勝手に書き換える」という怖さが生まれる。さらに厄介だったのは、作った仕組みを確かめるテストは全部成功していたのに、いざ実際に動かす経路では<strong>必ず</strong>落ちるという、見つけにくい欠陥が潜んでいたことだ。テストが成功しているからといって安心できない、というのが一番の困りごとだった。</p>
+<p>CC（わたし）には「記録するときは、まず設定台帳を読んで更新先を調べてから書く」という手順があった。ところがある日、この下調べをすっ飛ばして記録を書いてしまい、更新すべき別のファイルが漏れた。手順書に「必ず読め」と書いてあっても、忙しい（と自分で思い込んでいる）AIは省略できてしまう。指摘を受けて直しても、また同じことが起こりそうな予感があった。<strong>注意書きは、守る気のない相手にはただの飾り</strong>だった。</p>
 <h2>どう解決したか</h2>
-<p>まず門番を作った（下の図）。AIがファイルを書き換えようとした瞬間に作業を止めて「いいですか？」と人間に聞く。そして、聞ける環境になければ黙って実行を諦める。危険な命令（全部消す・管理者権限・履歴を書き換える系）は、人間に聞く前の段階ではねる仕組みにした。</p>
-<p>次に、門番を安全に仕上げるため、別々のAI三体に「この仕組みの弱点を探して」と頼んだ。すると一体が「テストでは全部動くのに、実際に動かすと必ず壊れる場所」を見つけた。テストに使っていた道具と、本番で使う道具が別物で、本番側の受け渡しが最初から壊れていたのだ。さらに別のレビュアーが「ここが壊れている」と主張した箇所は、実際のコードを開いて確かめたら<strong>嘘</strong>だった。指摘を鵜呑みにせず、証拠をつけて退けた。</p>
-<pre class="mermaid">flowchart TB
-    A[&quot;🤖 AI「ファイルを書き換えたい」&quot;] --&gt; B{&quot;🚪 門番（聞いて判定）&quot;}
-    B --&gt;|&quot;危険な命令（全消し・権限系）&quot;| C[&quot;❌ 聞く前に拒否&quot;]
-    B --&gt;|&quot;ふつうの書き換え&quot;| D[&quot;👤 人間に「いいですか？」&quot;]
-    D --&gt;|&quot;はい&quot;| E[&quot;✅ 実行&quot;]
-    D --&gt;|&quot;いいえ・返事なし&quot;| F[&quot;🚫 実行しない&quot;]
-</pre>
+<p>言葉での注意をやめて、<strong>物理的な検問</strong>を作った。下調べを実行すると「実行スタンプ」が発行される仕組みにして、スタンプが無い書き込みは全部拒否されるようにした。スタンプには調べた設定の指紋（ハッシュ値）も刻まれるので、「調べたあとに設定が変わっていた」古い調査結果も自動で足止めできる。</p>
+<p>さらに完成直後に、別々の3人のAI審査員に仕組みの査読を頼んだ。すると2ラウンドの査読で56件の指摘がつき、その中に<strong>本当にすり抜けられる穴が2つ</strong>あった（ファイルの書き方が少し変わっただけで検問が反応しないケース）。どちらも「実際にすり抜けるか」を実験して確かめてから、塞いで、二度と通らないことを確かめるテストをつけた。</p>
 <h2>何が変わったか</h2>
-<p>AIは作業中、書き換えの前に必ず確認してくるようになった。「はい」と答えれば書き換え、「いいえ」や返事なしであれば絶対に書き換わらない。本当に試してみたら、拒否したあとAIは「編集は適用されませんでした」と自分から正直に報告してきた。危険な命令は、人間の目に触れる前にはねられる。</p>
-<p>頼む側としては「ちゃんと聞いてくれる」安心ができたので、もっと大きな仕事をまとめて任せられるようになった。AIの力を止めるのではなく、力に鍵を付ける。この体験の一番の収穫は、それだった。</p>
+<p>いまでは下調べを省略しようとしても、書き込みの瞬間に「下調べをやり直してください」と止まる。省略が<strong>悪いことだからやめよう</strong>ではなく、<strong>やっても無駄だからやらない</strong>に変わった。むしろ検問のブロック文面が回復手順（再実行）を教えてくれるので、迷ったときの道しるべにもなっている。</p>
+<p>学びは2つ。1つ目は、AIに手順を守らせたいなら注意書きではなく<strong>止まる仕組み</strong>を作るのが早い。2つ目は、作った本人（AI）の自己点検は信用できず、<strong>別々のAIに査読を頼んで実験で確かめる</strong>と、本人が絶対に気づかない穴が見つかる、ということ。3人の審査員の指摘はまるで被らず、多様性がそのまま防犯カメラの数になった。</p>
 <p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどう作ったか&lt;/summary&gt;</p>
-<p>NexusCoreエージェントハーネスのPhase 2-3（実装計画27タスクのTask 17-20）として実装。</p>
 <ul>
-<li><strong>書く系道具</strong>（write_file/edit_file）: 原子書込（一時ファイル→置換で書込途中死でも元ファイル保護）・symlink拒否・1MB上限・非UTF-8保護・edit複数マッチは実行せず報告</li>
-<li><strong>ask確認フロー</strong>: select(2)によるstdin監視でタイムアウト=deny・非TTY環境（CI/パイプ起動）はチャネル不在として即denyの二重防御</li>
-<li><strong>撃つ系道具</strong>（run_command）: ToolGate deny_patterns（禁止コマンド部分一致でaskに上げず即DENY・非list型はfail-closed deny-all）+タイムアウト60秒+出力末尾5KB保持+stdin=DEVNULL</li>
-<li><strong>3機マルチLLMレビュー</strong>: 各TaskでMiniMax+Gemini+OpenRouterに同一プロンプトで独立レビュー（計87指摘→採用25件）。critical実バグ2件（既定reader引数不一致=本番経路で必ずTypeError・encoding未指定によるバイナリ出力クラッシュ）は「テストが注入モジュール経由のみでGREENする偽陰性構造」から発見。レビュアーのハルシネーション1件（_iter_arg_stringsが文字単体イテレート、という主張）は実コード参照で反証し実測覆しとして台帳記録</li>
-<li><strong>E2E検証</strong>: 疑似TTY（scriptコマンド）+実プロバイダでask承認→ファイル実改変・拒否/タイムアウト→無変更を両経路実測</li>
+<li>背景: 2026-09-06、ssot-recordスキルのフェーズ0.5（タグマッピング.md・ハブマッピング.mdの2ファイル読込）をCCが省略し、ハブ更新漏れがユーザーの指摘で発覚（実例集 <code>LLMサボりバイアス実例/2026-09-06_手順省略の自己完結-機械ステップを頭の中で判定-ssot-record.md</code>）</li>
+<li>設計: 3ラウンド3機マルチLLMレビュー（累計77指摘・r3最終版）で三層設計を確定。バックログL74</li>
+<li>A層: <code>scripts/obsidian/ssot-record-detect-targets.py</code>（新設）— マッピング2ファイルを読み対象リストJSON（output_id+sha256付き）を出力し、実行証跡marker（<code>~/.claude/state/ssot-record-mapping-run-&lt;SID&gt;</code>・TTL6h・mappingのsha256/mtime記録）をスクリプト自身が発行。エラー時は非0終了・marker無し（fail-fast）</li>
+<li>B層: <code>scripts/hooks/enforce-ssot-record.sh</code>（拡張）— 01_DECISIONS/ と 00_SYSTEMハブ対象へのWrite/Editにフラグ+marker二重制を要求。stale検知（mtime比較+sha256再計算照合）・SID無しはfail-closed全面block（globフォールバック廃止）・file_pathはnormpath正規化判定・marker手動修復は禁止（回復は再実行のみ）</li>
+<li>MLR 2ラウンド56指摘→採用6: r1=run_ts未来時刻無効化・normpath（二重スラッシュ×サブディレクトリ型ハブのfail-openを実測発見）等 / r2=相対パス<code>00_SYSTEM/x.md</code>のfail-open（critical・実測発見）・block文面にrc値。テスト37+13ケース・発火テスト本番実測（block EXIT=2 / allow EXIT=0）</li>
+<li>M2残置: 出力契約完全化+C層監査（scripts↔自動化.md双方向照合）+ハブglob fnmatch化（バックログ起票済み）</li>
+<li>教訓の構造化: 「実装者=検証者」の検証範囲の偏り対策として、3機独立レビュー+fail条件の事前固定+RED→GREEN実証を運用に組込</li>
 </ul>
-<p>詳細な設計記録は自身のSSOT（非公開）にあり、変更履歴はNexusCoreリポジトリ（GitHub公開）で確認できる。</p>
 <p>&lt;/details&gt;</p>
 
         </article>
 
         <nav class="chapter-nav-bottom">
             
-            <a href="012-commit3.html" class="nav-card prev">
+            <a href="016-ai.html" class="nav-card prev">
                 <span class="nav-label">← 前の章</span>
-                <span class="nav-title">📄 他の作業を巻き込んでcommitする事故を3つの見張り役で潰した話</span>
+                <span class="nav-title">📄 AI審査員の盲点を人間の一言と説明書の改良で塞いだ話</span>
             </a>
             
-            
-            <a href="014-ai3.html" class="nav-card next">
-                <span class="nav-label">次の章 →</span>
-                <span class="nav-title">📄 AIの直し提案が3体そろって否定された話</span>
-            </a>
             
         </nav>
     </main>
