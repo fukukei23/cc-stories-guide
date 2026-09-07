@@ -580,25 +580,29 @@ def main():
     shutil.copytree(Path(__file__).parent / "assets", OUTPUT_DIR / "assets", dirs_exist_ok=True)
     print("OK: assets copy → docs/assets/")
 
-    # 生成物の commit 漏れ（untracked）を検知したら警告+exit 5（2026-09-07・F3対策:
+    # 生成物の commit 漏れ（untracked）を検知したら警告+exit 78（2026-09-07・F3対策:
     # 016話で新規HTMLのcommit漏れ→公開404が実発生。git status --porcelain は
-    # git rm --cached 後に "D" を返して untracked を隠すため ls-files --error-unmatch で判定）
+    # git rm --cached 後に "D" を返して untracked を隠すため ls-files --error-unmatch で判定。
+    # exit 78 = sysexits EX_CONFIG（pytest の 0件収集=5 との衝突回避・r1レビュー採用）
     import subprocess
     import sys
     untracked = []
     for f in sorted(OUTPUT_DIR.rglob("*.html")):
         if not f.exists():
             continue
-        r = subprocess.run(
-            ["git", "ls-files", "--error-unmatch", str(f)], capture_output=True
-        )
-        if r.returncode != 0:
+        try:
+            r = subprocess.run(
+                ["git", "ls-files", "--error-unmatch", str(f)], capture_output=True
+            )
+        except OSError:
+            continue  # git 不在等の環境異常は検知対象外（r1レビュー採用）
+        if r.returncode == 1:  # 1=not in index（untracked）・128等のfatalは誤判別防止のため除外（r1採用）
             untracked.append(f)
     if untracked:
         print("\n⚠️ [untracked] 以下の生成物が git 未追跡です → commit に含めること（新規は `git add -f` が必要な場合あり）:")
         for f in untracked:
             print(f"   {f}")
-        sys.exit(5)
+        sys.exit(78)
 
     print(f"\n完了: {len(chapters)}話 + index → {OUTPUT_DIR}/")
 
