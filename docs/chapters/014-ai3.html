@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第2話 防災フックが鳴らなかった話 — CC Stories</title>
-    <meta name="description" content="CC Stories — 作業の物語集: 第2話 防災フックが鳴らなかった話">
-    <meta property="og:title" content="第2話 防災フックが鳴らなかった話 — CC Stories">
-    <meta property="og:description" content="第2話 防災フックが鳴らなかった話 — 専門用語なしの物語と技術解説のペア">
+    <title>AIの直し提案が3体そろって否定された話 — CC Stories</title>
+    <meta name="description" content="CC Stories — 作業の物語集: AIの直し提案が3体そろって否定された話">
+    <meta property="og:title" content="AIの直し提案が3体そろって否定された話 — CC Stories">
+    <meta property="og:description" content="AIの直し提案が3体そろって否定された話 — 専門用語なしの物語と技術解説のペア">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/002.html">
+    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/014-ai3.html">
     <meta property="og:image" content="https://fukukei23.github.io/cc-stories-guide/assets/ogp.png">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="../assets/style.css">
@@ -44,7 +44,7 @@
         </a>
         
         <a href="002.html"
-           class="sidebar-link active">
+           class="sidebar-link">
             <span class="sidebar-icon">📄</span>
             第2話 防災フックが鳴らなかった話
         </a>
@@ -110,7 +110,7 @@
         </a>
         
         <a href="014-ai3.html"
-           class="sidebar-link">
+           class="sidebar-link active">
             <span class="sidebar-icon">📄</span>
             AIの直し提案が3体そろって否定された話
         </a>
@@ -127,48 +127,38 @@
     <main class="content">
         <div class="chapter-nav-top">
             
-            <a href="002-llm.html" class="nav-prev">← 第4話 スキル物語 「マルチLLMレビューして」と言ったら別々の目で見てくれる話</a>
+            <a href="013-ai.html" class="nav-prev">← AIにファイルを書き換えさせる前に「いいですか？」と聞かせる話</a>
             
             
-            <a href="003.html" class="nav-next">第3話 スキル物語 「おはよう」と言ったら昨日が戻ってきた話 →</a>
+            <a href="015-1.html" class="nav-next">設定を1枚の帳票に集めて書き忘れ事故を潰した話 →</a>
             
         </div>
 
-        <div class="episode-badge">第002話</div>
+        <div class="episode-badge">第014話</div>
         <article class="chapter-body">
-            <p>&lt;!-- published: 2026-09-02 / 種別: 事故解決 --&gt;</p>
-<h1>第2話 防災フックが鳴らなかった話</h1>
+            <p>&lt;!-- published: 2026-09-07 / 種別: できごと（判断収束） / 対象: マルチLLMレビュー3ラウンド（r1→r3） --&gt;</p>
+<h1>AIの直し提案が3体そろって否定された話</h1>
 <h2>困ったこと</h2>
-<p>この環境には「危ない命令を出したら止める警報装置」が27個も入れてありました。ところがふと調べたら、そのうち25個が、いつの間にか<strong>一度も鳴っていなかった</strong>ことが分かったのです。火災報知器が27個あって、火事になっても2個しか鳴らない——しかも誰も気づかない。パソコンの画面には何も表示されないので、「動いていない」こと自体がずっと隠れていました。</p>
+<p>AIに作業を任せていると、AIが手順を省略するという失敗が起きた。毎回やるはずの確認作業を、AIは「頭の中でやったつもり」になっていて、実際には何も見ていなかった。人間が質問して初めて発覚する、見えないサボりだ。そこで「確認を忘れられない仕組み」を作ろうと、AIに設計案を考えさせ、さらに別々のAI三体に「この案の弱点を探して」と頼んだ。ところが案が固まった後、依頼者から一つの問いかけを受ける。「悪意ある偽装は本当に起こらないのか？」——この一言で、設計は根っから揺さぶられることになった。</p>
 <h2>どう解決したか</h2>
-<p>最初は「警報器の設定ミスだろう」とあちこち直しましたが、直りません。三日がかりで原因を追いかけ、ついに分かったのは、<strong>警報器の設置場所の書き方</strong>が原因でした。Windowsという土台から別の部屋（Linux環境）の装置を呼び出すとき、住所の書き方をすると、その土台が勝手に住所を別の言葉に書き換えてしまう仕組みがあります。おかげで呼び出された装置は「そんな場所はない」と言って、音もなく止まっていたのです。動いていた2個だけは、住所の書き方がたまたま書き換えを逃れる形式だった。つまり「設定ミス」ではなく「住所の書き方」だったのでした。</p>
+<p>AIは「起こりうる。三つの場面がある」と分析し直し、「証拠の電子指紋を合言葉に焼き付ければ、読まずに偽装することは不可能になる」という直し案を出した。これを三体のAIに見せたところ、<strong>三体そろって同じ急所を突いた</strong>。「指紋を取るのは中身を読まない機械作業なので、指紋だけ取れば読んだことにはならない」。案の根幹は間違いだった。AIは案を取り下げ、方針を組み替えた。指紋は「設定が新しくなったことの検知」にだけ使い、意図的な偽装は「完全には防げない。でも見張りの記録は残るし、万が一すり抜けても被害は記録の質が下がる程度」と、限界ごと明記した設計に変えた。</p>
 <pre class="mermaid">flowchart TB
-    A[&quot;🔔 フックが鳴らない&quot;] --&gt; B[&quot;計測器に目印を仕込む&quot;]
-    B --&gt; C{&quot;目印は書かれる？&quot;}
-    C --&gt;|&quot;書かれる&quot;| D[&quot;計測器は健全・原因は別&quot;]
-    D --&gt; E[&quot;真因: 仕掛けが道を書き換えていた&quot;]
-    E --&gt; F[&quot;修正後: 鳴る 🔔&quot;]
+    A[&quot;🔍 人間「偽装は本当に防げないのか？」&quot;] --&gt; B[&quot;🤖 AI「指紋を焼けば不可能になる」&quot;]
+    B --&gt; C{&quot;👀 3体のAIが別々に点検&quot;}
+    C --&gt;|&quot;3体とも同じ急所を指摘&quot;| D[&quot;❌「指紋を取るだけでは読んだことにならない」&quot;]
+    D --&gt; E[&quot;🤖 AI、案を撤回&quot;]
+    E --&gt; F[&quot;✅ 方針訂正: 防止はできない/見張りは残る/被害は小さい、と限界ごと明記&quot;]
 </pre>
 <h2>何が変わったか</h2>
-<p>27個すべての警報器を、書き換えを逃れる正しい形式に書き直しました。そして教訓を仕組みにしました。「警報器は鳴らないと存在しないのと同じ」なので、試験用の小さな火事（実際には無害な命令）を定期的に流して、本当に鳴るか確かめるテストを入れました。また、この一件で「原因だと考えたことが違っていたら、記録に『撤回』と書いて残す」習慣もできました。間違いを隠さず消すことで、次に同じ道で迷わなくなったのです。</p>
+<p>出来上がったのは「構造的に不可能です」という安心できる嘘ではなく、「ここまでは守る・ここから先は守れない」と限界を書いた設計だった。頼む側としては一瞬不安になったが、限界が書いてある方が逆に信頼できる。破壊的な被害につながる箇所ではないと被害の大きさを見積もった上で、残る危険を受け入れる判断は人間がした。</p>
+<p>一番の収穫は、AIが自分の提案を<strong>すぐに取り下げられた</strong>ことだ。ただ深いAIは、賛成を集めるのが得意すぎて、間違いを認めるのが苦手だと言われる。今回は三体が別々に、それも同じ場所を指摘したから覆せた。一体的な点検は、AIにAIの間違いを認めさせる最も短い道だった。</p>
 <p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどう作ったか&lt;/summary&gt;</p>
-<h3>何が起きていたか</h3>
 <ul>
-<li>Windows側のClaude Codeから <code>wsl bash /home/yn4416/.../guard.sh</code> 形式でhookを起動すると、<strong>MSYSのパス変換</strong>が <code>/home/...</code> を <code>C:/Users/...</code> に書き換える。WSL内にそんなパスは無いのでスクリプトが存在せず、<strong>終了コード・ログなしの静かな失敗</strong>になった</li>
-<li>27 hook中25本がこの形式。生存していた2本（<code>check-command-safety.py</code> / <code>path-rewrite.py</code>）は <code>wsl bash -c &quot;...&quot;</code> 形式（<code>-c &quot;...&quot;</code> の文字列内はMSYS変換を免れる）だった</li>
-</ul>
-<h3>誤診の連鎖と確定方法</h3>
-<ul>
-<li>誤診1「空matcherが無効」→ <code>&quot;&quot;</code> を <code>&quot;*&quot;</code> に変更で効果なし。誤診2「<code>&quot;*&quot;</code>も無効」→ multi-llm-reviewで却下（実際に発火していた）。誤診3「guardスクリプトのパース不具合」→ 実在したが単独では説明不能</li>
-<li><strong>確定</strong>: スクリプト冒頭に一時的な呼び出しログ（canary）を挿入し、通常のBash呼び出しで<strong>guardが呼ばれていないことを直接観測</strong>。手動実行ではcanaryが書かれるため計測器自身は健全と切り分け、再現実験でMSYS変換によるパス書き換えを特定</li>
-<li>修正: settings.jsonの25 hookを <code>wsl bash -c &quot;bash /home/yn4416/...&quot;</code> 形式へ一括変換・再起動後にバナー表示/破壊的コマンドのブロック/PostToolUse記録の3点で効果確認</li>
-</ul>
-<h3>副次修正</h3>
-<p><code>guard-destructive-commands.sh</code> の独立欠陥2件（<code>tool_name</code>抽出の空白非対応・<code>exit 2</code>でなく<code>{&quot;decision&quot;:&quot;block&quot;}</code>返却が必要）をTDDで修正（33→38テスト）</p>
-<h3>所在情報（要約・原文リンクなし）</h3>
-<ul>
-<li>記録: SSOT <code>01_DECISIONS/claude-code/2026-08-22_hook不発の真因はwsl-bash-posixパス変換-matcher説を撤回.md</code>（outcome: confirmed・誤診3件の経緯も記録）</li>
-<li>関連: 2026-08-30の「並行セッションstaged巻き込み-Windows版hook未登録の真因特定」で第2段対応済み</li>
+<li><strong>対象</strong>: 自作の記録支援スキルにおいて、LLMが定型的な確認手順（設定マッピング2ファイルの読込）を省略した事故の再発防止設計</li>
+<li><strong>三層設計（r1〜r3で最終化）</strong>: ①判定スクリプト化（タグ照合をスクリプトが行い、出力JSON+output_id+sha256を返す・エラー時は非0でmarker発行なし）②書込ゲート（markerはスクリプト自身が発行・セッションID別・未取得時はfail-closedで全面block・マッピング更新後の古いmarkerはmtime+ハッシュの再計算照合で拒否）③事後監査（新規スクリプトが運用正典に掲載済みかを双方向照合・日次で3層自己テストも実施）</li>
+<li><strong>r3での撤回</strong>: 「markerへsha256を焼けば読まずに偽装は構造的に不可能」という設計者（LLM）の主張に対し、3レビュアーが別々に「sha256計算は内容解釈を伴わず読了を証明しない」とcritical指摘（MiniMax/Gemini/OpenRouter・計20指摘）。主張を撤回し、ハッシュはstale検知用途に限定・積極的偽装は「防止不能・検知可能・影響中低」として明示的にリスク受容する方針へ訂正</li>
+<li><strong>計測</strong>: 3ラウンド累計77指摘（採用28/部分21/却下17+設計者主張撤回1）・判断収束台帳にingest済み</li>
+<li>詳細な設計記録は自身のSSOT（非公開）にあり、このガイドから内部リポジトリへの到達経路は遮断している</li>
 </ul>
 <p>&lt;/details&gt;</p>
 
@@ -176,15 +166,15 @@
 
         <nav class="chapter-nav-bottom">
             
-            <a href="002-llm.html" class="nav-card prev">
+            <a href="013-ai.html" class="nav-card prev">
                 <span class="nav-label">← 前の章</span>
-                <span class="nav-title">📄 第4話 スキル物語 「マルチLLMレビューして」と言ったら別々の目で見てくれる話</span>
+                <span class="nav-title">📄 AIにファイルを書き換えさせる前に「いいですか？」と聞かせる話</span>
             </a>
             
             
-            <a href="003.html" class="nav-card next">
+            <a href="015-1.html" class="nav-card next">
                 <span class="nav-label">次の章 →</span>
-                <span class="nav-title">📄 第3話 スキル物語 「おはよう」と言ったら昨日が戻ってきた話</span>
+                <span class="nav-title">📄 設定を1枚の帳票に集めて書き忘れ事故を潰した話</span>
             </a>
             
         </nav>

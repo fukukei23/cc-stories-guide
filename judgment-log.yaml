@@ -28,3 +28,5 @@ entries:
   reason: AIにファイル書換/コマンド実行の道具を渡す際の「人間に聞いてから実行」の門番(ask確認フロー)をPhase 1-3で実装・テストでは動くのに本番で必ず落ちるcritical実バグを別AIレビュアーが発見・レビュアーの勘違い1件は実コードで反証
   confidence: 高
   episode: '013'
+- date: 2026-09-07 / type: できごと（判断収束）/ reason: CCの防御設計提案（sha256焼き込み=読了保証）が3レビュアー一致で否定され撤回した判断収束ループを物語化・AIが間違いを認めるプロセスの実例 / confidence: 高 / episode: '014'
+- date: 2026-09-07 / type: できごと（反復解消）/ reason: ポリシー値の2重管理による片方直し忘れ事故をYAML正本集約+pre-commitゲートで潰したG1〜G3完遂を物語化・commit拒否実測あり / confidence: 高 / episode: '015'
