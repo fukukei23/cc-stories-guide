@@ -98,15 +98,20 @@ def _extract_category_from_published_comment(text: str) -> str:
     return "作業の物語"
 
 
-def _episode_number(meta: dict, filename: str) -> str:
-    """カード表示用の話数を返す。frontmatterの `episode:` を最優先し、
-    なければ ep01_*.md 形式のファイル名から抽出。どちらもなければ空文字（ラベル非表示）。"""
+def _episode_number(meta: dict, filename: str, title: str = "") -> str:
+    """カード表示用の話数を返す（2026-09-07 MLR採用でH1優先に変更）。
+
+    優先順位: ①frontmatter `episode:` ②H1内の「第N話」 ③ファイル名先頭数字
+    （002_マルチLLM=第4話 のようにファイル名と実際の話数が乖離するケースへの対応・
+    ゼロ埋め「013」は「13」へ正規化）。どちらもなければ空文字（ラベル非表示）。"""
     ep = meta.get("episode")
     if ep:
-        return ep
-    # ep01_ 形式と 013_ 形式の両方に対応（2026-09-07・013話で番号非表示を指摘されたため）
+        return str(ep)
+    m = re.search(r"第(\d+)話", title or "")
+    if m:
+        return str(int(m.group(1)))
     match = re.match(r"(?:ep)?(\d+)", Path(filename).stem)
-    return match.group(1) if match else ""
+    return str(int(match.group(1))) if match else ""
 
 
 def build_chapter_map() -> dict:
@@ -128,11 +133,13 @@ def build_chapter_map() -> dict:
         if filename in CHAPTER_MAP:
             # CHAPTER_MAPのメタデータを適用(フロントマターがあれば優先)
             base = CHAPTER_MAP[filename]
+            _t = meta.get("title") or base["title"]
             result[filename] = {
                 "slug": base["slug"],
-                "title": meta.get("title") or base["title"],
+                "title": _t,
                 "icon": meta.get("icon", base["icon"]),
                 "desc": meta.get("card_desc") or meta.get("desc") or base["desc"],
+                "episode": _episode_number(meta, filename, _t),
             }
         else:
             title = meta.get("title") or _extract_title_from_h1(text) or Path(filename).stem
@@ -144,7 +151,7 @@ def build_chapter_map() -> dict:
                 "title": title,
                 "icon": icon,
                 "desc": desc,
-                "episode": _episode_number(meta, filename),
+                "episode": _episode_number(meta, filename, title),
                 "category": _extract_category_from_published_comment(text),
             }
             print(f"AUTO: {filename} → {slug} ({title}) [{result[filename]['category']}]")
