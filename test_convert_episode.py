@@ -121,3 +121,17 @@ def test_chapter_badge_omitted_when_number_empty() -> None:
         number="",
     )
     assert "episode-badge" not in out
+
+
+def test_filename_to_slug_known_slugs() -> None:
+    """slug生成の回帰テスト（2026-09-07・016話公開時にslug規則が未テストと判明）。
+
+    実slugの実例（公開URLの基盤・変更すると過去URLが壊れる）:
+    012_他の作業を... → 012-commit3 / 014_AIの直し提案が3体... → 014-ai3 / 015_設定を... → 015-1
+    """
+    from convert import _filename_to_slug
+
+    assert _filename_to_slug("013_glm-rate-proxy.md") == "013-glm-rate-proxy"
+    assert _filename_to_slug("016_AI審査員の盲点を人間の一言と説明書の改良で塞いだ話.md") == "016-ai"
+    # 既存話のslugは公開URLの実名・変更禁止（破壊的変更=過去リンク切れ）
+    assert _filename_to_slug("015_設定を1枚の帳票に集めて書き忘れ事故を潰した話.md") == "015-1"
