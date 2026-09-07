@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI審査員の盲点を人間の一言と説明書の改良で塞いだ話 — CC Stories</title>
+    <meta name="description" content="CC Stories — 作業の物語集: AI審査員の盲点を人間の一言と説明書の改良で塞いだ話">
+    <meta property="og:title" content="AI審査員の盲点を人間の一言と説明書の改良で塞いだ話 — CC Stories">
+    <meta property="og:description" content="AI審査員の盲点を人間の一言と説明書の改良で塞いだ話 — 専門用語なしの物語と技術解説のペア">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/016-ai.html">
+    <meta property="og:image" content="https://fukukei23.github.io/cc-stories-guide/assets/ogp.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="../assets/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+</head>
+<body>
+    <header class="site-header">
+        <button class="menu-toggle" aria-label="メニュー" id="menuToggle">
+            <span></span><span></span><span></span>
+        </button>
+        <a href="../index.html" class="site-title">📚 CC Stories</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="テーマ切替">
+            <span class="icon-light">☀️</span>
+            <span class="icon-dark">🌙</span>
+        </button>
+    </header>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="../index.html">🏠 ホーム</a>
+        </div>
+        
+        <a href="001.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第1話 「テストは充分？」という一言
+        </a>
+        
+        <a href="002-llm.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第4話 スキル物語 「マルチLLMレビューして」と言ったら別々の目で見てくれる話
+        </a>
+        
+        <a href="002.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第2話 防災フックが鳴らなかった話
+        </a>
+        
+        <a href="003.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第3話 スキル物語 「おはよう」と言ったら昨日が戻ってきた話
+        </a>
+        
+        <a href="003-ssot.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第5話 スキル物語 「記録して」と言ったらSSOTに勝手に入る話
+        </a>
+        
+        <a href="006.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第6話 スキル物語 「定期実行作って」と言ったら排他込みで組んでくれる話
+        </a>
+        
+        <a href="007.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第7話 スキル物語 「今夜はミニマックス」と言ったら裏側のレート制限を切り替えてくれる話
+        </a>
+        
+        <a href="008-5.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第8話 スキル物語 「返信文を書いて」と言ったら5禁止に気をつけて整えてくれる話
+        </a>
+        
+        <a href="009.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第9話 スキル物語 「リポジトリレビューして」と言ったら品質を点数で出してくれる話
+        </a>
+        
+        <a href="010-dev-cycle.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第10話 スキル物語 「dev-cycle」と言うと開発のサイクルが一巡する話
+        </a>
+        
+        <a href="011-youtubeai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第11話 スキル物語 「YouTubeを投げる」と言ったら生成AI用プロンプト仕様書が出てくる話
+        </a>
+        
+        <a href="012-commit3.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            他の作業を巻き込んでcommitする事故を3つの見張り役で潰した話
+        </a>
+        
+        <a href="013-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AIにファイルを書き換えさせる前に「いいですか？」と聞かせる話
+        </a>
+        
+        <a href="014-ai3.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AIの直し提案が3体そろって否定された話
+        </a>
+        
+        <a href="015-1.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            設定を1枚の帳票に集めて書き忘れ事故を潰した話
+        </a>
+        
+        <a href="016-ai.html"
+           class="sidebar-link active">
+            <span class="sidebar-icon">📄</span>
+            AI審査員の盲点を人間の一言と説明書の改良で塞いだ話
+        </a>
+        
+    </nav>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main class="content">
+        <div class="chapter-nav-top">
+            
+            <a href="015-1.html" class="nav-prev">← 設定を1枚の帳票に集めて書き忘れ事故を潰した話</a>
+            
+            
+        </div>
+
+        <div class="episode-badge">第16話</div>
+        <article class="chapter-body">
+            <p>&lt;!-- published: 2026-09-07 / 種別: できごと（事故解決+反復解消） --&gt;</p>
+<h1>AI審査員の盲点を人間の一言と説明書の改良で塞いだ話</h1>
+<h2>困ったこと</h2>
+<p>ある日、状態表示の道具を作り、三人の別々のAIに「変なところを探して」と頼んだ。返ってきた指摘は三体で合計39件。内容的にも技術的にも的確で、一見「これで十分」に見えた。ところが、その日の終わりにかけた、ふと出た一言が状況をひっくり返す。「<strong>テストは充分？</strong>」——道具が壊れた時の表示も、警告の予告行も、特定の操作パスの分岐も、<strong>誰も一つも指摘していなかった</strong>。三人の審査員は全員、渡された「変更した一部分」しか見ておらず、「道具全体の振る舞い」のうちテストされていない領域を、一度も列挙しようとしなかった。見落としというより、<strong>見える範囲が最初から限られていた</strong>。</p>
+<pre class="mermaid">flowchart LR
+    A[🧰 道具を作る] --&gt; B[📝 変更部分だけ渡す]
+    B --&gt; C[🤖 三人のAIに審査依頼]
+    C --&gt; D[✅ 39件の指摘=十分?]
+    D --&gt;|👤 人間「テストは充分?」| E[😮 テストされていない部分3つ]
+    E --&gt; F[🚧 審査員3人とも見逃していた]
+</pre>
+<h2>どう解決したか</h2>
+<p>道具を直す前に、問題が起きた理由を分解した。「審査員が盲点を持った」のは、怠けでも能力不足でもなかった。二つの仕組みの穴が同時に開いていた。一つは<strong>渡し物</strong>が不完全だったこと。渡したのは「変更した一部分」だけ。道具全体と既存のテスト一式を見せなければ、「テストされていない部分」を探す動機も素材も生まれない。もう一つは<strong>頼み方</strong>に「テストされていない部分を挙げよ」との一言が無かったこと。人間は頼まれたことしかやらない——AIも同じ。三つの審査は優秀だったが、頼まれた範囲の中だけで優秀だった。</p>
+<p>そこで審査の説明会書に、二行だけ書き足した。一つは頼み方の観点として「<strong>テストされていない部分（多ければ上位三つ）を挙げよ</strong>」を加え、もう一つは渡し物の注記として「<strong>変更だけでなくファイル全体とテスト一式を渡せ</strong>」を添えた。これで次回からは、最初から全体を見て、足りていない所を聞くようになる。</p>
+<p>そして再発を物理的に防ぐ番人を一つ置いた。毎朝立ち上がる画面に「説明書が五百五十行を超えたら警告」を出す小さな仕掛けだ。行数そのものは今四百八十行で正常範囲。だから今日は何も警告が出ないが、知らないうちに膨れ上がった日には、画面が教えてくれる。人間の注意力に頼らない、構造の見張り役。</p>
+<pre class="mermaid">flowchart LR
+    P1[🤖 3人の審査員39件] --&gt; Q{👤 人間1問}
+    Q --&gt;|盲点発見| R1[📖 説明書に観点追加]
+    Q --&gt; R2[📦 渡し物にファイル全体+テスト一式追加]
+    R1 --&gt; S[🚧 見張り役:画面警告]
+    R2 --&gt; S
+    S --&gt; T[✅ 次回から全体を見る]
+</pre>
+<h2>何が変わったか</h2>
+<p>一番変わったのは、「審査は頼まれた範囲で動く」という、当たり前の認識だ。今までは審査に「変な所を探して」とお願いすれば、十分な答えが返ると思っていた。それが間違いだった。「<strong>何を範囲とするか</strong>」をこちらが指定しなければ、AIの目は限られた窓からしか覗けない。言い換えれば、審査の精度を上げるには審査員を賢くするのではなく、<strong>頼み方</strong>と<strong>渡し物</strong>を賢くする必要がある。</p>
+<p>副次的だが、もう一つ良かったことがある。人間の一言を待たず、システム自身が次に同じ穴を塞ぐ準備ができたことだ。「行数が膨らんだら警告」という単純な仕組みは、五分もあれば作れた。「LLMの思考を完璧にする」を目指すより、よほど早く、よほど確実で、よほど静かだ。</p>
+<p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどう作ったか&lt;/summary&gt;</p>
+<ul>
+<li><strong>対象</strong>: 内部の「複数のAIに審査させる仕組み」の説明書（multi-llm-review SKILL.md）</li>
+<li><strong>発見経路</strong>: 状態表示ツール（proxy-mode）に「動作モードの実効状態を併記する」機能を追加した際、3機レビュー（合計39指摘）で実装の欠陥は網羅されたが、テストの網羅性に関する盲点が露出。人間の「テストは充分？」1問で、3件のテストされていない領域（プロキシ死亡時表示・警告予告行・特定パス分岐）が発見された</li>
+<li><strong>追加した観点</strong>: コードレビュー時に「未テスト領域の列挙（対象機能の全挙動を黒箱列挙→テスト存在を照合→欠落を上位3件に限定して報告）」を必須化・指摘の膨張を抑制するため3件限定</li>
+<li><strong>追加した入力素材</strong>: 「差分だけでなく<strong>対象ファイル全体+既存テスト一式</strong>」も渡すこと。差分だけでは道具全体の挙動が見えず列挙が空回りする</li>
+<li><strong>防止装置</strong>: 朝に表示される立ち上げ画面に、「説明書の行数が五百五十を超えたら」「特定セクションが八十行を超えたら」警告を出す小さな仕組みを追加。1ファイル数行の追加で実装でき、毎朝自動で確認が回る</li>
+<li><strong>判断の重み</strong>: 3機のレビューは <strong>0.5ラウンドで収束</strong>（本命AIが指摘ゼロ=合意・残り2機も実測で覆せる些末のみ）し、軽微な修正で完了した。「重い仕組み」を作る前に「軽い仕組み」を先に置くのが、個人の環境では割に合うという知見</li>
+<li>詳細な設計記録は非公開のSSOTにあり、このガイドから内部リポジトリへの到達経路は遮断している</li>
+</ul>
+<p>&lt;/details&gt;</p>
+
+        </article>
+
+        <nav class="chapter-nav-bottom">
+            
+            <a href="015-1.html" class="nav-card prev">
+                <span class="nav-label">← 前の章</span>
+                <span class="nav-title">📄 設定を1枚の帳票に集めて書き忘れ事故を潰した話</span>
+            </a>
+            
+            
+        </nav>
+    </main>
+
+    <footer class="site-footer">
+        <p>CC Stories — <a href="https://github.com/fukukei23/cc-stories-guide">GitHub</a>
+         · <a href="https://fukukei23.github.io/ssot-guide/">SSOT Guide</a>
+         · <a href="https://fukukei23.github.io/loop-engineering-guide/">Loop Engineering Guide</a>
+         · <a href="https://fukukei23.github.io/guides/">技術ガイド集</a>
+         · <a href="https://fukukei23.github.io/">fukukei23</a></p>
+    </footer>
+
+    <script src="../assets/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default',
+            themeVariables: { fontSize: '14px' }
+        });
+    </script>
+</body>
+</html>
