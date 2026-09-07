@@ -105,7 +105,7 @@ def _episode_number(meta: dict, filename: str, title: str = "") -> str:
     （002_マルチLLM=第4話 のようにファイル名と実際の話数が乖離するケースへの対応・
     ゼロ埋め「013」は「13」へ正規化）。どちらもなければ空文字（ラベル非表示）。"""
     ep = meta.get("episode")
-    if ep:
+    if ep is not None:  # 0（第0話/プロローグ）も有効値（MLR採用Gemini指摘・テストで捕捉）
         return str(ep)
     m = re.search(r"第(\d+)話", title or "")
     if m:
