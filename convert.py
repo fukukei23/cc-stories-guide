@@ -592,7 +592,9 @@ def main():
             continue
         try:
             r = subprocess.run(
-                ["git", "ls-files", "--error-unmatch", str(f)], capture_output=True
+                ["git", "ls-files", "--error-unmatch", str(f)],
+                capture_output=True,
+                cwd=str(Path(__file__).parent),  # c2採用: cwdがrepo外でも当該repoに固定（検知漏れ防止）
             )
         except OSError:
             continue  # git 不在等の環境異常は検知対象外（r1レビュー採用）
