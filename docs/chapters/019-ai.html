@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第19話 作業物語 「曲作って」と言ったらAIの癖に振り回されない道具立てになっていた話 — CC Stories</title>
+    <meta name="description" content="CC Stories — 作業の物語集: 第19話 作業物語 「曲作って」と言ったらAIの癖に振り回されない道具立てになっていた話">
+    <meta property="og:title" content="第19話 作業物語 「曲作って」と言ったらAIの癖に振り回されない道具立てになっていた話 — CC Stories">
+    <meta property="og:description" content="第19話 作業物語 「曲作って」と言ったらAIの癖に振り回されない道具立てになっていた話 — 専門用語なしの物語と技術解説のペア">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/019-ai.html">
+    <meta property="og:image" content="https://fukukei23.github.io/cc-stories-guide/assets/ogp.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="../assets/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+</head>
+<body>
+    <header class="site-header">
+        <button class="menu-toggle" aria-label="メニュー" id="menuToggle">
+            <span></span><span></span><span></span>
+        </button>
+        <a href="../index.html" class="site-title">📚 CC Stories</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="テーマ切替">
+            <span class="icon-light">☀️</span>
+            <span class="icon-dark">🌙</span>
+        </button>
+    </header>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="../index.html">🏠 ホーム</a>
+        </div>
+        
+        <a href="001.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第1話 「テストは充分？」という一言
+        </a>
+        
+        <a href="002-llm.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第4話 スキル物語 「マルチLLMレビューして」と言ったら別々の目で見てくれる話
+        </a>
+        
+        <a href="002.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第2話 防災フックが鳴らなかった話
+        </a>
+        
+        <a href="003.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第3話 スキル物語 「おはよう」と言ったら昨日が戻ってきた話
+        </a>
+        
+        <a href="003-ssot.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第5話 スキル物語 「記録して」と言ったらSSOTに勝手に入る話
+        </a>
+        
+        <a href="006.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第6話 スキル物語 「定期実行作って」と言ったら排他込みで組んでくれる話
+        </a>
+        
+        <a href="007.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第7話 スキル物語 「今夜はミニマックス」と言ったら裏側のレート制限を切り替えてくれる話
+        </a>
+        
+        <a href="008-5.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第8話 スキル物語 「返信文を書いて」と言ったら5禁止に気をつけて整えてくれる話
+        </a>
+        
+        <a href="009.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第9話 スキル物語 「リポジトリレビューして」と言ったら品質を点数で出してくれる話
+        </a>
+        
+        <a href="010-dev-cycle.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第10話 スキル物語 「dev-cycle」と言うと開発のサイクルが一巡する話
+        </a>
+        
+        <a href="011-youtubeai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第11話 スキル物語 「YouTubeを投げる」と言ったら生成AI用プロンプト仕様書が出てくる話
+        </a>
+        
+        <a href="012-commit3.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            他の作業を巻き込んでcommitする事故を3つの見張り役で潰した話
+        </a>
+        
+        <a href="013-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AIにファイルを書き換えさせる前に「いいですか？」と聞かせる話
+        </a>
+        
+        <a href="014-ai3.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AIの直し提案が3体そろって否定された話
+        </a>
+        
+        <a href="015-1.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            設定を1枚の帳票に集めて書き忘れ事故を潰した話
+        </a>
+        
+        <a href="016-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AI審査員の盲点を人間の一言と説明書の改良で塞いだ話
+        </a>
+        
+        <a href="017-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AIに下調べの省略をさせない検問を作った話
+        </a>
+        
+        <a href="018.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            検問の穴を塞ぐと別の穴が開いて、最後は自分の違和感が正しかった話
+        </a>
+        
+        <a href="019-ai.html"
+           class="sidebar-link active">
+            <span class="sidebar-icon">📄</span>
+            第19話 作業物語 「曲作って」と言ったらAIの癖に振り回されない道具立てになっていた話
+        </a>
+        
+    </nav>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main class="content">
+        <div class="chapter-nav-top">
+            
+            <a href="018.html" class="nav-prev">← 検問の穴を塞ぐと別の穴が開いて、最後は自分の違和感が正しかった話</a>
+            
+            
+        </div>
+
+        <div class="episode-badge">第19話</div>
+        <article class="chapter-body">
+            <p>&lt;!-- published: 2026-09-08 / 種別: スキル作成・改修 / 対象スキル: make-song --&gt;</p>
+<h1>第19話 作業物語 「曲作って」と言ったらAIの癖に振り回されない道具立てになっていた話</h1>
+<h2>困ったこと</h2>
+<p>AIに曲を作ってもらううちに、ひとつ気づいた。</p>
+<p><strong>知っている楽曲の型</strong>も<strong>日本語の韻の踏み方</strong>も、何もかもが「いま使っているAIが覚える前提」で積み上がっていく。AIが変わったらどうするか。最初の日から手探りで、何ヶ月もかけて培ってきた工夫が、朝には全部ただの紙くずになる。</p>
+<p>それだけではない。「A社のAIでは効く」「B社のAIでは効かない」みたいな小技が大量に生まれて、どれが本当に大事なのか、どれが小さな揺れに過ぎないのか、自分でももう分からなくなっている。<strong>芯の強さを保ちながら、AIの差分だけをうまく入れ替える仕組み</strong>が、どうしても必要だった。</p>
+<h2>どう解決したか</h2>
+<p>2つの軸を直角に交差させた。</p>
+<p>縦の軸は <strong>「AIが変わっても残るかどうか」</strong> 。横の軸は <strong>「どれくらい確かめられたか」</strong> 。これで4つの升目が出来上がる。「AI非依存かつ確か」は確定の基礎、「AI固有かつ確か」は差し替え前提の核、「未確か」なものは升目の隅に追いやった。</p>
+<p>その上で、5つの棚を重ねた。一番下は姿勢（測ってから語る・一度に変えるのはひとつだけ）、その上は普遍の音楽理論（月単位で見直し）、流行りの参照（月単位で入れ替え）、AI固有の実測（即時更新）、そして一番上にプロジェクトごとの制作記録。<strong>基礎はそのまま、AIが変わったら固有の棚だけ書き直す</strong>——この運用ルールを、ファイル名の頭に <code>[L1][L1.5][L2][META]</code> と刻んで、「どの棚の話か」を一目で区別できるようにした。</p>
+<h2>何が変わったか</h2>
+<p>AIが将来入れ替わっても、<strong>音楽理論のノートを読み直さなくていい</strong>。本当に見直すべきは <code>[L2]</code> とついた棚だけ。効くのか効かないのか分からない小技は、まず「未確か」の升目で飼いならし、確かだと分かった時点で確定の升目に昇格する。<strong>升目をまたぐ昇格と降格のルール</strong>を最初から決めたので、混沌と化さずに済む。</p>
+<p>一度に頼んでも、軽くても、本格仕様でも、どちらでも応じられる。基礎理論を保ったまま、流行りの参照は月で更新し、AI固有の癖は実測で育ったぶんだけ反映される──そういう<strong>生きた道具立て</strong>が手に入った。</p>
+<p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどう作ったか&lt;/summary&gt;</p>
+<p><strong>核心構造</strong>:</p>
+<ul>
+<li>4象限マトリクス（汎用性×検証度）= ①確定汎用 ②実測固有 ③仮説汎用 ④仮説固有</li>
+<li>5層レイヤー: L0=制作姿勢 / L1=普遍音楽理論(AI非依存) / L1.5=潮流参照(月更新) / L2=MiniMax固有実測(即時更新) / L3=プロジェクトSSOT(毎回更新)</li>
+<li>昇格/降格ルール: ③④は実測で①②へ昇格・①のうち新AIで効かないものは②へ降格</li>
+</ul>
+<p><strong>SKILL.md構成</strong>: 本体はフェーズ＋意思決定フローのみ（スリム）。詳細は references に分離し、prefix <code>[L1][L1.5][L2][META]</code> でAI依存度を視覚化。コンテキスト圧迫回避のためジャンル/場面別に必要な分だけ参照する設計。</p>
+<p><strong>フェーズ分割</strong>: Phase -1（用途定義・Quick/Full分岐）→ 0（コンセプト）→ 1（Reference 3曲＋GMIV順序）→ 2a/2b（理論構造/AI補正分離）→ 3b→3a（歌詞先行・韻設計→プロンプト）→ 4（生成＋1変数変更ループ）→ 5（SSOT記録＋知見蓄積）。</p>
+<p><strong>ポータビリティ・チェックリスト（AI差し替え時の確認項目）</strong>: duration/BPM・構造タグ認識・括弧/コロン記法解釈・歌詞最大文字数・圧縮率・声質プロファイル・高音質パラメータ・失敗パターン再現性 — L1は再々利用、L2のみ再検証して書き直す手順を <code>references/[META]ポータビリティチェックリスト.md</code> に集約。</p>
+<p><strong>既存資産統合</strong>: cyber-wa-song / sangoku-song / reverse-engineer-song の作曲フェーズを本スキルへ委譲。各スキルは固有カタログだけ残してスリム化（YAGNI徹底）。</p>
+<p><strong>素材出典</strong>: <code>obsidian-ssot/01_DECISIONS/ai-music/2026-06-16_AI作曲スキル_design.md</code>（259行・full design spec）
+&lt;/details&gt;</p>
+
+        </article>
+
+        <nav class="chapter-nav-bottom">
+            
+            <a href="018.html" class="nav-card prev">
+                <span class="nav-label">← 前の章</span>
+                <span class="nav-title">📄 検問の穴を塞ぐと別の穴が開いて、最後は自分の違和感が正しかった話</span>
+            </a>
+            
+            
+        </nav>
+    </main>
+
+    <footer class="site-footer">
+        <p>CC Stories — <a href="https://github.com/fukukei23/cc-stories-guide">GitHub</a>
+         · <a href="https://fukukei23.github.io/ssot-guide/">SSOT Guide</a>
+         · <a href="https://fukukei23.github.io/loop-engineering-guide/">Loop Engineering Guide</a>
+         · <a href="https://fukukei23.github.io/guides/">技術ガイド集</a>
+         · <a href="https://fukukei23.github.io/">fukukei23</a></p>
+    </footer>
+
+    <script src="../assets/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default',
+            themeVariables: { fontSize: '14px' }
+        });
+    </script>
+</body>
+</html>
