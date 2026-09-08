@@ -46,3 +46,8 @@ entries:
   reason: 検問(M2)の3機レビュー3ラウンドで「修復が次の穴を作る」連鎖(fail-open 2個)を止め・自己点検でM1由来の表示バグ(VERIFY_REASON SyntaxError)と自分の誤却下を発見訂正した
   confidence: 高
   episode: '018'
+- date: 2026-09-08
+  type: スキル作成・改修
+  reason: 5.0点候補①reverse-engineer-songスキル_planは既公開(011)のためスキップ・候補②AI作曲スキル_designを真の未処理最上位と確定・4象限x5層レイヤー構造で「AIが変わっても基礎知見は残る/固有部分は差し替え可能」を実現したmake-song設計を物語化
+  confidence: 高
+  episode: '019'
