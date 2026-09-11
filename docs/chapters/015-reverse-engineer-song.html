@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>013の次に見えた「聴くだけじゃ足りない」 — CC Stories</title>
+    <meta name="description" content="CC Stories — 作業の物語集: 013の次に見えた「聴くだけじゃ足りない」">
+    <meta property="og:title" content="013の次に見えた「聴くだけじゃ足りない」 — CC Stories">
+    <meta property="og:description" content="013の次に見えた「聴くだけじゃ足りない」 — 専門用語なしの物語と技術解説のペア">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/015-reverse-engineer-song.html">
+    <meta property="og:image" content="https://fukukei23.github.io/cc-stories-guide/assets/ogp.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="../assets/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+</head>
+<body>
+    <header class="site-header">
+        <button class="menu-toggle" aria-label="メニュー" id="menuToggle">
+            <span></span><span></span><span></span>
+        </button>
+        <a href="../index.html" class="site-title">📚 CC Stories</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="テーマ切替">
+            <span class="icon-light">☀️</span>
+            <span class="icon-dark">🌙</span>
+        </button>
+    </header>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="../index.html">🏠 ホーム</a>
+        </div>
+        
+        <a href="001.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第1話 「テストは充分？」という一言
+        </a>
+        
+        <a href="002-llm.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第4話 スキル物語 「マルチLLMレビューして」と言ったら別々の目で見てくれる話
+        </a>
+        
+        <a href="002.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第2話 防災フックが鳴らなかった話
+        </a>
+        
+        <a href="003.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第3話 スキル物語 「おはよう」と言ったら昨日が戻ってきた話
+        </a>
+        
+        <a href="003-ssot.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第5話 スキル物語 「記録して」と言ったらSSOTに勝手に入る話
+        </a>
+        
+        <a href="006.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第6話 スキル物語 「定期実行作って」と言ったら排他込みで組んでくれる話
+        </a>
+        
+        <a href="007.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第7話 スキル物語 「今夜はミニマックス」と言ったら裏側のレート制限を切り替えてくれる話
+        </a>
+        
+        <a href="008-5.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第8話 スキル物語 「返信文を書いて」と言ったら5禁止に気をつけて整えてくれる話
+        </a>
+        
+        <a href="009.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第9話 スキル物語 「リポジトリレビューして」と言ったら品質を点数で出してくれる話
+        </a>
+        
+        <a href="010-dev-cycle.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第10話 スキル物語 「dev-cycle」と言うと開発のサイクルが一巡する話
+        </a>
+        
+        <a href="011-youtubeai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第11話 スキル物語 「YouTubeを投げる」と言ったら生成AI用プロンプト仕様書が出てくる話
+        </a>
+        
+        <a href="012-commit3.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            他の作業を巻き込んでcommitする事故を3つの見張り役で潰した話
+        </a>
+        
+        <a href="013-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AIにファイルを書き換えさせる前に「いいですか？」と聞かせる話
+        </a>
+        
+        <a href="014-ai3.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AIの直し提案が3体そろって否定された話
+        </a>
+        
+        <a href="015-reverse-engineer-song.html"
+           class="sidebar-link active">
+            <span class="sidebar-icon">📄</span>
+            013の次に見えた「聴くだけじゃ足りない」
+        </a>
+        
+        <a href="015-1.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            設定を1枚の帳票に集めて書き忘れ事故を潰した話
+        </a>
+        
+        <a href="016-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AI審査員の盲点を人間の一言と説明書の改良で塞いだ話
+        </a>
+        
+        <a href="017-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AIに下調べの省略をさせない検問を作った話
+        </a>
+        
+        <a href="018.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            検問の穴を塞ぐと別の穴が開いて、最後は自分の違和感が正しかった話
+        </a>
+        
+        <a href="019-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第19話 作業物語 「曲作って」と言ったらAIの癖に振り回されない道具立てになっていた話
+        </a>
+        
+    </nav>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main class="content">
+        <div class="chapter-nav-top">
+            
+            <a href="014-ai3.html" class="nav-prev">← AIの直し提案が3体そろって否定された話</a>
+            
+            
+            <a href="015-1.html" class="nav-next">設定を1枚の帳票に集めて書き忘れ事故を潰した話 →</a>
+            
+        </div>
+
+        <div class="episode-badge">第15話</div>
+        <article class="chapter-body">
+            <p>&lt;!-- published: 2026-09-11 / 種別: ものづくりの流れ / 対象スキル: reverse-engineer-song --&gt;</p>
+<h1>013の次に見えた「聴くだけじゃ足りない」</h1>
+<p>ある日ふくけいは思った。YouTubeで流れてくる曲のMV、なんで自分はいつも「いい曲だな」で止まってしまうんだろう。曲の仕組みがまったく読めない。映像の動かし方も、どういうプロンプトで作れば再現できるのか、想像がつかない。</p>
+<p>そこで、3つの生成AIで「同じものをもう一度作れるようにする」ためのスキルを作ることにした。音楽をSunoで、映像をRunwayで、静止画をMidjourneyで作れるよう、YouTubeのURL1つから4種類のプロンプト仕様書を組み立てる。</p>
+<p>最初は「YouTubeを見て、聴くだけ」でやろうとしていた。でも、それだと音と映像の中間にある情報——BPM、テンポ推移、コード進行、メロディの形——が取れない。分析は全部、AI（Gemini）に任せるしかなかった。「見る」と「聴く」と「分析する」を分離し、3つの役割を1つのスキルに収めたのがこの設計の要点だった。</p>
+<p>出来上がったスキルは、ふくけいが「いいな」と思った曲に対して、もう一度「作れそう」と思える入口になった。完全再現ではなく、「自分なりの別バージョン」を作るための種としてのプロンプト仕様書。聴く側から、手を動かす側に回るための道具だ。</p>
+<hr />
+<p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどうなってるか&lt;/summary&gt;</p>
+<ul>
+<li><strong>役割分離</strong>: YouTube視聴（CCがYouTubeを直接見れない制約）はMCP <code>exa</code>/<code>WebSearch</code>経由でメタ取得・Gemini APIに楽曲分析を委任（scripts/api/gemini.py）・CCは結果の構造化と4種類プロンプト仕様書（音楽・画像・動画・テキスト）の整形を担当</li>
+<li><strong>依存ファイル</strong>: <code>~/.claude/skills/reverse-engineer-song/SKILL.md</code>・<code>scripts/api/gemini.py</code>・Gemini APIキー（<code>~/.secrets.env</code>の<code>GEMINI_API_KEY</code>）</li>
+<li><strong>経緯</strong>: 2026-06-15にマスタープロンプトSSOT作成・Suno型（歌詞+ジャンル+ムード+構成タグ）・Midjourney型（カメラ/照明/カラーパレット）・Runway型（モーションキーワード）3つのテンプレを統合</li>
+</ul>
+<p>&lt;/details&gt;</p>
+<hr />
+<h2>🔗 関連</h2>
+<ul>
+<li>元記録: 01_DECISIONS/ai-music/2026-06-15_reverse-engineer-songスキル_plan.md（要約参照・原文URLは非公開）</li>
+<li>関連スキル: <code>reverse-engineer-song</code>・<code>analyze-song</code>・<code>make-song</code>（CC環境で楽曲を扱う3点セット）</li>
+</ul>
+
+        </article>
+
+        <nav class="chapter-nav-bottom">
+            
+            <a href="014-ai3.html" class="nav-card prev">
+                <span class="nav-label">← 前の章</span>
+                <span class="nav-title">📄 AIの直し提案が3体そろって否定された話</span>
+            </a>
+            
+            
+            <a href="015-1.html" class="nav-card next">
+                <span class="nav-label">次の章 →</span>
+                <span class="nav-title">📄 設定を1枚の帳票に集めて書き忘れ事故を潰した話</span>
+            </a>
+            
+        </nav>
+    </main>
+
+    <footer class="site-footer">
+        <p>CC Stories — <a href="https://github.com/fukukei23/cc-stories-guide">GitHub</a>
+         · <a href="https://fukukei23.github.io/ssot-guide/">SSOT Guide</a>
+         · <a href="https://fukukei23.github.io/loop-engineering-guide/">Loop Engineering Guide</a>
+         · <a href="https://fukukei23.github.io/guides/">技術ガイド集</a>
+         · <a href="https://fukukei23.github.io/">fukukei23</a></p>
+    </footer>
+
+    <script src="../assets/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default',
+            themeVariables: { fontSize: '14px' }
+        });
+    </script>
+</body>
+</html>
