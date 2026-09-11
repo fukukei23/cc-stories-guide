@@ -47,7 +47,7 @@ entries:
   type: 検証
   reason: 9ケースtestのr1-r5修正確認レビュー+GLM自己点検2回+mutation check・high 1件(Case7二重安全経路)修正で収束判定
   confidence: 高
-  episode: 'test-review-r1-r5'
+  episode: test-review-r1-r5
 - date: 2026-09-07
   type: 事故解決
   reason: フェーズ0.5省略事故の物理阻止ゲート(marker発行+書込検問)を実装し・3機査読2ラウンドですり抜け穴2個を実測発見して塞いだ
@@ -55,17 +55,27 @@ entries:
   episode: '017'
 - date: 2026-09-08
   type: 事故解決
-  reason: 検問(M2)の3機レビュー3ラウンドで「修復が次の穴を作る」連鎖(fail-open 2個)を止め・自己点検でM1由来の表示バグ(VERIFY_REASON SyntaxError)と自分の誤却下を発見訂正した
+  reason: 検問(M2)の3機レビュー3ラウンドで「修復が次の穴を作る」連鎖(fail-open 2個)を止め・自己点検でM1由来の表示バグ(VERIFY_REASON
+    SyntaxError)と自分の誤却下を発見訂正した
   confidence: 高
-  episode: '018'
+  episode: 018
 - date: 2026-09-08
   type: スキル作成・改修
   reason: 5.0点候補①reverse-engineer-songスキル_planは既公開(011)のためスキップ・候補②AI作曲スキル_designを真の未処理最上位と確定・4象限x5層レイヤー構造で「AIが変わっても基礎知見は残る/固有部分は差し替え可能」を実現したmake-song設計を物語化
   confidence: 高
-  episode: '019'
+  episode: 019
 - date: 2026-09-11
   type: ものづくりの流れ
-  reason: ふくけいが「いいな」と思ったYouTube曲から、Suno/Midjourney/Runwayで再現できる4種プロンプト仕様書を自動生成するスキルを設計。YouTube視聴はexa MCP・楽曲分析はGemini APIに委任し、CCは構造化整形に専念する「役割分離」が鍵
+  reason: ふくけいが「いいな」と思ったYouTube曲から、Suno/Midjourney/Runwayで再現できる4種プロンプト仕様書を自動生成するスキルを設計。YouTube視聴はexa
+    MCP・楽曲分析はGemini APIに委任し、CCは構造化整形に専念する「役割分離」が鍵
   confidence: 高
   episode: '015'
   file: 015_reverse-engineer-songスキル設計の物語.md
+- date: '2026-09-11'
+  type: 新仕様
+  reason: 5.0点候補の最上位reverse-engineer-songスキル_plan（source完全パス未登場）を選び、SSOT奥のai-musicフォルダから設計書を掘り起こして物語化・生成AI用仕様書を作る『逆算視点』の汎用性を1ドメイン外の読者にも届く形で表現
+  confidence: 高
+  episode: '020'
+  file: 020_AI自身に_この曲どうやって作る__と聞きに行く話.md
+  auto: true
+  cron_id: 19
