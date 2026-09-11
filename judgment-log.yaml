@@ -63,3 +63,9 @@ entries:
   reason: 5.0点候補①reverse-engineer-songスキル_planは既公開(011)のためスキップ・候補②AI作曲スキル_designを真の未処理最上位と確定・4象限x5層レイヤー構造で「AIが変わっても基礎知見は残る/固有部分は差し替え可能」を実現したmake-song設計を物語化
   confidence: 高
   episode: '019'
+- date: 2026-09-11
+  type: ものづくりの流れ
+  reason: ふくけいが「いいな」と思ったYouTube曲から、Suno/Midjourney/Runwayで再現できる4種プロンプト仕様書を自動生成するスキルを設計。YouTube視聴はexa MCP・楽曲分析はGemini APIに委任し、CCは構造化整形に専念する「役割分離」が鍵
+  confidence: 高
+  episode: '015'
+  file: 015_reverse-engineer-songスキル設計の物語.md
