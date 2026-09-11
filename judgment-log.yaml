@@ -83,3 +83,21 @@ entries:
   confidence: 高
   episode: '005'
   file: 005_自動で呟かせる前夜調べたら地雷が一杯だった話.md
+- date: '2026-09-12'
+  type: 使い方解説
+  confidence: 高
+  reason: 長く使うと記憶がいっぱいになるタブ問題をhandoff手紙（new-session）で解決する使い方を物語化・resume-session(第2話)と対になる冒頭話・スキル使い方再編の第1話
+  episode: '022'
+  file: 022_引き継ぎと言ったら明日の自分に手紙を書いてくれた話.md
+- date: '2026-09-12'
+  type: 使い方解説
+  confidence: 高
+  reason: 選択肢が多すぎて決められない問題を5段階深掘り+推奨まで出すsentakuの使い方を物語化・「投げ返されない」を軸にした・スキル使い方再編の第5話
+  episode: '023'
+  file: 023_比較してと言ったら選択肢を深掘りして推奨まで出してきた話.md
+- date: '2026-09-12'
+  type: 使い方解説
+  confidence: 高
+  reason: 技術名でなく課題の言葉で探すssot-searchの使い方を物語化・curl_cffi事例とRecall@5実測を紹介・「SSOT確認して=探す/SSOT点検して=検査」の使い分け注記つき・再編の第6話
+  episode: '024'
+  file: 024_SSOTから探してと言ったら過去の失敗を掘り返してきた話.md
