@@ -69,13 +69,5 @@ entries:
   reason: ふくけいが「いいな」と思ったYouTube曲から、Suno/Midjourney/Runwayで再現できる4種プロンプト仕様書を自動生成するスキルを設計。YouTube視聴はexa
     MCP・楽曲分析はGemini APIに委任し、CCは構造化整形に専念する「役割分離」が鍵
   confidence: 高
-  episode: '015'
-  file: 015_reverse-engineer-songスキル設計の物語.md
-- date: '2026-09-11'
-  type: 新仕様
-  reason: 5.0点候補の最上位reverse-engineer-songスキル_plan（source完全パス未登場）を選び、SSOT奥のai-musicフォルダから設計書を掘り起こして物語化・生成AI用仕様書を作る『逆算視点』の汎用性を1ドメイン外の読者にも届く形で表現
-  confidence: 高
-  episode: '020'
-  file: 020_AI自身に_この曲どうやって作る__と聞きに行く話.md
-  auto: true
-  cron_id: 19
+  episode: '021'
+  file: 021_reverse-engineer-songスキル設計の物語.md
