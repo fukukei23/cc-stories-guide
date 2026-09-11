@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第3話 スキル物語 「記録して」と言ったらSSOTに勝手に入る話 — CC Stories</title>
-    <meta name="description" content="CC Stories — 作業の物語集: 第3話 スキル物語 「記録して」と言ったらSSOTに勝手に入る話">
-    <meta property="og:title" content="第3話 スキル物語 「記録して」と言ったらSSOTに勝手に入る話 — CC Stories">
-    <meta property="og:description" content="第3話 スキル物語 「記録して」と言ったらSSOTに勝手に入る話 — 専門用語なしの物語と技術解説のペア">
+    <title>第5話 スキル物語 「比較して」と言ったら選択肢を深掘りして推奨まで出してきた話 — CC Stories</title>
+    <meta name="description" content="CC Stories — 作業の物語集: 第5話 スキル物語 「比較して」と言ったら選択肢を深掘りして推奨まで出してきた話">
+    <meta property="og:title" content="第5話 スキル物語 「比較して」と言ったら選択肢を深掘りして推奨まで出してきた話 — CC Stories">
+    <meta property="og:description" content="第5話 スキル物語 「比較して」と言ったら選択肢を深掘りして推奨まで出してきた話 — 専門用語なしの物語と技術解説のペア">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/003-ssot.html">
+    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/023.html">
     <meta property="og:image" content="https://fukukei23.github.io/cc-stories-guide/assets/ogp.png">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="../assets/style.css">
@@ -44,7 +44,7 @@
         </a>
         
         <a href="003-ssot.html"
-           class="sidebar-link active">
+           class="sidebar-link">
             <span class="sidebar-icon">📄</span>
             第3話 スキル物語 「記録して」と言ったらSSOTに勝手に入る話
         </a>
@@ -56,7 +56,7 @@
         </a>
         
         <a href="023.html"
-           class="sidebar-link">
+           class="sidebar-link active">
             <span class="sidebar-icon">📄</span>
             第5話 スキル物語 「比較して」と言ったら選択肢を深掘りして推奨まで出してきた話
         </a>
@@ -187,49 +187,33 @@
     <main class="content">
         <div class="chapter-nav-top">
             
-            <a href="003.html" class="nav-prev">← 第2話 スキル物語 「おはよう」と言ったら昨日が戻ってきた話</a>
+            <a href="002-llm.html" class="nav-prev">← 第4話 スキル物語 「マルチLLMレビューして」と言ったら別々の目で見てくれる話</a>
             
             
-            <a href="002-llm.html" class="nav-next">第4話 スキル物語 「マルチLLMレビューして」と言ったら別々の目で見てくれる話 →</a>
+            <a href="024-ssot.html" class="nav-next">第6話 スキル物語 「SSOTから探して」と言ったら過去の失敗を掘り返してきた話 →</a>
             
         </div>
 
-        <div class="episode-badge">第3話</div>
+        <div class="episode-badge">第5話</div>
         <article class="chapter-body">
-            <p>&lt;!-- published: 2026-09-03 / 種別: 使い方解説 / 対象スキル: ssot-record --&gt;</p>
-<h1>第3話 スキル物語 「記録して」と言ったらSSOTに勝手に入る話</h1>
+            <p>&lt;!-- published: 2026-09-12 / 種別: 使い方解説 / 対象スキル: sentaku --&gt;</p>
+<h1>第5話 スキル物語 「比較して」と言ったら選択肢を深掘りして推奨まで出してきた話</h1>
 <h2>いつ困る？</h2>
-<p>作業が一段落した時「これは後から見直したい」と思う。何をどこに残すのが正解かが分からず、結局メモ帳を開いて散文を書いたり、Slack に貼って埋もれさせたり、Obsidian を直接開いてフォルダ階層を迷ったり。書く場所より書く後で「見当たらない」ことの方が怖くて、記録すること自体を先延ばしにしがちだ。</p>
+<p>何かを作ったり直したりするとき、選択肢が3つも4つも出てきて<strong>決められない</strong>ことがあります。</p>
+<p>それぞれ一長一短。メリットとデメリットを並べられても、結局「で、どれがいいの？」で止まる。全部自分で調べて比べるのは時間がかかるし、いまいちの選択で後悔するのはもっと嫌です。意思決定のたびにエネルギーを取られるのも、積もり積もって疲れます。</p>
 <h2>こう言うと起こること</h2>
-<p>「記録して」「保存して」「SSOTに入れて」を CC に投げる。裏側では ssot-record スキルが「技術的決定の経緯か、ガイド追記か、ジャケットなプロジェクト固有の作業か」を自動で判定し、保管場所・タグ・関連リンクを機械的に組み立てて、SSOT の日記とインデックスまで連動して書き込んでくれる。「これ残して」「決定事項にして」「構想メモ」と付け加えると、工事の合間のぼんやりした考えを正式な決定に昇格させて残す構想モードに切り替わる。書き手はお題だけ、配置と書き方は全部おまかせ。</p>
-<pre class="mermaid">flowchart TB
-    A[&quot;📝「記録して」&quot;] --&gt; B[&quot;どこに保存すべきか自動判定&quot;]
-    B --&gt; C[&quot;判断の記録・設定・日記へ振り分け&quot;]
-    C --&gt; D[&quot;関連ファイルにもリンクを張る&quot;]
-    D --&gt; E[&quot;保存して同期まで ✅&quot;]
-</pre>
+<p>そんなとき「<strong>比較して</strong>」「<strong>メリデメ教えて</strong>」「<strong>お勧めは？</strong>」と言います。</p>
+<p>するとAIは、候補を並べて眺めるだけでなく、<strong>評価の軸を決めて点数化</strong>し、深掘りして、最後に「推奨はこれ・理由はこれ」まで持ってきます。単なる一覧表ではなく、5段階の深さがあります。軽い相談なら候補を固定して比べるだけ。重い決断なら、候補を増やしたり、複数のAIに反対意見を言わせて論争させたり、過去の自分の判断記録と照合して「前に似た局面でどう決めたか」まで引いてきます。</p>
+<p>大事なのは、<strong>最後まで責任を持って推奨を出す</strong>こと。「ふくけいの判断で」で投げ返されない。提案された内容に納得できなければ、深掘りの過程が全部残っているので、どこが違うと感じたのかを指摘してやり直せます。</p>
 <h2>何が変わるか</h2>
-<p>「記録しようかな」で止まる日がなくなり、毎セッションの終わりに「記録して」の一言で SSOT が肥えていく。日記・<code>_INDEX.md</code>・関連リンクが自動で繋がるので、後からgrep すれば自分でも意外な切り口から辿れる。「このとき何が背景だったか」が人に頼らず残るようになり、長期プロジェクトの判断根拠が資産として育つ。後輩にも自分にも、覚えていない判断の理由を必ず渡せる。</p>
+<p>「選択肢の羅列を読んで疲れる」から「推奨と理由だけ読んで決める」に変わりました。</p>
+<p>決断の質が上がるだけでなく、<strong>過去にどう決めてきたかが蓄積</strong>されるので、同じ種類の判断で二度同じ議論を繰り返さなくなります。保留した判断も記録に残るので、「あれ、あのときどうするって言ってたっけ？」がなくなります。</p>
 <p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどうなってるか&lt;/summary&gt;</p>
-<h3>仕組み</h3>
 <ul>
-<li>6つのフェーズ（フェーズ0：情報収集 → フェーズ0.8：過去経緯の確認 → フェーズ1：LLM 自身による判定 → フェーズ2：ふくけい承認 → フェーズ3：記録作成+ 逆リンク → フェーズ6：完了報告）で構成</li>
-<li>判定の高速ルートは「目的が技術的意思決定か、ガイド追記か、ジャケットなプロジェクト固有作業か」で振り分け（SSOT の特性カタログ準拠）</li>
-<li>「01_DECISIONS に書くか・正典と同場所に置くか・別のフォルダか」は LLM が検索して決めて、ッカがアプローチで「なんでこの保管場所か」を 1 文で表明する</li>
-<li>関連パターンは「過去 7 日 ∪ 直近 5 件」を温存・連想する「ナナナナ方式」（Nd 補完）で過去記録と接続し、「無い」と決めつける前に必ず再検索する</li>
-</ul>
-<h3>注意点</h3>
-<ul>
-<li>01_DECISIONS への手動 Write は PreToolUse hook にブロックされ、スキル経由のフラグが立っている時だけ通過する</li>
-<li>構想モード（「これ残して」系）では 01_DECISIONS ではなくバックログ.md の該当タスク直下に📝WIPメモ追加となる（真実のソースを分散させないため）</li>
-<li>「ゼロ件」「見つからない」断定は慎重・再検索プロトコル必須</li>
-<li>1 セッション内の ssot-record 呼び出し回数はカウンタファイルで数えられ、続けて2回以上記録した時はセッション横断総括（フェーズ7.5）が発火候補になる</li>
-</ul>
-<h3>由来情報（要約のみ・原文URLなし）</h3>
-<ul>
-<li>設計正典: SSOTの <code>~/.claude/skills/ssot-record/SKILL.md</code>（13のフェーズ・関連パターンのN/H/R 3値ルールなど）</li>
-<li>運用ルール: SSOTの <code>~/.claude/rules/_shared/記録.md</code>（「後で書く」禁止・構想の永続化など）</li>
-<li>代替先として <code>:ssot-record</code> / <code>:ssot-search</code> / <code>:reflection</code> の並ぶスキル一覧</li>
+<li><strong>スキル</strong>: sentaku（選択肢の深掘り比較→淘汰→推奨）。5段階の深さ: L1=候補3点固定 → L1.5=案拡張 → L2=評価軸マトリクス → L3=複数LLM弁証論 → L4=過去判断照合</li>
+<li><strong>連携</strong>: brainstorming（設計全体の深掘り）と棲み分け・teian（軽量提案）から深掘り要求を受け取る。multi-llm-review（複数AIレビュー）と組み合わせて集団サボりバイアスにも対抗</li>
+<li><strong>過去判断照合（L4）</strong>: SSOTの判断記録・バックログを照合し「同じ種類の判断で以前どう決めたか」を参照。sentaku L2での実装コスト過大評価バイアスへの注意も運用ルール化</li>
+<li><strong>経緯</strong>: 「提案して」で選択肢だけ並べられて決められない問題を解消するため設計</li>
 </ul>
 <p>&lt;/details&gt;</p>
 
@@ -237,15 +221,15 @@
 
         <nav class="chapter-nav-bottom">
             
-            <a href="003.html" class="nav-card prev">
+            <a href="002-llm.html" class="nav-card prev">
                 <span class="nav-label">← 前の章</span>
-                <span class="nav-title">📄 第2話 スキル物語 「おはよう」と言ったら昨日が戻ってきた話</span>
+                <span class="nav-title">📄 第4話 スキル物語 「マルチLLMレビューして」と言ったら別々の目で見てくれる話</span>
             </a>
             
             
-            <a href="002-llm.html" class="nav-card next">
+            <a href="024-ssot.html" class="nav-card next">
                 <span class="nav-label">次の章 →</span>
-                <span class="nav-title">📄 第4話 スキル物語 「マルチLLMレビューして」と言ったら別々の目で見てくれる話</span>
+                <span class="nav-title">📄 第6話 スキル物語 「SSOTから探して」と言ったら過去の失敗を掘り返してきた話</span>
             </a>
             
         </nav>

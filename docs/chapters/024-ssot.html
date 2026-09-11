@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第3話 スキル物語 「記録して」と言ったらSSOTに勝手に入る話 — CC Stories</title>
-    <meta name="description" content="CC Stories — 作業の物語集: 第3話 スキル物語 「記録して」と言ったらSSOTに勝手に入る話">
-    <meta property="og:title" content="第3話 スキル物語 「記録して」と言ったらSSOTに勝手に入る話 — CC Stories">
-    <meta property="og:description" content="第3話 スキル物語 「記録して」と言ったらSSOTに勝手に入る話 — 専門用語なしの物語と技術解説のペア">
+    <title>第6話 スキル物語 「SSOTから探して」と言ったら過去の失敗を掘り返してきた話 — CC Stories</title>
+    <meta name="description" content="CC Stories — 作業の物語集: 第6話 スキル物語 「SSOTから探して」と言ったら過去の失敗を掘り返してきた話">
+    <meta property="og:title" content="第6話 スキル物語 「SSOTから探して」と言ったら過去の失敗を掘り返してきた話 — CC Stories">
+    <meta property="og:description" content="第6話 スキル物語 「SSOTから探して」と言ったら過去の失敗を掘り返してきた話 — 専門用語なしの物語と技術解説のペア">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/003-ssot.html">
+    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/024-ssot.html">
     <meta property="og:image" content="https://fukukei23.github.io/cc-stories-guide/assets/ogp.png">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="../assets/style.css">
@@ -44,7 +44,7 @@
         </a>
         
         <a href="003-ssot.html"
-           class="sidebar-link active">
+           class="sidebar-link">
             <span class="sidebar-icon">📄</span>
             第3話 スキル物語 「記録して」と言ったらSSOTに勝手に入る話
         </a>
@@ -62,7 +62,7 @@
         </a>
         
         <a href="024-ssot.html"
-           class="sidebar-link">
+           class="sidebar-link active">
             <span class="sidebar-icon">📄</span>
             第6話 スキル物語 「SSOTから探して」と言ったら過去の失敗を掘り返してきた話
         </a>
@@ -187,49 +187,35 @@
     <main class="content">
         <div class="chapter-nav-top">
             
-            <a href="003.html" class="nav-prev">← 第2話 スキル物語 「おはよう」と言ったら昨日が戻ってきた話</a>
+            <a href="023.html" class="nav-prev">← 第5話 スキル物語 「比較して」と言ったら選択肢を深掘りして推奨まで出してきた話</a>
             
             
-            <a href="002-llm.html" class="nav-next">第4話 スキル物語 「マルチLLMレビューして」と言ったら別々の目で見てくれる話 →</a>
+            <a href="006.html" class="nav-next">第7話 スキル物語 「定期実行作って」と言ったら排他込みで組んでくれる話 →</a>
             
         </div>
 
-        <div class="episode-badge">第3話</div>
+        <div class="episode-badge">第6話</div>
         <article class="chapter-body">
-            <p>&lt;!-- published: 2026-09-03 / 種別: 使い方解説 / 対象スキル: ssot-record --&gt;</p>
-<h1>第3話 スキル物語 「記録して」と言ったらSSOTに勝手に入る話</h1>
+            <p>&lt;!-- published: 2026-09-12 / 種別: 使い方解説 / 対象スキル: ssot-search --&gt;</p>
+<h1>第6話 スキル物語 「SSOTから探して」と言ったら過去の失敗を掘り返してきた話</h1>
 <h2>いつ困る？</h2>
-<p>作業が一段落した時「これは後から見直したい」と思う。何をどこに残すのが正解かが分からず、結局メモ帳を開いて散文を書いたり、Slack に貼って埋もれさせたり、Obsidian を直接開いてフォルダ階層を迷ったり。書く場所より書く後で「見当たらない」ことの方が怖くて、記録すること自体を先延ばしにしがちだ。</p>
+<p>半年前、一年前に解決したはずの問題が、ふとした拍子に<strong>形を変えて戻ってくる</strong>ことがあります。</p>
+<p>「これ、前にも調べた気がするんだけど、どこに書いてあったっけ？」「あのとき採用をやめた方法を、また試そうとしていないか？」——記録は山ほどあるのに、必要な瞬間に引き出せなければ、記録していないのと同じです。最悪なのは、<strong>同じ轍を二度踏む</strong>こと。一度やめたはずの方法を、誰も過去の経緯を覚えていなくて再採用してしまう。</p>
 <h2>こう言うと起こること</h2>
-<p>「記録して」「保存して」「SSOTに入れて」を CC に投げる。裏側では ssot-record スキルが「技術的決定の経緯か、ガイド追記か、ジャケットなプロジェクト固有の作業か」を自動で判定し、保管場所・タグ・関連リンクを機械的に組み立てて、SSOT の日記とインデックスまで連動して書き込んでくれる。「これ残して」「決定事項にして」「構想メモ」と付け加えると、工事の合間のぼんやりした考えを正式な決定に昇格させて残す構想モードに切り替わる。書き手はお題だけ、配置と書き方は全部おまかせ。</p>
-<pre class="mermaid">flowchart TB
-    A[&quot;📝「記録して」&quot;] --&gt; B[&quot;どこに保存すべきか自動判定&quot;]
-    B --&gt; C[&quot;判断の記録・設定・日記へ振り分け&quot;]
-    C --&gt; D[&quot;関連ファイルにもリンクを張る&quot;]
-    D --&gt; E[&quot;保存して同期まで ✅&quot;]
-</pre>
+<p>そんなとき「<strong>SSOTから探して</strong>」「<strong>過去の決定を探して</strong>」と言います。</p>
+<p>するとAIは、記録庫（SSOT）を横断して、キーワードに関係する記録を探し出します。コツは<strong>探し方</strong>で、技術名ではなく「解決したい課題の名前」で探すのが鉄則です。たとえば「Amazonの在庫監視を作りたい」とき、技術名で検索しても過去の記録にヒットしません。「スクレイピング」「bot対策」「HTTP取得」といった<strong>課題の言葉</strong>で探して初めて、3ヶ月前に別の道具で同じ問題を解決した記録が見つかる。</p>
+<p>見つかった記録は「決定の経緯・なぜそうしたか・失敗の条件」まで含めて提示されるので、過去の自分の判断を引き継いだ上で、新しく考えるべき部分だけに集中できます。</p>
 <h2>何が変わるか</h2>
-<p>「記録しようかな」で止まる日がなくなり、毎セッションの終わりに「記録して」の一言で SSOT が肥えていく。日記・<code>_INDEX.md</code>・関連リンクが自動で繋がるので、後からgrep すれば自分でも意外な切り口から辿れる。「このとき何が背景だったか」が人に頼らず残るようになり、長期プロジェクトの判断根拠が資産として育つ。後輩にも自分にも、覚えていない判断の理由を必ず渡せる。</p>
+<p>「記録はしてあるけど探せない」が「話しかければ出てくる」に変わりました。</p>
+<p>効果は地味ですが大きい。<strong>同じ調査を二度しない</strong>。<strong>やめたはずの方法を再試行しない</strong>。実際、ある外部サービスの有料プランが必須だと思い込んでいた件が、調べたら自宅の別プロジェクトで3ヶ月前に無料で解決済みだった——という発見も、この探し方の改善から生まれています。</p>
+<p>なお、記録を探すのではなく「SSOTと現実がズレてないかの点検」をしたいときは、別の道具（整合性チェッカー）の担当。<strong>「SSOT確認して」は探す・「SSOT点検して」は検査する</strong>——似た言葉ですが、役割分担ははっきり分かれています。</p>
 <p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどうなってるか&lt;/summary&gt;</p>
-<h3>仕組み</h3>
 <ul>
-<li>6つのフェーズ（フェーズ0：情報収集 → フェーズ0.8：過去経緯の確認 → フェーズ1：LLM 自身による判定 → フェーズ2：ふくけい承認 → フェーズ3：記録作成+ 逆リンク → フェーズ6：完了報告）で構成</li>
-<li>判定の高速ルートは「目的が技術的意思決定か、ガイド追記か、ジャケットなプロジェクト固有作業か」で振り分け（SSOT の特性カタログ準拠）</li>
-<li>「01_DECISIONS に書くか・正典と同場所に置くか・別のフォルダか」は LLM が検索して決めて、ッカがアプローチで「なんでこの保管場所か」を 1 文で表明する</li>
-<li>関連パターンは「過去 7 日 ∪ 直近 5 件」を温存・連想する「ナナナナ方式」（Nd 補完）で過去記録と接続し、「無い」と決めつける前に必ず再検索する</li>
-</ul>
-<h3>注意点</h3>
-<ul>
-<li>01_DECISIONS への手動 Write は PreToolUse hook にブロックされ、スキル経由のフラグが立っている時だけ通過する</li>
-<li>構想モード（「これ残して」系）では 01_DECISIONS ではなくバックログ.md の該当タスク直下に📝WIPメモ追加となる（真実のソースを分散させないため）</li>
-<li>「ゼロ件」「見つからない」断定は慎重・再検索プロトコル必須</li>
-<li>1 セッション内の ssot-record 呼び出し回数はカウンタファイルで数えられ、続けて2回以上記録した時はセッション横断総括（フェーズ7.5）が発火候補になる</li>
-</ul>
-<h3>由来情報（要約のみ・原文URLなし）</h3>
-<ul>
-<li>設計正典: SSOTの <code>~/.claude/skills/ssot-record/SKILL.md</code>（13のフェーズ・関連パターンのN/H/R 3値ルールなど）</li>
-<li>運用ルール: SSOTの <code>~/.claude/rules/_shared/記録.md</code>（「後で書く」禁止・構想の永続化など）</li>
-<li>代替先として <code>:ssot-record</code> / <code>:ssot-search</code> / <code>:reflection</code> の並ぶスキル一覧</li>
+<li><strong>スキル</strong>: ssot-search（obsidian-ssot横断検索・v1=字句検索/v2=意味検索の2方式）</li>
+<li><strong>v2の実力</strong>: 意味検索（RAG）で Recall@5=0.744・v1（ripgrep+rerank）は0.026——「言葉が違う記録」を拾うには意味検索が必須という実測がある（v1を「実測した」と誤報告した事故が教訓）</li>
+<li><strong>検索のコツ</strong>: 技術名ではなく課題の抽象キーワード（3語以上・同義語・上位概念を含む）で探す運用ルール。curl_cffi事案（既存実装を見落とし有料前提で設計しかけた）が発火のきっかけ</li>
+<li><strong>連携</strong>: 技術タスク着手時の必須検索ルール・brainstorming Phase 0 で自動発火</li>
+<li><strong>所在</strong>: SSOT の検索ガイド（ssot-search v2章・Recall実測値つき）</li>
 </ul>
 <p>&lt;/details&gt;</p>
 
@@ -237,15 +223,15 @@
 
         <nav class="chapter-nav-bottom">
             
-            <a href="003.html" class="nav-card prev">
+            <a href="023.html" class="nav-card prev">
                 <span class="nav-label">← 前の章</span>
-                <span class="nav-title">📄 第2話 スキル物語 「おはよう」と言ったら昨日が戻ってきた話</span>
+                <span class="nav-title">📄 第5話 スキル物語 「比較して」と言ったら選択肢を深掘りして推奨まで出してきた話</span>
             </a>
             
             
-            <a href="002-llm.html" class="nav-card next">
+            <a href="006.html" class="nav-card next">
                 <span class="nav-label">次の章 →</span>
-                <span class="nav-title">📄 第4話 スキル物語 「マルチLLMレビューして」と言ったら別々の目で見てくれる話</span>
+                <span class="nav-title">📄 第7話 スキル物語 「定期実行作って」と言ったら排他込みで組んでくれる話</span>
             </a>
             
         </nav>
