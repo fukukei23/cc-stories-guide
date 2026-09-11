@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>検問の穴を塞ぐと別の穴が開いて、最後は自分の違和感が正しかった話 — CC Stories</title>
-    <meta name="description" content="CC Stories — 作業の物語集: 検問の穴を塞ぐと別の穴が開いて、最後は自分の違和感が正しかった話">
-    <meta property="og:title" content="検問の穴を塞ぐと別の穴が開いて、最後は自分の違和感が正しかった話 — CC Stories">
-    <meta property="og:description" content="検問の穴を塞ぐと別の穴が開いて、最後は自分の違和感が正しかった話 — 専門用語なしの物語と技術解説のペア">
+    <title>第5話 作業物語 「自動で呟かせる前夜、調べたら地雷が一杯だった話」 — CC Stories</title>
+    <meta name="description" content="CC Stories — 作業の物語集: 第5話 作業物語 「自動で呟かせる前夜、調べたら地雷が一杯だった話」">
+    <meta property="og:title" content="第5話 作業物語 「自動で呟かせる前夜、調べたら地雷が一杯だった話」 — CC Stories">
+    <meta property="og:description" content="第5話 作業物語 「自動で呟かせる前夜、調べたら地雷が一杯だった話」 — 専門用語なしの物語と技術解説のペア">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/018.html">
+    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/005.html">
     <meta property="og:image" content="https://fukukei23.github.io/cc-stories-guide/assets/ogp.png">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="../assets/style.css">
@@ -68,7 +68,7 @@
         </a>
         
         <a href="005.html"
-           class="sidebar-link">
+           class="sidebar-link active">
             <span class="sidebar-icon">📄</span>
             第5話 作業物語 「自動で呟かせる前夜、調べたら地雷が一杯だった話」
         </a>
@@ -146,7 +146,7 @@
         </a>
         
         <a href="018.html"
-           class="sidebar-link active">
+           class="sidebar-link">
             <span class="sidebar-icon">📄</span>
             検問の穴を塞ぐと別の穴が開いて、最後は自分の違和感が正しかった話
         </a>
@@ -169,49 +169,57 @@
     <main class="content">
         <div class="chapter-nav-top">
             
-            <a href="017-ai.html" class="nav-prev">← AIに下調べの省略をさせない検問を作った話</a>
+            <a href="004.html" class="nav-prev">← 第4話 作業物語 「歌詞は合ってるのに、なぜか曲が盛り上がらない話」</a>
             
             
-            <a href="019-ai.html" class="nav-next">第19話 作業物語 「曲作って」と言ったらAIの癖に振り回されない道具立てになっていた話 →</a>
+            <a href="006.html" class="nav-next">第6話 スキル物語 「定期実行作って」と言ったら排他込みで組んでくれる話 →</a>
             
         </div>
 
-        <div class="episode-badge">第18話</div>
+        <div class="episode-badge">第5話</div>
         <article class="chapter-body">
-            <p>&lt;!-- published: 2026-09-08 / 種別: 事故解決 --&gt;</p>
-<h1>検問の穴を塞ぐと別の穴が開いて、最後は自分の違和感が正しかった話</h1>
-<p>前回、「書き物を保存する前に必ず通る検問」を作った話をした。今回はその続き。検問をさらに固くする改修をしたら、<strong>穴を塞ぐたびに別の穴が開く</strong>という連鎖に巻き込まれ、最後は「全部の点検が合格になった後」に、点検係であるこのAI自身の違和感を掘ったら、ずっと前から壊れていた部分が出てきた——という話。</p>
+            <p>&lt;!-- published: 2026-09-12 / 種別: できごと（事故未然防止）/ 対象: x-automation --&gt;</p>
+<h1>第5話 作業物語 「自動で呟かせる前夜、調べたら地雷が一杯だった話」</h1>
 <h2>困ったこと</h2>
-<p>検問を作った直後、審査員役のAIたちから「もっと細かい抜け道がある」と指摘が来た。直して「これで完璧」と思ったら、別の審査員が「その直し方だと、特別扱いフォルダと<strong>名前の一部だけ</strong>同じ場所を通すと、また素通りできる」と指摘する。直し方を変えると、今度はその直し方が別の抜け道を作っていた。水漏れパイプのテープを巻き直すたびに、漏れる場所が少し移動していく——そういう感覚だった。</p>
+<p>「過去に書いた記事をXで自動で呟いて宣伝したい」——そう設計を始めたとき、初期案はシンプルだった。記事のURLを貼った投稿を、定期的に機械で並べる。テスト投稿も成功して、あとは回すだけ、のはずだった。</p>
+<p>ところが公開直前の調査で、その初期案がほぼ全部裏目だと分かった。<strong>リンク付き投稿は届く人数が大きく減る</strong>らしい。さらに利用規約では、似たような投稿の自動連投は明確なアウト。つまり「安全に見えて便利」なはずの設計が、実は<strong>届かない上に凍結リスクあり</strong>の両取りだった。</p>
 <h2>どう解決したか</h2>
-<p>3種類のAI審査員に、**毎回「前回の審査内容は教えずに」**3回見てもらった。1回目と2回目で本当に新しい穴が2つ見つかり、直し方は「入り口から測るか、出口から測るかを混ぜない」という一本の規則にまとまった。3回目は新しい穴ゼロ。ところが最後に、点検係のこのAI自身が引っかいた。「エラーの説明文が、いつも同じ決まり文句しか出ないな」。掘ってみると、検問本体とは別の場所で、<strong>検問を作った時から説明文が壊れ続けていた</strong>のが分かった。直すと、かつて「間違っていた」と捨てた審査員の指摘まで、実は正しかったことが分かった。</p>
+<p>道具をいじるのをやめて、まず<strong>土地のルールを調べることにした</strong>。</p>
+<p>分かったことは率直だった。テキストだけの投稿が一番届く。人とのやり取り（返信）の評価が「いいね」の百倍以上重い。投稿直後の反応がその後の広がりを決める。そして一番の地雷は「機械らしさ」——自動投稿しかしない存在は、凍結判定の中心にいる。似た文面の連投も、少し言い換えただけでも短時間ならアウト。</p>
+<p>そこで戦略を組み替えた。リンクは本文に流さず言葉で語る。投稿間隔は余裕を持って空ける。AIが作った文はそのまま流さず手を入れる。そして自動は「全部」ではなく「補助」という位置に格下げした。<strong>速度より生存</strong>。凍結されたら復帰はほぼ望めないので、設計思想ごとそっちに寄せた。</p>
 <h2>何が変わったか</h2>
-<p>点検が全部緑になっても、安心しなくなった。「直すと別のところが壊れる」のは異常ではなく普通のことになり、直し方そのものに一本の規則を持つようになった。一番大きいのは、<strong>「指摘の一部が間違っていても、指摘の結論は正しいことがある」と知った</strong>こと。機械の点検は全部通った。でもその後も「あれ？」という違和感は、掘る価値があった。違和感は、根拠になる。</p>
-<p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどう作ったか&lt;/summary&gt;</p>
-<p>対象は自作の記録強制検問（PreToolUse hook・enforce-ssot-record.sh）。M2改修として、ハブ対象ファイルの照合をfnmatch化（bash case・スラッシュ無しglob単体はbasename照合で過剰block解消）+file_path契約外入力（欠落・非文字列・空・不正JSON）のfail-closed化を実装。</p>
-<p>3機MLR（MiniMax/Gemini/OpenRouter無料枠・blind・triple）3ラウンドの経過:</p>
+<p>「自動で呟く道具」を作るはずだった時間が、「Xという土地の気質を学ぶ時間」になった。</p>
+<p>始める前に地図を読んだおかげで、最初の一発で凍結リスクのない設計にできた。後から直す（＝凍結されてから直す）と取り返しがつかない領域だから、この調査時間は安かった。何かを自動化するとき、<strong>道具の仕様より先に、その世界の規約と気質を調べる</strong>——これはXに限らず、どの土地でも同じなのかもしれない。</p>
+<p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどうなってるか&lt;/summary&gt;</p>
 <ul>
-<li>r1（32指摘・採用6）: 相対パス <code>00_SYSTEM/...</code> で <code>${x##*/00_SYSTEM/}</code> が先頭プレフィックスを剥がせずfail-open（critical・bash実測で再現）→ <code>#*00_SYSTEM/</code> に修正</li>
-<li>r2（28指摘・採用4）: その修復が <code>my_00_SYSTEM/00_SYSTEM/...</code> 型の前方部分一致ディレクトリ名で誤剥がしする<strong>2個目のfail-open</strong>を産んでいたことが判明 → 先頭相対のみ <code>#00_SYSTEM/</code>・それ以外 <code>##*/00_SYSTEM/</code> のハイブリッドに修正</li>
-<li>r3（13指摘・採用2）: 新規fail-openゼロで収束打ち切り。採用はmarker検証応答のok二重確認など防御経路の二重化</li>
-<li>事後（CC自己点検）: VERIFY_REASON抽出のbash二重クォート内 <code>replace('\\','/')</code> がエスケープで Python SyntaxError になり、M1導入時から block 文面の理由が常に常套句化していたのを発見・chr(92)で修復。この発見により、r2で「実測否定」したMiniMax指摘（M2R3）の<strong>結論は正しかった</strong>ことが確定し、遅延採用として再分類（メカニズムの否定を実測できた安心感で結論の下流検証を省略した自己バイアスを事例として実例集に記録）</li>
+<li><strong>調査方法</strong>: Web検索4クエリ + 別ベンダーのAIにセカンドオピニオンを依頼（確度を3段階でラベル分け）</li>
+<li><strong>判明した主要事実</strong>（公開情報ベース）:
+<ul>
+<li>外部リンク付き投稿はリーチペナルティ30-50%（Xの公開アルゴリズムコードで確認）・リンクを外しただけで+1,700%のA/Bテスト例あり</li>
+<li>テキストのみの投稿は動画より約30%有利（Xはテキストが強い唯一の主要SNSとされる）</li>
+<li>返信のスコアは「いいね」の約150倍・投稿直後30分の反応がその後の推薦に効く</li>
+<li>規約: 同一・類似投稿の自動連投は禁止（72時間以内の類似はNG目安・最低3時間間隔）</li>
+<li>API投稿の安全圏は15-20件/日以下・「AI生成を編集なしで連投」はスパムフラグ対象</li>
 </ul>
-<p>累計: 73指摘・採用12・fail-open実バグ2個+表示バグ1個修復・回帰テスト47件全緑・本番発火テスト（block/allow両経路）実測。詳細記録はSSOT内部に保存（非公開）。</p>
+</li>
+<li><strong>再設計結果</strong>: リンク無しテキスト中心・長間隔・人手との併用を前提とした設計へ変更</li>
+<li><strong>所在</strong>: SSOT のX運用プロジェクト記録（2026-07-02付）・原文URL非公開（内部到達経路遮断）</li>
+</ul>
 <p>&lt;/details&gt;</p>
 
         </article>
 
         <nav class="chapter-nav-bottom">
             
-            <a href="017-ai.html" class="nav-card prev">
+            <a href="004.html" class="nav-card prev">
                 <span class="nav-label">← 前の章</span>
-                <span class="nav-title">📄 AIに下調べの省略をさせない検問を作った話</span>
+                <span class="nav-title">📄 第4話 作業物語 「歌詞は合ってるのに、なぜか曲が盛り上がらない話」</span>
             </a>
             
             
-            <a href="019-ai.html" class="nav-card next">
+            <a href="006.html" class="nav-card next">
                 <span class="nav-label">次の章 →</span>
-                <span class="nav-title">📄 第19話 作業物語 「曲作って」と言ったらAIの癖に振り回されない道具立てになっていた話</span>
+                <span class="nav-title">📄 第6話 スキル物語 「定期実行作って」と言ったら排他込みで組んでくれる話</span>
             </a>
             
         </nav>

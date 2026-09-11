@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>検問の穴を塞ぐと別の穴が開いて、最後は自分の違和感が正しかった話 — CC Stories</title>
-    <meta name="description" content="CC Stories — 作業の物語集: 検問の穴を塞ぐと別の穴が開いて、最後は自分の違和感が正しかった話">
-    <meta property="og:title" content="検問の穴を塞ぐと別の穴が開いて、最後は自分の違和感が正しかった話 — CC Stories">
-    <meta property="og:description" content="検問の穴を塞ぐと別の穴が開いて、最後は自分の違和感が正しかった話 — 専門用語なしの物語と技術解説のペア">
+    <title>第4話 作業物語 「歌詞は合ってるのに、なぜか曲が盛り上がらない話」 — CC Stories</title>
+    <meta name="description" content="CC Stories — 作業の物語集: 第4話 作業物語 「歌詞は合ってるのに、なぜか曲が盛り上がらない話」">
+    <meta property="og:title" content="第4話 作業物語 「歌詞は合ってるのに、なぜか曲が盛り上がらない話」 — CC Stories">
+    <meta property="og:description" content="第4話 作業物語 「歌詞は合ってるのに、なぜか曲が盛り上がらない話」 — 専門用語なしの物語と技術解説のペア">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/018.html">
+    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/004.html">
     <meta property="og:image" content="https://fukukei23.github.io/cc-stories-guide/assets/ogp.png">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="../assets/style.css">
@@ -62,7 +62,7 @@
         </a>
         
         <a href="004.html"
-           class="sidebar-link">
+           class="sidebar-link active">
             <span class="sidebar-icon">📄</span>
             第4話 作業物語 「歌詞は合ってるのに、なぜか曲が盛り上がらない話」
         </a>
@@ -146,7 +146,7 @@
         </a>
         
         <a href="018.html"
-           class="sidebar-link active">
+           class="sidebar-link">
             <span class="sidebar-icon">📄</span>
             検問の穴を塞ぐと別の穴が開いて、最後は自分の違和感が正しかった話
         </a>
@@ -169,49 +169,55 @@
     <main class="content">
         <div class="chapter-nav-top">
             
-            <a href="017-ai.html" class="nav-prev">← AIに下調べの省略をさせない検問を作った話</a>
+            <a href="003-ssot.html" class="nav-prev">← 第5話 スキル物語 「記録して」と言ったらSSOTに勝手に入る話</a>
             
             
-            <a href="019-ai.html" class="nav-next">第19話 作業物語 「曲作って」と言ったらAIの癖に振り回されない道具立てになっていた話 →</a>
+            <a href="005.html" class="nav-next">第5話 作業物語 「自動で呟かせる前夜、調べたら地雷が一杯だった話」 →</a>
             
         </div>
 
-        <div class="episode-badge">第18話</div>
+        <div class="episode-badge">第4話</div>
         <article class="chapter-body">
-            <p>&lt;!-- published: 2026-09-08 / 種別: 事故解決 --&gt;</p>
-<h1>検問の穴を塞ぐと別の穴が開いて、最後は自分の違和感が正しかった話</h1>
-<p>前回、「書き物を保存する前に必ず通る検問」を作った話をした。今回はその続き。検問をさらに固くする改修をしたら、<strong>穴を塞ぐたびに別の穴が開く</strong>という連鎖に巻き込まれ、最後は「全部の点検が合格になった後」に、点検係であるこのAI自身の違和感を掘ったら、ずっと前から壊れていた部分が出てきた——という話。</p>
+            <p>&lt;!-- published: 2026-09-12 / 種別: できごと（反復解消）/ 対象スキル: make-song --&gt;</p>
+<h1>第4話 作業物語 「歌詞は合ってるのに、なぜか曲が盛り上がらない話」</h1>
 <h2>困ったこと</h2>
-<p>検問を作った直後、審査員役のAIたちから「もっと細かい抜け道がある」と指摘が来た。直して「これで完璧」と思ったら、別の審査員が「その直し方だと、特別扱いフォルダと<strong>名前の一部だけ</strong>同じ場所を通すと、また素通りできる」と指摘する。直し方を変えると、今度はその直し方が別の抜け道を作っていた。水漏れパイプのテープを巻き直すたびに、漏れる場所が少し移動していく——そういう感覚だった。</p>
+<p>AIに曲を作ってもらうようになって、ある違和感がぬぐえなくなった。</p>
+<p>歌詞のチェックはちゃんとしている。音の数（音節）がメロディに収まっているか、力強い言葉が入っているか、行ごとの長さに波があるか——全部、文字を見て機械的に数えて合格にしている。それなのに、いざ鳴らしてみると<strong>モノトーンな曲</strong>がときどき混じる。「高音で歌って」と指示したはずなのに、低いまま歌っている。文字の点数は満点なのに、耳は不合格と言う。</p>
 <h2>どう解決したか</h2>
-<p>3種類のAI審査員に、**毎回「前回の審査内容は教えずに」**3回見てもらった。1回目と2回目で本当に新しい穴が2つ見つかり、直し方は「入り口から測るか、出口から測るかを混ぜない」という一本の規則にまとまった。3回目は新しい穴ゼロ。ところが最後に、点検係のこのAI自身が引っかいた。「エラーの説明文が、いつも同じ決まり文句しか出ないな」。掘ってみると、検問本体とは別の場所で、<strong>検問を作った時から説明文が壊れ続けていた</strong>のが分かった。直すと、かつて「間違っていた」と捨てた審査員の指摘まで、実は正しかったことが分かった。</p>
+<p>原因は、<strong>文字しか見ていなかった</strong>ことだった。</p>
+<p>歌詞に「胸を張れ」という力強い言葉があれば合格にしていたけれど、実際にその音が高いところで歌われているかは、誰も確かめていなかった。そこで音源そのものを解析することにした。音の高さの平均位置を測れば「本当に中高音を使っているか」が分かるし、音程のゆれ幅を測れば「本当に抑揚があるか」が分かる。さらに面白いのは、文字の点数と音の実測を<strong>半々で混ぜて評価</strong>するようにしたこと。言葉の設計と、実際に鳴った音——両方で初めて「良い曲」だと判定できるようになった。</p>
 <h2>何が変わったか</h2>
-<p>点検が全部緑になっても、安心しなくなった。「直すと別のところが壊れる」のは異常ではなく普通のことになり、直し方そのものに一本の規則を持つようになった。一番大きいのは、<strong>「指摘の一部が間違っていても、指摘の結論は正しいことがある」と知った</strong>こと。機械の点検は全部通った。でもその後も「あれ？」という違和感は、掘る価値があった。違和感は、根拠になる。</p>
+<p>「文字で合っているのに曲が微妙」という手詰まりが消えた。</p>
+<p>満点でも、耳が不合格なら音源側の実測が教えてくれる。逆に、文字では地味でも鳴らしてみたらよく響く曲が見つかることもある。チェックの軸を「設計」と「実測」の二枚にしたことで、AIとの曲作りが<strong>作って終わり</strong>から<strong>鳴らして確かめる</strong>に変わった。何事も、計画の点数と成果物の実測、両方を見ないと分からない——音楽でも。</p>
 <p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどう作ったか&lt;/summary&gt;</p>
-<p>対象は自作の記録強制検問（PreToolUse hook・enforce-ssot-record.sh）。M2改修として、ハブ対象ファイルの照合をfnmatch化（bash case・スラッシュ無しglob単体はbasename照合で過剰block解消）+file_path契約外入力（欠落・非文字列・空・不正JSON）のfail-closed化を実装。</p>
-<p>3機MLR（MiniMax/Gemini/OpenRouter無料枠・blind・triple）3ラウンドの経過:</p>
 <ul>
-<li>r1（32指摘・採用6）: 相対パス <code>00_SYSTEM/...</code> で <code>${x##*/00_SYSTEM/}</code> が先頭プレフィックスを剥がせずfail-open（critical・bash実測で再現）→ <code>#*00_SYSTEM/</code> に修正</li>
-<li>r2（28指摘・採用4）: その修復が <code>my_00_SYSTEM/00_SYSTEM/...</code> 型の前方部分一致ディレクトリ名で誤剥がしする<strong>2個目のfail-open</strong>を産んでいたことが判明 → 先頭相対のみ <code>#00_SYSTEM/</code>・それ以外 <code>##*/00_SYSTEM/</code> のハイブリッドに修正</li>
-<li>r3（13指摘・採用2）: 新規fail-openゼロで収束打ち切り。採用はmarker検証応答のok二重確認など防御経路の二重化</li>
-<li>事後（CC自己点検）: VERIFY_REASON抽出のbash二重クォート内 <code>replace('\\','/')</code> がエスケープで Python SyntaxError になり、M1導入時から block 文面の理由が常に常套句化していたのを発見・chr(92)で修復。この発見により、r2で「実測否定」したMiniMax指摘（M2R3）の<strong>結論は正しかった</strong>ことが確定し、遅延採用として再分類（メカニズムの否定を実測できた安心感で結論の下流検証を省略した自己バイアスを事例として実例集に記録）</li>
+<li><strong>背景</strong>: Phase 1で歌詞文字列ベースの3軸評価（音節密度・中高音使用率・抑揚幅）を実装していたが、文字面の指標は「歌詞のデザイン」しか担保せず「実測の音響」を保証していなかった（AI音楽生成のモデリング不確実性で音高がブレる）</li>
+<li><strong>Phase 2の実測化</strong>: 生成音源（wav）を Python の音声解析ライブラリ（librosa）で解析
+<ul>
+<li>軸B（中高音使用率）: スペクトル重心（spectral_centroid）の頻度分布から A4(440Hz) 以上の比率を実測</li>
+<li>軸C（抑揚幅）: pYIN 音程推定で音高時系列を取得 → 標準偏差を実測値に採用</li>
 </ul>
-<p>累計: 73指摘・採用12・fail-open実バグ2個+表示バグ1個修復・回帰テスト47件全緑・本番発火テスト（block/allow両経路）実測。詳細記録はSSOT内部に保存（非公開）。</p>
+</li>
+<li><strong>評価融合</strong>: 各軸 = 実測値と文字列ベース値の加重平均（初期は各50%・1-2ヶ月の運用統計で重みを再調整予定）</li>
+<li><strong>品質ゲート</strong>: check_song_quality.py を拡張しテーブル+CSVで各セクションの数値を出力</li>
+<li><strong>開発方式</strong>: TDD先行・既存17テストを参照に新テスト設計</li>
+<li><strong>所在</strong>: SSOT の音楽制作プロジェクト記録（2026-07-12付・Phase 2記録）・原文URL非公開（内部到達経路遮断）</li>
+</ul>
 <p>&lt;/details&gt;</p>
 
         </article>
 
         <nav class="chapter-nav-bottom">
             
-            <a href="017-ai.html" class="nav-card prev">
+            <a href="003-ssot.html" class="nav-card prev">
                 <span class="nav-label">← 前の章</span>
-                <span class="nav-title">📄 AIに下調べの省略をさせない検問を作った話</span>
+                <span class="nav-title">📄 第5話 スキル物語 「記録して」と言ったらSSOTに勝手に入る話</span>
             </a>
             
             
-            <a href="019-ai.html" class="nav-card next">
+            <a href="005.html" class="nav-card next">
                 <span class="nav-label">次の章 →</span>
-                <span class="nav-title">📄 第19話 作業物語 「曲作って」と言ったらAIの癖に振り回されない道具立てになっていた話</span>
+                <span class="nav-title">📄 第5話 作業物語 「自動で呟かせる前夜、調べたら地雷が一杯だった話」</span>
             </a>
             
         </nav>
