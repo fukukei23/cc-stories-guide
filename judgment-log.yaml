@@ -107,3 +107,9 @@ entries:
   confidence: 高
   episode: '025'
   file: 025_記録してと言ったら書込先を決めるまでに5回も検問された話.md
+- date: 2026-09-15
+  type: 設計議論
+  reason: ssot-recordマルチ起点再設計のセクション3・スコア式+4禁止条件が「設計の美と実装の摩擦」の好例で物語性高い
+  confidence: 高
+  episode: '026'
+  file: 026_ssot-record保存先の判定を機械に任せようとして構造化禁止条件を増やしすぎた話.md
