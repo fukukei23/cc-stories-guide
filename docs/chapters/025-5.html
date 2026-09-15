@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>記録してと言ったら書込先を決めるまでに5回も検問された話 — CC Stories</title>
+    <meta name="description" content="CC Stories — 作業の物語集: 記録してと言ったら書込先を決めるまでに5回も検問された話">
+    <meta property="og:title" content="記録してと言ったら書込先を決めるまでに5回も検問された話 — CC Stories">
+    <meta property="og:description" content="記録してと言ったら書込先を決めるまでに5回も検問された話 — 専門用語なしの物語と技術解説のペア">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/025-5.html">
+    <meta property="og:image" content="https://fukukei23.github.io/cc-stories-guide/assets/ogp.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="../assets/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+</head>
+<body>
+    <header class="site-header">
+        <button class="menu-toggle" aria-label="メニュー" id="menuToggle">
+            <span></span><span></span><span></span>
+        </button>
+        <a href="../index.html" class="site-title">📚 CC Stories</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="テーマ切替">
+            <span class="icon-light">☀️</span>
+            <span class="icon-dark">🌙</span>
+        </button>
+    </header>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="../index.html">🏠 ホーム</a>
+        </div>
+        
+        <a href="022.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第1話 スキル物語 「引き継ぎ」と言ったら明日の自分に手紙を書いてくれた話
+        </a>
+        
+        <a href="003.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第2話 スキル物語 「おはよう」と言ったら昨日が戻ってきた話
+        </a>
+        
+        <a href="003-ssot.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第3話 スキル物語 「記録して」と言ったらSSOTに勝手に入る話
+        </a>
+        
+        <a href="002-llm.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第4話 スキル物語 「マルチLLMレビューして」と言ったら別々の目で見てくれる話
+        </a>
+        
+        <a href="023.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第5話 スキル物語 「比較して」と言ったら選択肢を深掘りして推奨まで出してきた話
+        </a>
+        
+        <a href="024-ssot.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第6話 スキル物語 「SSOTから探して」と言ったら過去の失敗を掘り返してきた話
+        </a>
+        
+        <a href="006.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第7話 スキル物語 「定期実行作って」と言ったら排他込みで組んでくれる話
+        </a>
+        
+        <a href="007.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第8話 スキル物語 「今夜はミニマックス」と言ったら裏側のレート制限を切り替えてくれる話
+        </a>
+        
+        <a href="008-5.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第9話 スキル物語 「返信文を書いて」と言ったら5禁止に気をつけて整えてくれる話
+        </a>
+        
+        <a href="009.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第10話 スキル物語 「リポジトリレビューして」と言ったら品質を点数で出してくれる話
+        </a>
+        
+        <a href="010-dev-cycle.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第11話 スキル物語 「dev-cycle」と言うと開発のサイクルが一巡する話
+        </a>
+        
+        <a href="001.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第1話 「テストは充分？」という一言
+        </a>
+        
+        <a href="002.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第2話 防災フックが鳴らなかった話
+        </a>
+        
+        <a href="004.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第4話 作業物語 「歌詞は合ってるのに、なぜか曲が盛り上がらない話」
+        </a>
+        
+        <a href="005.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第5話 作業物語 「自動で呟かせる前夜、調べたら地雷が一杯だった話」
+        </a>
+        
+        <a href="011-youtubeai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第11話 スキル物語 「YouTubeを投げる」と言ったら生成AI用プロンプト仕様書が出てくる話
+        </a>
+        
+        <a href="012-commit3.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            他の作業を巻き込んでcommitする事故を3つの見張り役で潰した話
+        </a>
+        
+        <a href="013-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AIにファイルを書き換えさせる前に「いいですか？」と聞かせる話
+        </a>
+        
+        <a href="014-ai3.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AIの直し提案が3体そろって否定された話
+        </a>
+        
+        <a href="015-1.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            設定を1枚の帳票に集めて書き忘れ事故を潰した話
+        </a>
+        
+        <a href="016-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AI審査員の盲点を人間の一言と説明書の改良で塞いだ話
+        </a>
+        
+        <a href="017-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AIに下調べの省略をさせない検問を作った話
+        </a>
+        
+        <a href="018.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            検問の穴を塞ぐと別の穴が開いて、最後は自分の違和感が正しかった話
+        </a>
+        
+        <a href="019-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第19話 作業物語 「曲作って」と言ったらAIの癖に振り回されない道具立てになっていた話
+        </a>
+        
+        <a href="021-reverse-engineer-song.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            013の次に見えた「聴くだけじゃ足りない」
+        </a>
+        
+        <a href="025-5.html"
+           class="sidebar-link active">
+            <span class="sidebar-icon">📄</span>
+            記録してと言ったら書込先を決めるまでに5回も検問された話
+        </a>
+        
+    </nav>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main class="content">
+        <div class="chapter-nav-top">
+            
+            <a href="021-reverse-engineer-song.html" class="nav-prev">← 013の次に見えた「聴くだけじゃ足りない」</a>
+            
+            
+        </div>
+
+        <div class="episode-badge">第25話</div>
+        <article class="chapter-body">
+            <p>&lt;!-- published: 2026-09-15 / 種別: 新仕様 --&gt;</p>
+<h1>記録してと言ったら書込先を決めるまでに5回も検問された話</h1>
+<h2>困ったこと</h2>
+<p>「記録して」と言うだけなのに、AIが書き込む場所を一発で見つけられない日々が続いていました。01_DECISIONS（決定の正典）・00_SYSTEM（仕組みの正典）・10_DAILY（日記）など保管場所が複数あって、内容に応じて振り分ける必要がある。さらに「書き込む前に守るべき禁止条件」と「書き込む場所を絞り込む判定」が同じレイヤで扱われていたため、責務が混ざり、どこかでミスをすると全部やり直しになる構造でした。</p>
+<h2>どう解決したか</h2>
+<p>「検問」を5つのフェーズに分けて、それぞれに責務を持たせました。</p>
+<ul>
+<li><strong>入口の検問</strong>（hook）: 保管場所のカタログに無い書き込みを即却下</li>
+<li><strong>構造の検問</strong>（Phase 0.5a）: 既存ファイルを上書きしない・構想メモを消さないという「形」の禁止</li>
+<li><strong>判定</strong>（Phase 1）: タグ・ハブ・特性の3軸で0.0〜1.0のスコアを出し、T1〜T5の信頼度ラベルで振り分け先を確定</li>
+<li><strong>意味の検問</strong>（Phase 3-0）: タグマップの更新漏れやリンク切れを、実行直前にバリデーション</li>
+<li><strong>実行</strong>（Phase 2）: 振り分け結果を画面で見せてから、yesで連携更新</li>
+</ul>
+<p>「検問を分ける」ことで、hookは最小責務に保ったまま、判定の精度はスコアで数量化できました。</p>
+<h2>何が変わったか</h2>
+<p>「記録して」から書き込みまでの流れが、データフローとして図で追えるようになりました。6種類の失敗×4種類の対応=24マトリクスで「何がどうなったらどうするか」が網羅され、新しい失敗が起きても対応パターンを組み合わせれば対処できます。Sonnetに10件レビューされて指摘の大半が反映された結果、責務分離の脆さがほぼ消えました。</p>
+<p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどう作ったか&lt;/summary&gt;</p>
+<ul>
+<li>仕様書: obsidian-ssot 01_DECISIONS/claude-code/2026-07-12_ssot-recordマルチ起点再設計-セクション3-データフロー判定アルゴリズム（615行）</li>
+<li>旧: 禁止条件と判定が同一レイヤで混在 → 新: 構造禁止（hook）と意味禁止（実行前バリデーション）に分離</li>
+<li>Phase 0.5a → 1 → 3-0 → 2 → 3-1〜3-7 の順で「禁止→判定→検証→確認→実行」を直線化</li>
+<li>階層ラベル L1-L5 → T1-T5 にリネーム（既存 L1/L2/L3 との衝突回避）</li>
+<li>スコアリング: <code>total_score = tag*0.4 + hub*0.3 + char*0.3</code> で0.0〜1.0に正規化し、T1(0.8+)〜T5(&lt;0.2)で振り分け</li>
+<li>6失敗×4対応=24マトリクスで失敗パターンを網羅</li>
+<li>経緯: Sonnetレビューで10点採用・旧設計の責務混在を解消</li>
+<li>状態: 2026-09-10に別件（実行主体不在）で凍結・参考設計書として保持
+&lt;/details&gt;</li>
+</ul>
+
+        </article>
+
+        <nav class="chapter-nav-bottom">
+            
+            <a href="021-reverse-engineer-song.html" class="nav-card prev">
+                <span class="nav-label">← 前の章</span>
+                <span class="nav-title">📄 013の次に見えた「聴くだけじゃ足りない」</span>
+            </a>
+            
+            
+        </nav>
+    </main>
+
+    <footer class="site-footer">
+        <p>CC Stories — <a href="https://github.com/fukukei23/cc-stories-guide">GitHub</a>
+         · <a href="https://fukukei23.github.io/ssot-guide/">SSOT Guide</a>
+         · <a href="https://fukukei23.github.io/loop-engineering-guide/">Loop Engineering Guide</a>
+         · <a href="https://fukukei23.github.io/guides/">技術ガイド集</a>
+         · <a href="https://fukukei23.github.io/">fukukei23</a></p>
+    </footer>
+
+    <script src="../assets/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default',
+            themeVariables: { fontSize: '14px' }
+        });
+    </script>
+</body>
+</html>
