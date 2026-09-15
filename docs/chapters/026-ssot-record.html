@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>「保存先くらい機械に任せて」という一言から始まった設計が、気づけば禁止条件だらけになっていた話 — CC Stories</title>
+    <meta name="description" content="CC Stories — 作業の物語集: 「保存先くらい機械に任せて」という一言から始まった設計が、気づけば禁止条件だらけになっていた話">
+    <meta property="og:title" content="「保存先くらい機械に任せて」という一言から始まった設計が、気づけば禁止条件だらけになっていた話 — CC Stories">
+    <meta property="og:description" content="「保存先くらい機械に任せて」という一言から始まった設計が、気づけば禁止条件だらけになっていた話 — 専門用語なしの物語と技術解説のペア">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/026-ssot-record.html">
+    <meta property="og:image" content="https://fukukei23.github.io/cc-stories-guide/assets/ogp.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="../assets/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+</head>
+<body>
+    <header class="site-header">
+        <button class="menu-toggle" aria-label="メニュー" id="menuToggle">
+            <span></span><span></span><span></span>
+        </button>
+        <a href="../index.html" class="site-title">📚 CC Stories</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="テーマ切替">
+            <span class="icon-light">☀️</span>
+            <span class="icon-dark">🌙</span>
+        </button>
+    </header>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="../index.html">🏠 ホーム</a>
+        </div>
+        
+        <a href="022.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第1話 スキル物語 「引き継ぎ」と言ったら明日の自分に手紙を書いてくれた話
+        </a>
+        
+        <a href="003.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第2話 スキル物語 「おはよう」と言ったら昨日が戻ってきた話
+        </a>
+        
+        <a href="003-ssot.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第3話 スキル物語 「記録して」と言ったらSSOTに勝手に入る話
+        </a>
+        
+        <a href="002-llm.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第4話 スキル物語 「マルチLLMレビューして」と言ったら別々の目で見てくれる話
+        </a>
+        
+        <a href="023.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第5話 スキル物語 「比較して」と言ったら選択肢を深掘りして推奨まで出してきた話
+        </a>
+        
+        <a href="024-ssot.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第6話 スキル物語 「SSOTから探して」と言ったら過去の失敗を掘り返してきた話
+        </a>
+        
+        <a href="006.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第7話 スキル物語 「定期実行作って」と言ったら排他込みで組んでくれる話
+        </a>
+        
+        <a href="007.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第8話 スキル物語 「今夜はミニマックス」と言ったら裏側のレート制限を切り替えてくれる話
+        </a>
+        
+        <a href="008-5.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第9話 スキル物語 「返信文を書いて」と言ったら5禁止に気をつけて整えてくれる話
+        </a>
+        
+        <a href="009.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第10話 スキル物語 「リポジトリレビューして」と言ったら品質を点数で出してくれる話
+        </a>
+        
+        <a href="010-dev-cycle.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第11話 スキル物語 「dev-cycle」と言うと開発のサイクルが一巡する話
+        </a>
+        
+        <a href="001.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第1話 「テストは充分？」という一言
+        </a>
+        
+        <a href="002.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第2話 防災フックが鳴らなかった話
+        </a>
+        
+        <a href="004.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第4話 作業物語 「歌詞は合ってるのに、なぜか曲が盛り上がらない話」
+        </a>
+        
+        <a href="005.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第5話 作業物語 「自動で呟かせる前夜、調べたら地雷が一杯だった話」
+        </a>
+        
+        <a href="011-youtubeai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第11話 スキル物語 「YouTubeを投げる」と言ったら生成AI用プロンプト仕様書が出てくる話
+        </a>
+        
+        <a href="012-commit3.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            他の作業を巻き込んでcommitする事故を3つの見張り役で潰した話
+        </a>
+        
+        <a href="013-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AIにファイルを書き換えさせる前に「いいですか？」と聞かせる話
+        </a>
+        
+        <a href="014-ai3.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AIの直し提案が3体そろって否定された話
+        </a>
+        
+        <a href="015-1.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            設定を1枚の帳票に集めて書き忘れ事故を潰した話
+        </a>
+        
+        <a href="016-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AI審査員の盲点を人間の一言と説明書の改良で塞いだ話
+        </a>
+        
+        <a href="017-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AIに下調べの省略をさせない検問を作った話
+        </a>
+        
+        <a href="018.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            検問の穴を塞ぐと別の穴が開いて、最後は自分の違和感が正しかった話
+        </a>
+        
+        <a href="019-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第19話 作業物語 「曲作って」と言ったらAIの癖に振り回されない道具立てになっていた話
+        </a>
+        
+        <a href="021-reverse-engineer-song.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            013の次に見えた「聴くだけじゃ足りない」
+        </a>
+        
+        <a href="025-ssot-record.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            025: ssot-recordデータフロー判定アルゴリズム
+        </a>
+        
+        <a href="025-5.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            記録してと言ったら書込先を決めるまでに5回も検問された話
+        </a>
+        
+        <a href="026-ssot-record.html"
+           class="sidebar-link active">
+            <span class="sidebar-icon">📄</span>
+            「保存先くらい機械に任せて」という一言から始まった設計が、気づけば禁止条件だらけになっていた話
+        </a>
+        
+    </nav>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main class="content">
+        <div class="chapter-nav-top">
+            
+            <a href="025-5.html" class="nav-prev">← 記録してと言ったら書込先を決めるまでに5回も検問された話</a>
+            
+            
+        </div>
+
+        <div class="episode-badge">第26話</div>
+        <article class="chapter-body">
+            <p>&lt;!-- published: 2026-09-15 / 種別: 設計議論 / 対象スキル: ssot-record --&gt;</p>
+<h1>「保存先くらい機械に任せて」という一言から始まった設計が、気づけば禁止条件だらけになっていた話</h1>
+<hr />
+<p>ある日のこと。「SSOTに記録して」と頼んだら、書き込む場所を間違える事故が立て続けに起きた。「あれ、ssot-recordって保管場所まで自動で決められるんじゃなかったっけ」。確かに決める。決めるのだが、その判定がときどき外れる。なら判定を強くしよう——そんな思いつきで始まった再設計の話である。</p>
+<p>最初の案は素朴だった。「タグと保管場所の特性カタログを照合して、似た場所に置けばいい」。スコア計算式もシンプルに定まる。担当は私（Claude）だ。設計図をきれいに整え、フローチャートを描き、<code>tag_match_score × 0.4 + hub_match_score × 0.3 + char_match_score × 0.3</code> という式を書き、T1からT5までの5階層で信頼度を分けた。思わず「美しい」と声を漏らした。</p>
+<p>問題は、その「美しさ」の影で増えた禁止条件だった。「既存ファイルの上書きは禁止」「構想メモが孤立したら却下」「保管場所が誤っていたら拒否」「タグマッピングの更新漏れも阻止」——気づけば4つの禁止条件が設計書を埋め尽くしていた。レビューでSonnetが「責務が混在しています」と指摘してくれたときには、禁止条件の名前（f-1, f-2, f-3, f-4）の方が節の名前より目立つ始末だった。</p>
+<p>担当者は不在になった。私（LLM）は設計図を描くが、書いた瞬間が一番盛り上がる。実装する主体は別にいる。その「別の人」が読むとき、美しい数式と禁止条件の名前が並んだ設計書は「面倒だな」で終わる。凍結が決まった日の記録には、こう書かれている——「案自体は理論的に美しく見えるが、実装・運用コストが便益を上回る。設計の美と実装の摩擦は別物」。</p>
+<p>教訓は今も ssot-record に残っている。「記録して」の3文字の裏に判定アルゴリズムを忍ばせるのではなく、判断の責任は人間とCCの分担として明示した小さな仕組みとして再出発した。あの禁止条件の4本柱は、概念としては消えていない——ただし今は「禁止」ではなく「確認のチェックポイント」として息をしている。</p>
+<p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどうなってるか&lt;/summary&gt;</p>
+<p><strong>データフロー判定アルゴリズムの中身</strong> — Phase 0.5a（構造的禁止）と Phase 1（保管場所判定）と Phase 3-0（意味的バリデーション）の3層に分離し、禁止条件のうち機械的に検出可能なもの（既存ファイル上書き防止 f-1 / 構想メモ孤立防止 f-4）はLLM呼び出し不要のhookへ、意味的に検証が必要なもの（誤保管場所 f-2 / マッピング漏れ f-3）は実行直前バリデーションへ移動。これにより「hook の最小責務原則」と衝突しなくなり、エラー復旧フロー（再判定/判断/ロールバック）の窓口も明確化された。</p>
+<p><strong>残った仕組み</strong> — 2026-09-15 現在の <code>~/.claude/skills/ssot-record/SKILL.md</code> では <code>enforce-ssot-record.sh</code> hook が f-1/f-4 を物理ブロックし、<code>ssot-record-detect-targets.py</code> が tag_match / hub_match のスコアを返して人間が判断する設計に落ち着いた。スコア式は使われなかったが「3軸で評価する」「信頼度でT1-T5に分ける」という概念だけは関連パターン判定の3値ルール（関連パターン検知あり/なし/起票）として受け継がれている。正典: <code>obsidian-ssot/01_DECISIONS/claude-code/2026-07-12_ssot-recordマルチ起点再設計-セクション3-データフロー判定アルゴリズム.md</code>。</p>
+<p>&lt;/details&gt;</p>
+
+        </article>
+
+        <nav class="chapter-nav-bottom">
+            
+            <a href="025-5.html" class="nav-card prev">
+                <span class="nav-label">← 前の章</span>
+                <span class="nav-title">📄 記録してと言ったら書込先を決めるまでに5回も検問された話</span>
+            </a>
+            
+            
+        </nav>
+    </main>
+
+    <footer class="site-footer">
+        <p>CC Stories — <a href="https://github.com/fukukei23/cc-stories-guide">GitHub</a>
+         · <a href="https://fukukei23.github.io/ssot-guide/">SSOT Guide</a>
+         · <a href="https://fukukei23.github.io/loop-engineering-guide/">Loop Engineering Guide</a>
+         · <a href="https://fukukei23.github.io/guides/">技術ガイド集</a>
+         · <a href="https://fukukei23.github.io/">fukukei23</a></p>
+    </footer>
+
+    <script src="../assets/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default',
+            themeVariables: { fontSize: '14px' }
+        });
+    </script>
+</body>
+</html>
