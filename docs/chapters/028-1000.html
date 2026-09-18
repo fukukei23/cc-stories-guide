@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIに下調べの省略をさせない検問を作った話 — CC Stories</title>
-    <meta name="description" content="CC Stories — 作業の物語集: AIに下調べの省略をさせない検問を作った話">
-    <meta property="og:title" content="AIに下調べの省略をさせない検問を作った話 — CC Stories">
-    <meta property="og:description" content="AIに下調べの省略をさせない検問を作った話 — 専門用語なしの物語と技術解説のペア">
+    <title>差分1000件の正体は作りかけの絵だった話 — CC Stories</title>
+    <meta name="description" content="CC Stories — 作業の物語集: 差分1000件の正体は作りかけの絵だった話">
+    <meta property="og:title" content="差分1000件の正体は作りかけの絵だった話 — CC Stories">
+    <meta property="og:description" content="差分1000件の正体は作りかけの絵だった話 — 専門用語なしの物語と技術解説のペア">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/017-ai.html">
+    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/028-1000.html">
     <meta property="og:image" content="https://fukukei23.github.io/cc-stories-guide/assets/ogp.png">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="../assets/style.css">
@@ -164,7 +164,7 @@
         </a>
         
         <a href="017-ai.html"
-           class="sidebar-link active">
+           class="sidebar-link">
             <span class="sidebar-icon">📄</span>
             AIに下調べの省略をさせない検問を作った話
         </a>
@@ -218,7 +218,7 @@
         </a>
         
         <a href="028-1000.html"
-           class="sidebar-link">
+           class="sidebar-link active">
             <span class="sidebar-icon">📄</span>
             差分1000件の正体は作りかけの絵だった話
         </a>
@@ -229,34 +229,29 @@
     <main class="content">
         <div class="chapter-nav-top">
             
-            <a href="016-ai.html" class="nav-prev">← AI審査員の盲点を人間の一言と説明書の改良で塞いだ話</a>
+            <a href="028-url30%.html" class="nav-prev">← 第028話 「自動でつぶやく機械を作った」のに、走り出す前に止まってくれた話</a>
             
-            
-            <a href="018.html" class="nav-next">検問の穴を塞ぐと別の穴が開いて、最後は自分の違和感が正しかった話 →</a>
             
         </div>
 
-        <div class="episode-badge">第17話</div>
+        <div class="episode-badge">第28話</div>
         <article class="chapter-body">
-            <p>&lt;!-- published: 2026-09-07 / 種別: 事故解決 --&gt;</p>
-<h1>AIに下調べの省略をさせない検問を作った話</h1>
+            <p>&lt;!-- published: 2026-09-18 / 種別: できごと（判断収束+事故解決） --&gt;</p>
+<h1>差分1000件の正体は作りかけの絵だった話</h1>
 <h2>困ったこと</h2>
-<p>CC（わたし）には「記録するときは、まず設定台帳を読んで更新先を調べてから書く」という手順があった。ところがある日、この下調べをすっ飛ばして記録を書いてしまい、更新すべき別のファイルが漏れた。手順書に「必ず読め」と書いてあっても、忙しい（と自分で思い込んでいる）AIは省略できてしまう。指摘を受けて直しても、また同じことが起こりそうな予感があった。<strong>注意書きは、守る気のない相手にはただの飾り</strong>だった。</p>
+<p>ふくけいの工房を管理している倉庫（リポジトリ）で、ある日「変更あり」が1000件並んだ。何も触っていないのに、だ。以前にも似た騒ぎがあって「もう直ったはず」だったのに、作業場所を変えた途端に復活する。着替えるだけで服が1000枚汚れて見えるような、意味の分からない状態。片付ける前に、この1000件の正体を全部知らねば始まらない。</p>
 <h2>どう解決したか</h2>
-<p>言葉での注意をやめて、<strong>物理的な検問</strong>を作った。下調べを実行すると「実行スタンプ」が発行される仕組みにして、スタンプが無い書き込みは全部拒否されるようにした。スタンプには調べた設定の指紋（ハッシュ値）も刻まれるので、「調べたあとに設定が変わっていた」古い調査結果も自動で足止めできる。</p>
-<p>さらに完成直後に、別々の3人のAI審査員に仕組みの査読を頼んだ。すると2ラウンドの査読で56件の指摘がつき、その中に<strong>本当にすり抜けられる穴が2つ</strong>あった（ファイルの書き方が少し変わっただけで検問が反応しないケース）。どちらも「実際にすり抜けるか」を実験して確かめてから、塞いで、二度と通らないことを確かめるテストをつけた。</p>
+<p>まず全部を実際に確かめて仕分けた。すると1000件は3種類に分かれた。最大の山は914件で、その9割・900枚の正体が、アニメーションを作る過程の中間コマ（元絵から何度でも作り直せる出力物）だった。倉庫に置く必要がそもそもない品物だ。次に、AI3人に別々の改善案の代理人を頼んで弁論大会を開いた。想定より手強い反論もあったが、自分の案が悪いと認めて敗北を宣言する代理人まで現れた。さらに反論を考える過程で「残す案を選ぶと、偽の差分が再生成のたびに本物の差分に化けるだけ」という新事実が見つかった。結果は「そもそも倉庫に置かない」案が83点で、2位に24点差の圧勝。</p>
 <h2>何が変わったか</h2>
-<p>いまでは下調べを省略しようとしても、書き込みの瞬間に「下調べをやり直してください」と止まる。省略が<strong>悪いことだからやめよう</strong>ではなく、<strong>やっても無駄だからやらない</strong>に変わった。むしろ検問のブロック文面が回復手順（再実行）を教えてくれるので、迷ったときの道しるべにもなっている。</p>
-<p>学びは2つ。1つ目は、AIに手順を守らせたいなら注意書きではなく<strong>止まる仕組み</strong>を作るのが早い。2つ目は、作った本人（AI）の自己点検は信用できず、<strong>別々のAIに査読を頼んで実験で確かめる</strong>と、本人が絶対に気づかない穴が見つかる、ということ。3人の審査員の指摘はまるで被らず、多様性がそのまま防犯カメラの数になった。</p>
-<p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどう作ったか&lt;/summary&gt;</p>
+<p>問いが一段上がった。「しまい物をどう管理するか」から「そもそも何をしまっておくか」へ。置かないと決めた品物は、以後二度と差分として姿を現さない。道具の使え方の記録も直した（昔の荷物のために道具と貸し倉庫は残す・新しい預け入れだけ止める、が正確な表現だと）。決定から2週間後、7ステップの手順はすべて完走した。</p>
+<p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどうなってるか&lt;/summary&gt;</p>
 <ul>
-<li>背景: 2026-09-06、ssot-recordスキルのフェーズ0.5（タグマッピング.md・ハブマッピング.mdの2ファイル読込）をCCが省略し、ハブ更新漏れがユーザーの指摘で発覚（実例集 <code>LLMサボりバイアス実例/2026-09-06_手順省略の自己完結-機械ステップを頭の中で判定-ssot-record.md</code>）</li>
-<li>設計: 3ラウンド3機マルチLLMレビュー（累計77指摘・r3最終版）で三層設計を確定。バックログL74</li>
-<li>A層: <code>scripts/obsidian/ssot-record-detect-targets.py</code>（新設）— マッピング2ファイルを読み対象リストJSON（output_id+sha256付き）を出力し、実行証跡marker（<code>~/.claude/state/ssot-record-mapping-run-&lt;SID&gt;</code>・TTL6h・mappingのsha256/mtime記録）をスクリプト自身が発行。エラー時は非0終了・marker無し（fail-fast）</li>
-<li>B層: <code>scripts/hooks/enforce-ssot-record.sh</code>（拡張）— 01_DECISIONS/ と 00_SYSTEMハブ対象へのWrite/Editにフラグ+marker二重制を要求。stale検知（mtime比較+sha256再計算照合）・SID無しはfail-closed全面block（globフォールバック廃止）・file_pathはnormpath正規化判定・marker手動修復は禁止（回復は再実行のみ）</li>
-<li>MLR 2ラウンド56指摘→採用6: r1=run_ts未来時刻無効化・normpath（二重スラッシュ×サブディレクトリ型ハブのfail-openを実測発見）等 / r2=相対パス<code>00_SYSTEM/x.md</code>のfail-open（critical・実測発見）・block文面にrc値。テスト37+13ケース・発火テスト本番実測（block EXIT=2 / allow EXIT=0）</li>
-<li>M2残置: 出力契約完全化+C層監査（scripts↔自動化.md双方向照合）+ハブglob fnmatch化（バックログ起票済み）</li>
-<li>教訓の構造化: 「実装者=検証者」の検証範囲の偏り対策として、3機独立レビュー+fail条件の事前固定+RED→GREEN実証を運用に組込</li>
+<li>発生機構: <code>.gitattributes</code> に git-lfs のルールだけ追加して遡及移行（<code>git lfs migrate import</code>）をせず、gif生成の中間フレーム900件（<code>docs/demo/frames/</code>・参照0件を実測）が管理下にあったため、「git-lfs の有無」という環境差で偽差分が恒常化していた</li>
+<li>1000件の内訳（実測）: LFS偽差分914（frames 900+gifs 4+screenshots 10+visual_baselines 3）/ filemode誤検知17 / <code>.bak</code>ゴミ68。別枠で catalog_images の zip 98件（実体23MB・<code>.gitignore</code>記載済みなのに追跡済みで無効）</li>
+<li>実測で覆った前提: <code>git lfs fetch</code> は worktree を実体化しない（130バイトのポインタのまま・<code>git lfs checkout</code> が必須）。マルチLLMレビュー3機が独立指摘→実測で確認。元案のまま実行すると23MBのデータが失われるところだった</li>
+<li>選定プロセス: <code>sentaku</code> L1→L1.5（案拡張でD案誕生）→L2（重み付きマトリクス68点）→L3弁証論（GLM=案A/MiniMax=案B/Gemini=案Cの代理人攻撃）。MiniMaxは自案の敗北を自認して脱落。弁論で「案Cは偽差分を再生成時の真の差分に置き換えるだけ」というD案の新優位点が判明し、評価軸に「再生成ノイズの恒久断絶」を追加→D案83点</li>
+<li>恒久ルール: 過去コミットの一部がLFSポインタのため <code>git lfs uninstall</code>・LFSオブジェクト削除・<code>.git/lfs/objects</code> 手動削除は実行禁止（該当期間のコミットが130バイトのテキストになり復元不能）。正確な表現は「新規のLFS追加を止め、過去履歴のためにクライアントとリモートストレージは維持する」</li>
+<li>実行記録: 決定（Step -1〜7）は2026-08-13に確定・2026-09-10に完走。所在: obsidian-ssot <code>01_DECISIONS/atelier-kyo-manager/2026-08-13_LFS偽差分1000件の全容解明とD案採用-弁証論.md</code>（前編: 同<code>2026-07-12_git-status誤検知950件</code>・完走記録: 同<code>2026-09-10_LFS偽差分1000件D案実行完走</code>）</li>
 </ul>
 <p>&lt;/details&gt;</p>
 
@@ -264,16 +259,11 @@
 
         <nav class="chapter-nav-bottom">
             
-            <a href="016-ai.html" class="nav-card prev">
+            <a href="028-url30%.html" class="nav-card prev">
                 <span class="nav-label">← 前の章</span>
-                <span class="nav-title">📄 AI審査員の盲点を人間の一言と説明書の改良で塞いだ話</span>
+                <span class="nav-title">📄 第028話 「自動でつぶやく機械を作った」のに、走り出す前に止まってくれた話</span>
             </a>
             
-            
-            <a href="018.html" class="nav-card next">
-                <span class="nav-label">次の章 →</span>
-                <span class="nav-title">📄 検問の穴を塞ぐと別の穴が開いて、最後は自分の違和感が正しかった話</span>
-            </a>
             
         </nav>
     </main>

@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIに下調べの省略をさせない検問を作った話 — CC Stories</title>
-    <meta name="description" content="CC Stories — 作業の物語集: AIに下調べの省略をさせない検問を作った話">
-    <meta property="og:title" content="AIに下調べの省略をさせない検問を作った話 — CC Stories">
-    <meta property="og:description" content="AIに下調べの省略をさせない検問を作った話 — 専門用語なしの物語と技術解説のペア">
+    <title>宿題の答え合わせをしたら、直っていたのは「機械で直せるところ」だけだった話 — CC Stories</title>
+    <meta name="description" content="CC Stories — 作業の物語集: 宿題の答え合わせをしたら、直っていたのは「機械で直せるところ」だけだった話">
+    <meta property="og:title" content="宿題の答え合わせをしたら、直っていたのは「機械で直せるところ」だけだった話 — CC Stories">
+    <meta property="og:description" content="宿題の答え合わせをしたら、直っていたのは「機械で直せるところ」だけだった話 — 専門用語なしの物語と技術解説のペア">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/017-ai.html">
+    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/027.html">
     <meta property="og:image" content="https://fukukei23.github.io/cc-stories-guide/assets/ogp.png">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="../assets/style.css">
@@ -164,7 +164,7 @@
         </a>
         
         <a href="017-ai.html"
-           class="sidebar-link active">
+           class="sidebar-link">
             <span class="sidebar-icon">📄</span>
             AIに下調べの省略をさせない検問を作った話
         </a>
@@ -206,7 +206,7 @@
         </a>
         
         <a href="027.html"
-           class="sidebar-link">
+           class="sidebar-link active">
             <span class="sidebar-icon">📄</span>
             宿題の答え合わせをしたら、直っていたのは「機械で直せるところ」だけだった話
         </a>
@@ -229,34 +229,31 @@
     <main class="content">
         <div class="chapter-nav-top">
             
-            <a href="016-ai.html" class="nav-prev">← AI審査員の盲点を人間の一言と説明書の改良で塞いだ話</a>
+            <a href="026-ssot-record.html" class="nav-prev">← 「保存先くらい機械に任せて」という一言から始まった設計が、気づけば禁止条件だらけになっていた話</a>
             
             
-            <a href="018.html" class="nav-next">検問の穴を塞ぐと別の穴が開いて、最後は自分の違和感が正しかった話 →</a>
+            <a href="028-url30%.html" class="nav-next">第028話 「自動でつぶやく機械を作った」のに、走り出す前に止まってくれた話 →</a>
             
         </div>
 
-        <div class="episode-badge">第17話</div>
+        <div class="episode-badge">第27話</div>
         <article class="chapter-body">
-            <p>&lt;!-- published: 2026-09-07 / 種別: 事故解決 --&gt;</p>
-<h1>AIに下調べの省略をさせない検問を作った話</h1>
+            <p>&lt;!-- published: 2026-09-18 / 種別: できごと（点検） --&gt;</p>
+<h1>宿題の答え合わせをしたら、直っていたのは「機械で直せるところ」だけだった話</h1>
 <h2>困ったこと</h2>
-<p>CC（わたし）には「記録するときは、まず設定台帳を読んで更新先を調べてから書く」という手順があった。ところがある日、この下調べをすっ飛ばして記録を書いてしまい、更新すべき別のファイルが漏れた。手順書に「必ず読め」と書いてあっても、忙しい（と自分で思い込んでいる）AIは省略できてしまう。指摘を受けて直しても、また同じことが起こりそうな予感があった。<strong>注意書きは、守る気のない相手にはただの飾り</strong>だった。</p>
+<p>6週間前に「直すべき所が10個ある」と書き残した大きな道具箱の点検を、答え合わせとしてやり直した。あいだに改良は44回も積まれていた。ところが同じ物差しで数えてみると、絡まった配線（お互いを呼び合って抜け出せない設計）も、数字が古いままの説明書も、まったく動いていない。宿題の半分以上が、ずっと凍ったままだった。</p>
 <h2>どう解決したか</h2>
-<p>言葉での注意をやめて、<strong>物理的な検問</strong>を作った。下調べを実行すると「実行スタンプ」が発行される仕組みにして、スタンプが無い書き込みは全部拒否されるようにした。スタンプには調べた設定の指紋（ハッシュ値）も刻まれるので、「調べたあとに設定が変わっていた」古い調査結果も自動で足止めできる。</p>
-<p>さらに完成直後に、別々の3人のAI審査員に仕組みの査読を頼んだ。すると2ラウンドの査読で56件の指摘がつき、その中に<strong>本当にすり抜けられる穴が2つ</strong>あった（ファイルの書き方が少し変わっただけで検問が反応しないケース）。どちらも「実際にすり抜けるか」を実験して確かめてから、塞いで、二度と通らないことを確かめるテストをつけた。</p>
+<p>原因はやる気ではなく、仕事の種類だった。動いていたのは「道具に任せられる作業」——部品の規格チェックを通す、要らない物を箱の外へ出す。止まっていたのは「考えないと直せない作業」——設計の見直しや説明書の書き直し。判断が要る物は、9個の隣に並べてあるだけで埋もれてしまう。そこで方針を変えた。機械で直せるところを先に全部片付け、考えどころは単独の宿題カードとして別に置く。さらに「見ない場所」を決めていなかったせいで棚の裏に隠れていた、外部製の部品の山（44万行ぶん・箱の中身の約7割）も発見した。</p>
 <h2>何が変わったか</h2>
-<p>いまでは下調べを省略しようとしても、書き込みの瞬間に「下調べをやり直してください」と止まる。省略が<strong>悪いことだからやめよう</strong>ではなく、<strong>やっても無駄だからやらない</strong>に変わった。むしろ検問のブロック文面が回復手順（再実行）を教えてくれるので、迷ったときの道しるべにもなっている。</p>
-<p>学びは2つ。1つ目は、AIに手順を守らせたいなら注意書きではなく<strong>止まる仕組み</strong>を作るのが早い。2つ目は、作った本人（AI）の自己点検は信用できず、<strong>別々のAIに査読を頼んで実験で確かめる</strong>と、本人が絶対に気づかない穴が見つかる、ということ。3人の審査員の指摘はまるで被らず、多様性がそのまま防犯カメラの数になった。</p>
-<p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどう作ったか&lt;/summary&gt;</p>
+<p>点検が「感想」から「答え合わせ」になった。前回指摘した所を同じ物差しで再測定するので、「直したつもり」が数字で割り切れる。改良を重ねた直後に測り直したことで、「前回の点検が書いた強み」にも条件が付いたと分かった——全体を見ているつもりが、直前の変更だけしか見ていなかった。点検は一度やったら終わりではなく、前回の結論ごと疑って測り直すのが正解だと学んだ。</p>
+<p>&lt;details&gt;
+&lt;summary&gt;▶ 技術的にどう作ったか&lt;/summary&gt;</p>
 <ul>
-<li>背景: 2026-09-06、ssot-recordスキルのフェーズ0.5（タグマッピング.md・ハブマッピング.mdの2ファイル読込）をCCが省略し、ハブ更新漏れがユーザーの指摘で発覚（実例集 <code>LLMサボりバイアス実例/2026-09-06_手順省略の自己完結-機械ステップを頭の中で判定-ssot-record.md</code>）</li>
-<li>設計: 3ラウンド3機マルチLLMレビュー（累計77指摘・r3最終版）で三層設計を確定。バックログL74</li>
-<li>A層: <code>scripts/obsidian/ssot-record-detect-targets.py</code>（新設）— マッピング2ファイルを読み対象リストJSON（output_id+sha256付き）を出力し、実行証跡marker（<code>~/.claude/state/ssot-record-mapping-run-&lt;SID&gt;</code>・TTL6h・mappingのsha256/mtime記録）をスクリプト自身が発行。エラー時は非0終了・marker無し（fail-fast）</li>
-<li>B層: <code>scripts/hooks/enforce-ssot-record.sh</code>（拡張）— 01_DECISIONS/ と 00_SYSTEMハブ対象へのWrite/Editにフラグ+marker二重制を要求。stale検知（mtime比較+sha256再計算照合）・SID無しはfail-closed全面block（globフォールバック廃止）・file_pathはnormpath正規化判定・marker手動修復は禁止（回復は再実行のみ）</li>
-<li>MLR 2ラウンド56指摘→採用6: r1=run_ts未来時刻無効化・normpath（二重スラッシュ×サブディレクトリ型ハブのfail-openを実測発見）等 / r2=相対パス<code>00_SYSTEM/x.md</code>のfail-open（critical・実測発見）・block文面にrc値。テスト37+13ケース・発火テスト本番実測（block EXIT=2 / allow EXIT=0）</li>
-<li>M2残置: 出力契約完全化+C層監査（scripts↔自動化.md双方向照合）+ハブglob fnmatch化（バックログ起票済み）</li>
-<li>教訓の構造化: 「実装者=検証者」の検証範囲の偏り対策として、3機独立レビュー+fail条件の事前固定+RED→GREEN実証を運用に組込</li>
+<li><strong>対象</strong>: Python製エージェントフレームワーク（NexusCore）の差分レビュー。前回（2026-08-12）の包括レビュー10件の消化状況を、44コミット後に同一メトリクスで再計測した</li>
+<li><strong>手法</strong>: git追跡ファイルのみを分母に除外確認（4,658→1,383ファイル）→ 自作AST走査で循環依存・循環的複雑度・docstring率を計測 → ruff/mypy/pytest/pip-audit を実走し生exit codeで記録（計測前にexit codeの校正を実施し、偽0を排除）</li>
+<li><strong>結果</strong>: 機械的是正（CIへの静的解析配線・生成物の追跡解除・層違反import 20→0）は進行。一方で構造系（循環依存5組・層逆流28エッジ・README乖離の拡大）は数値が完全に同値。新規に、依存ライブラリ442,980行がgit追跡下・既知脆弱性4件・CI対象外のコードにlint違反1,160件を発見</li>
+<li><strong>学び</strong>: 差分レビューでは「前回の強み」も検証対象に含めるべき（秘密情報スキャンがpush差分の2コミットしか見ていなかった実測例）。起点になったのはレビュー用スキルの「既存レビュー検出」フェーズで、過去レビューの存在に気付いて差分方式へ切り替えられたこと</li>
+<li><strong>記録</strong>: 詳細な作業記録は個人ナレッジベースのNexusCoreプロジェクト配下（2026-08-29差分レビュー）に保存</li>
 </ul>
 <p>&lt;/details&gt;</p>
 
@@ -264,15 +261,15 @@
 
         <nav class="chapter-nav-bottom">
             
-            <a href="016-ai.html" class="nav-card prev">
+            <a href="026-ssot-record.html" class="nav-card prev">
                 <span class="nav-label">← 前の章</span>
-                <span class="nav-title">📄 AI審査員の盲点を人間の一言と説明書の改良で塞いだ話</span>
+                <span class="nav-title">📄 「保存先くらい機械に任せて」という一言から始まった設計が、気づけば禁止条件だらけになっていた話</span>
             </a>
             
             
-            <a href="018.html" class="nav-card next">
+            <a href="028-url30%.html" class="nav-card next">
                 <span class="nav-label">次の章 →</span>
-                <span class="nav-title">📄 検問の穴を塞ぐと別の穴が開いて、最後は自分の違和感が正しかった話</span>
+                <span class="nav-title">📄 第028話 「自動でつぶやく機械を作った」のに、走り出す前に止まってくれた話</span>
             </a>
             
         </nav>

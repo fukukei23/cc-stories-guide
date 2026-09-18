@@ -539,6 +539,17 @@ def main():
             "category": info.get("category", INDEX_CATEGORY_FALLBACK),
         })
 
+    # カテゴリ内を表示話数順に並べ替え（2026-09-12・話が繋がる読書順）:
+    # 番号ラベル（第N話）が無い話はファイル名順で後ろに置く（カテゴリ内のみ・跨カテゴリ順は不変）
+    def _ep_sort_key(ch):
+        try:
+            num = int(str(ch.get("number", "")))
+        except (TypeError, ValueError):
+            num = 9999
+        return (num, ch["filename"])
+
+    chapters.sort(key=lambda ch: (ch.get("category", INDEX_CATEGORY_FALLBACK),) + _ep_sort_key(ch))
+
     # 各章を変換
     for i, ch in enumerate(chapters):
         src = SOURCE_DIR / ch["filename"]

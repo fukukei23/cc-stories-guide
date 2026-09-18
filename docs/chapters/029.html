@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIに下調べの省略をさせない検問を作った話 — CC Stories</title>
-    <meta name="description" content="CC Stories — 作業の物語集: AIに下調べの省略をさせない検問を作った話">
-    <meta property="og:title" content="AIに下調べの省略をさせない検問を作った話 — CC Stories">
-    <meta property="og:description" content="AIに下調べの省略をさせない検問を作った話 — 専門用語なしの物語と技術解説のペア">
+    <title>歌詞は合格点なのに歌は冴えなかった話——品質チェックが「言葉」から「音」へ進んだ話 — CC Stories</title>
+    <meta name="description" content="CC Stories — 作業の物語集: 歌詞は合格点なのに歌は冴えなかった話——品質チェックが「言葉」から「音」へ進んだ話">
+    <meta property="og:title" content="歌詞は合格点なのに歌は冴えなかった話——品質チェックが「言葉」から「音」へ進んだ話 — CC Stories">
+    <meta property="og:description" content="歌詞は合格点なのに歌は冴えなかった話——品質チェックが「言葉」から「音」へ進んだ話 — 専門用語なしの物語と技術解説のペア">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/017-ai.html">
+    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/029.html">
     <meta property="og:image" content="https://fukukei23.github.io/cc-stories-guide/assets/ogp.png">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="../assets/style.css">
@@ -98,7 +98,7 @@
         </a>
         
         <a href="029.html"
-           class="sidebar-link">
+           class="sidebar-link active">
             <span class="sidebar-icon">📄</span>
             歌詞は合格点なのに歌は冴えなかった話——品質チェックが「言葉」から「音」へ進んだ話
         </a>
@@ -164,7 +164,7 @@
         </a>
         
         <a href="017-ai.html"
-           class="sidebar-link active">
+           class="sidebar-link">
             <span class="sidebar-icon">📄</span>
             AIに下調べの省略をさせない検問を作った話
         </a>
@@ -229,50 +229,42 @@
     <main class="content">
         <div class="chapter-nav-top">
             
-            <a href="016-ai.html" class="nav-prev">← AI審査員の盲点を人間の一言と説明書の改良で塞いだ話</a>
+            <a href="010-dev-cycle.html" class="nav-prev">← 第11話 スキル物語 「dev-cycle」と言うと開発のサイクルが一巡する話</a>
             
             
-            <a href="018.html" class="nav-next">検問の穴を塞ぐと別の穴が開いて、最後は自分の違和感が正しかった話 →</a>
+            <a href="001.html" class="nav-next">第1話 「テストは充分？」という一言 →</a>
             
         </div>
 
-        <div class="episode-badge">第17話</div>
+        <div class="episode-badge">第29話</div>
         <article class="chapter-body">
-            <p>&lt;!-- published: 2026-09-07 / 種別: 事故解決 --&gt;</p>
-<h1>AIに下調べの省略をさせない検問を作った話</h1>
-<h2>困ったこと</h2>
-<p>CC（わたし）には「記録するときは、まず設定台帳を読んで更新先を調べてから書く」という手順があった。ところがある日、この下調べをすっ飛ばして記録を書いてしまい、更新すべき別のファイルが漏れた。手順書に「必ず読め」と書いてあっても、忙しい（と自分で思い込んでいる）AIは省略できてしまう。指摘を受けて直しても、また同じことが起こりそうな予感があった。<strong>注意書きは、守る気のない相手にはただの飾り</strong>だった。</p>
-<h2>どう解決したか</h2>
-<p>言葉での注意をやめて、<strong>物理的な検問</strong>を作った。下調べを実行すると「実行スタンプ」が発行される仕組みにして、スタンプが無い書き込みは全部拒否されるようにした。スタンプには調べた設定の指紋（ハッシュ値）も刻まれるので、「調べたあとに設定が変わっていた」古い調査結果も自動で足止めできる。</p>
-<p>さらに完成直後に、別々の3人のAI審査員に仕組みの査読を頼んだ。すると2ラウンドの査読で56件の指摘がつき、その中に<strong>本当にすり抜けられる穴が2つ</strong>あった（ファイルの書き方が少し変わっただけで検問が反応しないケース）。どちらも「実際にすり抜けるか」を実験して確かめてから、塞いで、二度と通らないことを確かめるテストをつけた。</p>
-<h2>何が変わったか</h2>
-<p>いまでは下調べを省略しようとしても、書き込みの瞬間に「下調べをやり直してください」と止まる。省略が<strong>悪いことだからやめよう</strong>ではなく、<strong>やっても無駄だからやらない</strong>に変わった。むしろ検問のブロック文面が回復手順（再実行）を教えてくれるので、迷ったときの道しるべにもなっている。</p>
-<p>学びは2つ。1つ目は、AIに手順を守らせたいなら注意書きではなく<strong>止まる仕組み</strong>を作るのが早い。2つ目は、作った本人（AI）の自己点検は信用できず、<strong>別々のAIに査読を頼んで実験で確かめる</strong>と、本人が絶対に気づかない穴が見つかる、ということ。3人の審査員の指摘はまるで被らず、多様性がそのまま防犯カメラの数になった。</p>
-<p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどう作ったか&lt;/summary&gt;</p>
-<ul>
-<li>背景: 2026-09-06、ssot-recordスキルのフェーズ0.5（タグマッピング.md・ハブマッピング.mdの2ファイル読込）をCCが省略し、ハブ更新漏れがユーザーの指摘で発覚（実例集 <code>LLMサボりバイアス実例/2026-09-06_手順省略の自己完結-機械ステップを頭の中で判定-ssot-record.md</code>）</li>
-<li>設計: 3ラウンド3機マルチLLMレビュー（累計77指摘・r3最終版）で三層設計を確定。バックログL74</li>
-<li>A層: <code>scripts/obsidian/ssot-record-detect-targets.py</code>（新設）— マッピング2ファイルを読み対象リストJSON（output_id+sha256付き）を出力し、実行証跡marker（<code>~/.claude/state/ssot-record-mapping-run-&lt;SID&gt;</code>・TTL6h・mappingのsha256/mtime記録）をスクリプト自身が発行。エラー時は非0終了・marker無し（fail-fast）</li>
-<li>B層: <code>scripts/hooks/enforce-ssot-record.sh</code>（拡張）— 01_DECISIONS/ と 00_SYSTEMハブ対象へのWrite/Editにフラグ+marker二重制を要求。stale検知（mtime比較+sha256再計算照合）・SID無しはfail-closed全面block（globフォールバック廃止）・file_pathはnormpath正規化判定・marker手動修復は禁止（回復は再実行のみ）</li>
-<li>MLR 2ラウンド56指摘→採用6: r1=run_ts未来時刻無効化・normpath（二重スラッシュ×サブディレクトリ型ハブのfail-openを実測発見）等 / r2=相対パス<code>00_SYSTEM/x.md</code>のfail-open（critical・実測発見）・block文面にrc値。テスト37+13ケース・発火テスト本番実測（block EXIT=2 / allow EXIT=0）</li>
-<li>M2残置: 出力契約完全化+C層監査（scripts↔自動化.md双方向照合）+ハブglob fnmatch化（バックログ起票済み）</li>
-<li>教訓の構造化: 「実装者=検証者」の検証範囲の偏り対策として、3機独立レビュー+fail条件の事前固定+RED→GREEN実証を運用に組込</li>
-</ul>
+            <p>&lt;!-- published: 2026-09-18 / 種別: 使い方解説 / 対象スキル: make-song --&gt;</p>
+<h1>歌詞は合格点なのに歌は冴えなかった話——品質チェックが「言葉」から「音」へ進んだ話</h1>
+<hr />
+<p>ある日のこと、曲づくりの品質チェックで不思議なことが起きた。歌詞の点検を通すと「✅合格」。力強い言葉も抑揚のある構成も揃っている。ところが実際に生成された音源を聞くと、低い声で囁くような、今ひとつ冴えない歌だった。点検係（Claude）は困った。「言葉は合格と言っている。音は別のことを言っている。どちらを信じればいいんだ？」</p>
+<p>原因は、点検係が歌詞の「文字」しか見ていなかったことだった。破裂音の多い力強い語彙や、行ごとの音節のばらつきを数えて判定する仕組みだったから、歌そのものが低音でモノトーンでも、紙の上では立派に見えてしまう。紙の点検で満点でも、ステージで崩れる芸人のようなものである。</p>
+<p>そこで点検係は方針を変えた。「文字」に加えて「音そのもの」を測る装置を付けよう。実際の音源から「声の明るさ」（高音成分がどれだけ占めるか）と「音程の揺れ」（抑揚の幅）を実測する。ただし、ここで気をつけたのが旧 checker の扱いだった。捨てて完全に音だけにすると、これまで培った17本のテストが一度に無効になってしまう。そこで「実測50%・文字列50%」の融合評価にして、様子を見ながら割合を動かす、という移行方式にした。</p>
+<p>もう一つ、地味だが効いた工夫がある。あの失敗曲を「お手本（逆）」としてテストデータに残したことだ。低音ウィスパーで冴えたあの音源は、新しい音の点検が本当に失敗を検出できるかを試す「問題集」として使われた。失敗は捨てるものではなく、点検の教材になる。</p>
+<p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどうなってるか&lt;/summary&gt;</p>
+<p><strong>実測の2軸</strong> — ①中高音使用率: <code>librosa.feature.spectral_centroid()</code> でスペクトル重心の時系列を求め、A4（440Hz）以上のフレーム比率を実測値とする（0.4以上=OK）。②抑揚幅: <code>librosa.pyin()</code> で音高時系列を推定し標準偏差を取る。pYIN は無音区間で -1 を返すため、<code>np.nan</code> に置換してから <code>nanstd</code> で除外計算する（20未満=モノトーン判定）。</p>
+<p><strong>融合戦略</strong> — 軸B/C とも <code>0.5 * 実測 + 0.5 * 文字列（Phase 1）</code> の加重平均。完全置換案（D'）は Phase 1 の17テストが全滅して回帰テストが貧弱になるため却下し、1〜2ヶ月の運用統計で重みを 0.7/0.3 等へ調整する設計。</p>
+<p><strong>TDDの拡張</strong> — Phase 1 の17テストを継承しつつ、実測ベースの新規テスト5本を追加。fixtures には失敗事例 <code>v2_低音ウィスパー.wav</code> と成功事例 <code>祭礼前夜_chorus.wav</code> を用意し、「失敗が検出できること」「成功が検出できること」の双方向を確認する。エラーハンドリングは wav 不在=終了コード2、音程推定全滅=「実測不可」表示、librosa 未導入時は対話的に pip 導入を案内。</p>
+<p>正典: <code>obsidian-ssot/01_DECISIONS/ai-music/2026-07-12_音節密度ルール拡張-Phase2実測オーディオ解析導入.md</code></p>
 <p>&lt;/details&gt;</p>
 
         </article>
 
         <nav class="chapter-nav-bottom">
             
-            <a href="016-ai.html" class="nav-card prev">
+            <a href="010-dev-cycle.html" class="nav-card prev">
                 <span class="nav-label">← 前の章</span>
-                <span class="nav-title">📄 AI審査員の盲点を人間の一言と説明書の改良で塞いだ話</span>
+                <span class="nav-title">📄 第11話 スキル物語 「dev-cycle」と言うと開発のサイクルが一巡する話</span>
             </a>
             
             
-            <a href="018.html" class="nav-card next">
+            <a href="001.html" class="nav-card next">
                 <span class="nav-label">次の章 →</span>
-                <span class="nav-title">📄 検問の穴を塞ぐと別の穴が開いて、最後は自分の違和感が正しかった話</span>
+                <span class="nav-title">📄 第1話 「テストは充分？」という一言</span>
             </a>
             
         </nav>

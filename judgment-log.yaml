@@ -71,6 +71,7 @@ entries:
   confidence: 高
   episode: '021'
   file: 021_reverse-engineer-songスキル設計の物語.md
+  source: 01_DECISIONS/ai-music/2026-06-15_reverse-engineer-songスキル_plan.md
 - date: '2026-09-12'
   type: できごと（反復解消）
   reason: 文字列ベース評価だけでは実際の音高・抑揚が担保されない問題を音源実測解析（スペクトル重心+pYIN）で実測化し文字評価と融合したPhase2を物語化・欠番004を埋める
@@ -113,6 +114,7 @@ entries:
   confidence: 高
   episode: '026'
   file: 026_ssot-record保存先の判定を機械に任せようとして構造化禁止条件を増やしすぎた話.md
+  source: 01_DECISIONS/claude-code/2026-07-12_ssot-recordマルチ起点再設計-セクション3-データフロー判定アルゴリズム.md
 - type: できごと（事故未然防止）
   episode: 028
   file: 028_URLつきでつぶやこうとしたら走り出す前に30%のリーチを捨てていた話.md
@@ -126,4 +128,13 @@ entries:
   confidence: 高
   episode: '028'
   file: source/028_差分1000件の正体は作りかけの絵だった話.md
+  source: 01_DECISIONS/atelier-kyo-manager/2026-08-13_LFS偽差分1000件の全容解明とD案採用-弁証論.md
   status: 公開未完了・convert修復後に再実行要
+- date: 2026-09-18
+  type: 設計議論
+  reason: 音節密度Phase2（文字列から実測波形への融合評価）を029として生成・denylist EXIT=0/pytest 40 passed。多重発火で027として先行作成された際はslug重複で公開不可だったため、ea3bタブの片付け（ふくけい承認）で029へ振り直し・公開完了
+  confidence: 高
+  episode: '029'
+  file: source/029_歌詞は合格点なのに歌は冴えなかった話.md
+  source: 01_DECISIONS/ai-music/2026-07-12_音節密度ルール拡張-Phase2実測オーディオ解析導入.md
+  status: 公開完了（convert EXIT=0・slug重複解消）

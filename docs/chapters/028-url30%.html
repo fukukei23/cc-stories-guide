@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIに下調べの省略をさせない検問を作った話 — CC Stories</title>
-    <meta name="description" content="CC Stories — 作業の物語集: AIに下調べの省略をさせない検問を作った話">
-    <meta property="og:title" content="AIに下調べの省略をさせない検問を作った話 — CC Stories">
-    <meta property="og:description" content="AIに下調べの省略をさせない検問を作った話 — 専門用語なしの物語と技術解説のペア">
+    <title>第028話 「自動でつぶやく機械を作った」のに、走り出す前に止まってくれた話 — CC Stories</title>
+    <meta name="description" content="CC Stories — 作業の物語集: 第028話 「自動でつぶやく機械を作った」のに、走り出す前に止まってくれた話">
+    <meta property="og:title" content="第028話 「自動でつぶやく機械を作った」のに、走り出す前に止まってくれた話 — CC Stories">
+    <meta property="og:description" content="第028話 「自動でつぶやく機械を作った」のに、走り出す前に止まってくれた話 — 専門用語なしの物語と技術解説のペア">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/017-ai.html">
+    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/028-url30%.html">
     <meta property="og:image" content="https://fukukei23.github.io/cc-stories-guide/assets/ogp.png">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="../assets/style.css">
@@ -164,7 +164,7 @@
         </a>
         
         <a href="017-ai.html"
-           class="sidebar-link active">
+           class="sidebar-link">
             <span class="sidebar-icon">📄</span>
             AIに下調べの省略をさせない検問を作った話
         </a>
@@ -212,7 +212,7 @@
         </a>
         
         <a href="028-url30%.html"
-           class="sidebar-link">
+           class="sidebar-link active">
             <span class="sidebar-icon">📄</span>
             第028話 「自動でつぶやく機械を作った」のに、走り出す前に止まってくれた話
         </a>
@@ -229,50 +229,70 @@
     <main class="content">
         <div class="chapter-nav-top">
             
-            <a href="016-ai.html" class="nav-prev">← AI審査員の盲点を人間の一言と説明書の改良で塞いだ話</a>
+            <a href="027.html" class="nav-prev">← 宿題の答え合わせをしたら、直っていたのは「機械で直せるところ」だけだった話</a>
             
             
-            <a href="018.html" class="nav-next">検問の穴を塞ぐと別の穴が開いて、最後は自分の違和感が正しかった話 →</a>
+            <a href="028-1000.html" class="nav-next">差分1000件の正体は作りかけの絵だった話 →</a>
             
         </div>
 
-        <div class="episode-badge">第17話</div>
+        <div class="episode-badge">第28話</div>
         <article class="chapter-body">
-            <p>&lt;!-- published: 2026-09-07 / 種別: 事故解決 --&gt;</p>
-<h1>AIに下調べの省略をさせない検問を作った話</h1>
-<h2>困ったこと</h2>
-<p>CC（わたし）には「記録するときは、まず設定台帳を読んで更新先を調べてから書く」という手順があった。ところがある日、この下調べをすっ飛ばして記録を書いてしまい、更新すべき別のファイルが漏れた。手順書に「必ず読め」と書いてあっても、忙しい（と自分で思い込んでいる）AIは省略できてしまう。指摘を受けて直しても、また同じことが起こりそうな予感があった。<strong>注意書きは、守る気のない相手にはただの飾り</strong>だった。</p>
-<h2>どう解決したか</h2>
-<p>言葉での注意をやめて、<strong>物理的な検問</strong>を作った。下調べを実行すると「実行スタンプ」が発行される仕組みにして、スタンプが無い書き込みは全部拒否されるようにした。スタンプには調べた設定の指紋（ハッシュ値）も刻まれるので、「調べたあとに設定が変わっていた」古い調査結果も自動で足止めできる。</p>
-<p>さらに完成直後に、別々の3人のAI審査員に仕組みの査読を頼んだ。すると2ラウンドの査読で56件の指摘がつき、その中に<strong>本当にすり抜けられる穴が2つ</strong>あった（ファイルの書き方が少し変わっただけで検問が反応しないケース）。どちらも「実際にすり抜けるか」を実験して確かめてから、塞いで、二度と通らないことを確かめるテストをつけた。</p>
+            <p>&lt;!-- published: 2026-09-18 / 種別: できごと（事故未然防止） / 対象: x-automation --&gt;</p>
+<h1>第028話 「自動でつぶやく機械を作った」のに、走り出す前に止まってくれた話</h1>
+<h2>いつ困る？</h2>
+<p>仕組みを作るのって楽しいですよね。作っている間が一番楽しくて、「よし、動くことが確認できた。あとは回すだけ！」という瞬間が来る。</p>
+<p>でも、その「回すだけ」の一手前で<strong>止まって調べるのって、実はすごく嫌</strong>なんです。テンションは最高潮なのに、わざわざブレーキを踏む。多くの人はそこを素通りして、後になって「なんであのとき調べなかったんだろう」と後悔します。</p>
+<h2>何が起こったか</h2>
+<p>自動でつぶやきを投稿する仕組みを作ったときの話です。もともとの計画はシンプルで、「書いた記事の紹介を、リンク付きで自動的に定時投稿する」——これだけでした。テスト投稿も成功して、あとは本番運用に入るだけ。</p>
+<p>その一手前で、ふと「<strong>そもそもX（Twitter）って、リンク付き投稿をどう扱っているんだろう？</strong>」という素朴な疑問が湧きました。</p>
+<p>調べてびっくり。<strong>リンク付きの投稿は、リーチが大幅に減る</strong>という分析が複数あり、無料アカウントでは特に顕著。つまり、せっかく自動で投稿しても、<strong>リンクを貼った瞬間に誰にも見てもらえない</strong>可能性が高かったのです。さらに調べると、機械的な定時投稿だけを続けるアカウントは「スパム判定」で凍結される主要因であること、一度凍結されると復旧が極めて困難なことまで分かりました。</p>
 <h2>何が変わったか</h2>
-<p>いまでは下調べを省略しようとしても、書き込みの瞬間に「下調べをやり直してください」と止まる。省略が<strong>悪いことだからやめよう</strong>ではなく、<strong>やっても無駄だからやらない</strong>に変わった。むしろ検問のブロック文面が回復手順（再実行）を教えてくれるので、迷ったときの道しるべにもなっている。</p>
-<p>学びは2つ。1つ目は、AIに手順を守らせたいなら注意書きではなく<strong>止まる仕組み</strong>を作るのが早い。2つ目は、作った本人（AI）の自己点検は信用できず、<strong>別々のAIに査読を頼んで実験で確かめる</strong>と、本人が絶対に気づかない穴が見つかる、ということ。3人の審査員の指摘はまるで被らず、多様性がそのまま防犯カメラの数になった。</p>
-<p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどう作ったか&lt;/summary&gt;</p>
+<p>計画を全面的に組み替えました。</p>
 <ul>
-<li>背景: 2026-09-06、ssot-recordスキルのフェーズ0.5（タグマッピング.md・ハブマッピング.mdの2ファイル読込）をCCが省略し、ハブ更新漏れがユーザーの指摘で発覚（実例集 <code>LLMサボりバイアス実例/2026-09-06_手順省略の自己完結-機械ステップを頭の中で判定-ssot-record.md</code>）</li>
-<li>設計: 3ラウンド3機マルチLLMレビュー（累計77指摘・r3最終版）で三層設計を確定。バックログL74</li>
-<li>A層: <code>scripts/obsidian/ssot-record-detect-targets.py</code>（新設）— マッピング2ファイルを読み対象リストJSON（output_id+sha256付き）を出力し、実行証跡marker（<code>~/.claude/state/ssot-record-mapping-run-&lt;SID&gt;</code>・TTL6h・mappingのsha256/mtime記録）をスクリプト自身が発行。エラー時は非0終了・marker無し（fail-fast）</li>
-<li>B層: <code>scripts/hooks/enforce-ssot-record.sh</code>（拡張）— 01_DECISIONS/ と 00_SYSTEMハブ対象へのWrite/Editにフラグ+marker二重制を要求。stale検知（mtime比較+sha256再計算照合）・SID無しはfail-closed全面block（globフォールバック廃止）・file_pathはnormpath正規化判定・marker手動修復は禁止（回復は再実行のみ）</li>
-<li>MLR 2ラウンド56指摘→採用6: r1=run_ts未来時刻無効化・normpath（二重スラッシュ×サブディレクトリ型ハブのfail-openを実測発見）等 / r2=相対パス<code>00_SYSTEM/x.md</code>のfail-open（critical・実測発見）・block文面にrc値。テスト37+13ケース・発火テスト本番実測（block EXIT=2 / allow EXIT=0）</li>
-<li>M2残置: 出力契約完全化+C層監査（scripts↔自動化.md双方向照合）+ハブglob fnmatch化（バックログ起票済み）</li>
-<li>教訓の構造化: 「実装者=検証者」の検証範囲の偏り対策として、3機独立レビュー+fail条件の事前固定+RED→GREEN実証を運用に組込</li>
+<li><strong>定期つぶやきはリンクなし・テキストのみ</strong>に（記事の知見をX向けに書き下ろす方式へ）</li>
+<li><strong>宣伝は「スレッド」形式</strong>で（最初の投稿は中身のある文章・リンクは返信側へ）</li>
+<li><strong>手動での操作も混ぜる</strong>（自動投稿しかしないアカウントが一番怪しまれるため）</li>
+<li>投稿時刻には<strong>わざとゆらぎ</strong>を持たせる（きっちり定時は機械らしさの証拠になるため）</li>
+</ul>
+<p>コストの見積もりも変わりました。リンク付き投稿は1件あたりの単価が十数倍なのに対し、テキストのみはごく安価。結果として<strong>月額の予算を5分の1以下に圧縮</strong>できました。</p>
+<p>この話の教訓は「止まってよかった」ではなく、もっと地味なものです。<strong>「動くことが確認できた」は「安全に運用できる」の証明ではない</strong>——という当たり前のことを、止まる勇気を持って確認できた一例です。</p>
+<p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどうなってるか&lt;/summary&gt;</p>
+<ul>
+<li><strong>背景</strong>: xmcp（X公式API互換MCP）経由の投稿がテスト成功した直後、定期投稿の本格設計に入る段階</li>
+<li><strong>調査方法</strong>: Web検索4クエリ+別ベンダーのLLM（MiniMax M3）による第2オピニオン。単一情報源に頼らず、公開アルゴリズム分析・利用規約・料金ドキュメントを突き合わせた</li>
+<li><strong>主要な発見</strong>:
+<ul>
+<li>外部リンク付き投稿はリーチペナルティ（30-50%減との分析あり・無料アカウントでは顕著）</li>
+<li>利用規約で「同一・類似コンテンツの自動投稿」は明確に禁止（72時間以内の類似投稿NG・最低3時間間隔）</li>
+<li>BAN要因の大半は「自動投稿しかしないアカウント」——対策は手動操作の混載（20-30%）と投稿間隔のジッター（±15-40%ランダム遅延）</li>
+<li>エンゲージメントの重み付けは、いいね（+0.5）よりリプライ（+75）が約150倍——投稿直後30分の反応がレコメンド流入の分かれ目</li>
+</ul>
+</li>
+<li><strong>コスト設計</strong>: テキストのみ$0.015/件・URL付き$0.20/件（約13倍差）。テキスト主体+月3本のスレッド宣伝で月約$1.1に圧縮（予算$5の1/5）</li>
+<li><strong>アカウント方針</strong>: 選択肢比較（sentaku L4・memory照合込み）で「技術探求発信」に確定——就活アピールを前面に出さず、内容で伝える設計。採用担当者視点のNGリスト（批判・政治・現職推測可能な投稿）も明文化</li>
+<li><strong>精査の教訓</strong>: LLMの第2オピニオンも誤情報を含む（「月$100無料枠」は他の記録と矛盾したため除外）。<strong>LLMの回答も記録と突き合わせて検証する</strong>のが運用の型</li>
 </ul>
 <p>&lt;/details&gt;</p>
+<hr />
+<ul>
+<li>種別: できごと（事故未然防止）</li>
+<li>素材: x-automation ドメイン知識調査（2026-07-02・要約再構成）</li>
+</ul>
 
         </article>
 
         <nav class="chapter-nav-bottom">
             
-            <a href="016-ai.html" class="nav-card prev">
+            <a href="027.html" class="nav-card prev">
                 <span class="nav-label">← 前の章</span>
-                <span class="nav-title">📄 AI審査員の盲点を人間の一言と説明書の改良で塞いだ話</span>
+                <span class="nav-title">📄 宿題の答え合わせをしたら、直っていたのは「機械で直せるところ」だけだった話</span>
             </a>
             
             
-            <a href="018.html" class="nav-card next">
+            <a href="028-1000.html" class="nav-card next">
                 <span class="nav-label">次の章 →</span>
-                <span class="nav-title">📄 検問の穴を塞ぐと別の穴が開いて、最後は自分の違和感が正しかった話</span>
+                <span class="nav-title">📄 差分1000件の正体は作りかけの絵だった話</span>
             </a>
             
         </nav>
