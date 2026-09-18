@@ -113,3 +113,10 @@ entries:
   confidence: 高
   episode: '026'
   file: 026_ssot-record保存先の判定を機械に任せようとして構造化禁止条件を増やしすぎた話.md
+- type: できごと（事故未然防止）
+  episode: 028
+  file: 028_URLつきでつぶやこうとしたら走り出す前に30%のリーチを捨てていた話.md
+  date: '2026-09-18'
+  reason: 自動書き溜め cron-id:19・最上位未物語化候補（score 4.99・x-automation ドメイン知識調査）を物語化。テスト投稿成功後の「回すだけ」一手前でドメイン知識調査により危険戦略を停止した事故未然防止型
+  confidence: high
+  source: 01_DECISIONS/x-automation/2026-07-02_X自動投稿戦略とドメイン知識調査.md
