@@ -51,18 +51,72 @@ def score_entry(path: str, title: str, lines: int, body_head: str) -> float:
     return round(t + thickness(lines), 2)
 
 
-def main() -> int:
+def load_used_sources(log_path: str) -> set[str]:
+    """judgment-log.yamlから物語化済み素材（source basename集合）を収集する.
+
+    実データは {judgments: [...], entries: [...]} のdict構造（2026-09-18実測）・
+    ベアリスト形式も後方互換で受ける。旧形式エントリ（source 無し）は収集対象外.
+    """
+    if not os.path.exists(log_path):
+        return set()
+    with open(log_path, encoding="utf-8") as f:
+        data = yaml.safe_load(f) or {}
+    if isinstance(data, dict):
+        data = (data.get("judgments") or []) + (data.get("entries") or [])
+    if not isinstance(data, list):
+        return set()
+    used: set[str] = set()
+    for e in data:
+        if isinstance(e, dict) and e.get("source"):
+            used.add(os.path.basename(str(e["source"])))
+    return used
+
+
+def same_day_run(out_path: str, today: datetime.date | None = None) -> bool:
+    """--out先の generated_at が当日なら True（同日再発火skip判定）."""
+    today = today or datetime.date.today()
+    try:
+        with open(out_path, encoding="utf-8") as f:
+            data = yaml.safe_load(f)
+    except FileNotFoundError:
+        return False
+    except Exception:
+        return False
+    if not isinstance(data, dict):
+        return False
+    gen = data.get("generated_at")
+    if not gen:
+        return False
+    try:
+        gen_date = datetime.datetime.fromisoformat(str(gen)).date()
+    except ValueError:
+        return False
+    return gen_date == today
+
+
+def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--ssot", default=os.path.expanduser("~/projects/obsidian-ssot"))
     ap.add_argument("--out", default="story-candidates.yaml")
+    ap.add_argument("--log", default="judgment-log.yaml")
     ap.add_argument("--limit", type=int, default=40)
-    args = ap.parse_args()
+    args = ap.parse_args(argv)
 
+    # 同日再発火skip（cron多重発火で同素材を2話公開する事故の防止・2026-09-18）
+    if same_day_run(args.out):
+        print("SKIP: 当日生成済み（同日再発火skip・EXIT=3）")
+        return 3
+
+    used = load_used_sources(args.log)
     root = os.path.join(args.ssot, "01_DECISIONS")
     cutoff = datetime.date.today() - datetime.timedelta(days=MAX_AGE_DAYS)
     entries = []
+    excluded = 0
     for p in glob.glob(os.path.join(root, "*", "2*.md")):
         base = os.path.basename(p)
+        if base in used:
+            excluded += 1
+            continue  # 既に物語化済み素材（judgment-log source突合・2026-09-18）
         if base.startswith("_INDEX") or "テストは充分" in base or "作業物語ガイド" in base:
             continue  # 既に物語化済み・本仕組み自身は除外
         try:
@@ -98,7 +152,10 @@ def main() -> int:
     with open(args.out, "w") as f:
         f.write("# 物語候補リスト（generate_story_candidates.py 自動生成・手動編集は次回生成で上書きされます）\n")
         yaml.safe_dump(out, f, allow_unicode=True, sort_keys=False)
-    print(f"OK: {len(entries)}件の候補を {args.out} に生成（最上位: {entries[0]['score']}点 {entries[0]['title'][:40]}）" if entries else "OK: 候補0件")
+    if entries:
+        print(f"OK: {len(entries)}件の候補を {args.out} に生成（物語化済み排除{excluded}件・最上位: {entries[0]['score']}点 {entries[0]['title'][:40]}）")
+    else:
+        print(f"OK: 候補0件（物語化済み排除{excluded}件）")
     return 0
 
 
