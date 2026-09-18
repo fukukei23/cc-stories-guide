@@ -120,3 +120,10 @@ entries:
   reason: 自動書き溜め cron-id:19・最上位未物語化候補（score 4.99・x-automation ドメイン知識調査）を物語化。テスト投稿成功後の「回すだけ」一手前でドメイン知識調査により危険戦略を停止した事故未然防止型
   confidence: high
   source: 01_DECISIONS/x-automation/2026-07-02_X自動投稿戦略とドメイン知識調査.md
+- date: '2026-09-18'
+  type: build失敗（slug重複・公開未完了）
+  reason: 候補8（LFS偽差分1000件・4.38点・既出3候補と別テーマの真の未処理最上位）を028として生成・denylist EXIT=0/pytest 26 passed/source commit 93d4d63 push済み。ただしconvert.pyが迷子untracked原稿（027_宿題の答え合わせ・028_URLつき）とのslug重複でEXIT=1となりHTML未生成=公開未完了。並行セッションの多重発火作業（fdcf296・6f057da）と検出のため修復は中止・ふくけい判断待ち
+  confidence: 高
+  episode: '028'
+  file: source/028_差分1000件の正体は作りかけの絵だった話.md
+  status: 公開未完了・convert修復後に再実行要
