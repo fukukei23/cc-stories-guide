@@ -144,3 +144,9 @@ entries:
   confidence: 高
   episode: '027'
   file: 027_宿題の答え合わせをしたら直っていたのは機械で直せるところだけだった話.md
+- date: 2026-09-22
+  type: できごと（設計判断）
+  reason: ssot-recordマルチ起点再設計 Section4 タグマッチスコア重み調整。スコア式を0.8→0.6上限に落とし、満点設計の誘惑に負けず敢えて下げた日に設計が最もきれいだった（早期発見の再定位）のコントラストが物語性高い。denylist通過・convert+push完走
+  confidence: 高
+  episode: '037'
+  file: source/037_スコア式を0点に合わせたら逆に必要なものが見えてきた話.md
