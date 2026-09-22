@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スコア式を0点に合わせたら逆に必要なものが見えてきた話 — CC Stories</title>
+    <meta name="description" content="CC Stories — 作業の物語集: スコア式を0点に合わせたら逆に必要なものが見えてきた話">
+    <meta property="og:title" content="スコア式を0点に合わせたら逆に必要なものが見えてきた話 — CC Stories">
+    <meta property="og:description" content="スコア式を0点に合わせたら逆に必要なものが見えてきた話 — 専門用語なしの物語と技術解説のペア">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/037-0.html">
+    <meta property="og:image" content="https://fukukei23.github.io/cc-stories-guide/assets/ogp.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="../assets/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+</head>
+<body>
+    <header class="site-header">
+        <button class="menu-toggle" aria-label="メニュー" id="menuToggle">
+            <span></span><span></span><span></span>
+        </button>
+        <a href="../index.html" class="site-title">📚 CC Stories</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="テーマ切替">
+            <span class="icon-light">☀️</span>
+            <span class="icon-dark">🌙</span>
+        </button>
+    </header>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="../index.html">🏠 ホーム</a>
+        </div>
+        
+        <a href="022.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第1話 スキル物語 「引き継ぎ」と言ったら明日の自分に手紙を書いてくれた話
+        </a>
+        
+        <a href="003.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第2話 スキル物語 「おはよう」と言ったら昨日が戻ってきた話
+        </a>
+        
+        <a href="003-ssot.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第3話 スキル物語 「記録して」と言ったらSSOTに勝手に入る話
+        </a>
+        
+        <a href="002-llm.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第4話 スキル物語 「マルチLLMレビューして」と言ったら別々の目で見てくれる話
+        </a>
+        
+        <a href="023.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第5話 スキル物語 「比較して」と言ったら選択肢を深掘りして推奨まで出してきた話
+        </a>
+        
+        <a href="024-ssot.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第6話 スキル物語 「SSOTから探して」と言ったら過去の失敗を掘り返してきた話
+        </a>
+        
+        <a href="006.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第7話 スキル物語 「定期実行作って」と言ったら排他込みで組んでくれる話
+        </a>
+        
+        <a href="007.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第8話 スキル物語 「今夜はミニマックス」と言ったら裏側のレート制限を切り替えてくれる話
+        </a>
+        
+        <a href="008-5.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第9話 スキル物語 「返信文を書いて」と言ったら5禁止に気をつけて整えてくれる話
+        </a>
+        
+        <a href="009.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第10話 スキル物語 「リポジトリレビューして」と言ったら品質を点数で出してくれる話
+        </a>
+        
+        <a href="010-dev-cycle.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第11話 スキル物語 「dev-cycle」と言うと開発のサイクルが一巡する話
+        </a>
+        
+        <a href="029.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            歌詞は合格点なのに歌は冴えなかった話——品質チェックが「言葉」から「音」へ進んだ話
+        </a>
+        
+        <a href="001.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第1話 「テストは充分？」という一言
+        </a>
+        
+        <a href="002.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第2話 防災フックが鳴らなかった話
+        </a>
+        
+        <a href="004.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第4話 作業物語 「歌詞は合ってるのに、なぜか曲が盛り上がらない話」
+        </a>
+        
+        <a href="005.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第5話 作業物語 「自動で呟かせる前夜、調べたら地雷が一杯だった話」
+        </a>
+        
+        <a href="011-youtubeai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第11話 スキル物語 「YouTubeを投げる」と言ったら生成AI用プロンプト仕様書が出てくる話
+        </a>
+        
+        <a href="012-commit3.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            他の作業を巻き込んでcommitする事故を3つの見張り役で潰した話
+        </a>
+        
+        <a href="013-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AIにファイルを書き換えさせる前に「いいですか？」と聞かせる話
+        </a>
+        
+        <a href="014-ai3.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AIの直し提案が3体そろって否定された話
+        </a>
+        
+        <a href="015-1.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            設定を1枚の帳票に集めて書き忘れ事故を潰した話
+        </a>
+        
+        <a href="016-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AI審査員の盲点を人間の一言と説明書の改良で塞いだ話
+        </a>
+        
+        <a href="017-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AIに下調べの省略をさせない検問を作った話
+        </a>
+        
+        <a href="018.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            検問の穴を塞ぐと別の穴が開いて、最後は自分の違和感が正しかった話
+        </a>
+        
+        <a href="019-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第19話 作業物語 「曲作って」と言ったらAIの癖に振り回されない道具立てになっていた話
+        </a>
+        
+        <a href="021-reverse-engineer-song.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            013の次に見えた「聴くだけじゃ足りない」
+        </a>
+        
+        <a href="025-ssot-record.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            025: ssot-recordデータフロー判定アルゴリズム
+        </a>
+        
+        <a href="025-5.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            記録してと言ったら書込先を決めるまでに5回も検問された話
+        </a>
+        
+        <a href="026-ssot-record.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            「保存先くらい機械に任せて」という一言から始まった設計が、気づけば禁止条件だらけになっていた話
+        </a>
+        
+        <a href="027.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            宿題の答え合わせをしたら、直っていたのは「機械で直せるところ」だけだった話
+        </a>
+        
+        <a href="028-url30%.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            第028話 「自動でつぶやく機械を作った」のに、走り出す前に止まってくれた話
+        </a>
+        
+        <a href="028-1000.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            差分1000件の正体は作りかけの絵だった話
+        </a>
+        
+        <a href="037-0.html"
+           class="sidebar-link active">
+            <span class="sidebar-icon">📄</span>
+            スコア式を0点に合わせたら逆に必要なものが見えてきた話
+        </a>
+        
+    </nav>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main class="content">
+        <div class="chapter-nav-top">
+            
+            <a href="028-1000.html" class="nav-prev">← 差分1000件の正体は作りかけの絵だった話</a>
+            
+            
+        </div>
+
+        <div class="episode-badge">第37話</div>
+        <article class="chapter-body">
+            <h1>037 スコア式を0点に合わせたら逆に必要なものが見えてきた話</h1>
+<p>ある日、記録すべき内容を読み込んだCCが「タグマッチ 0.8、ハブマッチ 0.3、特性マッチ 0.6——総合 0.62 で T2 確定」と自信満々に書いた瞬間、設計者が顔をしかめた。プロジェクトを断定できるタグが付いていないのに、T2 は「警告つきではあるが自動確定」を意味する。プロジェクト不明の記録が警告なく流れ落ちる——それは誰も望まない挙動だった。</p>
+<p>背景には「タグマッチ」という名前から来る思い込みがある。タグが部分一致すれば加点、必須タグが無くても満点に近い数字が出る。当時の CC は機械的に 0.8 を返していた。</p>
+<p>設計者は数字をじっと見て、こう言った。「<em>プロジェクトが特定できない記録は T3（LLM 仲裁）に流す設計のはずだ</em>、でしょ」。CC は計算式を見直した。案Aは一行の追加だった——必須タグがどれか一つでも一致していなければ、算出スコアの上限を 0.6 に切る。それだけで、総合値は 0.51 に落ち、T3 へ流れる。</p>
+<p>同時に行われたのが重みの再検討だった。タグ・ハブ・特性で 0.4・0.3・0.3 としていた配分は据え置き。タグマッチの影響力は確かに大きいが、それは「タグが在るか否か」という二値判定で動くからだ。特性マッチは特性カタログという動的な表と突き合わせる——両者は別の意味層を見ている。比重を動かしたところで問題1（必須タグ不一致のペナルティ不足）は悪化しない、悪化するのは別の話。だから重みは触らなかった。</p>
+<p>もう一つ、ハブマッチの実装で苦労があった。設計書に <code>embed()</code> と <code>cosine_similarity</code> が並ぶ書き方をしていたが、embedding 依存のテストは外部LLMを呼べない環境では動かない。そこで案X——キーワードベースの単純なマッチに切り替え、必須タグ／追加タグの構造をそのまま流用した。意味的類似性は犠牲になるが、まずは動くものを出して運用データを取る。将来は類義語辞書で埋める。</p>
+<p>調整後の3ケースで再計算すると、完全一致のケース1は 0.82 で T1、必須不一致のケース2は 0.51 で T3、タグ不一致のケース3は 0.33 で T4。ケース2 だけが意図どおり一段降りる。</p>
+<p>スコア式は「最大化の道具」ではなく「早期発見の道具」だったと、この調整は教えた。満点設計の誘惑に負けず、敢えて 0.62 を 0.51 へ沈める——そこに本来やりたかった「プロジェクトの輪郭を曖昧にしない」が宿る。数字を少し下げた日、設計が一番きれいだった。</p>
+<p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどうなってるか&lt;/summary&gt;</p>
+<p><code>compute_tag_match()</code> に必須タグ判定 <code>has_required_match</code> を導入し、<code>False</code> 時に <code>score = min(score, 0.6)</code> のクランプを挿入。重み配分 <code>0.4+0.3+0.3</code> は維持。ハブマッチは <code>embed</code> ベースから <code>extract_keywords</code> + 必須/追加タグの二段判定に置換（セクション 4 案X）。関連: <code>01_DECISIONS/claude-code/2026-07-12_ssot-recordマルチ起点再設計-セクション3-データフロー判定アルゴリズム.md</code> / <code>01_DECISIONS/claude-code/2026-07-11_ssot-recordマルチ起点再設計-01_DECISIONS中心バイアス根絶.md</code>。残課題: T1-T5 閾値の1ヶ月後再評価・LLM 仲裁プロンプト実機検証。</p>
+<p>&lt;/details&gt;</p>
+
+        </article>
+
+        <nav class="chapter-nav-bottom">
+            
+            <a href="028-1000.html" class="nav-card prev">
+                <span class="nav-label">← 前の章</span>
+                <span class="nav-title">📄 差分1000件の正体は作りかけの絵だった話</span>
+            </a>
+            
+            
+        </nav>
+    </main>
+
+    <footer class="site-footer">
+        <p>CC Stories — <a href="https://github.com/fukukei23/cc-stories-guide">GitHub</a>
+         · <a href="https://fukukei23.github.io/ssot-guide/">SSOT Guide</a>
+         · <a href="https://fukukei23.github.io/loop-engineering-guide/">Loop Engineering Guide</a>
+         · <a href="https://fukukei23.github.io/guides/">技術ガイド集</a>
+         · <a href="https://fukukei23.github.io/">fukukei23</a></p>
+    </footer>
+
+    <script src="../assets/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default',
+            themeVariables: { fontSize: '14px' }
+        });
+    </script>
+</body>
+</html>
