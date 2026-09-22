@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第5話 作業物語 「自動で呟かせる前夜、調べたら地雷が一杯だった話」 — CC Stories</title>
-    <meta name="description" content="CC Stories — 作業の物語集: 第5話 作業物語 「自動で呟かせる前夜、調べたら地雷が一杯だった話」">
-    <meta property="og:title" content="第5話 作業物語 「自動で呟かせる前夜、調べたら地雷が一杯だった話」 — CC Stories">
-    <meta property="og:description" content="第5話 作業物語 「自動で呟かせる前夜、調べたら地雷が一杯だった話」 — 専門用語なしの物語と技術解説のペア">
+    <title>字幕が一文字も出ていない動画を、AIは「出ています」と答えた話 — CC Stories</title>
+    <meta name="description" content="CC Stories — 作業の物語集: 字幕が一文字も出ていない動画を、AIは「出ています」と答えた話">
+    <meta property="og:title" content="字幕が一文字も出ていない動画を、AIは「出ています」と答えた話 — CC Stories">
+    <meta property="og:description" content="字幕が一文字も出ていない動画を、AIは「出ています」と答えた話 — 専門用語なしの物語と技術解説のペア">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/005.html">
+    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/038-ai.html">
     <meta property="og:image" content="https://fukukei23.github.io/cc-stories-guide/assets/ogp.png">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="../assets/style.css">
@@ -122,7 +122,7 @@
         </a>
         
         <a href="005.html"
-           class="sidebar-link active">
+           class="sidebar-link">
             <span class="sidebar-icon">📄</span>
             第5話 作業物語 「自動で呟かせる前夜、調べたら地雷が一杯だった話」
         </a>
@@ -230,7 +230,7 @@
         </a>
         
         <a href="038-ai.html"
-           class="sidebar-link">
+           class="sidebar-link active">
             <span class="sidebar-icon">📄</span>
             字幕が一文字も出ていない動画を、AIは「出ています」と答えた話
         </a>
@@ -241,41 +241,34 @@
     <main class="content">
         <div class="chapter-nav-top">
             
-            <a href="004.html" class="nav-prev">← 第4話 作業物語 「歌詞は合ってるのに、なぜか曲が盛り上がらない話」</a>
+            <a href="037-0.html" class="nav-prev">← スコア式を0点に合わせたら逆に必要なものが見えてきた話</a>
             
-            
-            <a href="011-youtubeai.html" class="nav-next">第11話 スキル物語 「YouTubeを投げる」と言ったら生成AI用プロンプト仕様書が出てくる話 →</a>
             
         </div>
 
-        <div class="episode-badge">第5話</div>
+        <div class="episode-badge">第38話</div>
         <article class="chapter-body">
-            <p>&lt;!-- published: 2026-09-12 / 種別: できごと（事故未然防止）/ 対象: x-automation --&gt;</p>
-<h1>第5話 作業物語 「自動で呟かせる前夜、調べたら地雷が一杯だった話」</h1>
+            <p>&lt;!-- published: 2026-09-22 / 種別: できごと（制作） --&gt;</p>
+<h1>字幕が一文字も出ていない動画を、AIは「出ています」と答えた話</h1>
 <h2>困ったこと</h2>
-<p>「過去に書いた記事をXで自動で呟いて宣伝したい」——そう設計を始めたとき、初期案はシンプルだった。記事のURLを貼った投稿を、定期的に機械で並べる。テスト投稿も成功して、あとは回すだけ、のはずだった。</p>
-<p>ところが公開直前の調査で、その初期案がほぼ全部裏目だと分かった。<strong>リンク付き投稿は届く人数が大きく減る</strong>らしい。さらに利用規約では、似たような投稿の自動連投は明確なアウト。つまり「安全に見えて便利」なはずの設計が、実は<strong>届かない上に凍結リスクあり</strong>の両取りだった。</p>
+<p>30秒の縦長ショート動画を、原稿づくりから声・映像・音楽・字幕まで全部AIで作る流れを組んでいた。最後の工程が字幕の焼き付けだった。専用の機能に「この日本語フォントを使え」と指定して、テロップを載せた。</p>
+<p>自分では出来上がりを目で見られないので、画像を読めるAIに「字幕は出ていますか」と尋ねた。「出ています」という返事だった。そのまま人に見せたら、一文字も入っていなかった。</p>
+<p>原因は地味だった。指定したフォント名が無視され、日本語を持たない別のフォントに勝手に差し替えられていた。文字を描こうとしたが、描ける形が一つもなく、何も描かれないまま完成していた。手がかりはあった。字幕なし版とファイルの重さがぴったり同じだったのだ。何も足されていない証拠が、最初から目の前にあった。</p>
 <h2>どう解決したか</h2>
-<p>道具をいじるのをやめて、まず<strong>土地のルールを調べることにした</strong>。</p>
-<p>分かったことは率直だった。テキストだけの投稿が一番届く。人とのやり取り（返信）の評価が「いいね」の百倍以上重い。投稿直後の反応がその後の広がりを決める。そして一番の地雷は「機械らしさ」——自動投稿しかしない存在は、凍結判定の中心にいる。似た文面の連投も、少し言い換えただけでも短時間ならアウト。</p>
-<p>そこで戦略を組み替えた。リンクは本文に流さず言葉で語る。投稿間隔は余裕を持って空ける。AIが作った文はそのまま流さず手を入れる。そして自動は「全部」ではなく「補助」という位置に格下げした。<strong>速度より生存</strong>。凍結されたら復帰はほぼ望めないので、設計思想ごとそっちに寄せた。</p>
+<p>フォントを「名前で指定する」のをやめ、「置き場所を直接指す」別の機能に切り替えた。名前で呼ぶと、途中で誰かが解釈してすり替える余地が残る。現物を指させば、すり替えようがない。</p>
+<p>同じ考え方が、もう一つの悩みも解いた。字幕のタイミングが、後半になるほどズレていく。理由は、字幕を「映像の場面の切れ目」に合わせていたことだった。けれど本当の時計は、ナレーション音声のほうにある。音声から発話の区切りを機械で聞き取って実際の時刻を測り、その時刻に映像の長さと字幕の両方を合わせ直した。全部そろった。</p>
 <h2>何が変わったか</h2>
-<p>「自動で呟く道具」を作るはずだった時間が、「Xという土地の気質を学ぶ時間」になった。</p>
-<p>始める前に地図を読んだおかげで、最初の一発で凍結リスクのない設計にできた。後から直す（＝凍結されてから直す）と取り返しがつかない領域だから、この調査時間は安かった。何かを自動化するとき、<strong>道具の仕様より先に、その世界の規約と気質を調べる</strong>——これはXに限らず、どの土地でも同じなのかもしれない。</p>
-<p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどうなってるか&lt;/summary&gt;</p>
+<p>「AIに確かめさせる」が万能ではないと分かった。見えていないものを、見たと答えることがある。だから確認は、言葉の返事ではなく数字で取りにいくようにした——ファイルの重さを見比べる、音声から時刻を測る。</p>
+<p>そして基準を決めるときは、いちばん動かないものを選ぶようにした。映像の長さは後からいくらでも伸び縮みするが、喋ってしまった音声は伸び縮みしない。ズレを一つずつ直すより、「何に合わせるか」を変えるほうがずっと早かった。</p>
+<p>&lt;details&gt;
+&lt;summary&gt;▶ 技術的にどう作ったか&lt;/summary&gt;</p>
 <ul>
-<li><strong>調査方法</strong>: Web検索4クエリ + 別ベンダーのAIにセカンドオピニオンを依頼（確度を3段階でラベル分け）</li>
-<li><strong>判明した主要事実</strong>（公開情報ベース）:
-<ul>
-<li>外部リンク付き投稿はリーチペナルティ30-50%（Xの公開アルゴリズムコードで確認）・リンクを外しただけで+1,700%のA/Bテスト例あり</li>
-<li>テキストのみの投稿は動画より約30%有利（Xはテキストが強い唯一の主要SNSとされる）</li>
-<li>返信のスコアは「いいね」の約150倍・投稿直後30分の反応がその後の推薦に効く</li>
-<li>規約: 同一・類似投稿の自動連投は禁止（72時間以内の類似はNG目安・最低3時間間隔）</li>
-<li>API投稿の安全圏は15-20件/日以下・「AI生成を編集なしで連投」はスパムフラグ対象</li>
-</ul>
-</li>
-<li><strong>再設計結果</strong>: リンク無しテキスト中心・長間隔・人手との併用を前提とした設計へ変更</li>
-<li><strong>所在</strong>: SSOT のX運用プロジェクト記録（2026-07-02付）・原文URL非公開（内部到達経路遮断）</li>
+<li><strong>対象</strong>: 30秒・縦1080×1920のショート動画を全自動生成する7工程パイプライン（原稿→TTS→フック映像→demo画面→BGM→結合→字幕）</li>
+<li><strong>字幕の空焼き付け</strong>: <code>subtitles</code>(libass) フィルタに <code>force_style='FontName=...'</code> を渡してもフォント名が解決されず、日本語非対応フォントへfallbackして描画ゼロになる（<code>fontsdir</code> 指定でも再現）。<code>drawtext</code> フィルタで <code>fontfile=</code> にフォントファイルの絶対パスを直接渡す方式へ切替えて解決（fontconfig非依存）</li>
+<li><strong>検証の失敗</strong>: 生成物の目視確認を画像認識AIに委ねたところ「字幕あり」と誤答。字幕なし版とビットレートが同一だった点がフィルタ無視の客観的な証拠であり、返答ではなくそこを見るべきだった</li>
+<li><strong>タイミング同期</strong>: 字幕を映像シーン境界に合わせると累積ズレが発生。音声認識（whisper）でナレーションから発話区間を実測し、その絶対時刻を基準に映像シーン長と字幕を両方再構成する方式が最終解。認識されたテキスト自体は誤りが多いが、タイミングは正確なので原稿テキストで上書きして区間だけ採用</li>
+<li><strong>他のハマりどころ</strong>: 動画生成APIが縦解像度の指定を無視する（cropとscaleで後段変換）／ターミナル録画は行の折返しで縦クロップ時に読めなくなる（静的画像の直描画へ変更）／<code>drawtext</code> はprintf形式展開するため文中の半角 <code>%</code> が構文エラーになる（全角に置換）／フィルタを10個以上同時に並べると出力尺が壊れる（前半後半の2パスに分割）</li>
+<li><strong>記録</strong>: 詳細は個人ナレッジベースの dev-knowledge-shorts プロジェクト配下（2026-08-06 制作パイプライン知見まとめ・2026-08-08 字幕タイミング最終解の追記を含む）</li>
 </ul>
 <p>&lt;/details&gt;</p>
 
@@ -283,16 +276,11 @@
 
         <nav class="chapter-nav-bottom">
             
-            <a href="004.html" class="nav-card prev">
+            <a href="037-0.html" class="nav-card prev">
                 <span class="nav-label">← 前の章</span>
-                <span class="nav-title">📄 第4話 作業物語 「歌詞は合ってるのに、なぜか曲が盛り上がらない話」</span>
+                <span class="nav-title">📄 スコア式を0点に合わせたら逆に必要なものが見えてきた話</span>
             </a>
             
-            
-            <a href="011-youtubeai.html" class="nav-card next">
-                <span class="nav-label">次の章 →</span>
-                <span class="nav-title">📄 第11話 スキル物語 「YouTubeを投げる」と言ったら生成AI用プロンプト仕様書が出てくる話</span>
-            </a>
             
         </nav>
     </main>

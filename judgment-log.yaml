@@ -150,3 +150,10 @@ entries:
   confidence: 高
   episode: '037'
   file: source/037_スコア式を0点に合わせたら逆に必要なものが見えてきた話.md
+- date: 2026-09-22
+  type: できごと（制作）
+  reason: 自動書き溜め cron-id:19・judgment-log未登場の最上位候補（score 4.61・dev-knowledge-shorts 制作パイプライン知見まとめ）を038として生成。字幕フィルタのフォント解決失敗で空焼き付けになった動画を画像認識AIが「字幕あり」と誤答した検証事故と、タイミング基準を映像シーンから音声実測へ移して同期が解決した対比が物語性高い。候補上位2件（#1=037で既出・#2=027で既出）はjudgment-logのsource欄欠落でgrep検知できず、既存話の本文目視で既出と確定してから本候補を採用
+  confidence: 高
+  episode: '038'
+  file: source/038_字幕が一文字も出ていない動画をAIは出ていますと答えた話.md
+  source: 01_DECISIONS/dev-knowledge-shorts/2026-08-06_制作パイプライン知見まとめ.md
