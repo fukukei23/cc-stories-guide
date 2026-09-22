@@ -157,3 +157,10 @@ entries:
   episode: '038'
   file: source/038_字幕が一文字も出ていない動画をAIは出ていますと答えた話.md
   source: 01_DECISIONS/dev-knowledge-shorts/2026-08-06_制作パイプライン知見まとめ.md
+- date: 2026-09-22
+  type: できごと（設計判断）
+  reason: 自動書き溜め cron-id:19・judgment-log未登場の最上位候補（score 4.86・claude-code ssot-recordマルチ起点再設計 Section4 タグマッチスコア重み調整）を039として生成。必須タグ不一致でも0.8点が出る採点式の穴に「上限0.6の1行」で対処した話で、点数方式の満点設計を先に疑う構造の学びが物語性高い。denylist通過・convert+push完走（f7f0376）
+  confidence: 高
+  episode: '039'
+  file: source/039_必須タグがなくても8割の点数が出てしまった話.md
+  source: 01_DECISIONS/claude-code/2026-07-12_ssot-recordマルチ起点再設計-セクション4-タグマッチスコア重み調整.md
