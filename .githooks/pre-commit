@@ -1,0 +1,29 @@
+#!/bin/bash
+# pre-commit — 日本語品質警告（層1suiko・昇格済み2検出器のみ・warn-only・fail-open）
+# 2026-09-25 Phase 0拡張（ガイド公開物への品質ゲート適用・ふくけい承認）
+# 仕様: suiko不在/タイムアウト/エラーは黙ってスキップ・常にexit 0（コミットを止めない）
+set -u
+
+SUIKO="$HOME/bin/suiko"
+[ -x "$SUIKO" ] || exit 0
+
+changed=$(git diff --cached --name-only | grep "^source/.*\.md$" || true)
+[ -z "$changed" ] && exit 0
+
+for f in $changed; do
+    [ -f "$f" ] || continue
+    out=$(timeout 3 "$SUIKO" lint --genre tech --json "$f" 2>/dev/null) || continue
+    warns=$(printf "%s" "$out" | timeout 3 python3 -c 'import json,sys
+try:
+    d=json.load(sys.stdin); fs=d.get("findings",[]) if isinstance(d,dict) else d
+    for x in fs:
+        if isinstance(x,dict) and x.get("category") in ("redundant_light_verb","hype_expression"):
+            print("  [参考] "+x.get("category","")+": "+str(x.get("excerpt",""))[:60])
+except Exception: pass' 2>/dev/null) || continue
+    if [ -n "$warns" ]; then
+        echo "⚠️ [層1 suiko・参考] $f:"
+        printf "%s\n" "$warns"
+        echo ""
+    fi
+done
+exit 0
