@@ -6,3 +6,9 @@
   discord_http: 403
   discord_note: webhook無効（絵文字なしASCIIでも403）
   acquire_exit: 1
+- date: '2026-09-25'
+  type: skip
+  reason: stage占有hookがPATHS_BLOCK発火（自セッション事前宣言無・delta=309>20）・denylist通過・convert完了・自動commit中止・翌日リトライ候補
+  confidence: 高
+  episode: '041'
+  file: source/041_スコアが全部同じだった構造的不具合は仕組み変えないと動かない話.md

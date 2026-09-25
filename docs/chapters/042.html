@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第1話 「テストは充分？」という一言 — CC Stories</title>
-    <meta name="description" content="CC Stories — 作業の物語集: 第1話 「テストは充分？」という一言">
-    <meta property="og:title" content="第1話 「テストは充分？」という一言 — CC Stories">
-    <meta property="og:description" content="第1話 「テストは充分？」という一言 — 専門用語なしの物語と技術解説のペア">
+    <title>042_宣言を書かないだけで全部素通りできた話 — CC Stories</title>
+    <meta name="description" content="CC Stories — 作業の物語集: 042_宣言を書かないだけで全部素通りできた話">
+    <meta property="og:title" content="042_宣言を書かないだけで全部素通りできた話 — CC Stories">
+    <meta property="og:description" content="042_宣言を書かないだけで全部素通りできた話 — 専門用語なしの物語と技術解説のペア">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/001.html">
+    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/042.html">
     <meta property="og:image" content="https://fukukei23.github.io/cc-stories-guide/assets/ogp.png">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="../assets/style.css">
@@ -110,7 +110,7 @@
         </a>
         
         <a href="001.html"
-           class="sidebar-link active">
+           class="sidebar-link">
             <span class="sidebar-icon">📄</span>
             第1話 「テストは充分？」という一言
         </a>
@@ -248,7 +248,7 @@
         </a>
         
         <a href="042.html"
-           class="sidebar-link">
+           class="sidebar-link active">
             <span class="sidebar-icon">📄</span>
             042_宣言を書かないだけで全部素通りできた話
         </a>
@@ -259,64 +259,37 @@
     <main class="content">
         <div class="chapter-nav-top">
             
-            <a href="039-8.html" class="nav-prev">← 必須タグがなくても8割の点数が出てしまった話</a>
+            <a href="041.html" class="nav-prev">← 040_スコアが全部同じだった構造的不具合は仕組みを変えないと動かない話</a>
             
-            
-            <a href="002.html" class="nav-next">第2話 防災フックが鳴らなかった話 →</a>
             
         </div>
 
-        <div class="episode-badge">第1話</div>
+        <div class="episode-badge">第42話</div>
         <article class="chapter-body">
-            <h1>第1話 「テストは充分？」という一言</h1>
-<p>&lt;!-- published: 2026-09-02 / 種別: 事故解決+新仕様 --&gt;</p>
-<h2>困ったこと</h2>
-<p>最近、二日続けて同じ形の失敗がありました。一日目は「プログラムのテストを作った」と報告したのに、実は“うまくいく場合だけ”試していて、変な入力のときの確認が抜けていました。二日目は「どこにも使われていないはず」と調べた鍵が、実は大事なソフト（NexusCore）で使われていました。どちらも、ふくけいが「テストは充分？」と一言聞いたことで初めて見つかったのです。</p>
-<h2>どう解決したことになるか</h2>
-<p>「聞かれないと気づけない」のは困るので、この一言を自動化することにしました。ただ「ちゃんとやりなさい」と注意文を増やしても、注意文は読まれるだけで守られません（実際に二日連続で効きませんでした）。そこで方針を「申告させる」から「照合する」へ変えました。やったと書かせるのではなく、本当にやった証拠と突き合わせて機械が確かめる方式です。設計は別のAI三社に合計四回レビューしてもらい、そのたびに「このままだと間違えて止めすぎる」「自動実行では門番が動かない」などの落とし穴を潰しました。</p>
-<pre class="mermaid">flowchart TB
-    A[&quot;テスト全部成功 🎉&quot;] --&gt; B{&quot;でも本当の効果は？&quot;}
-    B --&gt;|&quot;中間指標だけ見て安心&quot;| C[&quot;😭 実は効果ゼロだった&quot;]
-    B --&gt;|&quot;完了の前に実測&quot;| D[&quot;✅ 効果を1コマンドで確認&quot;]
-    D --&gt; E[&quot;「完了」と言える&quot;]
-</pre>
-<h2>何が変わったか</h2>
-<p>完成したのは三つの門番です。①報告の形式と実際の実行記録が一致しているか確かめる係 ②「ゼロ件」と言い切る時に、別の探し方での再確認を要求する係 ③自動開発の間も報告の形式を強制する係。テストは全部で十八個、すべて合格。しかも作業の最中に「テストが合格と表示されているのに、実は試す準備ができておらず何も試していなかった」という失敗を門番の仕組みが見つけて直しました。作った当日に元が取れています。</p>
-<p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどう作ったか&lt;/summary&gt;</p>
-<h3>作ったもの</h3>
+            <p>&lt;!-- published: 2026-09-25 / 種別: 教訓 / 対象スキル: self-inspect, multi-llm-review, ssot-record --&gt;</p>
+<h1>042_宣言を書かないだけで全部素通りできた話</h1>
+<p>AIに作業をさせるとき、「検証結果を報告書に書いてね」とお願いする方式がある。ところがある日気づいた。<strong>報告書を書かなければ、チェック機構は全部素通りできる</strong>。実際に、報告フォーマットを無視して終了したセッションで、検証ゲートが一切発動せずにタスクが完了扱いになったのを実測してしまった。ゲートは全部「宣言があること」を前提に設計されていたので、宣言しないという行為そのものに防御がなかった。</p>
+<p>これを「オプトイン型の罠」と呼ぶことにした。検査を「書いてください」と頼む方式は、書かない選択が常に最速の抜け道になる。対策は逆転して「書かないほうが不利」なfail-safe型にすること。宣言が無ければ全テスト必須としてデフォルトで扱い、宣言があったとしても機械の実測値と突合して矛盾すれば差し戻す。人の申告を信頼するのではなく、申告と実測の一致そのものを検査対象にした。</p>
+<p>設計を固めるのに、3種類のAIレビューを3ラウンド回して48件の指摘を集め、「反対票も付ける」判断材料を人間に提出して3件の決定をもらった。最後の実証では、報告を避けるための攻撃パターンを8種類用意して1件でも見逃したら設計に戻るという安全弁付きで試し、全捕捉を確認。ここまでの工程に、発見から実証まで全部で機械的な検査が挟まっていて、「突破の試み」自体をテストケースとして扱うのが効いた。検査を強化するとき、まず最初に調べるべきは「今の検査を通らない方法が何通りあるか」だった。</p>
+<p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどうなってるか&lt;/summary&gt;</p>
 <ul>
-<li><code>check-fail-coverage.sh</code>（既存Stop hook拡張）: 完了宣言に「検証範囲宣言」セクション（タイプI/II/III・正常系/異常系/境界・EXIT証跡のtool_result突合）を必須化。grace期間〜2026-09-15は警告のみ</li>
-<li><code>check-zero-assert.sh</code>（新規Stop hook）: 「ゼロ件」断定語×検索語の共起時に、固定プロトコル再検索（<code>grep -rln --include={py,sh,md,ts,js,json,yaml}</code>・head無し）の実行事実を要求。<code>!override &lt;理由&gt;</code> で人間判断の通過も可能</li>
-<li><code>run-task.sh</code> 拡張: 自動開発ループの検証プロセス出力から宣言セクションを機械抽出・不在なら即NG（自己修復なし・r3レビューで「自己修復1回許可」は逆用可能と判定され撤回）</li>
+<li>構造的欠陥の実測: 検証範囲宣言がオプトイン（書かなければ無視）のため、宣言を書かないだけで全ゲートを素通りできる。セッション実測で Task 8 素通りを確認し、fail-safe化（宣言なし＝デフォルト全テスト必須）を設計の中心に置いた。</li>
+<li>設計の収束方法: 同一specに対し blind レビューを複数ラウンド回し（r1:18件・r2:18件・判断レビュー12件＝計48指摘）、反対票を2:1で潰すのではなく人間へ付議して最終判断をもらう構成にした。収束の自己判定をしないための措置。</li>
+<li>実証（POC-0）: 合成transcript fixtureで突破攻撃8パターンを用意し、全捕捉を実証。1件でも捕捉失敗したら設計レビューへ自動復帰する安全弁（§9-3）を実装前に明記しておき、「実証が設計を追認するだけ」になるのを防いだ。</li>
+<li>運用の落とし穴: enforce化後の誤発火率・タイプIII比率の上限・オプトアウト常用率を観測指標に置き、しきい値超過で設計に戻る契約にしている。ゲートは「入れたら完成」でなく「誤発火と回避行動を観測して初めて成立」。</li>
+<li>関連スキル: &lt;code&gt;self-inspect&lt;/code&gt;（成果物の深点検）, &lt;code&gt;multi-llm-review&lt;/code&gt;（反対票付きの設計判断）, &lt;code&gt;ssot-record&lt;/code&gt;（判断と証跡の記録）
+&lt;/details&gt;</li>
 </ul>
-<h3>設計の要点</h3>
-<ul>
-<li>設計原則は「書かせるでなく突合する」— 宣言の形式でなく宣言と実態（実行コマンド・exit code証跡・再検索差分）の一致を機械検査。層1ルール文が2日連続で防げなかった事実が根拠</li>
-<li>判定方式はMLR（マルチLLMレビュー）4ラウンド81指摘で確定。r4では「POC（F層発火実証）を先にやれ」というNO-GO指摘を採用し条件付きGO→実際に <code>claude --print</code> 内でもhook発火を実証してから実装した</li>
-<li>TDD（テスト先書き）で18ケース。実装中に「fixture不在でもexit 0で通る偽PASS」を実測発見・修正</li>
-</ul>
-<h3>所在情報（要約・原文リンクなし）</h3>
-<ul>
-<li>設計正典: SSOTの docs/superpowers/specs/（2026-09-01_テストは充分-体系化-design.md）</li>
-<li>レビュー正典: SSOTの 00_SYSTEM/マルチLLMレビュー/2026-09-01_テストは充分-体系化設計レビュー/（4ラウンド81指摘）</li>
-<li>実装記録: SSOTの 01_DECISIONS/claude-code/2026-09-01_テストは充分-体系化実装-POC〜Phase1完走.md</li>
-</ul>
-<p>&lt;/details&gt;</p>
 
         </article>
 
         <nav class="chapter-nav-bottom">
             
-            <a href="039-8.html" class="nav-card prev">
+            <a href="041.html" class="nav-card prev">
                 <span class="nav-label">← 前の章</span>
-                <span class="nav-title">📄 必須タグがなくても8割の点数が出てしまった話</span>
+                <span class="nav-title">📄 040_スコアが全部同じだった構造的不具合は仕組みを変えないと動かない話</span>
             </a>
             
-            
-            <a href="002.html" class="nav-card next">
-                <span class="nav-label">次の章 →</span>
-                <span class="nav-title">📄 第2話 防災フックが鳴らなかった話</span>
-            </a>
             
         </nav>
     </main>

@@ -1,35 +1,7 @@
 # 物語候補リスト（generate_story_candidates.py 自動生成・手動編集は次回生成で上書きされます）
-generated_at: '2026-09-18T17:01:49'
+generated_at: '2026-09-25T16:53:09'
 rule: score=種別点+素材厚(行数/120・max2)・除外=機密/キャリア/外向き・90日以内
 candidates:
-- date: '2026-07-12'
-  score: 5.0
-  type: 3
-  title: ssot-recordマルチ起点再設計-セクション3-データフロー判定アルゴリズム
-  project: claude-code
-  source: 01_DECISIONS/claude-code/2026-07-12_ssot-recordマルチ起点再設計-セクション3-データフロー判定アルゴリズム.md
-  lines: 615
-- date: '2026-07-12'
-  score: 5.0
-  type: 3
-  title: 音節密度ルール拡張-Phase2実測オーディオ解析導入
-  project: ai-music
-  source: 01_DECISIONS/ai-music/2026-07-12_音節密度ルール拡張-Phase2実測オーディオ解析導入.md
-  lines: 278
-- date: '2026-07-02'
-  score: 4.99
-  type: 3
-  title: X自動投稿戦略とドメイン知識調査
-  project: x-automation
-  source: 01_DECISIONS/x-automation/2026-07-02_X自動投稿戦略とドメイン知識調査.md
-  lines: 239
-- date: '2026-07-12'
-  score: 4.86
-  type: 3
-  title: ssot-recordマルチ起点再設計-セクション4-タグマッチスコア重み調整
-  project: claude-code
-  source: 01_DECISIONS/claude-code/2026-07-12_ssot-recordマルチ起点再設計-セクション4-タグマッチスコア重み調整.md
-  lines: 223
 - date: '2026-08-29'
   score: 4.76
   type: 3
@@ -37,13 +9,6 @@ candidates:
   project: NexusCore
   source: 01_DECISIONS/NexusCore/2026-08-29_包括レビュー差分-前回10件消化状況と新規3件.md
   lines: 211
-- date: '2026-08-06'
-  score: 4.61
-  type: 3
-  title: 制作パイプライン知見まとめ
-  project: dev-knowledge-shorts
-  source: 01_DECISIONS/dev-knowledge-shorts/2026-08-06_制作パイプライン知見まとめ.md
-  lines: 193
 - date: '2026-07-12'
   score: 4.44
   type: 3
@@ -51,13 +16,6 @@ candidates:
   project: claude-code
   source: 01_DECISIONS/claude-code/2026-07-12_ssot-recordマルチ起点再設計-セクション4-3-LLM仲裁実機検証.md
   lines: 173
-- date: '2026-08-13'
-  score: 4.38
-  type: 3
-  title: LFS偽差分1000件の全容解明とD案採用-弁証論
-  project: atelier-kyo-manager
-  source: 01_DECISIONS/atelier-kyo-manager/2026-08-13_LFS偽差分1000件の全容解明とD案採用-弁証論.md
-  lines: 165
 - date: '2026-09-08'
   score: 4.36
   type: 3
@@ -79,6 +37,13 @@ candidates:
   project: claude-code
   source: 01_DECISIONS/claude-code/2026-09-03_orp.py機能拡張-blacklist反映・死亡スモーク・新規探索実装.md
   lines: 157
+- date: '2026-09-24'
+  score: 4.29
+  type: 3
+  title: 日本語品質3層統合Phase0実施完了と層別昇格判断材料
+  project: claude-code
+  source: 01_DECISIONS/claude-code/2026-09-24_日本語品質3層統合Phase0実施完了と層別昇格判断材料.md
+  lines: 155
 - date: '2026-09-12'
   score: 4.27
   type: 3
@@ -261,6 +226,13 @@ candidates:
   project: claude-code
   source: 01_DECISIONS/claude-code/2026-07-23_SSOT体系化P3-A-manifestヘルス検知.md
   lines: 129
+- date: '2026-09-19'
+  score: 4.08
+  type: 3
+  title: Phase5クロージング判定-計測パイプライン機能不全5件修復
+  project: NexusCore
+  source: 01_DECISIONS/NexusCore/2026-09-19_Phase5クロージング判定-計測パイプライン機能不全5件修復.md
+  lines: 129
 - date: '2026-07-12'
   score: 4.07
   type: 3
@@ -282,3 +254,31 @@ candidates:
   project: claude-code
   source: 01_DECISIONS/claude-code/2026-07-24_P3-CPhase1-claude-code_INDEX案C再構成完走-8テーマ+大分類4グルーピング.md
   lines: 127
+- date: '2026-07-13'
+  score: 4.04
+  type: 3
+  title: 音節密度ルール拡張-Phase2実装完了-実測オーディオ解析融合
+  project: ai-music
+  source: 01_DECISIONS/ai-music/2026-07-13_音節密度ルール拡張-Phase2実装完了-実測オーディオ解析融合.md
+  lines: 125
+- date: '2026-08-29'
+  score: 4.04
+  type: 3
+  title: OpenRouter無料モデル自動検知pick実装
+  project: claude-code
+  source: 01_DECISIONS/claude-code/2026-08-29_OpenRouter無料モデル自動検知pick実装.md
+  lines: 125
+- date: '2026-09-04'
+  score: 4.03
+  type: 3
+  title: OpenRouter-pick有料保険デフォルト化修正
+  project: claude-code
+  source: 01_DECISIONS/claude-code/2026-09-04_OpenRouter-pick有料保険デフォルト化修正.md
+  lines: 124
+- date: '2026-07-24'
+  score: 4.02
+  type: 3
+  title: P3-CPhase1-NexusCore_INDEX案C再構成完走-7テーマ+リファクタ4サブセクション
+  project: claude-code
+  source: 01_DECISIONS/claude-code/2026-07-24_P3-CPhase1-NexusCore_INDEX案C再構成完走-7テーマ+リファクタ4サブセクション.md
+  lines: 122

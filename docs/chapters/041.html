@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第1話 「テストは充分？」という一言 — CC Stories</title>
-    <meta name="description" content="CC Stories — 作業の物語集: 第1話 「テストは充分？」という一言">
-    <meta property="og:title" content="第1話 「テストは充分？」という一言 — CC Stories">
-    <meta property="og:description" content="第1話 「テストは充分？」という一言 — 専門用語なしの物語と技術解説のペア">
+    <title>040_スコアが全部同じだった構造的不具合は仕組みを変えないと動かない話 — CC Stories</title>
+    <meta name="description" content="CC Stories — 作業の物語集: 040_スコアが全部同じだった構造的不具合は仕組みを変えないと動かない話">
+    <meta property="og:title" content="040_スコアが全部同じだった構造的不具合は仕組みを変えないと動かない話 — CC Stories">
+    <meta property="og:description" content="040_スコアが全部同じだった構造的不具合は仕組みを変えないと動かない話 — 専門用語なしの物語と技術解説のペア">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/001.html">
+    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/041.html">
     <meta property="og:image" content="https://fukukei23.github.io/cc-stories-guide/assets/ogp.png">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="../assets/style.css">
@@ -110,7 +110,7 @@
         </a>
         
         <a href="001.html"
-           class="sidebar-link active">
+           class="sidebar-link">
             <span class="sidebar-icon">📄</span>
             第1話 「テストは充分？」という一言
         </a>
@@ -242,7 +242,7 @@
         </a>
         
         <a href="041.html"
-           class="sidebar-link">
+           class="sidebar-link active">
             <span class="sidebar-icon">📄</span>
             040_スコアが全部同じだった構造的不具合は仕組みを変えないと動かない話
         </a>
@@ -259,63 +259,43 @@
     <main class="content">
         <div class="chapter-nav-top">
             
-            <a href="039-8.html" class="nav-prev">← 必須タグがなくても8割の点数が出てしまった話</a>
+            <a href="038-ai.html" class="nav-prev">← 字幕が一文字も出ていない動画を、AIは「出ています」と答えた話</a>
             
             
-            <a href="002.html" class="nav-next">第2話 防災フックが鳴らなかった話 →</a>
+            <a href="042.html" class="nav-next">042_宣言を書かないだけで全部素通りできた話 →</a>
             
         </div>
 
-        <div class="episode-badge">第1話</div>
+        <div class="episode-badge">第41話</div>
         <article class="chapter-body">
-            <h1>第1話 「テストは充分？」という一言</h1>
-<p>&lt;!-- published: 2026-09-02 / 種別: 事故解決+新仕様 --&gt;</p>
-<h2>困ったこと</h2>
-<p>最近、二日続けて同じ形の失敗がありました。一日目は「プログラムのテストを作った」と報告したのに、実は“うまくいく場合だけ”試していて、変な入力のときの確認が抜けていました。二日目は「どこにも使われていないはず」と調べた鍵が、実は大事なソフト（NexusCore）で使われていました。どちらも、ふくけいが「テストは充分？」と一言聞いたことで初めて見つかったのです。</p>
-<h2>どう解決したことになるか</h2>
-<p>「聞かれないと気づけない」のは困るので、この一言を自動化することにしました。ただ「ちゃんとやりなさい」と注意文を増やしても、注意文は読まれるだけで守られません（実際に二日連続で効きませんでした）。そこで方針を「申告させる」から「照合する」へ変えました。やったと書かせるのではなく、本当にやった証拠と突き合わせて機械が確かめる方式です。設計は別のAI三社に合計四回レビューしてもらい、そのたびに「このままだと間違えて止めすぎる」「自動実行では門番が動かない」などの落とし穴を潰しました。</p>
-<pre class="mermaid">flowchart TB
-    A[&quot;テスト全部成功 🎉&quot;] --&gt; B{&quot;でも本当の効果は？&quot;}
-    B --&gt;|&quot;中間指標だけ見て安心&quot;| C[&quot;😭 実は効果ゼロだった&quot;]
-    B --&gt;|&quot;完了の前に実測&quot;| D[&quot;✅ 効果を1コマンドで確認&quot;]
-    D --&gt; E[&quot;「完了」と言える&quot;]
-</pre>
-<h2>何が変わったか</h2>
-<p>完成したのは三つの門番です。①報告の形式と実際の実行記録が一致しているか確かめる係 ②「ゼロ件」と言い切る時に、別の探し方での再確認を要求する係 ③自動開発の間も報告の形式を強制する係。テストは全部で十八個、すべて合格。しかも作業の最中に「テストが合格と表示されているのに、実は試す準備ができておらず何も試していなかった」という失敗を門番の仕組みが見つけて直しました。作った当日に元が取れています。</p>
-<p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどう作ったか&lt;/summary&gt;</p>
-<h3>作ったもの</h3>
+            <p>&lt;!-- published: 2026-09-25 / 種別: 教訓 / 対象スキル: repo-review, code-metrics, multi-llm-review --&gt;</p>
+<h1>040_スコアが全部同じだった構造的不具合は仕組みを変えないと動かない話</h1>
+<p>NexusCoreの包括レビューを「前回差分」で回したところ、循環依存は5組のまま、<code>api→webapp</code> の依存エッジは28のまま、構造系の数字が<strong>完全に同値で帰ってきました</strong>。P1最優先だった「静的解析をCIに配線する」は棚卸しで片付いたのに、構造課題の6件は一度も動いていない。</p>
+<p>不思議だったのは、解決した項目と未解決の項目がきれいに分かれたこと。前者は「追跡解除」「依存除去」「テスト実行」のように、コマンド一発で物事が動くもの。後者は「<code>webapp</code> から <code>api</code> の逆流」「models層の不在」「READMEの数値ズレ」のように、<strong>誰かが判断して初めて動くもの</strong>。差分レビューは数値比較が本体なので、機械的に改善した点は差分として出る一方、判断待ちで溜まった課題は「動いてないから数値も同じ」になり、毎回「未解消6件」で固定される。</p>
+<p>解決策を探して辿り着いたのは、レビューの形式ではなく「判断を生成する仕組み」の有無。前者はCIのexit codeで自動化でき、後者は「これは誰が、いつまでに、どう決めるか」の欄を毎回明示しない限り動かない。次の改善ではレビュー表に <code>owner / due / decision_status</code> の列を足し、未解消行がこの欄に埋まるまでレビューを完了扱いにしない運用を試す予定です。</p>
+<p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどうなってるか&lt;/summary&gt;</p>
 <ul>
-<li><code>check-fail-coverage.sh</code>（既存Stop hook拡張）: 完了宣言に「検証範囲宣言」セクション（タイプI/II/III・正常系/異常系/境界・EXIT証跡のtool_result突合）を必須化。grace期間〜2026-09-15は警告のみ</li>
-<li><code>check-zero-assert.sh</code>（新規Stop hook）: 「ゼロ件」断定語×検索語の共起時に、固定プロトコル再検索（<code>grep -rln --include={py,sh,md,ts,js,json,yaml}</code>・head無し）の実行事実を要求。<code>!override &lt;理由&gt;</code> で人間判断の通過も可能</li>
-<li><code>run-task.sh</code> 拡張: 自動開発ループの検証プロセス出力から宣言セクションを機械抽出・不在なら即NG（自己修復なし・r3レビューで「自己修復1回許可」は逆用可能と判定され撤回）</li>
+<li>依存関係（&lt;code&gt;repo-review&lt;/code&gt;スキル・言語非依存）のカスタムAST走査で自己完結的に検出。ベンダーコード混入の心配がない &lt;code&gt;grep -r 'node_modules/' --include='*.md'&lt;/code&gt; のような単純なチェックでほぼ拾える類いから、静的解析（&lt;code&gt;ruff&lt;/code&gt;/&lt;code&gt;mypy&lt;/code&gt;）・既知脆弱性（&lt;code&gt;pip-audit&lt;/code&gt;）・CIガード範囲外というテストでしか出ない類いまで、計測の観点を増やしている。</li>
+<li>「除外リスト」はリポジトリによって揺れが大きく、計測そのものより除外合意のほうが時間がかかる。&lt;code&gt;git ls-files&lt;/code&gt; + &lt;code&gt;ふくけい承認&lt;/code&gt;を除外プロトコルに組み込むことで、再走可能にしている。</li>
+<li>CI保護範囲を実測すると「lint対象の自作コード」と「手元では走らせているがCIには乗っていない自作コード」の分断が見える（ruff 1,160件・tools/配下12.7k LOC）。PreToolUse hookで &lt;code&gt;ruff check src/ tests/&lt;/code&gt; を編集ガードすると &lt;code&gt;vscode-extension/node_modules/ 3,075ファイル&lt;/code&gt; のような追跡下バルクがCI保護範囲を食いつぶす構造も検出できる。</li>
+<li>「未解消6件が3回連続で同値」は、それ自体が falsification 観測事実になる。差分レビューを続ける限り構造課題は可視化されないので、ループの出口設計を変えるのが次の手。</li>
+<li>関連スキル: &lt;code&gt;repo-review&lt;/code&gt;（リポジトリ品質診断）, &lt;code&gt;code-metrics&lt;/code&gt;（コード行数・テスト数の3層証明）, &lt;code&gt;multi-llm-review&lt;/code&gt;（差分の見落とし検出）, &lt;code&gt;self-inspect&lt;/code&gt;（成果物の深点検）
+&lt;/details&gt;</li>
 </ul>
-<h3>設計の要点</h3>
-<ul>
-<li>設計原則は「書かせるでなく突合する」— 宣言の形式でなく宣言と実態（実行コマンド・exit code証跡・再検索差分）の一致を機械検査。層1ルール文が2日連続で防げなかった事実が根拠</li>
-<li>判定方式はMLR（マルチLLMレビュー）4ラウンド81指摘で確定。r4では「POC（F層発火実証）を先にやれ」というNO-GO指摘を採用し条件付きGO→実際に <code>claude --print</code> 内でもhook発火を実証してから実装した</li>
-<li>TDD（テスト先書き）で18ケース。実装中に「fixture不在でもexit 0で通る偽PASS」を実測発見・修正</li>
-</ul>
-<h3>所在情報（要約・原文リンクなし）</h3>
-<ul>
-<li>設計正典: SSOTの docs/superpowers/specs/（2026-09-01_テストは充分-体系化-design.md）</li>
-<li>レビュー正典: SSOTの 00_SYSTEM/マルチLLMレビュー/2026-09-01_テストは充分-体系化設計レビュー/（4ラウンド81指摘）</li>
-<li>実装記録: SSOTの 01_DECISIONS/claude-code/2026-09-01_テストは充分-体系化実装-POC〜Phase1完走.md</li>
-</ul>
-<p>&lt;/details&gt;</p>
 
         </article>
 
         <nav class="chapter-nav-bottom">
             
-            <a href="039-8.html" class="nav-card prev">
+            <a href="038-ai.html" class="nav-card prev">
                 <span class="nav-label">← 前の章</span>
-                <span class="nav-title">📄 必須タグがなくても8割の点数が出てしまった話</span>
+                <span class="nav-title">📄 字幕が一文字も出ていない動画を、AIは「出ています」と答えた話</span>
             </a>
             
             
-            <a href="002.html" class="nav-card next">
+            <a href="042.html" class="nav-card next">
                 <span class="nav-label">次の章 →</span>
-                <span class="nav-title">📄 第2話 防災フックが鳴らなかった話</span>
+                <span class="nav-title">📄 042_宣言を書かないだけで全部素通りできた話</span>
             </a>
             
         </nav>
