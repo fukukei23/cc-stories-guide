@@ -244,6 +244,19 @@ def test_load_episode_materials_複数行コメントも採集(tmp_path):
     assert used == {"01_DECISIONS/projA/複数行.md"}
 
 
+def test_load_episode_materials_fence内のコメント例は採集しない(tmp_path):
+    """verify r2 issue 2回帰: コードブロック内のコメント例（説明用の引用）は
+    採集しない（convert側のfence保持方針と逆方向に不整合にならないように）."""
+    d = tmp_path / "source"
+    os.makedirs(d, exist_ok=True)
+    (d / "044_コード例引用型.md").write_text(
+        "<!-- published: 2026-09-27 / 種別: 教訓 / 素材: 01_DECISIONS/projA/本物.md -->\n\n"
+        "# テスト\n\n```markdown\n<!-- 素材: 01_DECISIONS/projC/コード例なので除外されない.md -->\n```\n",
+        encoding="utf-8")
+    used = load_episode_materials(str(d))
+    assert used == {"01_DECISIONS/projA/本物.md"}
+
+
 def test_load_episode_materials_実在しない素材パスはWARN(tmp_path, capsys):
     """ssot_rootを渡した時、実在しない素材パスはstderr警告（書式逸脱の無音ミスマッチ防止・issue 3）."""
     d = tmp_path / "source"

@@ -80,9 +80,27 @@ def _iter_episode_material_comments(text: str):
     本文全体を走査すると、025話のような本文内の `- 素材:` 行（技術サマリーの
     箇条書き）まで採集され、バックティック付きの壊れたパスが排除リストに入って
     当該話自身の防御が無効化する（verify r1 issue 1・2026-09-26実測）.
+    コードブロック（fence）内のコメント例は採集しない（convert側の保持方針と
+    整合させる・verify r2 issue 2の逆方向不整合防止）.
     """
-    for m in re.finditer(r"<!--(.*?)-->", text, re.DOTALL):
-        yield m.group(1)
+    in_fence = False
+    fence_char = ""
+    fence_len = 0
+    buf: list[str] = []
+    for ln in text.splitlines():
+        m = re.match(r"^\s*(`{3,}|~{3,})(.*)$", ln)
+        if in_fence:
+            if m and m.group(1)[0] == fence_char \
+                    and len(m.group(1)) >= fence_len and m.group(2).strip() == "":
+                in_fence = False
+        elif m:
+            in_fence = True
+            fence_char, fence_len = m.group(1)[0], len(m.group(1))
+        else:
+            buf.append(ln)
+    non_fence = "\n".join(buf)
+    for m2 in re.finditer(r"<!--(.*?)-->", non_fence, re.DOTALL):
+        yield m2.group(1)
 
 
 def load_episode_materials(source_dir: str, ssot_root: str | None = None) -> set[str]:

@@ -189,3 +189,38 @@ def test_strip_header_comments_keeps_comment_inside_code_fence() -> None:
     out = strip_header_comments(text)
     assert "<!-- published: サンプル -->" in out  # fence内は保持
     assert "コード例" in out
+
+
+def test_strip_header_comments_奇数fence閉じ忘れでも決定論的() -> None:
+    """verify r2 issue 1回帰: 閉じ忘れfenceがあっても、fence開始前の処理は
+    無音に無効化されない（コメント除去は順次処理で決定論的）."""
+    from convert import strip_header_comments
+
+    text = ("# タイトル\n\n<!-- published: x / 素材: 01_DECISIONS/p/記録.md -->\n\n"
+            "本文。\n\n```python\nprint('閉じ忘れ')\n")
+    out = strip_header_comments(text)
+    assert "published" not in out  # fence開始前のコメントは普通に除去される
+    assert "# タイトル" in out
+    assert "本文。" in out
+    assert "print('閉じ忘れ')" in out  # 閉じ忘れfence以降はコードとして保持
+
+
+def test_strip_header_comments_先頭fence原稿はCommonMark準拠で保持() -> None:
+    """先頭がfenceの原稿（fenceの組ゼロ）はCommonMarkどおりコード扱いで保持する
+    （旧re.split方式の暗黙fence扱いと違い・仕様として明示）."""
+    from convert import strip_header_comments
+
+    text = "```\n<!-- 素材: x.md -->\n"
+    out = strip_header_comments(text)
+    assert "<!-- 素材: x.md -->" in out  # コードとして保持（決定論的仕様）
+
+
+def test_strip_header_comments_インラインコード内コメントは保持() -> None:
+    """verify r2 issue 3: インラインコード（バックティック1個）内のコメント表記は
+    本文の説明言及として保持する."""
+    from convert import strip_header_comments
+
+    text = "# タイトル\n\n本文 `<!-- 素材: 例 -->` の続き。\n"
+    out = strip_header_comments(text)
+    assert "`<!-- 素材: 例 -->`" in out  # インラインコードは保持
+    assert "の続き。" in out
