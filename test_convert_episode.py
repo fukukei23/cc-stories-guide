@@ -224,3 +224,39 @@ def test_strip_header_comments_インラインコード内コメントは保持(
     out = strip_header_comments(text)
     assert "`<!-- 素材: 例 -->`" in out  # インラインコードは保持
     assert "の続き。" in out
+
+
+def test_strip_header_comments_コメント内バックティックペアでも除去() -> None:
+    """verify r3 issue 1回帰: コメント内部にバックティックペア（`path.md`）が
+    あってもコメントスパンが壊れず除去される（025話型の実在書式）."""
+    from convert import strip_header_comments
+
+    text = ("<!-- published: 2026-09-27 / 素材: `01_DECISIONS/projA/記録.md` -->\n\n"
+            "# タイトル\n\n本文。\n")
+    out = strip_header_comments(text)
+    assert "素材" not in out
+    assert "published" not in out
+    assert "# タイトル" in out
+
+
+def test_strip_header_comments_複数行コメント内バックティックでも除去() -> None:
+    """verify r3 issue 1回帰（複数行版）: 複数行コメント内のバックティックペアでも
+    コメント全体が除去される."""
+    from convert import strip_header_comments
+
+    text = ("<!--\npublished: 2026-09-27\n素材: `01_DECISIONS/projA/記録.md`\n-->\n\n"
+            "# タイトル\n")
+    out = strip_header_comments(text)
+    assert "素材" not in out
+    assert "# タイトル" in out
+
+
+def test_strip_header_comments_4スペースインデントfenceはfence扱いしない() -> None:
+    """verify r3 issue 2回帰: 4スペース以上のインデントはCommonMarkでは
+    インデントコードブロックでfence不成立（0-3スペースのみfence開始）."""
+    from convert import strip_header_comments
+
+    text = ("# タイトル\n\n    ```\n<!-- published: x -->\n    ```\n\n本文。\n")
+    out = strip_header_comments(text)
+    assert "published" not in out  # fence開始と誤判定しないので普通に除去される
+    assert "本文。" in out

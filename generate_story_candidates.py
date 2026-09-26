@@ -82,25 +82,11 @@ def _iter_episode_material_comments(text: str):
     当該話自身の防御が無効化する（verify r1 issue 1・2026-09-26実測）.
     コードブロック（fence）内のコメント例は採集しない（convert側の保持方針と
     整合させる・verify r2 issue 2の逆方向不整合防止）.
+    fence判定は fence_util.py 共通実装（verify r3 issue 3のDRY対応）.
     """
-    in_fence = False
-    fence_char = ""
-    fence_len = 0
-    buf: list[str] = []
-    for ln in text.splitlines():
-        m = re.match(r"^\s*(`{3,}|~{3,})(.*)$", ln)
-        if in_fence:
-            if m and m.group(1)[0] == fence_char \
-                    and len(m.group(1)) >= fence_len and m.group(2).strip() == "":
-                in_fence = False
-        elif m:
-            in_fence = True
-            fence_char, fence_len = m.group(1)[0], len(m.group(1))
-        else:
-            buf.append(ln)
-    non_fence = "\n".join(buf)
-    for m2 in re.finditer(r"<!--(.*?)-->", non_fence, re.DOTALL):
-        yield m2.group(1)
+    from fence_util import iter_comment_spans
+
+    yield from iter_comment_spans(text)
 
 
 def load_episode_materials(source_dir: str, ssot_root: str | None = None) -> set[str]:
@@ -127,7 +113,8 @@ def load_episode_materials(source_dir: str, ssot_root: str | None = None) -> set
             continue  # 読み失敗原稿は無視（他の原稿の防御は止めない・fail-open局部化）
         for comment in _iter_episode_material_comments(text):
             for m in re.finditer(r"素材[:：]\s*(\S+\.md)", comment):
-                path = os.path.normpath(m.group(1))
+                # バックティック付き記法（素材: `path.md`）はデリミタを除去して正規化
+                path = os.path.normpath(m.group(1).strip("`"))
                 used.add(path)
                 if ssot_root and not os.path.isfile(os.path.join(ssot_root, path)):
                     print(f"WARN: 素材パスが実在しない（書式逸脱・タイプミス疑い）:"

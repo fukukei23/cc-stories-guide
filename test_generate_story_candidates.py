@@ -257,6 +257,18 @@ def test_load_episode_materials_fence内のコメント例は採集しない(tmp
     assert used == {"01_DECISIONS/projA/本物.md"}
 
 
+def test_load_episode_materials_コメント内バックティック付きパスを正規化(tmp_path):
+    """verify r3 issue 1関連: コメント内の `素材: \`path.md\`` 記法（025話型）も
+    バックティックを除去して正しいパスで採集する（壊れたパスを作らない）."""
+    d = tmp_path / "source"
+    os.makedirs(d, exist_ok=True)
+    (d / "045_バックティック付きコメント型.md").write_text(
+        "<!-- published: 2026-09-27 / 素材: `01_DECISIONS/projA/記録.md` -->\n\n# テスト\n",
+        encoding="utf-8")
+    used = load_episode_materials(str(d))
+    assert used == {"01_DECISIONS/projA/記録.md"}
+
+
 def test_load_episode_materials_実在しない素材パスはWARN(tmp_path, capsys):
     """ssot_rootを渡した時、実在しない素材パスはstderr警告（書式逸脱の無音ミスマッチ防止・issue 3）."""
     d = tmp_path / "source"

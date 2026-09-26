@@ -81,66 +81,6 @@ def _extract_desc_from_h1(text: str) -> str:
     return ""
 
 
-_FENCE_LINE = re.compile(r"^\s*(`{3,}|~{3,})(.*)$")
-
-
-def _fence_tracked_parts(text: str) -> list[str]:
-    """テキストをfence（コードブロック）領域と非fence領域に分割する.
-
-    行単位の状態遷移で判定する（verify r2 issue 1対応・2026-09-27）: re.split系の
-    「偶数個のfence前提」は奇数個（閉じ忘れ）で以降が無音にfence扱い/非fence扱いと
-    なり、コメント除去が無音無効化される欠陥があった。本実装はCommonMark準拠の
-    挙動（開くfence=情報文字列可・閉じるfence=同種かつ同長以上かつ後続なし）で
-    閉じ忘れfence以降はコードとして保持し、判定は決定論的.
-    """
-    parts: list[str] = []
-    pending: list[str] = []
-    fence: list[str] | None = None
-    fence_char = ""
-    fence_len = 0
-    for ln in text.splitlines(keepends=True):
-        m = _FENCE_LINE.match(ln)
-        if fence is None:
-            if m:
-                parts.append("".join(pending))
-                pending = []
-                fence = [ln]
-                fence_char, fence_len = m.group(1)[0], len(m.group(1))
-            else:
-                pending.append(ln)
-        else:
-            fence.append(ln)
-            if m and m.group(1)[0] == fence_char \
-                    and len(m.group(1)) >= fence_len and m.group(2).strip() == "":
-                parts.append("".join(fence))  # fence領域（開閉行含む）を1partにまとめる
-                fence = None
-    parts.append("".join(pending))
-    if fence is not None:
-        parts.append("".join(fence))  # 閉じ忘れfenceは末尾までコードとして保持
-    return parts
-
-
-def _drop_meta_comments(block: str) -> str:
-    """非fenceブロックから `published:` / `素材:` を含むHTMLコメントを除去する.
-
-    インラインコード（バックティック1個・同一行内ペア）内のコメントは保持する
-    （verify r2 issue 3対応・本文での説明言及を消さない）.
-    """
-    chunks = re.split(r"(`[^`\n]*`)", block)
-    out = []
-    for chunk in chunks:
-        if chunk.startswith("`") and chunk.endswith("`") and len(chunk) > 1:
-            out.append(chunk)  # インラインコードは保持
-            continue
-        out.append(re.sub(
-            r"<!--.*?-->",
-            lambda m: "" if ("published:" in m.group(0) or "素材:" in m.group(0)) else m.group(0),
-            chunk,
-            flags=re.DOTALL,
-        ))
-    return "".join(out)
-
-
 def strip_header_comments(text: str) -> str:
     """`published:` / `素材:` を含むHTMLコメント（機械読み取り専用メタデータ）を
     HTMLへ流さない。コメント行は本文扱いでエスケープ表示されており（既存リーク）、
@@ -148,12 +88,14 @@ def strip_header_comments(text: str) -> str:
     publishedコメントがH1の後ろにある原稿（001等）もあるため、位置は問わない.
 
     コードブロック（fence）内はCommonMarkどおりコードとして保持する（誤除去防止）.
-    fence判定は _fence_tracked_parts の行単位状態遷移で決定論的に行う.
+    fence判定・コメント除去の実体は fence_util.py（convert/generate共通・verify
+    r3 issue 3のDRY対応）.
     """
+    from fence_util import drop_meta_comments, split_fenced_parts
+
     return "".join(
-        part if part.lstrip().startswith(("```", "~~~"))
-        else _drop_meta_comments(part)
-        for part in _fence_tracked_parts(text)
+        part if is_fence else drop_meta_comments(part)
+        for is_fence, part in split_fenced_parts(text)
     )
 
 
