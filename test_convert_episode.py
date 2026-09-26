@@ -135,3 +135,27 @@ def test_filename_to_slug_known_slugs() -> None:
     assert _filename_to_slug("016_AI審査員の盲点を人間の一言と説明書の改良で塞いだ話.md") == "016-ai"
     # 既存話のslugは公開URLの実名・変更禁止（破壊的変更=過去リンク切れ）
     assert _filename_to_slug("015_設定を1枚の帳票に集めて書き忘れ事故を潰した話.md") == "015-1"
+
+
+# --- strip_header_comments: published/素材コメントのHTML流出防止（2026-09-26） ---
+
+def test_strip_header_comments_removes_published_comment() -> None:
+    """先頭のpublishedコメント（機械読み取り専用）はHTMLへ流さない."""
+    from convert import strip_header_comments
+
+    text = "<!-- published: 2026-09-25 / 種別: 教訓 / 素材: 01_DECISIONS/projA/記録.md -->\n\n# タイトル\n\n本文。\n"
+    out = strip_header_comments(text)
+    assert "素材" not in out
+    assert "published" not in out
+    assert "# タイトル" in out
+
+
+def test_strip_header_comments_keeps_body_and_frontmatter() -> None:
+    """frontmatter（---開始）と本文は保持する。H1後ろのコメント（001型）も除去."""
+    from convert import strip_header_comments
+
+    text = "---\ntitle: x\n---\n\n# タイトル\n\n<!-- published: 2026-09-25 / 種別: 教訓 -->\n\n本文。素材: という語を本文で使う。\n"
+    out = strip_header_comments(text)
+    assert out.startswith("---")
+    assert "<!-- published" not in out  # H1後ろのコメント行も除去
+    assert "本文。素材: という語を本文で使う。" in out  # 本文は触らない

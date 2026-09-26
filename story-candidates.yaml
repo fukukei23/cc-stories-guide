@@ -1,14 +1,7 @@
 # 物語候補リスト（generate_story_candidates.py 自動生成・手動編集は次回生成で上書きされます）
-generated_at: '2026-09-25T16:53:09'
+generated_at: '2026-09-26T13:12:33'
 rule: score=種別点+素材厚(行数/120・max2)・除外=機密/キャリア/外向き・90日以内
 candidates:
-- date: '2026-08-29'
-  score: 4.76
-  type: 3
-  title: 包括レビュー差分-前回10件消化状況と新規3件
-  project: NexusCore
-  source: 01_DECISIONS/NexusCore/2026-08-29_包括レビュー差分-前回10件消化状況と新規3件.md
-  lines: 211
 - date: '2026-07-12'
   score: 4.44
   type: 3
@@ -16,13 +9,6 @@ candidates:
   project: claude-code
   source: 01_DECISIONS/claude-code/2026-07-12_ssot-recordマルチ起点再設計-セクション4-3-LLM仲裁実機検証.md
   lines: 173
-- date: '2026-09-08'
-  score: 4.36
-  type: 3
-  title: テスト網羅性fail-safe判断3件承認とPOC-0着手
-  project: claude-code
-  source: 01_DECISIONS/claude-code/2026-09-08_テスト網羅性fail-safe判断3件承認とPOC-0着手.md
-  lines: 163
 - date: '2026-08-25'
   score: 4.33
   type: 3
@@ -282,3 +268,17 @@ candidates:
   project: claude-code
   source: 01_DECISIONS/claude-code/2026-07-24_P3-CPhase1-NexusCore_INDEX案C再構成完走-7テーマ+リファクタ4サブセクション.md
   lines: 122
+- date: '2026-07-01'
+  score: 3.99
+  type: 3
+  title: 32MBエラー真因解明-proxy-client_max_size修正
+  project: claude-code
+  source: 01_DECISIONS/claude-code/2026-07-01_32MBエラー真因解明-proxy-client_max_size修正.md
+  lines: 119
+- date: '2026-07-12'
+  score: 3.99
+  type: 3
+  title: 祭礼前夜v5-v6生成と構造タグ無視問題の根因発見
+  project: ai-music
+  source: 01_DECISIONS/ai-music/2026-07-12_祭礼前夜v5-v6生成と構造タグ無視問題の根因発見.md
+  lines: 119

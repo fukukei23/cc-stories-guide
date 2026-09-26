@@ -81,6 +81,20 @@ def _extract_desc_from_h1(text: str) -> str:
     return ""
 
 
+def strip_header_comments(text: str) -> str:
+    """`published:` / `素材:` を含む独立コメント行（機械読み取り専用メタデータ）を
+    HTMLへ流さない。コメント行は本文扱いでエスケープ表示されており（既存リーク）、
+    素材パス（01_DECISIONS内部パス）が公開ページに出るため除去する（2026-09-26）.
+    publishedコメントがH1の後ろにある原稿（001等）もあるため、位置は問わない.
+    """
+    kept = [
+        ln for ln in text.splitlines()
+        if not (ln.strip().startswith("<!--") and ln.strip().endswith("-->")
+                and ("published:" in ln or "素材:" in ln))
+    ]
+    return "\n".join(kept)
+
+
 def _extract_category_from_published_comment(text: str) -> str:
     """先頭の `<!-- published: ... / 種別: 使い方解説 / ... -->` コメントから
     カテゴリ名を取り出す。ヒットしなければ '作業の物語' を返す。
@@ -558,6 +572,7 @@ def main():
             continue
 
         md_text = src.read_text(encoding="utf-8")
+        md_text = strip_header_comments(md_text)  # published/素材コメントはHTMLへ流さない（2026-09-26）
         html_body = convert_md_to_html(md_text)
         html_body = rewrite_links(html_body, effective_map)
         html_body = convert_tldr(html_body)

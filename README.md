@@ -9,6 +9,7 @@ CC（Claude Code）との作業を「専門用語なしの物語+技術解説」
 - **上限: 1日10話**（暴走止め・ふくけい指示2026-09-01）
 - 公開前は必ず `python3 check_story_public.py <file> --denylist security-denylist.yaml` が EXIT=0
 - denylistにヒットしたらマスク/削除して再実行（判定は「マッチ断片自身がwhitelist語を含む場合のみ許可」）
+- **話の素材パス記録（2026-09-26導入）**: 各原稿1行目コメントに `素材: 01_DECISIONS/<プロジェクト>/<記録>.md` を記録する（複数話元は `素材:` を繰り返す）。`generate_story_candidates.py` がepisode原稿の素材記録と judgment-logの `source:` 欄の両方を突合し、同一素材の2話目候補を自動排除する（judgment-logのsource欄欠落に強い残余防御・2026-09-25実害＝同素材2話目を手動除外した事故の再発防止）
 
 ## gitleaks 方針（確定）
 - **現時点は未導入**。第2ゲート（denylist+人間の全文確認）で代替中。

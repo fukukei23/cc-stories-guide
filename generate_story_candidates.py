@@ -74,6 +74,26 @@ def load_used_sources(log_path: str) -> set[str]:
     return used
 
 
+def load_episode_materials(source_dir: str) -> set[str]:
+    """source/配下のepisode原稿の `素材:` コメントから物語化済み素材パスを収集する.
+
+    judgment-logのsource欄はログ再構成で欠落する実害があった（2026-09-18構造破壊・
+    2026-09-25は同素材2話目を手動除外で対応）ため、episode原稿自体に素材パスを
+    記録しておき、judgment-log非依存の残余防御として突合する.
+    """
+    used: set[str] = set()
+    if not os.path.isdir(source_dir):
+        return used
+    for p in glob.glob(os.path.join(source_dir, "*.md")):
+        try:
+            text = pathlib_read(p)
+        except Exception:
+            continue  # 読み失敗原稿は無視（他の原稿の防御は止めない・fail-open局部化）
+        for m in re.finditer(r"素材[:：]\s*(\S+\.md)", text):
+            used.add(os.path.normpath(m.group(1)))
+    return used
+
+
 def same_day_run(out_path: str, today: datetime.date | None = None) -> bool:
     """--out先の generated_at が当日なら True（同日再発火skip判定）.
 
@@ -134,6 +154,10 @@ def main(argv: list[str] | None = None) -> int:
         lock_fp.close()
 
     used = load_used_sources(args.log)
+    # episode原稿の素材コメント突合（残余防御・judgment-logのsource欄欠落に強い・2026-09-25実害対応）
+    source_dir = os.path.join(os.path.dirname(os.path.abspath(args.out)), "source")
+    episode_materials = load_episode_materials(source_dir)
+    used |= episode_materials
     root = os.path.join(args.ssot, "01_DECISIONS")
     today = datetime.date.today()  # 単一評価（r3レビュー採用・深夜0時跨ぎの境界バグ防止）
     entries = []

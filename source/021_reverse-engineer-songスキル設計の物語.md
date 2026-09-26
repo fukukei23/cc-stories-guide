@@ -1,4 +1,4 @@
-<!-- published: 2026-09-11 / 種別: ものづくりの流れ / 対象スキル: reverse-engineer-song -->
+<!-- published: 2026-09-11 / 種別: ものづくりの流れ / 対象スキル: reverse-engineer-song / 素材: 01_DECISIONS/ai-music/2026-06-15_reverse-engineer-songスキル_plan.md -->
 
 # 013の次に見えた「聴くだけじゃ足りない」
 

@@ -15,7 +15,19 @@ import sys
 import yaml
 
 sys.path.insert(0, os.path.dirname(__file__))
-from generate_story_candidates import load_used_sources, main, same_day_run  # noqa: E402
+from generate_story_candidates import (  # noqa: E402
+    load_episode_materials,
+    load_used_sources,
+    main,
+    same_day_run,
+)
+
+
+def _write_episode(source_dir, name: str, material: str | None) -> None:
+    """tmpにepisode原稿fixtureを作る（素材コメント付き・2026-09-25実害対応）."""
+    os.makedirs(source_dir, exist_ok=True)
+    comment = f"<!-- published: 2026-09-25 / 種別: 教訓 / 素材: {material} -->\n" if material else "<!-- published: 2026-09-25 / 種別: 教訓 -->\n"
+    (source_dir / name).write_text(comment + "\n# テスト話\n\n本文。\n", encoding="utf-8")
 
 
 def _write_ssot_and_log(tmp_path, judged_source: str | None, file_name: str = "099_テスト話.md"):
@@ -165,3 +177,76 @@ def test_main_未来日付は弾く(tmp_path):
     data = yaml.safe_load(out.read_text(encoding="utf-8"))
     sources = [c["source"] for c in data["candidates"]]
     assert not any("未来記録" in s for s in sources)
+
+
+# ---------------------------------------------------------------------------
+# episode素材コメント突合（残余防御・2026-09-25実害対応）
+# ---------------------------------------------------------------------------
+
+
+def test_load_episode_materials_素材コメントから相対パスを収集(tmp_path):
+    """episode原稿の `素材:` コメントから物語化済み素材パスを収集できること."""
+    _write_episode(tmp_path / "source", "041_テスト話.md", "01_DECISIONS/projA/2026-01-01_テスト記録.md")
+    used = load_episode_materials(str(tmp_path / "source"))
+    assert used == {"01_DECISIONS/projA/2026-01-01_テスト記録.md"}
+
+
+def test_load_episode_materials_複数素材は両方収集(tmp_path):
+    """複数 `素材:` フィールドは両方収集する（1話が複数記録から成立する場合）."""
+    d = tmp_path / "source"
+    os.makedirs(d, exist_ok=True)
+    (d / "042_テスト話.md").write_text(
+        "<!-- published: 2026-09-25 / 種別: 教訓 / 素材: 01_DECISIONS/projA/記録1.md / 素材: 01_DECISIONS/projA/記録2.md -->\n\n# テスト話\n",
+        encoding="utf-8")
+    used = load_episode_materials(str(d))
+    assert used == {"01_DECISIONS/projA/記録1.md", "01_DECISIONS/projA/記録2.md"}
+
+
+def test_load_episode_materials_素材コメント無し原稿と索引は無視(tmp_path):
+    """素材コメント無し原稿・index.md（素材欄無し）は何も収集しない."""
+    d = tmp_path / "source"
+    _write_episode(d, "041_テスト話.md", None)
+    (d / "index.md").write_text("# 索引\n", encoding="utf-8")
+    assert load_episode_materials(str(d)) == set()
+
+
+def test_load_episode_materials_ディレクトリ無しは空集合(tmp_path):
+    assert load_episode_materials(str(tmp_path / "ない")) == set()
+
+
+def test_main_episode素材記録で同一素材を排除(tmp_path, capsys):
+    """fail条件回帰（2026-09-25実害）: judgment-logにsource欄が無くても、episode原稿の
+    素材コメント突合で同一素材の2話目候補を排除できること."""
+    log = _write_ssot_and_log(tmp_path, None)  # judgment-logにsource欄なし
+    _write_episode(tmp_path / "source", "041_テスト話.md", "01_DECISIONS/projA/2026-01-01_テスト記録.md")
+    out = tmp_path / "story-candidates.yaml"
+    rc = main(["--ssot", str(tmp_path), "--log", str(log), "--out", str(out)])
+    assert rc == 0
+    data = yaml.safe_load(out.read_text(encoding="utf-8"))
+    sources = [c["source"] for c in data["candidates"]]
+    assert "01_DECISIONS/projA/2026-01-01_テスト記録.md" not in sources
+    assert "01_DECISIONS/judgment-log.yaml" not in str(sources)
+    assert "01_DECISIONS/projB/2026-01-01_テスト記録.md" in sources  # 未物語化は残る
+    assert "排除" in capsys.readouterr().out
+
+
+def test_main_素材記録なしepisodeは過剰排除しない(tmp_path):
+    """episode原稿に素材コメントが無ければ排除に使わない（過剰排除防止）."""
+    log = _write_ssot_and_log(tmp_path, None)
+    _write_episode(tmp_path / "source", "041_テスト話.md", None)
+    rc = main(["--ssot", str(tmp_path), "--log", str(log), "--out", str(tmp_path / "story-candidates.yaml")])
+    assert rc == 0
+    data = yaml.safe_load((tmp_path / "story-candidates.yaml").read_text(encoding="utf-8"))
+    assert len(data["candidates"]) == 2  # projA/projB両方残る
+
+
+def test_main_素材コメントがあっても候補外パスは影響しない(tmp_path):
+    """素材コメントのパスが候補に存在しなければ影響しない（安全側）."""
+    log = _write_ssot_and_log(tmp_path, None)
+    _write_episode(tmp_path / "source", "041_テスト話.md", "01_DECISIONS/projA/2026-01-01_テスト記録.md")
+    out = tmp_path / "story-candidates.yaml"
+    rc = main(["--ssot", str(tmp_path), "--log", str(log), "--out", str(out)])
+    assert rc == 0
+    data = yaml.safe_load(out.read_text(encoding="utf-8"))
+    # 素材コメントで排除されるのはprojAのみ・projB（別パス）は残る
+    assert [c["source"] for c in data["candidates"]] == ["01_DECISIONS/projB/2026-01-01_テスト記録.md"]
