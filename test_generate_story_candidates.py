@@ -269,6 +269,17 @@ def test_load_episode_materials_コメント内バックティック付きパス
     assert used == {"01_DECISIONS/projA/記録.md"}
 
 
+def test_load_episode_materials_インラインコード内コメントは採集しない(tmp_path):
+    """verify r4 issue 1回帰: 本文に説明引用しただけのインラインコード内コメントは
+    採集しない（正当な素材が過剰排除される実害の防止）."""
+    d = tmp_path / "source"
+    os.makedirs(d, exist_ok=True)
+    (d / "046_インライン引用型.md").write_text(
+        "# テスト\n\n本文で `` `<!-- 素材: 01_DECISIONS/projC/説明引用のみ.md -->` ``\nと書いただけ。\n",
+        encoding="utf-8")
+    assert load_episode_materials(str(d)) == set()
+
+
 def test_load_episode_materials_実在しない素材パスはWARN(tmp_path, capsys):
     """ssot_rootを渡した時、実在しない素材パスはstderr警告（書式逸脱の無音ミスマッチ防止・issue 3）."""
     d = tmp_path / "source"

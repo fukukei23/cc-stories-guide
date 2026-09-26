@@ -8,18 +8,19 @@ from __future__ import annotations
 
 import re
 
-# CommonMark準拠: fence開始は 0-3スペースのインデントのみ・タブ不許可
-# （4スペール以上はインデントコードブロックでfence不成立・verify r3 issue 2）
+# fence判定はCommonMark準拠: 開始は 0-3スペースのインデントのみ・タブ不許可
+# （4スペール以上はインデントコードブロックでfence不成立・verify r3 issue 2）。
+# なおバックティックfenceの情報文字列にバックティックを含む特殊ケース
+# （``` a`b 等）はCommonMarkでは不成立だが本実装ではfence開始と判定する
+# （レアケース・影響はfence扱いされる範囲が僅かに広がるのみ・verify r4 issue 3）
 _FENCE_LINE = re.compile(r"^ {0,3}(`{3,}|~{3,})(.*)$")
 
 # コメントスパンを先に判定する交互オーダー（コメント内のバックティックペアで
 # コメント検出が壊れないようにする・verify r3 issue 1）
 _COMMENT_OR_INLINE = re.compile(r"(<!--.*?-->)|(`[^`\n]*`)", re.DOTALL)
 
-
-def is_fence_line(line: str) -> bool:
-    """行がfenceマーカー行（0-3スペース+3個以上のバックティック/チルダ）か."""
-    return _FENCE_LINE.match(line) is not None
+# 既知の境界（verify r4 issue 4・pre-existing）: `-->` で閉じられていないコメントは
+# CommonMark上コメント描画されないため除去・採集ともに対象外（可視テキスト化する）
 
 
 def split_fenced_parts(text: str) -> list[tuple[bool, str]]:
@@ -64,12 +65,17 @@ def iter_comment_spans(text: str):
 
     コードブロック（fence）内のコメント例は採集対象外（convert側の保持方針と
     整合させる・verify r2 issue 2の逆方向不整合防止）.
+    インラインコード（バックティック1個ペア）内のコメント表記は本文の説明引用
+    として採集しない（convert側drop_meta_commentsの保持方針と二重基準を解消・
+    verify r4 issue 1の過剰採集〔排除方向の実害〕防止）.
     """
     for is_fence, part in split_fenced_parts(text):
         if is_fence:
             continue
-        for m in re.finditer(r"<!--(.*?)-->", part, re.DOTALL):
-            yield m.group(1)
+        for m in _COMMENT_OR_INLINE.finditer(part):
+            comment = m.group(1)
+            if comment:
+                yield comment[4:-3]  # `<!--` と `-->` を除いた内容
 
 
 def drop_meta_comments(block: str) -> str:
