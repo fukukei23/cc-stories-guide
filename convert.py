@@ -82,17 +82,26 @@ def _extract_desc_from_h1(text: str) -> str:
 
 
 def strip_header_comments(text: str) -> str:
-    """`published:` / `素材:` を含む独立コメント行（機械読み取り専用メタデータ）を
+    """`published:` / `素材:` を含むHTMLコメント（機械読み取り専用メタデータ）を
     HTMLへ流さない。コメント行は本文扱いでエスケープ表示されており（既存リーク）、
     素材パス（01_DECISIONS内部パス）が公開ページに出るため除去する（2026-09-26）.
     publishedコメントがH1の後ろにある原稿（001等）もあるため、位置は問わない.
+
+    verify r1 issue 5対応（2026-09-26）: 単一行完全一致コメントの行単位除去から、
+    ①複数行コメント ②`-->` と同行に本文が続く形式 も除去するコメントスパン方式へ
+    変更。コードブロック（fence）内のコメントは本文として保持する（誤除去防止）.
     """
-    kept = [
-        ln for ln in text.splitlines()
-        if not (ln.strip().startswith("<!--") and ln.strip().endswith("-->")
-                and ("published:" in ln or "素材:" in ln))
-    ]
-    return "\n".join(kept)
+    parts = re.split(r"(```.*?```)", text, flags=re.DOTALL)
+    out = []
+    for part in parts:
+        if part.startswith("```"):
+            out.append(part)  # fence内は触らない
+            continue
+        def _drop_or_keep(m: re.Match) -> str:
+            content = m.group(0)
+            return "" if ("published:" in content or "素材:" in content) else content
+        out.append(re.sub(r"<!--.*?-->", _drop_or_keep, part, flags=re.DOTALL))
+    return "".join(out)
 
 
 def _extract_category_from_published_comment(text: str) -> str:

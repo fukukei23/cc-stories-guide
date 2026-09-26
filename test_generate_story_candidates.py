@@ -210,8 +210,49 @@ def test_load_episode_materials_素材コメント無し原稿と索引は無視
     assert load_episode_materials(str(d)) == set()
 
 
-def test_load_episode_materials_ディレクトリ無しは空集合(tmp_path):
+def test_load_episode_materials_ディレクトリ無しは警告付き空集合(tmp_path, capsys):
+    """source/不在は無音の空集合でなくstderr警告を出す（防御の無音無効化防止・issue 2）."""
     assert load_episode_materials(str(tmp_path / "ない")) == set()
+    assert "WARN" in capsys.readouterr().err
+
+
+def test_load_episode_materials_本文の素材行は採集しない(tmp_path):
+    """fail条件回帰（verify r1 issue 1・025型）: 本文内の `- 素材:` 行（技術サマリー
+    の箇条書き・バックティック付き）は採集せず、コメント内のみ採集する."""
+    d = tmp_path / "source"
+    _write_episode(d, "041_テスト話.md", "01_DECISIONS/projA/記録1.md")
+    # 025型: 本文（detailsサマリー内）にバックティック付き素材行がある原稿を追記
+    (d / "042_本文素材行型.md").write_text(
+        "<!-- published: 2026-09-26 / 種別: 設計議論 / 素材: 01_DECISIONS/projB/記録2.md -->\n\n"
+        "# テスト話\n\n<details><summary>▶ 技術的にどうなってるか</summary>\n\n"
+        "- 素材: `01_DECISIONS/projC/本文からは採集されるべきでない.md`（615行）\n\n</details>\n",
+        encoding="utf-8")
+    used = load_episode_materials(str(d))
+    assert "01_DECISIONS/projA/記録1.md" in used
+    assert "01_DECISIONS/projB/記録2.md" in used
+    assert "01_DECISIONS/projC/本文からは採集されるべきでない.md" not in used
+
+
+def test_load_episode_materials_複数行コメントも採集(tmp_path):
+    """`<!--` 単独行で開始する複数行コメント内の素材も採集する（issue 1の書式網羅）."""
+    d = tmp_path / "source"
+    os.makedirs(d, exist_ok=True)
+    (d / "043_複数行コメント型.md").write_text(
+        "<!--\npublished: 2026-09-26\n素材: 01_DECISIONS/projA/複数行.md\n-->\n\n# テスト\n",
+        encoding="utf-8")
+    used = load_episode_materials(str(d))
+    assert used == {"01_DECISIONS/projA/複数行.md"}
+
+
+def test_load_episode_materials_実在しない素材パスはWARN(tmp_path, capsys):
+    """ssot_rootを渡した時、実在しない素材パスはstderr警告（書式逸脱の無音ミスマッチ防止・issue 3）."""
+    d = tmp_path / "source"
+    _write_episode(d, "041_テスト話.md", "01_DECISIONS/projA/実在しない.md")
+    used = load_episode_materials(str(d), ssot_root=str(tmp_path))
+    assert used == {"01_DECISIONS/projA/実在しない.md"}  # 収集はされる（排除は保守側に倒す）
+    err = capsys.readouterr().err  # readouterrはバッファ消費型のため1回のみ取得
+    assert "WARN" in err
+    assert "実在しない" in err
 
 
 def test_main_episode素材記録で同一素材を排除(tmp_path, capsys):
@@ -240,8 +281,10 @@ def test_main_素材記録なしepisodeは過剰排除しない(tmp_path):
     assert len(data["candidates"]) == 2  # projA/projB両方残る
 
 
-def test_main_素材コメントがあっても候補外パスは影響しない(tmp_path):
-    """素材コメントのパスが候補に存在しなければ影響しない（安全側）."""
+def test_main_素材コメントで同一素材は排除され候補外パスは残る(tmp_path):
+    """素材コメントで排除されるのは同一素材（projA）のみ・別パス（projB）は残る
+    （旧名「候補外パスは影響しない」はfixtureが候補内パスの排除を検証しており
+    名前と内容が不一致だったため改名・verify r1 issue 4）."""
     log = _write_ssot_and_log(tmp_path, None)
     _write_episode(tmp_path / "source", "041_テスト話.md", "01_DECISIONS/projA/2026-01-01_テスト記録.md")
     out = tmp_path / "story-candidates.yaml"

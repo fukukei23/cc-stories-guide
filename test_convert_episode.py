@@ -159,3 +159,33 @@ def test_strip_header_comments_keeps_body_and_frontmatter() -> None:
     assert out.startswith("---")
     assert "<!-- published" not in out  # H1後ろのコメント行も除去
     assert "本文。素材: という語を本文で使う。" in out  # 本文は触らない
+
+
+def test_strip_header_comments_removes_multiline_comment() -> None:
+    """複数行コメント（`<!--` 単独行で開始）も除去する（verify r1 issue 5）."""
+    from convert import strip_header_comments
+
+    text = "<!--\npublished: 2026-09-26\n素材: 01_DECISIONS/projA/記録.md\n-->\n\n# タイトル\n\n本文。\n"
+    out = strip_header_comments(text)
+    assert "素材" not in out
+    assert "# タイトル" in out
+
+
+def test_strip_header_comments_removes_comment_with_trailing_text() -> None:
+    """`-->` と同行に本文が続く形式はコメント部のみ除去する（verify r1 issue 5）."""
+    from convert import strip_header_comments
+
+    text = "<!-- published: 2026-09-26 / 種別: 教訓 --> 本文のはじまり\n\n# タイトル\n"
+    out = strip_header_comments(text)
+    assert "published" not in out
+    assert "本文のはじまり" in out  # コメント後の本文は保持
+
+
+def test_strip_header_comments_keeps_comment_inside_code_fence() -> None:
+    """コードブロック内のコメントは本文として保持する（誤除去防止・issue 5）."""
+    from convert import strip_header_comments
+
+    text = "# タイトル\n\n```markdown\n<!-- published: サンプル -->\nコード例\n```\n\n本文。\n"
+    out = strip_header_comments(text)
+    assert "<!-- published: サンプル -->" in out  # fence内は保持
+    assert "コード例" in out

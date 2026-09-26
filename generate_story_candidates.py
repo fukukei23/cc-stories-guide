@@ -74,23 +74,46 @@ def load_used_sources(log_path: str) -> set[str]:
     return used
 
 
-def load_episode_materials(source_dir: str) -> set[str]:
+def _iter_episode_material_comments(text: str):
+    """原稿本文でなくコメント（`<!-- ... -->`・複数行含む）の内容のみを列挙する.
+
+    本文全体を走査すると、025話のような本文内の `- 素材:` 行（技術サマリーの
+    箇条書き）まで採集され、バックティック付きの壊れたパスが排除リストに入って
+    当該話自身の防御が無効化する（verify r1 issue 1・2026-09-26実測）.
+    """
+    for m in re.finditer(r"<!--(.*?)-->", text, re.DOTALL):
+        yield m.group(1)
+
+
+def load_episode_materials(source_dir: str, ssot_root: str | None = None) -> set[str]:
     """source/配下のepisode原稿の `素材:` コメントから物語化済み素材パスを収集する.
 
     judgment-logのsource欄はログ再構成で欠落する実害があった（2026-09-18構造破壊・
     2026-09-25は同素材2話目を手動除外で対応）ため、episode原稿自体に素材パスを
     記録しておき、judgment-log非依存の残余防御として突合する.
+
+    ssot_root を渡すと素材パスの実在チェックを行い、実在しない場合は stderr に
+    WARN を出す（書式逸脱・タイプミスの無音ミスマッチ防止・verify r1 issue 3）.
     """
     used: set[str] = set()
     if not os.path.isdir(source_dir):
+        # --out の親に依存せず呼び出し側がsource/位置を誤っても無音無効化しない
+        # （verify r1 issue 2・stderr警告）
+        print(f"WARN: episode source/ ディレクトリ不在: {source_dir}"
+              "（素材コメント突合による残余防御が無効）", file=sys.stderr)
         return used
     for p in glob.glob(os.path.join(source_dir, "*.md")):
         try:
             text = pathlib_read(p)
         except Exception:
             continue  # 読み失敗原稿は無視（他の原稿の防御は止めない・fail-open局部化）
-        for m in re.finditer(r"素材[:：]\s*(\S+\.md)", text):
-            used.add(os.path.normpath(m.group(1)))
+        for comment in _iter_episode_material_comments(text):
+            for m in re.finditer(r"素材[:：]\s*(\S+\.md)", comment):
+                path = os.path.normpath(m.group(1))
+                used.add(path)
+                if ssot_root and not os.path.isfile(os.path.join(ssot_root, path)):
+                    print(f"WARN: 素材パスが実在しない（書式逸脱・タイプミス疑い）:"
+                          f" {p} -> {path}", file=sys.stderr)
     return used
 
 
@@ -156,7 +179,7 @@ def main(argv: list[str] | None = None) -> int:
     used = load_used_sources(args.log)
     # episode原稿の素材コメント突合（残余防御・judgment-logのsource欄欠落に強い・2026-09-25実害対応）
     source_dir = os.path.join(os.path.dirname(os.path.abspath(args.out)), "source")
-    episode_materials = load_episode_materials(source_dir)
+    episode_materials = load_episode_materials(source_dir, ssot_root=args.ssot)
     used |= episode_materials
     root = os.path.join(args.ssot, "01_DECISIONS")
     today = datetime.date.today()  # 単一評価（r3レビュー採用・深夜0時跨ぎの境界バグ防止）
