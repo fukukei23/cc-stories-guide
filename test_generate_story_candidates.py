@@ -329,3 +329,52 @@ def test_main_素材コメントで同一素材は排除され候補外パスは
     data = yaml.safe_load(out.read_text(encoding="utf-8"))
     # 素材コメントで排除されるのはprojAのみ・projB（別パス）は残る
     assert [c["source"] for c in data["candidates"]] == ["01_DECISIONS/projB/2026-01-01_テスト記録.md"]
+
+
+def test_load_episode_materials_読み失敗原稿は無視し他は採集(tmp_path, capsys):
+    """self-inspect疑義2: 読み失敗原稿は無視（fail-open局部化）し他の原稿の防御は止めない."""
+    d = tmp_path / "source"
+    os.makedirs(d, exist_ok=True)
+    _write_episode(d, "041_正常話.md", "01_DECISIONS/projA/記録1.md")
+    broken = d / "042_壊れ話.md"
+    broken.write_bytes(b"\xff\xfe\x00invalid-utf8")  # 不正バイト列
+    used = load_episode_materials(str(d), ssot_root=str(tmp_path))
+    assert "01_DECISIONS/projA/記録1.md" in used  # 正常原稿は採集される
+
+
+def test_fence_util_閉じfenceは同種かつ同長以上のみ(tmp_path):
+    """self-inspect疑義3: 4バックティックで開いたfenceは3バックティックでは閉じない.
+    （CommonMark準拠・convert側とgenerate側で共通のsplit_fenced_partsを使用）."""
+    from fence_util import split_fenced_parts
+
+    text = "本文\n````\nコード\n```\nまだコード\n````\n\n<!-- published: x -->\n後続本文\n"
+    parts = split_fenced_parts(text)
+    fence_parts = [p for is_fence, p in parts if is_fence]
+    # 閉じ忘れ区間（````〜まだコード）は1つのfence part・3バックティックでは閉じない
+    assert any("まだコード" in p for p in fence_parts)
+    # 閉じた後の本文コメントは非fence領域にある
+    non_fence = "".join(p for is_fence, p in parts if not is_fence)
+    assert "後続本文" in non_fence
+
+
+def test_fence_util_チルダfence対応():
+    """self-inspect疑義3: チルダ（~~~）fenceもバックティックと同様に扱う."""
+    from fence_util import split_fenced_parts
+
+    text = "本文\n~~~\n<!-- 素材: x -->\n~~~\n<!-- published: y -->\n"
+    parts = split_fenced_parts(text)
+    fence_parts = "".join(p for is_fence, p in parts if is_fence)
+    non_fence = "".join(p for is_fence, p in parts if not is_fence)
+    assert "素材: x" in fence_parts   # fence内は保持
+    assert "published: y" in non_fence  # fence外は通常処理
+
+
+def test_fence_util_1_3スペースインデントfenceは有効():
+    """self-inspect疑義3: 1-3スペースのインデントfenceはCommonMarkどおり有効."""
+    from fence_util import split_fenced_parts
+
+    for indent in (" ", "  ", "   "):
+        text = f"{indent}```\nコード\n{indent}```\n後続\n"
+        parts = split_fenced_parts(text)
+        fence_parts = [p for is_fence, p in parts if is_fence]
+        assert any("コード" in p for p in fence_parts), f"indent={indent!r} でfence判定されない"
