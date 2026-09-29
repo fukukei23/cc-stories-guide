@@ -20,3 +20,10 @@
   episode: '042'
   file: source/042_宣言を書かないだけで全部素通りできた話.md
   source: 01_DECISIONS/claude-code/2026-09-08_テスト網羅性fail-safe判断3件承認とPOC-0着手.md
+- date: '2026-09-29'
+  type: publish
+  reason: 最上位候補（4.44点）がjudgment-log未登場のため採用・denylist EXIT=0・convert+push完了（ccf6fb9）
+  confidence: 高
+  episode: '043'
+  file: source/043_機械の点数は当てにならないと思ったらLLMの判定にも曖昧さが残った話.md
+  source: 01_DECISIONS/claude-code/2026-07-12_ssot-recordマルチ起点再設計-セクション4-3-LLM仲裁実機検証.md
