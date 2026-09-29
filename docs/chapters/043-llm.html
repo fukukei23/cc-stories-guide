@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>必須タグがなくても8割の点数が出てしまった話 — CC Stories</title>
-    <meta name="description" content="CC Stories — 作業の物語集: 必須タグがなくても8割の点数が出てしまった話">
-    <meta property="og:title" content="必須タグがなくても8割の点数が出てしまった話 — CC Stories">
-    <meta property="og:description" content="必須タグがなくても8割の点数が出てしまった話 — 専門用語なしの物語と技術解説のペア">
+    <title>043_機械の点数は当てにならないと思ったらLLMの判定にも曖昧さが残った話 — CC Stories</title>
+    <meta name="description" content="CC Stories — 作業の物語集: 043_機械の点数は当てにならないと思ったらLLMの判定にも曖昧さが残った話">
+    <meta property="og:title" content="043_機械の点数は当てにならないと思ったらLLMの判定にも曖昧さが残った話 — CC Stories">
+    <meta property="og:description" content="043_機械の点数は当てにならないと思ったらLLMの判定にも曖昧さが残った話 — 専門用語なしの物語と技術解説のペア">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/039-8.html">
+    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/043-llm.html">
     <meta property="og:image" content="https://fukukei23.github.io/cc-stories-guide/assets/ogp.png">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="../assets/style.css">
@@ -104,7 +104,7 @@
         </a>
         
         <a href="039-8.html"
-           class="sidebar-link active">
+           class="sidebar-link">
             <span class="sidebar-icon">📄</span>
             必須タグがなくても8割の点数が出てしまった話
         </a>
@@ -254,7 +254,7 @@
         </a>
         
         <a href="043-llm.html"
-           class="sidebar-link">
+           class="sidebar-link active">
             <span class="sidebar-icon">📄</span>
             043_機械の点数は当てにならないと思ったらLLMの判定にも曖昧さが残った話
         </a>
@@ -265,40 +265,38 @@
     <main class="content">
         <div class="chapter-nav-top">
             
-            <a href="029.html" class="nav-prev">← 歌詞は合格点なのに歌は冴えなかった話——品質チェックが「言葉」から「音」へ進んだ話</a>
+            <a href="042.html" class="nav-prev">← 042_宣言を書かないだけで全部素通りできた話</a>
             
-            
-            <a href="001.html" class="nav-next">第1話 「テストは充分？」という一言 →</a>
             
         </div>
 
-        <div class="episode-badge">第39話</div>
+        <div class="episode-badge">第43話</div>
         <article class="chapter-body">
-            <h1>039 必須タグがなくても8割の点数が出てしまった話</h1>
-<p>CCが「記録の行き先を機械に判定させよう」として点数式を作ったときの話です。</p>
-<p>「記録して」とCCに頼むと、その内容をどこに保存するか決める必要があります。最初はCCが文脈で判断していましたが、判断ぶれの対策として「3軸の点数方式」を導入しました。タグの一致度（配点0.4）と、まとめページとの相性（0.3）と、内容の性質（0.3）を合計して、点数が高いほど自動で書き込める仕組みです。</p>
-<p>導入前に本物の記録データで点数を試算してみたところ、変なケースが見つかりました。「スクレイピングの実装知見」という記録に、プロジェクトを特定する必須タグが1つも付いていないのに、タグ軸だけで0.8点が取れてしまったのです。合計も0.62と「警告付きで自動確定」のラインを超えてしまい、<strong>どのプロジェクトの記録か分からないまま、確認なしで書き込まれる</strong>ことになります。</p>
-<p>原因は採点式の作りでした。「いくつタグが一致したか」の割合に0.8を掛け、必須タグが含まれていれば0.2を上乗せする式だったため、必須が外れても「追加タグだけで一致割合100%×0.8=0.8点」が成立してしまったのです。いわば、国語の必須問題を白紙で出したのに、他の問題が満点だったので8割の評定がつくようなものです。</p>
-<p>対策はシンプルに「必須タグが不一致のときは点数の上限を0.6に閉じる」というルールを1行足すことでした。これだけで問題のケースが0.62→0.51になり、自動確定ではなく「LLMに仲裁させる」ゾーンへ落ちて確認が入ります。逆に、重み配点そのものをいじる案（タグの配点を増やす）は検討しましたが、それだと問題を悪化させると実計算で分かったため不採用です。</p>
-<p><strong>学び</strong>: 点数方式は「満点の取り方」を先に疑う。必須条件の失点を意図した減点が式に無ければ、必須は必須として機能しません。1行の上限ルールで、確認すべきものは確認される構造に直りました。</p>
-<p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどうなってか&lt;/summary&gt;</p>
-<p><code>compute_tag_match</code> の旧式は <code>matched/tags数 * 0.8 + 必須一致bonus 0.2</code>。ケース2（追加タグのみ一致）で <code>1.0*0.8+0.0=0.8</code> が出るのがバグの正体。修正案Aは <code>if not has_required_match: score = min(score, 0.6)</code> の1行。3軸重み（タグ0.4/ハブ0.3/特性0.3）は実データ試算で妥当と確認し維持、重み変更案Bはケース2が0.64で依然T2相当のため不採用。ハブ軸の類似度計算はembeddingが外部LLM依存でWSL CLI環境でテスト不能だったため、キーワードベース（必須ヒット=1.0/0.8、追加ヒット=0.4、上位3軸平均）の代替案Xを採用。検証データは実在のタグマッピング58行・ハブマッピング60行・特性カタログ9保管場所。正典: <code>01_DECISIONS/claude-code/2026-07-12_ssot-recordマルチ起点再設計-セクション4-タグマッチスコア重み調整.md</code></p>
-<p>&lt;/details&gt;</p>
+            <h1>043_機械の点数は当てにならないと思ったらLLMの判定にも曖昧さが残った話</h1>
+<p>メモの保存先を自動で決めるしくみを作っていた。最初の版は「タグの一致度」で点数をつけて一番高い場所にしまう、機械的な方式だった。ところが試してみると、点数1位の保存先が内容とちぐはぐなことがある。「あるツールの調べものメモ」なのに「日記」の棚に入りかけていた。点数は合っているのに、意味が合っていない。</p>
+<p>そこで「点数が拮抗したときだけAIに読んでもらって決める」という仲裁の段を足した。機械はタグしか見ないが、AIは文章の意味まで見られる。この仲裁役を実際に動かして検証したら、JSON形式の出力は仕様どおりで、AIは機械の1位を押さえて別の棚を選んだ。ここまでは成功だった。</p>
+<p>ところが検証の記録を最初から読み返すと、気になる点が3つ出てきた。1つ目は、AIが判定するときの順番が決まっていないこと。何を一番の材料にするか明文化しないと、同じ入力でも日によって答えがぶれる。2つ目は、AIがつけてくる「自信度」の数字に意味の約束がなかったこと。0.62という数字が出てきても、それを高と取るか低と取るかは受け取り側次第で、0.7以上なら自動確定・0.5未満は人間に聞く、という線引きを後から決めた。3つ目は、AIの判定が外れていたときに戻る場所がないこと。最終的には「自信度が中程度の判定だけ人間に一度確認を取る」というルールを追加した。</p>
+<p>教訓は、点数方式を賢くしたつもりが、次の段階の曖昧さを露呈させただけ、ということ。仕組みの穴は一段直すたびに次の段に移る。判定の枠組みそのもの（何を見て・どの順で・どこまで人間に聞くか）を書き下ろす作業は、どの方式でも最後には必要になる。</p>
+<p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどうなってるか&lt;/summary&gt;</p>
+<ul>
+<li>対象: ssot-record スキルのマルチ起点再設計 Section 4.3。記録内容を「タグマッチ・ハブマッチ・特性マッチ」の3軸で採点し、拮抗時に LLM仲裁プロンプトで確定する二段構成。</li>
+<li>実機検証: GLM動作中（外部LLM呼出不可環境）で T3 期待ケース「ローカル開発メモ」を実行。機械スコア総合0.51→T3仲裁へ。LLMは &lt;code&gt;selected_path: 30_RESEARCH/&lt;/code&gt;, &lt;code&gt;confidence: 0.62&lt;/code&gt; をJSON仕様どおり出力し、機械1位（10_DAILY/）を覆した＝機械スコアと意味判断の分離が機能した実証。</li>
+<li>発見した改善3件: ①判定順序の明示（中心テーマ→タグ→機密レベル→想定寿命）②confidence の解釈指針（≥0.7自動確定 / 0.5-0.7仲裁確定 / &lt;0.5人間提示）③中信頼度判定の再仲裁ルール（ふくけいへの確認プロンプト）。</li>
+<li>落とし穴の実感: 「ローカル開発メモ」自体が曖昧で、厳密には外部調査事実ではなく作業記録に近い。入力の曖昧さが判定の曖昧さに直結する。</li>
+<li>出力改善: 仲裁プロンプトV2に判定順序とconfidence指針を埋め込み、テストケース追加と1ヶ月後のconfidence分布収集で閾値（0.8/0.6/0.4/0.2）を再評価する契約にした。</li>
+<li>関連スキル: &lt;code&gt;ssot-record&lt;/code&gt;（記録の保管場所判定）
+&lt;/details&gt;</li>
+</ul>
 
         </article>
 
         <nav class="chapter-nav-bottom">
             
-            <a href="029.html" class="nav-card prev">
+            <a href="042.html" class="nav-card prev">
                 <span class="nav-label">← 前の章</span>
-                <span class="nav-title">📄 歌詞は合格点なのに歌は冴えなかった話——品質チェックが「言葉」から「音」へ進んだ話</span>
+                <span class="nav-title">📄 042_宣言を書かないだけで全部素通りできた話</span>
             </a>
             
-            
-            <a href="001.html" class="nav-card next">
-                <span class="nav-label">次の章 →</span>
-                <span class="nav-title">📄 第1話 「テストは充分？」という一言</span>
-            </a>
             
         </nav>
     </main>
