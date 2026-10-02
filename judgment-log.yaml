@@ -27,3 +27,11 @@
   episode: '043'
   file: source/043_機械の点数は当てにならないと思ったらLLMの判定にも曖昧さが残った話.md
   source: 01_DECISIONS/claude-code/2026-07-12_ssot-recordマルチ起点再設計-セクション4-3-LLM仲裁実機検証.md
+- date: '2026-10-02'
+  type: 3
+  score: 4.33
+  reason: 最上位候補（4.33点）がjudgment-log未登場のため採用・denylist EXIT=0・convert+push完了（89e1643）
+  confidence: 高
+  episode: '044'
+  file: source/044_壊れたのは一つだと思ったら二重の故障が互いの正体を隠していた話.md
+  source: 01_DECISIONS/claude-code/2026-08-25_CC再リンク完了-v24移行とfork不能の合流.md
