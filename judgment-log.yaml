@@ -15,7 +15,8 @@
   source: 01_DECISIONS/NexusCore/2026-08-29_包括レビュー差分-前回10件消化状況と新規3件.md
 - date: '2026-09-25'
   type: publish
-  reason: 未登場候補のうち重複排除（最上位は同日公開041と同一素材のため除外・次候補も既存話025/026/037/039で収録済みのため除外）を経て第3候補を採用・denylist EXIT=0・629字・convert+push完了・041の未commit残置物（source/html）も同時収録
+  reason: 未登場候補のうち重複排除（最上位は同日公開041と同一素材のため除外・次候補も既存話025/026/037/039で収録済みのため除外）を経て第3候補を採用・denylist
+    EXIT=0・629字・convert+push完了・041の未commit残置物（source/html）も同時収録
   confidence: 高
   episode: '042'
   file: source/042_宣言を書かないだけで全部素通りできた話.md
@@ -35,3 +36,11 @@
   episode: '044'
   file: source/044_壊れたのは一つだと思ったら二重の故障が互いの正体を隠していた話.md
   source: 01_DECISIONS/claude-code/2026-08-25_CC再リンク完了-v24移行とfork不能の合流.md
+- date: '2026-10-06'
+  type: 3
+  score: 4.31
+  reason: 最上位候補（4.31点）がjudgment-log未登場のため採用・denylist EXIT=0・convert+push完了（4ff5b1a）
+  confidence: 高
+  episode: '045'
+  file: source/045_幽霊モデルという見えない故障-Nemotron死亡事象とorp.pyの3層防御.md
+  source: 01_DECISIONS/claude-code/2026-09-03_orp.py機能拡張-blacklist反映・死亡スモーク・新規探索実装.md
