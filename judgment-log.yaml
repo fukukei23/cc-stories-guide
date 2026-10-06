@@ -44,3 +44,11 @@
   episode: '045'
   file: source/045_幽霊モデルという見えない故障-Nemotron死亡事象とorp.pyの3層防御.md
   source: 01_DECISIONS/claude-code/2026-09-03_orp.py機能拡張-blacklist反映・死亡スモーク・新規探索実装.md
+- date: '2026-10-06'
+  type: publish
+  score: 4.29
+  reason: 多重発火波の第2回実行・最上位候補（4.31点）は同日公開045と同一素材のため除外し未登場の次候補（4.29点）を採用・denylist EXIT=0・convert exit 78（新規html untracked警告）はcommit同梱で解消・push完了（659d47f）
+  confidence: 高
+  episode: '046'
+  file: source/046_測ってみたら95.5%が間違いだった話-AI校正ツールの部分採用判断.md
+  source: 01_DECISIONS/claude-code/2026-09-24_日本語品質3層統合Phase0実施完了と層別昇格判断材料.md
