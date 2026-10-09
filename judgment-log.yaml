@@ -52,3 +52,11 @@
   episode: '046'
   file: source/046_測ってみたら95.5%が間違いだった話-AI校正ツールの部分採用判断.md
   source: 01_DECISIONS/claude-code/2026-09-24_日本語品質3層統合Phase0実施完了と層別昇格判断材料.md
+- date: '2026-10-09'
+  type: publish
+  score: 4.58
+  reason: 金曜枠のstory-cron自動実行・最上位候補4.58点（補強2-4採用と4セル検証+1週間試験運用）採用・denylist EXIT=0・convert exit 0（untracked=047関連のみ・commit同梱）・push完了（f249b58）
+  confidence: 高
+  episode: '047'
+  file: source/047_補強2-4採用と4セル検証+1週間試験運用.md
+  source: 01_DECISIONS/claude-config/2026-10-08_補強2-4採用と4セル検証+1週間試験運用.md
