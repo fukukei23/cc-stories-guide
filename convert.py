@@ -110,8 +110,10 @@ def _extract_desc_from_body(text: str, limit: int = 84) -> str:
             if buf:
                 break
             continue
-        if s.startswith(("#", "<details", "```")):
+        if s.startswith("<details") or s.startswith("```"):
             break
+        if s.startswith("#"):
+            continue  # セクション見出しは飛ばして最初の段落を取る（H1直後に##が来る原稿対応）
         clean = s.lstrip("#>-* ").strip()
         if clean:
             buf.append(clean)
