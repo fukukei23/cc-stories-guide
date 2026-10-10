@@ -730,10 +730,4 @@ img {
     margin-bottom: 0.6rem;
 }
 
-.card-number {
-    font-size: 0.72rem;
-    font-weight: 700;
-    color: var(--accent, #4a6da7);
-    opacity: 0.85;
-    margin-bottom: 0.25rem;
-}
+/* 旧.card-number上書き定義は削除（青背景×青文字で不可視化される事故・2026-10-11修正） */
