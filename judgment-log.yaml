@@ -60,3 +60,10 @@
   episode: '047'
   file: source/047_補強2-4採用と4セル検証+1週間試験運用.md
   source: 01_DECISIONS/claude-config/2026-10-08_補強2-4採用と4セル検証+1週間試験運用.md
+- date: 2026-10-11
+  type: 事故解決
+  reason: 権限確認ダイアログの毎回出現の正体（使い捨てスクリプト生成）を突き止め固定パス化+許可登録で構造解決・AI5機2ラウンドレビューでsymlink抜け道と文書ドリフトを発見修正
+  confidence: 高
+  episode: '048'
+  file: source/048_毎回出る確認ダイアログの正体は使い捨てスクリプトだった.md
+  source: 01_DECISIONS/claude-code/2026-10-10_権限ask削減D案-MLR抽出スクリプト固定化+fewer-permission-prompts.md
