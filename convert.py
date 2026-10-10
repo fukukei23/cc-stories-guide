@@ -63,8 +63,14 @@ def _extract_title_from_h1(text: str) -> str:
     for line in text.splitlines():
         if line.startswith("# "):
             title = line[2:].strip()
-            # 番号プレフィックスを除去: "13 GLM Rate Proxy" → "GLM Rate Proxy"
-            title = re.sub(r"^\d+\s+", "", title)
+            # 絵文字接頭辞を除去: "📖 幽霊モデル…" → "幽霊モデル…"
+            title = re.sub(r"^[📖✨🔧🌙📱\s]+", "", title)
+            # 話数プレフィックスを除去（カードの第N話ラベルと二重表記になるため）:
+            # "第028話 「自動で…" → "「自動で…"
+            title = re.sub(r"^第\d+話[\s]*", "", title)
+            # 番号プレフィックスを除去（_ : ．、等の区切りも対象・2026-10-11統一化）:
+            # "041_スコアが…" "025: ssot-record…" "037 スコア式を…" → それぞれ本文のみ
+            title = re.sub(r"^\d+[\s_:.、]+", "", title)
             # ダッシュ以降の説明を除去: "GLM Rate Proxy — 説明" → "GLM Rate Proxy"
             title = re.split(r"\s+[—–-]\s+", title)[0].strip()
             return title
