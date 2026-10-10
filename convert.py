@@ -87,6 +87,40 @@ def _extract_desc_from_h1(text: str) -> str:
     return ""
 
 
+def _extract_desc_from_body(text: str, limit: int = 84) -> str:
+    """H1直後の本文最初の段落から説明文を抽出する（カードdesc用・タイトル重複回避）.
+
+    Args:
+        text: 原稿全文.
+        limit: 切り詰め上限文字数.
+
+    Returns:
+        抽出した説明文（末尾に…付き）. 見つからなければ空文字.
+    """
+    stripped = strip_header_comments(text)
+    seen_h1 = False
+    buf: list = []
+    for line in stripped.splitlines():
+        s = line.strip()
+        if not seen_h1:
+            if s.startswith("# "):
+                seen_h1 = True
+            continue
+        if not s:
+            if buf:
+                break
+            continue
+        if s.startswith(("#", "<details", "```")):
+            break
+        clean = s.lstrip("#>-* ").strip()
+        if clean:
+            buf.append(clean)
+        if sum(len(x) for x in buf) >= limit:
+            break
+    out = "".join(buf)[:limit].rstrip("、，、")
+    return (out + "…") if out else ""
+
+
 def strip_header_comments(text: str) -> str:
     """`published:` / `素材:` を含むHTMLコメント（機械読み取り専用メタデータ）を
     HTMLへ流さない。コメント行は本文扱いでエスケープ表示されており（既存リーク）、
@@ -168,6 +202,8 @@ def build_chapter_map() -> dict:
         else:
             title = meta.get("title") or _extract_title_from_h1(text) or Path(filename).stem
             desc = meta.get("card_desc") or meta.get("desc") or _extract_desc_from_h1(text) or title
+            if desc == title:
+                desc = _extract_desc_from_body(text)
             icon = meta.get("icon", "📄")
             slug = meta.get("slug") or _filename_to_slug(filename)
             result[filename] = {
@@ -317,10 +353,9 @@ INDEX_TEMPLATE = Template("""\
             <div class="chapter-grid">
                 {% for ch in cat.chapters %}
                 <a href="chapters/{{ ch.slug }}.html" class="chapter-card">
-                    <div class="card-icon">{{ ch.icon }}</div>
                     {% if ch.number %}<div class="card-number">第{{ ch.number }}話</div>{% endif %}
                     <h2 class="card-title">{{ ch.title }}</h2>
-                    <p class="card-desc">{{ ch.desc }}</p>
+                    {% if ch.desc and ch.desc != ch.title %}<p class="card-desc">{{ ch.desc }}</p>{% endif %}
                 </a>
                 {% endfor %}
             </div>
