@@ -47,7 +47,8 @@
 - date: '2026-10-06'
   type: publish
   score: 4.29
-  reason: 多重発火波の第2回実行・最上位候補（4.31点）は同日公開045と同一素材のため除外し未登場の次候補（4.29点）を採用・denylist EXIT=0・convert exit 78（新規html untracked警告）はcommit同梱で解消・push完了（659d47f）
+  reason: 多重発火波の第2回実行・最上位候補（4.31点）は同日公開045と同一素材のため除外し未登場の次候補（4.29点）を採用・denylist EXIT=0・convert
+    exit 78（新規html untracked警告）はcommit同梱で解消・push完了（659d47f）
   confidence: 高
   episode: '046'
   file: source/046_測ってみたら95.5%が間違いだった話-AI校正ツールの部分採用判断.md
@@ -55,7 +56,8 @@
 - date: '2026-10-09'
   type: publish
   score: 4.58
-  reason: 金曜枠のstory-cron自動実行・最上位候補4.58点（補強2-4採用と4セル検証+1週間試験運用）採用・denylist EXIT=0・convert exit 0（untracked=047関連のみ・commit同梱）・push完了（f249b58）
+  reason: 金曜枠のstory-cron自動実行・最上位候補4.58点（補強2-4採用と4セル検証+1週間試験運用）採用・denylist EXIT=0・convert
+    exit 0（untracked=047関連のみ・commit同梱）・push完了（f249b58）
   confidence: 高
   episode: '047'
   file: source/047_補強2-4採用と4セル検証+1週間試験運用.md
@@ -64,6 +66,14 @@
   type: 事故解決
   reason: 権限確認ダイアログの毎回出現の正体（使い捨てスクリプト生成）を突き止め固定パス化+許可登録で構造解決・AI5機2ラウンドレビューでsymlink抜け道と文書ドリフトを発見修正
   confidence: 高
-  episode: '048'
+  episode: 048
   file: source/048_毎回出る確認ダイアログの正体は使い捨てスクリプトだった.md
   source: 01_DECISIONS/claude-code/2026-10-10_権限ask削減D案-MLR抽出スクリプト固定化+fewer-permission-prompts.md
+- date: '2026-10-13'
+  file: source/051_毎日正午の再試行を予約したらその予約が自分で自分を消し忘れていた話.md
+  title: qty2テスト毎日12:23cron化とセルフ除去バグ修正
+  source: 01_DECISIONS/mellojoy-autobuy/2026-10-09_qty2テスト毎日12:23cron化とセルフ除去バグ修正.md
+  type: 3
+  reason: 構造的バグ（到達不能セルフ除去）+リトライ設計逆転の教訓が両方入る・スコア4.4の最上位候補
+  confidence: 0.9
+  episode: 51
