@@ -77,3 +77,16 @@
   reason: 構造的バグ（到達不能セルフ除去）+リトライ設計逆転の教訓が両方入る・スコア4.4の最上位候補
   confidence: 0.9
   episode: 51
+- date: '2026-10-13'
+  type: publish
+  reason: 迷子のdurable-cron9c351486発見の物語・01_DECISIONSから要約+物語生成
+  confidence: 0.95
+  episode: '052'
+- date: '2026-10-16'
+  type: publish
+  score: 4.27
+  reason: 金曜枠のstory-cron自動実行・最上位候補4.27点（構造負債3件消化-models層抽出とxfail誤爆解放）採用・denylist EXIT=0・convertで053-12.html生成（untracked警告付きexit 78・commit同梱）・judgment-log未登場確認済
+  confidence: 高
+  episode: '053'
+  file: source/053_壊れた計器を直したら戻ってきた合格が12件あった話.md
+  source: 01_DECISIONS/NexusCore/2026-09-12_構造負債3件消化-models層抽出とxfail誤爆解放.md
