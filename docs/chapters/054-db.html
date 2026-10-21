@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>構造的失敗を先に作る勇気でDBマイグレーションを書き直した話 — CC Stories</title>
+    <meta name="description" content="CC Stories — 作業の物語集: 構造的失敗を先に作る勇気でDBマイグレーションを書き直した話">
+    <meta property="og:title" content="構造的失敗を先に作る勇気でDBマイグレーションを書き直した話 — CC Stories">
+    <meta property="og:description" content="構造的失敗を先に作る勇気でDBマイグレーションを書き直した話 — 専門用語なしの物語と技術解説のペア">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/054-db.html">
+    <meta property="og:image" content="https://fukukei23.github.io/cc-stories-guide/assets/ogp.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="../assets/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+</head>
+<body>
+    <header class="site-header">
+        <button class="menu-toggle" aria-label="メニュー" id="menuToggle">
+            <span></span><span></span><span></span>
+        </button>
+        <a href="../index.html" class="site-title">📚 CC Stories</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="テーマ切替">
+            <span class="icon-light">☀️</span>
+            <span class="icon-dark">🌙</span>
+        </button>
+    </header>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="../index.html">🏠 ホーム</a>
+        </div>
+        
+        <a href="002-llm.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「マルチLLMレビューして」と言ったら別々の目で見てくれる話
+        </a>
+        
+        <a href="003.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「おはよう」と言ったら昨日が戻ってきた話
+        </a>
+        
+        <a href="003-ssot.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「記録して」と言ったらSSOTに勝手に入る話
+        </a>
+        
+        <a href="006.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「定期実行作って」と言ったら排他込みで組んでくれる話
+        </a>
+        
+        <a href="007.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「今夜はミニマックス」と言ったら裏側のレート制限を切り替えてくれる話
+        </a>
+        
+        <a href="008-5.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「返信文を書いて」と言ったら5禁止に気をつけて整えてくれる話
+        </a>
+        
+        <a href="009.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「リポジトリレビューして」と言ったら品質を点数で出してくれる話
+        </a>
+        
+        <a href="010-dev-cycle.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「dev-cycle」と言うと開発のサイクルが一巡する話
+        </a>
+        
+        <a href="022.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「引き継ぎ」と言ったら明日の自分に手紙を書いてくれた話
+        </a>
+        
+        <a href="023.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「比較して」と言ったら選択肢を深掘りして推奨まで出してきた話
+        </a>
+        
+        <a href="024-ssot.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「SSOTから探して」と言ったら過去の失敗を掘り返してきた話
+        </a>
+        
+        <a href="029.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            歌詞は合格点なのに歌は冴えなかった話——品質チェックが「言葉」から「音」へ進んだ話
+        </a>
+        
+        <a href="039-8.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            必須タグがなくても8割の点数が出てしまった話
+        </a>
+        
+        <a href="001.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            「テストは充分？」という一言
+        </a>
+        
+        <a href="002.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            防災フックが鳴らなかった話
+        </a>
+        
+        <a href="004.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            作業物語 「歌詞は合ってるのに、なぜか曲が盛り上がらない話」
+        </a>
+        
+        <a href="005.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            作業物語 「自動で呟かせる前夜、調べたら地雷が一杯だった話」
+        </a>
+        
+        <a href="011-youtubeai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「YouTubeを投げる」と言ったら生成AI用プロンプト仕様書が出てくる話
+        </a>
+        
+        <a href="012-commit3.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            他の作業を巻き込んでcommitする事故を3つの見張り役で潰した話
+        </a>
+        
+        <a href="013-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AIにファイルを書き換えさせる前に「いいですか？」と聞かせる話
+        </a>
+        
+        <a href="014-ai3.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AIの直し提案が3体そろって否定された話
+        </a>
+        
+        <a href="015-1.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            設定を1枚の帳票に集めて書き忘れ事故を潰した話
+        </a>
+        
+        <a href="016-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AI審査員の盲点を人間の一言と説明書の改良で塞いだ話
+        </a>
+        
+        <a href="017-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AIに下調べの省略をさせない検問を作った話
+        </a>
+        
+        <a href="018.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            検問の穴を塞ぐと別の穴が開いて、最後は自分の違和感が正しかった話
+        </a>
+        
+        <a href="019-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            作業物語 「曲作って」と言ったらAIの癖に振り回されない道具立てになっていた話
+        </a>
+        
+        <a href="021-reverse-engineer-song.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            013の次に見えた「聴くだけじゃ足りない」
+        </a>
+        
+        <a href="025-5.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            記録してと言ったら書込先を決めるまでに5回も検問された話
+        </a>
+        
+        <a href="026-ssot-record.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            「保存先くらい機械に任せて」という一言から始まった設計が、気づけば禁止条件だらけになっていた話
+        </a>
+        
+        <a href="027.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            宿題の答え合わせをしたら、直っていたのは「機械で直せるところ」だけだった話
+        </a>
+        
+        <a href="028-1000.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            差分1000件の正体は作りかけの絵だった話
+        </a>
+        
+        <a href="037-0.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スコア式を0点に合わせたら逆に必要なものが見えてきた話
+        </a>
+        
+        <a href="038-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            字幕が一文字も出ていない動画を、AIは「出ています」と答えた話
+        </a>
+        
+        <a href="041.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スコアが全部同じだった構造的不具合は仕組みを変えないと動かない話
+        </a>
+        
+        <a href="042.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            宣言を書かないだけで全部素通りできた話
+        </a>
+        
+        <a href="043-llm.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            機械の点数は当てにならないと思ったらLLMの判定にも曖昧さが残った話
+        </a>
+        
+        <a href="044.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            壊れたのは一つだと思ったら二重の故障が互いの正体を隠していた話
+        </a>
+        
+        <a href="045-nemotronorp.py3.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            幽霊モデルという見えない故障 ― Nemotron死亡事象とorp.pyの3層防御
+        </a>
+        
+        <a href="046-95.5%-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            測ってみたら95.5%が間違いだった話 ― AI校正ツールの部分採用判断
+        </a>
+        
+        <a href="047-2-44+1.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            補強2+4採用と4セル検証+1週間試験運用 ― symlinkの想定外UNC解決との付き合い方
+        </a>
+        
+        <a href="048.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            毎回出る確認ダイアログの正体は、使い捨ての道具だった
+        </a>
+        
+        <a href="049-ssot-record.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            ssot-recordデータフロー判定アルゴリズム
+        </a>
+        
+        <a href="050-url30%.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            「自動でつぶやく機械を作った」のに、走り出す前に止まってくれた話
+        </a>
+        
+        <a href="051.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            「毎日正午の再試行を予約した」ら、その予約が自分で自分を消せずに残り続けていた話
+        </a>
+        
+        <a href="052-durable-cron9c351486.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            &#34;迷子のdurable-cronが9c351486を発射していた話&#34;
+        </a>
+        
+        <a href="053-12.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            「測定器が壊れている」せいで、直っていたはずの合格が12件も眠っていた話
+        </a>
+        
+        <a href="054-db.html"
+           class="sidebar-link active">
+            <span class="sidebar-icon">📄</span>
+            構造的失敗を先に作る勇気でDBマイグレーションを書き直した話
+        </a>
+        
+    </nav>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main class="content">
+        <div class="chapter-nav-top">
+            
+            <a href="053-12.html" class="nav-prev">← 「測定器が壊れている」せいで、直っていたはずの合格が12件も眠っていた話</a>
+            
+            
+        </div>
+
+        <div class="episode-badge">第54話</div>
+        <article class="chapter-body">
+            <h1>構造的失敗を先に作る勇気でDBマイグレーションを書き直した話</h1>
+<p>MicroWin アプリ Day 4 PR1 を作っていた夜のことだった。user_version 配列で DB マイグレーションを駆動するという設計は、恥ずかしながら 3 回目で諦めた過去がある。SQLite 互換で <code>PRAGMA user_version</code> を上げる順番で適用する方式は明快だが、各 step の冪等性をどう担保するかで毎回詰まっていた。</p>
+<p>3 度目の挫折の夜、ふと「失敗を先に作る」コードを書いた。SQLite の <code>PRAGMA user_version</code> が 0 から始まっている状態で、step 1 だけ実行して検証するテストを書く。2 を実行して検証するテストを書く。0 に戻して全部一気に実行するテストを書く。一気に実行する途中でわざと接続を切るテストを書く。書きながら震えた。「こんな書き方、職業エンジニアとして恥ずかしい」と思った。書き終えてコーヒーを淹れた。</p>
+<p>翌朝、恥ずかしいコードが動いた。破損した中間状態（user_version=1 で 2 を実行）も、3 度目の step（=もう 1 に戻して全部実行）を呼べば recovery できる。冪等ではない遷移を冪等な「3 度実行で必ず収束する」プロトコルに変換した。これは TDD の中でも「失敗してから書く」red-green-refactor の red を強調する流派で、恥ずかしかったが機能した。</p>
+<p>Day 4 末の最終ビルドで 111 テスト緑・coverage 98%・tsc=0 を確認した時、あの夜の恥ずかしさが誇りに変わった。失敗を先に作るのは逃げではなく、設計の強度を測る試験だ。</p>
+<p>&lt;details&gt;
+&lt;summary&gt;技術解説: user_version 配列駆動 DB マイグレーションの設計詳細&lt;/summary&gt;</p>
+<h2>設計の核</h2>
+<ul>
+<li><code>PRAGMA user_version</code> で DB の状態を一意に表現</li>
+<li>migrations 配列を <code>Migrations = [step1_sql, step2_sql, ...]</code> として定義</li>
+<li>実行: <code>current = get_user_version()</code> → <code>for i in range(current, len(Migrations)): apply(Migrations[i])</code> → <code>set_user_version(i + 1)</code></li>
+<li>冪等性: 同じ <code>current</code> で何度実行しても <code>Migrations[current:]</code> を再適用するだけで収束</li>
+</ul>
+<h2>失敗モードへの対処</h2>
+<ul>
+<li><strong>途中で接続切断</strong> → 起動時に <code>current</code> 取得から再実行 = 冪等な recovery</li>
+<li><strong>step N が部分失敗</strong> → <code>current &lt; N</code> の状態で残る → step N から再実行</li>
+<li><strong>アプリダウングレード</strong> → <code>user_version</code> が新しい値を保持 = 「未来 step を適用しない」= 自動 downgrade 防止</li>
+</ul>
+<h2>テスト戦略（Day 4 実装）</h2>
+<ul>
+<li>TDD red-green-refactor の red を強調</li>
+<li>失敗ケースを「先に書く」: 接続切断 / 部分失敗 / 不正 step 順</li>
+<li>各失敗ケースで「3 度実行で必ず収束する」ことを assertion</li>
+<li>coverage 98% = 失敗ケースが網羅されている指標</li>
+</ul>
+<h2>評価</h2>
+<ul>
+<li>11 commits（5 file 541 行追加 + 4 ファイル計 31 テスト追加）</li>
+<li>111 テスト全緑・tsc=0</li>
+<li>Day 5+ 着手 = 行 49/行 120 の dead branch 削除判断（A2/B 採用）</li>
+<li>残 = bootstrap path の transaction 包囲（high severity 残務）</li>
+</ul>
+<h2>関連 SSOT</h2>
+<ul>
+<li>01_DECISIONS/microwin-app/2026-10-17_MicroWin-SprintA-Day4実装-user_version-migrations-framework-PR1.md（実装 SSOT 記録）</li>
+<li>MLR r1-r4 4 ラウンド計 129 件指摘・critical 11 件即修正</li>
+</ul>
+<h2>公開判定</h2>
+<ul>
+<li>機密: なし（実装コード・テスト戦略のみ）</li>
+<li>誇張: なし（実測値のみ・coverage 98%・test count 111）</li>
+<li>一般化: 実用的（DB マイグレーション設計の参考事例として）</li>
+<li>公開判定: <strong>publish</strong>
+&lt;/details&gt;</li>
+</ul>
+
+        </article>
+
+        <nav class="chapter-nav-bottom">
+            
+            <a href="053-12.html" class="nav-card prev">
+                <span class="nav-label">← 前の章</span>
+                <span class="nav-title">📄 「測定器が壊れている」せいで、直っていたはずの合格が12件も眠っていた話</span>
+            </a>
+            
+            
+        </nav>
+    </main>
+
+    <footer class="site-footer">
+        <p>CC Stories — <a href="https://github.com/fukukei23/cc-stories-guide">GitHub</a>
+         · <a href="https://fukukei23.github.io/ssot-guide/">SSOT Guide</a>
+         · <a href="https://fukukei23.github.io/loop-engineering-guide/">Loop Engineering Guide</a>
+         · <a href="https://fukukei23.github.io/guides/">技術ガイド集</a>
+         · <a href="https://fukukei23.github.io/">fukukei23</a></p>
+    </footer>
+
+    <script src="../assets/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default',
+            themeVariables: { fontSize: '14px' }
+        });
+    </script>
+</body>
+</html>
