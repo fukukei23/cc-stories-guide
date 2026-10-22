@@ -90,3 +90,11 @@
   episode: '053'
   file: source/053_壊れた計器を直したら戻ってきた合格が12件あった話.md
   source: 01_DECISIONS/NexusCore/2026-09-12_構造負債3件消化-models層抽出とxfail誤爆解放.md
+
+- date: '2026-10-23'
+  episode: '055'
+  type: 事故解決
+  reason: vision非対応という運用上の定説をblind test（答え知り+未見の2段構え）で機械実証し、スキル/正典ハブ/CCガイド/memoryの4層に連鎖修正・素材が本日完結で新鮮・採用
+  confidence: 高
+  file: source/055_見えないはずのAIがスライドの文字を読んでいた話.md
+  source: 01_DECISIONS/claude-code/2026-10-23_GLM-MiniMax画像Read実測とvision-analyze前提修正.md
