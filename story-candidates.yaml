@@ -1,42 +1,21 @@
 # 物語候補リスト（generate_story_candidates.py 自動生成・手動編集は次回生成で上書きされます）
-generated_at: '2026-09-26T13:12:33'
+generated_at: '2026-10-23T16:55:57'
 rule: score=種別点+素材厚(行数/120・max2)・除外=機密/キャリア/外向き・90日以内
 candidates:
-- date: '2026-07-12'
-  score: 4.44
+- date: '2026-10-17'
+  score: 4.84
   type: 3
-  title: ssot-recordマルチ起点再設計-セクション4-3-LLM仲裁実機検証
-  project: claude-code
-  source: 01_DECISIONS/claude-code/2026-07-12_ssot-recordマルチ起点再設計-セクション4-3-LLM仲裁実機検証.md
-  lines: 173
-- date: '2026-08-25'
+  title: MicroWin-SprintA-Day4実装-user_version-migrations-framework-PR1
+  project: microwin-app
+  source: 01_DECISIONS/microwin-app/2026-10-17_MicroWin-SprintA-Day4実装-user_version-migrations-framework-PR1.md
+  lines: 221
+- date: '2026-10-21'
   score: 4.33
   type: 3
-  title: CC再リンク完了-v24移行とfork不能の合流
+  title: check-fail-coverage_wait-response_phase0-評価設計
   project: claude-code
-  source: 01_DECISIONS/claude-code/2026-08-25_CC再リンク完了-v24移行とfork不能の合流.md
-  lines: 159
-- date: '2026-09-03'
-  score: 4.31
-  type: 3
-  title: orp.py機能拡張-blacklist反映・死亡スモーク・新規探索実装
-  project: claude-code
-  source: 01_DECISIONS/claude-code/2026-09-03_orp.py機能拡張-blacklist反映・死亡スモーク・新規探索実装.md
-  lines: 157
-- date: '2026-09-24'
-  score: 4.29
-  type: 3
-  title: 日本語品質3層統合Phase0実施完了と層別昇格判断材料
-  project: claude-code
-  source: 01_DECISIONS/claude-code/2026-09-24_日本語品質3層統合Phase0実施完了と層別昇格判断材料.md
-  lines: 155
-- date: '2026-09-12'
-  score: 4.27
-  type: 3
-  title: 構造負債3件消化-models層抽出とxfail誤爆解放
-  project: NexusCore
-  source: 01_DECISIONS/NexusCore/2026-09-12_構造負債3件消化-models層抽出とxfail誤爆解放.md
-  lines: 152
+  source: 01_DECISIONS/claude-code/2026-10-21_check-fail-coverage_wait-response_phase0-評価設計.md
+  lines: 160
 - date: '2026-08-01'
   score: 4.26
   type: 3
@@ -44,19 +23,26 @@ candidates:
   project: claude-code
   source: 01_DECISIONS/claude-code/2026-08-01_残5件同期セキュリティ強化-fail-closed化とJSONエスケープ検出バグ修正.md
   lines: 151
+- date: '2026-10-16'
+  score: 4.26
+  type: 3
+  title: MicroWin-SprintA-Day1-3実装-drawTask-repository-streak-CSV
+  project: microwin-app
+  source: 01_DECISIONS/microwin-app/2026-10-16_MicroWin-SprintA-Day1-3実装-drawTask-repository-streak-CSV.md
+  lines: 151
+- date: '2026-08-25'
+  score: 4.24
+  type: 3
+  title: Phase2明日11時58分自動発火crontab登録完了と中断
+  project: mellojoy-autobuy
+  source: 01_DECISIONS/mellojoy-autobuy/2026-08-25_Phase2明日11時58分自動発火crontab登録完了と中断.md
+  lines: 149
 - date: '2026-08-22'
   score: 4.23
   type: 3
   title: hook不発の真因はwsl-bash-posixパス変換-matcher説を撤回
   project: claude-code
   source: 01_DECISIONS/claude-code/2026-08-22_hook不発の真因はwsl-bash-posixパス変換-matcher説を撤回.md
-  lines: 148
-- date: '2026-08-25'
-  score: 4.23
-  type: 3
-  title: Phase2明日11時58分自動発火crontab登録完了と中断
-  project: mellojoy-autobuy
-  source: 01_DECISIONS/mellojoy-autobuy/2026-08-25_Phase2明日11時58分自動発火crontab登録完了と中断.md
   lines: 148
 - date: '2026-08-30'
   score: 4.23
@@ -65,6 +51,13 @@ candidates:
   project: claude-code
   source: 01_DECISIONS/claude-code/2026-08-30_呼称1680行段階的置換-batch1-2完走と実測.md
   lines: 148
+- date: '2026-10-19'
+  score: 4.23
+  type: 3
+  title: 第2の脳移植-Phase1-DoD再判定第8回と補強2試験運用判定
+  project: claude-code
+  source: 01_DECISIONS/claude-code/2026-10-19_第2の脳移植-Phase1-DoD再判定第8回と補強2試験運用判定.md
+  lines: 148
 - date: '2026-08-22'
   score: 4.22
   type: 3
@@ -72,13 +65,13 @@ candidates:
   project: claude-code
   source: 01_DECISIONS/claude-code/2026-08-22_claude-config-sync改訂と検索結果を検証しない失敗パターンの仕組み化.md
   lines: 146
-- date: '2026-07-12'
-  score: 4.21
+- date: '2026-10-21'
+  score: 4.22
   type: 3
-  title: ssot-recordマルチ起点再設計-セクション4-4-T1-T5閾値再評価計画
+  title: セッション自動命名リネーム機能-原点回帰とPlan叩き台-整理待ち
   project: claude-code
-  source: 01_DECISIONS/claude-code/2026-07-12_ssot-recordマルチ起点再設計-セクション4-4-T1-T5閾値再評価計画.md
-  lines: 145
+  source: 01_DECISIONS/claude-code/2026-10-21_セッション自動命名リネーム機能-原点回帰とPlan叩き台-整理待ち.md
+  lines: 146
 - date: '2026-08-25'
   score: 4.2
   type: 3
@@ -100,13 +93,13 @@ candidates:
   project: claude-code
   source: 01_DECISIONS/claude-code/2026-08-26_原因断定ゲートを層1に追加-CC起動不能トラブル総括.md
   lines: 143
-- date: '2026-07-03'
-  score: 4.18
+- date: '2026-10-21'
+  score: 4.17
   type: 3
-  title: PhaseB定期つぶやきMVP完了
-  project: x-automation
-  source: 01_DECISIONS/x-automation/2026-07-03_PhaseB定期つぶやきMVP完了.md
-  lines: 142
+  title: check-fail-coverage_D1-enforce-待機応答誤発火防止-案B-設計spec化
+  project: claude-code
+  source: 01_DECISIONS/claude-code/2026-10-21_check-fail-coverage_D1-enforce-待機応答誤発火防止-案B-設計spec化.md
+  lines: 140
 - date: '2026-08-12'
   score: 4.16
   type: 3
@@ -156,13 +149,6 @@ candidates:
   project: meeting-pipeline
   source: 01_DECISIONS/meeting-pipeline/2026-09-03_Windows再起動後チェックリストと起動前必要作業.md
   lines: 137
-- date: '2026-07-06'
-  score: 4.12
-  type: 3
-  title: auto-loop×multi-llm-review統合v1簡略版実装完了
-  project: claude-code
-  source: 01_DECISIONS/claude-code/2026-07-06_auto-loop×multi-llm-review統合v1簡略版実装完了.md
-  lines: 135
 - date: '2026-07-27'
   score: 4.12
   type: 3
@@ -184,20 +170,6 @@ candidates:
   project: meeting-pipeline
   source: 01_DECISIONS/meeting-pipeline/2026-09-04_E2E完走とLLM切替-ZAI coding入口・glm-5.3-flash・思考OFF化.md
   lines: 132
-- date: '2026-07-10'
-  score: 4.09
-  type: 3
-  title: fable-advisor-skill設計とカスタムサブエージェント作成
-  project: claude-code
-  source: 01_DECISIONS/claude-code/2026-07-10_fable-advisor-skill設計とカスタムサブエージェント作成.md
-  lines: 131
-- date: '2026-07-11'
-  score: 4.09
-  type: 3
-  title: ssot-recordマルチ起点再設計-01_DECISIONS中心バイアス根絶
-  project: claude-code
-  source: 01_DECISIONS/claude-code/2026-07-11_ssot-recordマルチ起点再設計-01_DECISIONS中心バイアス根絶.md
-  lines: 131
 - date: '2026-08-17'
   score: 4.09
   type: 3
@@ -205,13 +177,6 @@ candidates:
   project: claude-code
   source: 01_DECISIONS/claude-code/2026-08-17_repo-reviewスキル作成-4リポジトリ検証で16摩擦点.md
   lines: 131
-- date: '2026-07-23'
-  score: 4.08
-  type: 3
-  title: SSOT体系化P3-A-manifestヘルス検知
-  project: claude-code
-  source: 01_DECISIONS/claude-code/2026-07-23_SSOT体系化P3-A-manifestヘルス検知.md
-  lines: 129
 - date: '2026-09-19'
   score: 4.08
   type: 3
@@ -219,13 +184,6 @@ candidates:
   project: NexusCore
   source: 01_DECISIONS/NexusCore/2026-09-19_Phase5クロージング判定-計測パイプライン機能不全5件修復.md
   lines: 129
-- date: '2026-07-12'
-  score: 4.07
-  type: 3
-  title: 音節密度ルール拡張-Phase1実装完了-3軸自動評価
-  project: ai-music
-  source: 01_DECISIONS/ai-music/2026-07-12_音節密度ルール拡張-Phase1実装完了-3軸自動評価.md
-  lines: 128
 - date: '2026-09-05'
   score: 4.07
   type: 3
@@ -233,26 +191,26 @@ candidates:
   project: atelier-kyo-manager
   source: 01_DECISIONS/atelier-kyo-manager/2026-09-05_差分レビュー-Celery-app-context欠落と未解決9件の24日放置.md
   lines: 128
-- date: '2026-07-24'
+- date: '2026-10-17'
   score: 4.06
   type: 3
-  title: P3-CPhase1-claude-code_INDEX案C再構成完走-8テーマ+大分類4グルーピング
+  title: check-fail-coverage_D1-enforce-10発連続発火-真因特定とCONFIRM語運用回避ルール
   project: claude-code
-  source: 01_DECISIONS/claude-code/2026-07-24_P3-CPhase1-claude-code_INDEX案C再構成完走-8テーマ+大分類4グルーピング.md
+  source: 01_DECISIONS/claude-code/2026-10-17_check-fail-coverage_D1-enforce-10発連続発火-真因特定とCONFIRM語運用回避ルール.md
   lines: 127
-- date: '2026-07-13'
-  score: 4.04
-  type: 3
-  title: 音節密度ルール拡張-Phase2実装完了-実測オーディオ解析融合
-  project: ai-music
-  source: 01_DECISIONS/ai-music/2026-07-13_音節密度ルール拡張-Phase2実装完了-実測オーディオ解析融合.md
-  lines: 125
 - date: '2026-08-29'
   score: 4.04
   type: 3
   title: OpenRouter無料モデル自動検知pick実装
   project: claude-code
   source: 01_DECISIONS/claude-code/2026-08-29_OpenRouter無料モデル自動検知pick実装.md
+  lines: 125
+- date: '2026-10-07'
+  score: 4.04
+  type: 3
+  title: Windows側claude-config-symlink補強1-3実行
+  project: claude-config
+  source: 01_DECISIONS/claude-config/2026-10-07_Windows側claude-config-symlink補強1-3実行.md
   lines: 125
 - date: '2026-09-04'
   score: 4.03
@@ -261,24 +219,66 @@ candidates:
   project: claude-code
   source: 01_DECISIONS/claude-code/2026-09-04_OpenRouter-pick有料保険デフォルト化修正.md
   lines: 124
-- date: '2026-07-24'
+- date: '2026-10-13'
+  score: 4.03
+  type: 3
+  title: MLR穴塞ぎv3.1実機検証PASS
+  project: claude-code
+  source: 01_DECISIONS/claude-code/2026-10-13_MLR穴塞ぎv3.1実機検証PASS.md
+  lines: 123
+- date: '2026-10-17'
+  score: 4.03
+  type: 3
+  title: 層1検索ルールのRAG未追随と誤断定2件の構造的教訓
+  project: claude-code
+  source: 01_DECISIONS/claude-code/2026-10-17_層1検索ルールのRAG未追随と誤断定2件の構造的教訓.md
+  lines: 124
+- date: '2026-10-02'
   score: 4.02
   type: 3
-  title: P3-CPhase1-NexusCore_INDEX案C再構成完走-7テーマ+リファクタ4サブセクション
+  title: check-plain-explanation-結論ラベル揺れ許容拡張
   project: claude-code
-  source: 01_DECISIONS/claude-code/2026-07-24_P3-CPhase1-NexusCore_INDEX案C再構成完走-7テーマ+リファクタ4サブセクション.md
+  source: 01_DECISIONS/claude-code/2026-10-02_check-plain-explanation-結論ラベル揺れ許容拡張.md
   lines: 122
-- date: '2026-07-01'
-  score: 3.99
+- date: '2026-10-06'
+  score: 4.01
   type: 3
-  title: 32MBエラー真因解明-proxy-client_max_size修正
+  title: Handy音声入力環境構築とトラブルシュート
   project: claude-code
-  source: 01_DECISIONS/claude-code/2026-07-01_32MBエラー真因解明-proxy-client_max_size修正.md
-  lines: 119
-- date: '2026-07-12'
-  score: 3.99
+  source: 01_DECISIONS/claude-code/2026-10-06_Handy音声入力環境構築とトラブルシュート.md
+  lines: 121
+- date: '2026-08-06'
+  score: 3.98
   type: 3
-  title: 祭礼前夜v5-v6生成と構造タグ無視問題の根因発見
-  project: ai-music
-  source: 01_DECISIONS/ai-music/2026-07-12_祭礼前夜v5-v6生成と構造タグ無視問題の根因発見.md
-  lines: 119
+  title: C3-Celery冪等性再実行保護-RedisSETNX採用
+  project: NexusCore
+  source: 01_DECISIONS/NexusCore/2026-08-06_C3-Celery冪等性再実行保護-RedisSETNX採用.md
+  lines: 118
+- date: '2026-08-11'
+  score: 3.98
+  type: 3
+  title: Zernio-MCP知見分断RCA-dataview廃止-読者前提永続化
+  project: claude-code
+  source: 01_DECISIONS/claude-code/2026-08-11_Zernio-MCP知見分断RCA-dataview廃止-読者前提永続化.md
+  lines: 117
+- date: '2026-07-25'
+  score: 3.97
+  type: 3
+  title: 承認スキーマ自動化Phase0実装完走-E'案3段階specと5PJ全100%採用率
+  project: claude-code
+  source: 01_DECISIONS/claude-code/2026-07-25_承認スキーマ自動化Phase0実装完走-E'案3段階specと5PJ全100%採用率.md
+  lines: 116
+- date: '2026-08-18'
+  score: 3.97
+  type: 3
+  title: C3Plan2実装完走-Orchestrator内部冪等性Task1-7
+  project: NexusCore
+  source: 01_DECISIONS/NexusCore/2026-08-18_C3Plan2実装完走-Orchestrator内部冪等性Task1-7.md
+  lines: 116
+- date: '2026-09-03'
+  score: 3.97
+  type: 3
+  title: multi-llm-review用途混同メモ-記録振分けvs実装案監査
+  project: claude-code
+  source: 01_DECISIONS/claude-code/2026-09-03_multi-llm-review用途混同メモ-記録振分けvs実装案監査.md
+  lines: 116
