@@ -98,3 +98,11 @@
   confidence: 高
   file: source/055_見えないはずのAIがスライドの文字を読んでいた話.md
   source: 01_DECISIONS/claude-code/2026-10-23_GLM-MiniMax画像Read実測とvision-analyze前提修正.md
+
+- date: '2026-10-23'
+  episode: '056'
+  type: 設計判断
+  reason: 6層（移行/冪等/予備/連続性/認証/記録）への分解と3機独立指摘を「構造の欠落」の証拠として採用した点が物語化に適する・テスト98緑と実機未検証の区別を明示している
+  confidence: 中
+  file: source/056_バージョン番号ひとつで壊れる世界.md
+  source: 01_DECISIONS/microwin-app/2026-10-17_MicroWin-SprintA-Day4実装-user_version-migrations-framework-PR1.md
