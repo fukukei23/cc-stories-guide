@@ -106,3 +106,11 @@
   confidence: 中
   file: source/056_バージョン番号ひとつで壊れる世界.md
   source: 01_DECISIONS/microwin-app/2026-10-17_MicroWin-SprintA-Day4実装-user_version-migrations-framework-PR1.md
+
+- date: '2026-10-24'
+  episode: '057'
+  type: 事故解決
+  reason: 人気ツールREAの導入でMCPが207ツール・約3.4MBを広告することをtools/list実測で検知し、全セッション常時ロードの前に既定無効化+CLI主経路へ切替えた未然防止の判断が物語化に適する（githubプラグイン41ツール無効化の前例学習の再適用・証跡完備）
+  confidence: 高
+  file: source/057_道具207個の工具箱は導入初日に鍵をかけた話.md
+  source: 01_DECISIONS/claude-code/2026-10-24_REA-MCP導入とAndroid解析ハーネス整備.md
