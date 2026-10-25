@@ -114,3 +114,10 @@
   confidence: 高
   file: source/057_道具207個の工具箱は導入初日に鍵をかけた話.md
   source: 01_DECISIONS/claude-code/2026-10-24_REA-MCP導入とAndroid解析ハーネス整備.md
+- date: 2026-10-25
+  type: 新しい仕組み/反復解消
+  reason: 単体テスト網羅では捕捉できない「解決関数と使用箇所の結合」欠陥がMLRで2回発見され・統合テスト設計の実例として成立
+  confidence: 高
+  file: source/058_テスト全合格なのに繋がっていなかった話.md
+  source: 01_DECISIONS/claude-code/2026-10-24_Sleep-as-Androidクリーンルール実装完遂.md
+- date: 2026-10-26 / type: 事故解決（未然防止型） / reason: 外部ツールinstallがsettings.jsonへhook manifest書込を試行→guard-settings-writeがTOKEN検知で自動復元・2026-06-10 TOKEN混入事故（防御不在で実害）から構築した防御の実戦初機能 / confidence: 高 / episode: 059 / source: 30_RESEARCH/MCPサーバー/2026-06-24_GitHub急上昇AIリポジトリ10選評価.md
