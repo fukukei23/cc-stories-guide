@@ -126,3 +126,9 @@
   confidence: 高
   file: source/059_外部ツールのインストーラが中枢設定を勝手に書こうとした話.md
   source: 30_RESEARCH/MCPサーバー/2026-06-24_GitHub急上昇AIリポジトリ10選評価.md
+- date: 2026-10-27
+  type: 新しい仕組み（昇格ゲート型）
+  reason: AIが作った機械ゲートの「直った」を本人の自己申告でなく人手レビュー30件のFP/FN/カバー率3軸ANDで証明する昇格条件設計として成立
+  confidence: 高
+  file: source/060_AIが作った検査機械は本番投入前に人間が30件採点する話.md
+  source: 01_DECISIONS/claude-code/2026-10-21_check-fail-coverage_wait-response_phase0-評価設計.md
