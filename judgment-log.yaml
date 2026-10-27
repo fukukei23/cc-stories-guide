@@ -120,4 +120,9 @@
   confidence: 高
   file: source/058_テスト全合格なのに繋がっていなかった話.md
   source: 01_DECISIONS/claude-code/2026-10-24_Sleep-as-Androidクリーンルール実装完遂.md
-- date: 2026-10-26 / type: 事故解決（未然防止型） / reason: 外部ツールinstallがsettings.jsonへhook manifest書込を試行→guard-settings-writeがTOKEN検知で自動復元・2026-06-10 TOKEN混入事故（防御不在で実害）から構築した防御の実戦初機能 / confidence: 高 / episode: 059 / source: 30_RESEARCH/MCPサーバー/2026-06-24_GitHub急上昇AIリポジトリ10選評価.md
+- date: 2026-10-26
+  type: 事故解決（未然防止型）
+  reason: 外部ツールinstallがsettings.jsonへhook manifest書込を試行→guard-settings-writeがTOKEN検知で自動復元・2026-06-10 TOKEN混入事故（防御不在で実害）から構築した防御の実戦初機能
+  confidence: 高
+  file: source/059_外部ツールのインストーラが中枢設定を勝手に書こうとした話.md
+  source: 30_RESEARCH/MCPサーバー/2026-06-24_GitHub急上昇AIリポジトリ10選評価.md
