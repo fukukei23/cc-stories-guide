@@ -132,3 +132,10 @@
   confidence: 高
   file: source/060_AIが作った検査機械は本番投入前に人間が30件採点する話.md
   source: 01_DECISIONS/claude-code/2026-10-21_check-fail-coverage_wait-response_phase0-評価設計.md
+- date: 2026-10-27
+  type: 反復解消
+  reason: 「CC はスマホ/エミュレータ操作不可」の誤断定をふくけいの「本当に？」で実測訂正・WSL 内 SDK フルセット発見→エミュレータ検証完遂まで完結・画像認識外部委任事故と同型の2度目で行動ルール化+正典新設
+  confidence: 高
+  episode: 61
+  file: source/061_その作業は無理と決めつける前に引き出しを開けよう.md
+  source: 01_DECISIONS/nemly-app/2026-10-27_nemly-app初期土台作成.md
