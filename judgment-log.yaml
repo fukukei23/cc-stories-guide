@@ -139,3 +139,13 @@
   episode: 61
   file: source/061_その作業は無理と決めつける前に引き出しを開けよう.md
   source: 01_DECISIONS/nemly-app/2026-10-27_nemly-app初期土台作成.md
+
+- date: '2026-10-30'
+  type: 3
+  title: 残5件同期セキュリティ強化-fail-closed化とJSONエスケープ検出バグ修正
+  project: claude-code
+  source: 01_DECISIONS/claude-code/2026-08-01_残5件同期セキュリティ強化-fail-closed化とJSONエスケープ検出バグ修正.md
+  file: source/062_わざと汚したテストファイルが検査網の穴を暴いた話.md
+  episode: '062'
+  reason: セキュリティ検査網のfail-closed化と合成テストによる実バグ発見の話・検証回避バイアスの好例として物語化
+  confidence: high
