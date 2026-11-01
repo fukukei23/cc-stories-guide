@@ -149,3 +149,10 @@
   episode: '062'
   reason: セキュリティ検査網のfail-closed化と合成テストによる実バグ発見の話・検証回避バイアスの好例として物語化
   confidence: high
+- date: 2026-11-01
+  type: 事故解決
+  source: 01_DECISIONS/ai-security-defense-guide/2026-11-01_新規ガイド公開.md
+  file: source/063_攻撃事件の教訓チェックリストで自分のアプリの金庫が開いていた話.md
+  episode: '063'
+  reason: 攻撃事件の防御チェックリスト適用点検だけで自アプリの重大IDORを発見・TDD修正しガイド+Zenn公開まで完遂した実録
+  confidence: high
