@@ -156,3 +156,15 @@
   episode: '063'
   reason: 攻撃事件の防御チェックリスト適用点検だけで自アプリの重大IDORを発見・TDD修正しガイド+Zenn公開まで完遂した実録
   confidence: high
+- date: 2026-11-02
+  type: 事故解決
+  reason: 夜間自動テストが「通知は7晩届いたが誰も動かない」で停止し続けた構造的欠陥（検知→対処断絶）を「3日止まったら仕事表へ自動でタスク化」の恒久機構で封じた実録
+  confidence: high
+  episode: '064'
+  source: 01_DECISIONS/NexusCore/2026-11-01_harness題庫枯渇再発と復旧.md
+- date: 2026-11-03
+  type: 事故解決
+  reason: AI日本語出力への簡体字混入を4段構え（生成前注入・生成前検知・生成後変換・応答時変換）で封じた実録・混入原因の切り分け（モデル名と実体が違う・指示書では効かない）も含意
+  confidence: high
+  episode: '065'
+  source: 01_DECISIONS/claude-code/2026-11-02_簡体字混入対策④-lang_fix実装.md
