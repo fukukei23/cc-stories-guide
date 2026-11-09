@@ -479,6 +479,38 @@ def rewrite_links(html: str, chapter_map: dict | None = None) -> str:
     return html
 
 
+# 時間依存要素の正規化パターン（OR1 r2+r3採用・Task 1 実測で現行出力に該当なし＝回帰影響なし・
+# 将来 time 属性等が出力される変更が入った場合の保険として機構を常設）
+NORMALIZE_PATTERNS: list[tuple[re.Pattern, str]] = [
+    (re.compile(r'time="[^"]*"'), 'time=""'),
+]
+
+
+def normalize_html(html: str) -> str:
+    """sha256比較用に時間依存要素を正規化する（spec §3.3・正規化対象はTask 1実測で0件確定）."""
+    for pat, repl in NORMALIZE_PATTERNS:
+        html = pat.sub(repl, html)
+    return html
+
+
+DIAGRAM_DIR = "assets/diagrams"
+
+
+def inject_diagram(html: str) -> str:
+    """::: diagram <slug> ディレクティブをSVG注入へ置換（spec §3.2・SVG不在時はfail-warn）."""
+    def _replace(match: re.Match) -> str:
+        slug = match.group(1).strip()
+        svg_path = Path(DIAGRAM_DIR) / f"{slug}.svg"
+        if not svg_path.is_file():
+            return (
+                f'<div class="story-diagram story-diagram-pending">'
+                f'<p class="story-diagram-note">（図準備中: {slug}）</p></div>'
+            )
+        return match.group(0)  # Task 4/5でallowlist検査+注入を実装
+
+    return re.sub(r"<p>::: diagram ([^<]+)</p>", _replace, html)
+
+
 def enhance_html(html: str) -> str:
     """HTMLに装飾を追加（テーブルラップ・コールアウト等）."""
     # テーブルをスクロールラッパーで囲む
@@ -498,6 +530,9 @@ def enhance_html(html: str) -> str:
         html,
         flags=re.DOTALL,
     )
+
+    # ::: diagram <slug> ディレクティブをSVG注入へ（spec 2026-11-10・図解全話展開）
+    html = inject_diagram(html)
 
     # 引用ブロックをコールアウトに変換
     def callout_replace(match):
