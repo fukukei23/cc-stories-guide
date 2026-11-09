@@ -168,3 +168,9 @@
   confidence: high
   episode: '065'
   source: 01_DECISIONS/claude-code/2026-11-02_簡体字混入対策④-lang_fix実装.md
+- date: 2026-11-09
+  type: 事故解決
+  reason: 4日半のスリープで夜間定期作業が4日分飛び、安全装置（heartbeat 72h監査）が全作業を止めた実録・読み取り専用ツールだけで原因を突き止め、root権限を持つ外側のルート（Windows側エージェント）で復旧した
+  confidence: high
+  episode: '066'
+  source: 01_DECISIONS/claude-code/2026-11-09_視角パックgate停止復旧とホストスリープcron欠損.md
