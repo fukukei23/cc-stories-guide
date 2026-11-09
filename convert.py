@@ -3,6 +3,7 @@
 
 import re
 import shutil
+import sys
 from pathlib import Path
 
 from jinja2 import Template
@@ -506,9 +507,79 @@ def inject_diagram(html: str) -> str:
                 f'<div class="story-diagram story-diagram-pending">'
                 f'<p class="story-diagram-note">（図準備中: {slug}）</p></div>'
             )
-        return match.group(0)  # Task 4/5でallowlist検査+注入を実装
+        svg = svg_path.read_text(encoding="utf-8")
+        violation = check_svg_allowlist(svg)
+        if violation:
+            print(f"WARN: diagram {slug} 注入拒否（{violation}）", file=sys.stderr)
+            return (
+                f'<div class="story-diagram story-diagram-blocked">'
+                f'<p class="story-diagram-note">（図を注入できません: {slug}）</p></div>'
+            )
+        caption = build_caption(svg, slug)
+        return f'<figure class="story-diagram">{svg}{caption}</figure>'
 
     return re.sub(r"<p>::: diagram ([^<]+)</p>", _replace, html)
+
+
+SVG_ALLOWED_TAGS: dict[str, list[str]] = {
+    "svg": ["xmlns", "viewBox", "role", "aria-labelledby"],
+    "title": ["id"],
+    "desc": ["id"],
+    "defs": [],
+    "g": ["filter", "fill", "stroke", "stroke-width", "transform", "font-family"],
+    "rect": ["x", "y", "width", "height", "rx", "fill", "stroke", "stroke-width", "opacity"],
+    "circle": ["cx", "cy", "r", "fill", "stroke", "stroke-width"],
+    "line": ["x1", "y1", "x2", "y2", "stroke", "stroke-width"],
+    "polygon": ["points", "fill", "stroke", "stroke-width"],
+    "path": ["d", "fill", "stroke", "stroke-width"],
+    "text": ["x", "y", "font-size", "font-weight", "fill", "text-anchor"],
+    "filter": ["id", "x", "y", "width", "height"],
+    "feturbulence": ["type", "baseFrequency", "numOctaves", "seed"],
+    "fedisplacementmap": ["in", "scale"],
+    "marker": ["id", "markerWidth", "markerHeight", "refX", "refY", "orient"],
+}
+SVG_FORBIDDEN_TAGS = ("script", "foreignObject", "image", "use", "iframe", "object",
+                      "embed", "animate", "set", "animateTransform", "animateMotion")
+_FORBIDDEN_ATTR_PATTERNS = [
+    re.compile(r"\son[a-z]+\s*=", re.I),
+    re.compile(r"\sxlink:href\s*=", re.I),
+    re.compile(r"\shref\s*=", re.I),
+    re.compile(r"\sstyle\s*=", re.I),
+]
+_FORBIDDEN_VALUE_PATTERNS = [
+    re.compile(r"url\s*\(\s*(?!#)", re.I),  # url(#...) 内部参照は許可・外部参照のみ禁止
+    re.compile(r"javascript:", re.I),
+    re.compile(r"data:", re.I),
+    re.compile(r"&#\d", re.I),
+    re.compile(r"&#x", re.I),
+]
+
+
+def check_svg_allowlist(svg: str) -> str | None:
+    """SVGのallowlist fail-closed検査（spec §3.2・r2改訂）. 違反理由を返す・通過時はNone."""
+    for tag in SVG_FORBIDDEN_TAGS:
+        if re.search(rf"<{tag}[\s>/]", svg, re.I):
+            return f"forbidden_tag:{tag}"
+    for pat in _FORBIDDEN_ATTR_PATTERNS:
+        if pat.search(svg):
+            return f"forbidden_attr:{pat.pattern}"
+    for pat in _FORBIDDEN_VALUE_PATTERNS:
+        if pat.search(svg):
+            return f"forbidden_value:{pat.pattern}"
+    for m in re.finditer(r"<([a-zA-Z][a-zA-Z0-9]*)", svg):
+        tag = m.group(1).lower()
+        if tag not in SVG_ALLOWED_TAGS:
+            return f"unlisted_tag:{tag}"
+    if "<!DOCTYPE" in svg or "<!ENTITY" in svg or "<![CDATA" in svg:
+        return "forbidden_doctype_or_entity"
+    return None
+
+
+def build_caption(svg: str, slug: str) -> str:
+    """figcaption を SVG内 <desc> から生成（spec §4.4・長文代替テキスト必須）."""
+    m = re.search(r"<desc[^>]*>(.*?)</desc>", svg, re.DOTALL)
+    text = m.group(1).strip() if m else ""
+    return f"<figcaption>{text or slug}</figcaption>"
 
 
 def enhance_html(html: str) -> str:
@@ -693,7 +764,6 @@ def main():
     # git rm --cached 後に "D" を返して untracked を隠すため ls-files --error-unmatch で判定。
     # exit 78 = sysexits EX_CONFIG（pytest の 0件収集=5 との衝突回避・r1レビュー採用）
     import subprocess
-    import sys
     untracked = []
     for f in sorted(OUTPUT_DIR.rglob("*.html")):
         if not f.exists():
