@@ -42,6 +42,10 @@
     --amber-bg: #451a03;
     --red-bg: #450a0a;
     --blue-bg: #172554;
+    --green: #4ade80;
+    --amber: #fbbf24;
+    --red: #f87171;
+    --blue: #60a5fa;
     --border: #334155;
     --code-bg: #0f172a;
     --code-text: #e2e8f0;
@@ -736,3 +740,14 @@ img {
 }
 
 /* 旧.card-number上書き定義は削除（青背景×青文字で不可視化される事故・2026-10-11修正） */
+
+/* story図解（::: diagram 注入・spec 2026-11-10） */
+.story-diagram { margin: 2rem 0; overflow-x: auto; }
+.story-diagram svg { width: 100%; min-width: 960px; display: block; }
+.story-diagram figcaption { font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem; }
+.story-diagram-pending, .story-diagram-blocked {
+  border: 1px dashed var(--border);
+  padding: 1rem;
+  border-radius: var(--radius-sm);
+}
+.story-diagram-note { color: var(--text-secondary); font-size: 0.85rem; }
