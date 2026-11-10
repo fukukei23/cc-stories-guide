@@ -174,3 +174,9 @@
   confidence: high
   episode: '066'
   source: 01_DECISIONS/claude-code/2026-11-09_視角パックgate停止復旧とホストスリープcron欠損.md
+- date: 2026-11-10
+  type: 事故解決
+  reason: 初期値のままのfail閾値が「動かす気配のない正常な睡眠」を死扱いして不合格を出した実録・一晩の実機データで目盛りを校正し、fail条件は実機の現場の数字から作る工程の省略不可を残した
+  confidence: high
+  episode: '067'
+  source: 01_DECISIONS/nemly-app/2026-10-29_Phase2実機検証とfailCheck校正.md
