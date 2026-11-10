@@ -744,7 +744,7 @@ img {
 /* story図解（::: diagram 注入・spec 2026-11-10） */
 .story-diagram { margin: 2rem 0; overflow-x: auto; }
 .story-diagram svg { width: 100%; min-width: 960px; display: block; }
-.story-diagram figcaption { font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem; }
+.story-diagram figcaption { font-size: 0.85rem; color: var(--text); margin-top: 0.5rem; }
 .story-diagram-pending, .story-diagram-blocked {
   border: 1px dashed var(--border);
   padding: 1rem;
