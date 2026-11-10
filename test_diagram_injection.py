@@ -99,3 +99,22 @@ def test_allowlist_passes_valid_diagram_svg(monkeypatch, tmp_path):
     assert 'story-diagram-blocked' not in html
     assert '<figure class="story-diagram">' in html
     assert 'figcaption' in html
+
+
+def test_caption_uses_desc_content(monkeypatch, tmp_path):
+    """figcaption は SVG内 <desc> の内容を流用（spec §4.4・長文代替テキスト必須）."""
+    name = _write_diagram(
+        tmp_path, "cap",
+        '<svg viewBox="0 0 10 10"><title id="t">t</title>'
+        '<desc id="d">警備日誌が4日間止まって全扉がロックされた事故の流れ。</desc></svg>')
+    monkeypatch.chdir(tmp_path)
+    html = convert.enhance_html(f'<p>::: diagram {name}</p>')
+    assert '<figcaption>警備日誌が4日間止まって全扉がロックされた事故の流れ。</figcaption>' in html
+
+
+def test_caption_falls_back_to_slug_when_no_desc(monkeypatch, tmp_path):
+    """<desc> がない場合は slug にフォールバック."""
+    name = _write_diagram(tmp_path, "nodesc", '<svg viewBox="0 0 10 10"></svg>')
+    monkeypatch.chdir(tmp_path)
+    html = convert.enhance_html(f'<p>::: diagram {name}</p>')
+    assert '<figcaption>nodesc</figcaption>' in html
