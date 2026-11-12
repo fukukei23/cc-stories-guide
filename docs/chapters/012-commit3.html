@@ -439,6 +439,126 @@
 </ol>
 <p>9skill+CLAUDE.mdのcommit手順を一斉移行。設計レビュー3ラウンド（3機51件）+実装レビュー2ラウンド（3機32件・critical 3→1→0で収束）。設計正典: obsidian-ssot <code>docs/superpowers/specs/2026-09-05_並行セッション巻き込み再設計-design.md</code>（詳細は01_DECISIONS/claude-code/2026-09-06_並行セッション巻き込み再設計実装.md）。Phase 3（worktree完全分離）は再評価条件付きでバックログ起票済み。</p>
 <p>&lt;/details&gt;</p>
+<figure class="story-diagram"><!-- 素材: source/012_他の作業を巻き込んでcommitする事故を3つの見張り役で潰した話.md -->
+<svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s012c-title s012c-desc">
+  <title id="s012c-title">他の作業を巻き込んだcommit事故を3つの見張り役で止めた流れ</title>
+  <desc id="s012c-desc">共有の保存置き場に他の作業の記録が混ざる事故を、送信前の検品・宣言した分だけの自動送信・専用コマンドの3つの見張り役で防ぐ6コマの物語。</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <!-- パネル1: 夜中に記録帳が上書きされる（2冊の帳が重なり×印） -->
+    <rect x="16" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="88" y="112" width="34" height="40" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="94" y1="124" x2="116" y2="124" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="94" y1="136" x2="112" y2="136" stroke="var(--text-secondary)" stroke-width="1"/>
+    <rect x="112" y="96" width="34" height="40" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="118" y1="108" x2="140" y2="108" stroke="var(--text-secondary)" stroke-width="1"/>
+    <path d="M 156 90 l 16 16 M 172 90 l -16 16" fill="none" stroke="var(--red)" stroke-width="2.4"/>
+
+    <!-- パネル2: 原因は共有の保存置き場（台に帳3個・1本の矢印が一点へ） -->
+    <rect x="496" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="608" y1="82" x2="608" y2="96" stroke="var(--text)" stroke-width="1.8"/>
+    <polygon points="602,92 614,92 608,100" fill="var(--text)"/>
+    <rect x="572" y="104" width="22" height="32" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="576" y1="114" x2="590" y2="114" stroke="var(--text-secondary)" stroke-width="1"/>
+    <rect x="598" y="104" width="22" height="32" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="602" y1="114" x2="616" y2="114" stroke="var(--text-secondary)" stroke-width="1"/>
+    <rect x="624" y="104" width="22" height="32" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="628" y1="114" x2="642" y2="114" stroke="var(--text-secondary)" stroke-width="1"/>
+    <rect x="566" y="140" width="86" height="12" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+
+    <!-- パネル3: 見張り役1 送信前の検品（ゲートの前で帳が止まる） -->
+    <rect x="16" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="92" y="286" width="7" height="62" fill="var(--text)"/>
+    <rect x="164" y="286" width="7" height="62" fill="var(--text)"/>
+    <rect x="92" y="286" width="79" height="7" fill="var(--text)"/>
+    <path d="M 118 296 l 12 12 M 130 296 l -12 12" fill="none" stroke="var(--red)" stroke-width="2.4"/>
+    <rect x="108" y="312" width="34" height="40" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="114" y1="324" x2="136" y2="324" stroke="var(--text-secondary)" stroke-width="1"/>
+
+    <!-- パネル4: 見張り役2 宣言した分だけ送る（リスト+チェック+帳1個） -->
+    <rect x="496" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="564" y="286" width="46" height="58" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="584" y1="300" x2="602" y2="300" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="584" y1="314" x2="602" y2="314" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="584" y1="328" x2="600" y2="328" stroke="var(--text-secondary)" stroke-width="1"/>
+    <path d="M 570 324 l 4 4 l 8 -9" fill="none" stroke="var(--green)" stroke-width="2.2"/>
+    <line x1="612" y1="316" x2="617" y2="316" stroke="var(--green)" stroke-width="1.8"/>
+    <polygon points="617,312 617,320 625,316" fill="var(--green)"/>
+    <rect x="628" y="298" width="26" height="40" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+
+    <!-- パネル5: 見張り役3 専用コマンド（端末窓+拒否×印） -->
+    <rect x="16" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="88" y="452" width="60" height="50" rx="4" fill="var(--code-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <path d="M 96 468 l 6 5 l -6 5" fill="none" stroke="var(--green)" stroke-width="2.2"/>
+    <line x1="108" y1="473" x2="134" y2="473" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="96" y1="488" x2="124" y2="488" stroke="var(--text-secondary)" stroke-width="1"/>
+    <path d="M 154 454 l 14 14 M 168 454 l -14 14" fill="none" stroke="var(--red)" stroke-width="2.4"/>
+
+    <!-- パネル6: 事故は機械が止めてくれる（盾+チェック+無事な帳） -->
+    <rect x="496" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <path d="M 578 454 l 26 -12 l 26 12 v 20 c 0 18 -26 27 -26 27 c 0 0 -26 -9 -26 -27 z" fill="var(--green-bg)" stroke="var(--green)" stroke-width="1.6"/>
+    <path d="M 592 476 l 9 9 l 18 -20" fill="none" stroke="var(--green)" stroke-width="3.4"/>
+    <g stroke="var(--amber)" stroke-width="1.8">
+      <line x1="642" y1="460" x2="648" y2="450"/>
+      <line x1="650" y1="470" x2="658" y2="462"/>
+      <line x1="640" y1="478" x2="650" y2="476"/>
+    </g>
+  </g>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+    <!-- 番号丸（accent-bg変数塗り・文字はaccent-dark変数・両テーマ4.5:1以上） -->
+    <circle cx="48" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="111">1</text>
+      <text x="528" y="111">2</text>
+      <text x="48" y="277">3</text>
+      <text x="528" y="277">4</text>
+      <text x="48" y="443">5</text>
+      <text x="528" y="443">6</text>
+    </g>
+
+    <!-- 見出し（1行・text変数） -->
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="178" y="106">夜中に記録帳が上書きされる</text>
+      <text x="658" y="106">原因は共有の保存置き場</text>
+      <text x="178" y="272">見張り役1: 送信前の検品</text>
+      <text x="658" y="272">見張り役2: 宣言分だけ送る</text>
+      <text x="178" y="438">見張り役3: 専用コマンド</text>
+      <text x="658" y="438">事故は機械が止めてくれる</text>
+    </g>
+
+    <!-- キャプション（2行・パネル内側=bg-card変数背景なのでtext-secondary変数） -->
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="178" y="150">他の作業の記録まで混ざって保存。</text>
+      <text x="178" y="172">2日分が消えるところだった。</text>
+      <text x="658" y="150">保存待ちの置き場が全作業で1か所。</text>
+      <text x="658" y="172">忙しい夜中、誰かが必ず間違える。</text>
+      <text x="178" y="316">他人の荷物が混ざったら機械が止める。</text>
+      <text x="178" y="338">導入初日に本物を1回捕まえた。</text>
+      <text x="658" y="316">自動送信は触ると宣言したものだけ。</text>
+      <text x="658" y="338">そもそも混ざらない。</text>
+      <text x="178" y="482">宣言外は受け付けず他人分に触れない。</text>
+      <text x="178" y="504">宣言し忘れはその場で拒否。</text>
+      <text x="658" y="482">弱点は3機の検品でゼロまで潰した。</text>
+      <text x="658" y="504">1週間動かして実害ゼロを確かめる。</text>
+    </g>
+
+    <!-- 脚注（ページ背景の上に載るためtext変数） -->
+    <text x="480" y="566" font-size="11" fill="var(--text)" text-anchor="middle">読む順: 左上から 1 → 2 → 3 → 4 → 5 → 6</text>
+  </g>
+</svg>
+<figcaption>共有の保存置き場に他の作業の記録が混ざる事故を、送信前の検品・宣言した分だけの自動送信・専用コマンドの3つの見張り役で防ぐ6コマの物語。</figcaption></figure>
 
         </article>
 

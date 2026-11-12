@@ -1,0 +1,65 @@
+<!-- 型Bテンプレート: 使い方系・発話→結果の流れ図（spec §4.3）viewBox 960x420 -->
+<svg viewBox="0 0 960 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="tpl-b-title tpl-b-desc">
+  <title id="tpl-b-title">【ここに使い方の見出しを1行】</title>
+  <desc id="tpl-b-desc">【ここに解决的问题→発話→動作→結果の要約を1行】</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <!-- 段のパネル枠（sketchyフィルタは図形のみ・テキストはフィルタ外で鮮明）
+       イラスト差し替え位置: 各段の左帯（番号丸の右〜テキストの左）
+         段1/2/3/4: x=68〜240
+         差し替え時は rect/circle/polygon/path を使い Emoji は使わない（豆腐化回避） -->
+  <g filter="url(#sketchy)">
+    <!-- 段1: いつ困る -->
+    <rect x="16" y="48" width="928" height="66" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <!-- 段2: こう言う（トリガー発話・吹き出し絵） -->
+    <rect x="16" y="132" width="928" height="66" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <!-- 段3: こうなる（動作） -->
+    <rect x="16" y="216" width="928" height="66" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <!-- 段4: 何が変わる（結果） -->
+    <rect x="16" y="300" width="928" height="66" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+  </g>
+
+  <!-- 番号丸（塗り=accent-bg変数・文字=accent-dark変数・両テーマ4.5:1以上） -->
+  <g>
+    <circle cx="48" cy="81" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="165" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="249" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+  </g>
+
+  <!-- 段4の結果マーク（緑-bgの丸 + text色のチェック線＝緑線の白カード2.54:1を回避）
+       チェックはSVGパスで描く（フォント依存の豆腐化を避ける） -->
+  <circle cx="48" cy="333" r="16" fill="var(--green-bg)" stroke="var(--text)" stroke-width="1.2"/>
+  <path d="M 41 333 l 5 5 l 9 -11" fill="none" stroke="var(--text)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- テキスト（066話に倣い font-family は g で一括指定） -->
+  <g font-family="'Noto Sans JP', sans-serif">
+
+    <!-- 番号（段1〜3） -->
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="86">1</text>
+      <text x="48" y="170">2</text>
+      <text x="48" y="254">3</text>
+    </g>
+
+    <!-- 見出し（1行）: 番号丸の右・段左端+70から -->
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="260" y="78">【いつ困る】</text>
+      <text x="260" y="162">【こう言う】</text>
+      <text x="260" y="246">【こうなる】</text>
+      <text x="260" y="330">【何が変わる】</text>
+    </g>
+
+    <!-- 説明（1行）: パネル枠の内側なので背景は bg-card変数 -->
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="260" y="98">【説明1行】</text>
+      <text x="260" y="182">【トリガー発話】</text>
+      <text x="260" y="266">【動作の説明】</text>
+      <text x="260" y="350">【結果の説明】</text>
+    </g>
+  </g>
+</svg>

@@ -426,6 +426,127 @@
 <li>教訓の構造化: 「実装者=検証者」の検証範囲の偏り対策として、3機独立レビュー+fail条件の事前固定+RED→GREEN実証を運用に組込</li>
 </ul>
 <p>&lt;/details&gt;</p>
+<figure class="story-diagram"><!-- 素材: source/017_AIに下調べの省略をさせない検問を作った話.md -->
+<svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s017c-title s017c-desc">
+  <title id="s017c-title">下調べの省略を物理検問で止めた流れ</title>
+  <desc id="s017c-desc">台帳を読まずに記録を書く省略を、実行スタンプと指紋刻印のある物理検問に替え、3機の査読で見つかったすり抜け穴を実験で塞いだ6コマの物語。</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <!-- パネル1: 下調べをすっ飛ばした日（台帳を迂回する矢印+漏れの×印） -->
+    <rect x="16" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="88" y="100" width="42" height="50" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="94" y1="112" x2="124" y2="112" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="94" y1="124" x2="124" y2="124" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="94" y1="136" x2="112" y2="136" stroke="var(--text-secondary)" stroke-width="1"/>
+    <path d="M 136 128 C 150 128 144 106 154 102" fill="none" stroke="var(--amber)" stroke-width="2"/>
+    <polygon points="150,98 158,102 152,109" fill="var(--amber)"/>
+    <rect x="142" y="120" width="26" height="34" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <path d="M 96 170 l 14 14 M 110 170 l -14 14" fill="none" stroke="var(--red)" stroke-width="2.4"/>
+
+    <!-- パネル2: 注意書きはただの飾り（手順書を無視して素通り） -->
+    <rect x="496" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="564" y="96" width="44" height="56" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="570" y1="110" x2="602" y2="110" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="570" y1="122" x2="596" y2="122" stroke="var(--red)" stroke-width="2"/>
+    <line x1="570" y1="136" x2="602" y2="136" stroke="var(--text-secondary)" stroke-width="1"/>
+    <rect x="622" y="112" width="28" height="38" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="612" y1="130" x2="618" y2="130" stroke="var(--text)" stroke-width="1.6"/>
+    <polygon points="618,126 618,134 626,130" fill="var(--text)"/>
+
+    <!-- パネル3: 書き込みに検問を設置（ゲート+実行スタンプ） -->
+    <rect x="16" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="96" y="286" width="7" height="62" fill="var(--text)"/>
+    <rect x="168" y="286" width="7" height="62" fill="var(--text)"/>
+    <rect x="96" y="286" width="79" height="7" fill="var(--text)"/>
+    <rect x="112" y="310" width="30" height="38" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="156" cy="306" r="13" fill="var(--accent-bg)" stroke="var(--accent-dark)" stroke-width="1.4"/>
+    <path d="M 150 306 l 4 4 l 8 -9" fill="none" stroke="var(--accent-dark)" stroke-width="2.2"/>
+
+    <!-- パネル4: スタンプに指紋を刻印（同心円の指紋+古い帳に×印） -->
+    <rect x="496" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <circle cx="592" cy="302" r="18" fill="none" stroke="var(--accent-dark)" stroke-width="1.6"/>
+    <circle cx="592" cy="302" r="12" fill="none" stroke="var(--accent-dark)" stroke-width="1.4"/>
+    <circle cx="592" cy="302" r="6" fill="none" stroke="var(--accent-dark)" stroke-width="1.2"/>
+    <circle cx="592" cy="302" r="2" fill="var(--accent-dark)"/>
+    <rect x="622" y="290" width="28" height="38" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <path d="M 642 274 l 12 12 M 654 274 l -12 12" fill="none" stroke="var(--red)" stroke-width="2.4"/>
+
+    <!-- パネル5: 3人の審査員で穴あばき（顔3個+穴2個） -->
+    <rect x="16" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <circle cx="92" cy="452" r="11" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="92" cy="472" r="11" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="92" cy="492" r="11" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="106" y1="456" x2="122" y2="466" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="106" y1="472" x2="122" y2="472" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="106" y1="488" x2="122" y2="478" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="126" y="456" width="30" height="38" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <path d="M 162 456 l 10 10 M 172 456 l -10 10" fill="none" stroke="var(--red)" stroke-width="2.2"/>
+    <path d="M 162 482 l 10 10 M 172 482 l -10 10" fill="none" stroke="var(--red)" stroke-width="2.2"/>
+
+    <!-- パネル6: 省略が無駄に変わった（ゲート+Uターン矢印） -->
+    <rect x="496" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="568" y="446" width="7" height="58" fill="var(--text)"/>
+    <rect x="640" y="446" width="7" height="58" fill="var(--text)"/>
+    <rect x="568" y="446" width="79" height="7" fill="var(--text)"/>
+    <rect x="584" y="470" width="28" height="34" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <path d="M 618 470 C 630 462 638 472 634 482 C 631 490 620 490 616 484" fill="none" stroke="var(--blue)" stroke-width="2"/>
+    <polygon points="612,488 620,482 618,492" fill="var(--blue)"/>
+  </g>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+    <!-- 番号丸（accent-bg変数塗り・文字はaccent-dark変数・両テーマ4.5:1以上） -->
+    <circle cx="48" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="111">1</text>
+      <text x="528" y="111">2</text>
+      <text x="48" y="277">3</text>
+      <text x="528" y="277">4</text>
+      <text x="48" y="443">5</text>
+      <text x="528" y="443">6</text>
+    </g>
+
+    <!-- 見出し（1行・text変数） -->
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="178" y="106">下調べをすっ飛ばした日</text>
+      <text x="658" y="106">注意書きはただの飾り</text>
+      <text x="178" y="272">書き込みに検問を設置</text>
+      <text x="658" y="272">スタンプに指紋を刻印</text>
+      <text x="178" y="438">3人の審査員で穴あばき</text>
+      <text x="658" y="438">省略が無駄に変わった</text>
+    </g>
+
+    <!-- キャプション（2行・パネル内側=bg-card変数背景なのでtext-secondary変数） -->
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="178" y="150">台帳を読まずに記録を書いてしまう。</text>
+      <text x="178" y="172">更新すべき別のファイルが漏れた。</text>
+      <text x="658" y="150">「必ず読め」は無いに等しかった。</text>
+      <text x="658" y="172">指摘されてもまた同じ省略が起きる。</text>
+      <text x="178" y="316">下調べをすると実行スタンプが発行。</text>
+      <text x="178" y="338">スタンプ無しの書き込みは全部拒否。</text>
+      <text x="658" y="316">調べた設定の指紋も刻まれる。</text>
+      <text x="658" y="338">設定変更後の古い調査も足止め。</text>
+      <text x="178" y="482">2ラウンドの査読で56件の指摘。</text>
+      <text x="178" y="504">本当にすり抜ける穴が2つ見つかった。</text>
+      <text x="658" y="482">書き込みの瞬間に検問が止める。</text>
+      <text x="658" y="504">やっても無駄だからやらないへ。</text>
+    </g>
+
+    <!-- 脚注（ページ背景の上に載るためtext変数） -->
+    <text x="480" y="566" font-size="11" fill="var(--text)" text-anchor="middle">読む順: 左上から 1 → 2 → 3 → 4 → 5 → 6</text>
+  </g>
+</svg>
+<figcaption>台帳を読まずに記録を書く省略を、実行スタンプと指紋刻印のある物理検問に替え、3機の査読で見つかったすり抜け穴を実験で塞いだ6コマの物語。</figcaption></figure>
 
         </article>
 

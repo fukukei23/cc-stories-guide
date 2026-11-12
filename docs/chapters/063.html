@@ -417,6 +417,124 @@
 <p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどう作ったか&lt;/summary&gt;</p>
 <p>対象は reserve-optimizer（クリニック向けLINE Bot予約管理・GAS + Cloudflare Worker + Stripe構成・個人開発の公開リポジトリ）。発見したのはIDOR（OWASPに解説される一般的な脆弱性カテゴリ・連番予約ID + saveIntakeForm の存在検証ゼロ + 上書き無条件）。修正はA案（予約ID全モードでR + 16進16文字の暗号論的ランダム化・存在検証・二重提出拒否の三層）を採用し、B案（intakeトークン付与）は将来の補強として計画。TDDで新規セキュリティテストを先に書き（unit-intake-service.test.js に &quot;Reservation not found&quot; / &quot;rejects duplicate submission&quot; を実装）、全1,489テスト緑（run-all 1,425 + vitest 64）でGAS本番 v32 に反映。記事は multi-llm-review を2ラウンド（r1=4機23件・r2=5経路24件）実施してから公開。ガイド全編: https://fukukei23.github.io/ai-security-defense-guide/ / 記事: https://zenn.dev/fukukei23/articles/artex-ai-pentest-defense-idor-case-study</p>
 <p>&lt;/details&gt;</p>
+<figure class="story-diagram"><!-- 素材: source/063_攻撃事件の教訓チェックリストで自分のアプリの金庫が開いていた話.md -->
+<svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s063c-title s063c-desc">
+  <title id="s063c-title">攻撃事件の教訓リストで金庫の開錠に気づいた流れ</title>
+  <desc id="s063c-desc">攻撃事件の十四の心得を自分のアプリに一項目ずつ判定したら連番IDで他人の回答が読める状態だったため、鍵を三重に替え全試験緑を確かめて本番に載せた6コマの物語。</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <!-- パネル1: 遠い国の攻撃事件の発表（発表文書+警告三角） -->
+    <rect x="16" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="88" y="98" width="44" height="54" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="94" y1="112" x2="126" y2="112" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="94" y1="124" x2="126" y2="124" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="94" y1="136" x2="114" y2="136" stroke="var(--text-secondary)" stroke-width="1"/>
+    <polygon points="138,152 154,124 170,152" fill="var(--amber-bg)" stroke="var(--amber)" stroke-width="1.6"/>
+    <line x1="154" y1="134" x2="154" y2="143" stroke="var(--amber)" stroke-width="2"/>
+    <circle cx="154" cy="147" r="1.6" fill="var(--amber)"/>
+
+    <!-- パネル2: 十四の心得で点検開始（チェックリスト・1項目ずつ） -->
+    <rect x="496" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="572" y="94" width="52" height="62" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="594" y1="106" x2="616" y2="106" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="594" y1="122" x2="616" y2="122" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="594" y1="138" x2="612" y2="138" stroke="var(--text-secondary)" stroke-width="1"/>
+    <path d="M 578 102 l 3 3 l 6 -7" fill="none" stroke="var(--green)" stroke-width="1.8"/>
+    <path d="M 578 118 l 3 3 l 6 -7" fill="none" stroke="var(--green)" stroke-width="1.8"/>
+    <rect x="576" y="132" width="8" height="8" fill="none" stroke="var(--amber)" stroke-width="1.4"/>
+
+    <!-- パネル3: 三つ目の心得で手が止まる（虫メガネで照合） -->
+    <rect x="16" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <circle cx="98" cy="306" r="20" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.8"/>
+    <line x1="113" y1="321" x2="131" y2="339" stroke="var(--text)" stroke-width="3.4"/>
+    <rect x="138" y="282" width="36" height="56" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="144" y1="296" x2="168" y2="296" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="144" y1="310" x2="168" y2="310" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="144" y1="324" x2="162" y2="324" stroke="var(--text-secondary)" stroke-width="1"/>
+
+    <!-- パネル4: 貸金庫が全部開いていた（金庫3個・1つ開扉+×印） -->
+    <rect x="496" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="568" y="276" width="26" height="46" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="581" cy="299" r="4" fill="none" stroke="var(--text)" stroke-width="1.2"/>
+    <rect x="600" y="276" width="26" height="46" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="613" cy="299" r="4" fill="none" stroke="var(--text)" stroke-width="1.2"/>
+    <polygon points="632,276 650,282 650,322 632,322" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <path d="M 634 330 l 12 12 M 646 330 l -12 12" fill="none" stroke="var(--red)" stroke-width="2.4"/>
+
+    <!-- パネル5: 鍵を三重に替えて修理（鍵3本） -->
+    <rect x="16" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <circle cx="100" cy="466" r="9" fill="none" stroke="var(--amber)" stroke-width="2"/>
+    <line x1="109" y1="466" x2="136" y2="466" stroke="var(--amber)" stroke-width="2"/>
+    <line x1="130" y1="466" x2="130" y2="474" stroke="var(--amber)" stroke-width="2"/>
+    <circle cx="100" cy="490" r="9" fill="none" stroke="var(--amber)" stroke-width="2"/>
+    <line x1="109" y1="490" x2="136" y2="490" stroke="var(--amber)" stroke-width="2"/>
+    <line x1="122" y1="490" x2="122" y2="498" stroke="var(--amber)" stroke-width="2"/>
+    <circle cx="100" cy="514" r="9" fill="none" stroke="var(--amber)" stroke-width="2"/>
+    <line x1="109" y1="514" x2="136" y2="514" stroke="var(--amber)" stroke-width="2"/>
+    <line x1="130" y1="514" x2="130" y2="522" stroke="var(--amber)" stroke-width="2"/>
+
+    <!-- パネル6: 全試験緑で本番に載せ替え（大チェック+緑チェック列） -->
+    <rect x="496" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <path d="M 560 478 l 12 12 l 26 -28" fill="none" stroke="var(--green)" stroke-width="4"/>
+    <path d="M 612 466 l 4 4 l 9 -10" fill="none" stroke="var(--green)" stroke-width="2.2"/>
+    <path d="M 612 486 l 4 4 l 9 -10" fill="none" stroke="var(--green)" stroke-width="2.2"/>
+    <path d="M 612 506 l 4 4 l 9 -10" fill="none" stroke="var(--green)" stroke-width="2.2"/>
+  </g>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+    <!-- 番号丸（accent-bg変数塗り・文字はaccent-dark変数・両テーマ4.5:1以上） -->
+    <circle cx="48" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="111">1</text>
+      <text x="528" y="111">2</text>
+      <text x="48" y="277">3</text>
+      <text x="528" y="277">4</text>
+      <text x="48" y="443">5</text>
+      <text x="528" y="443">6</text>
+    </g>
+
+    <!-- 見出し（1行・text変数） -->
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="178" y="106">遠い国の攻撃事件の発表</text>
+      <text x="658" y="106">十四の心得で点検開始</text>
+      <text x="178" y="272">三つ目の心得で手が止まる</text>
+      <text x="658" y="272">貸金庫が全部開いていた</text>
+      <text x="178" y="438">鍵を三重に替えて修理</text>
+      <text x="658" y="438">全試験緑で本番に載せ替え</text>
+    </g>
+
+    <!-- キャプション（2行・パネル内側=bg-card変数背景なのでtext-secondary変数） -->
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="178" y="150">AI攻撃の集団事件が公式発表された。</text>
+      <text x="178" y="172">うちも守りが薄い方の物件に見えた。</text>
+      <text x="658" y="150">教訓リストを自分のアプリに当てる。</text>
+      <text x="658" y="172">読んで満足ではなく一項目ずつ判定。</text>
+      <text x="178" y="316">予約番号が連番・存在確認が無い。</text>
+      <text x="178" y="338">既存の回答は問答無用で上書き。</text>
+      <text x="658" y="316">番号をずらせば他人の回答が読める。</text>
+      <text x="658" y="338">書き換えまでできてしまう状態。</text>
+      <text x="178" y="482">番号をでたらめな並びに替える。</text>
+      <text x="178" y="504">存在検証と二重提出拒否も追加。</text>
+      <text x="658" y="482">まず試験を書き・通す実装を書く。</text>
+      <text x="658" y="504">千四百八十九個の試験が緑に。</text>
+    </g>
+
+    <!-- 脚注（ページ背景の上に載るためtext変数） -->
+    <text x="480" y="566" font-size="11" fill="var(--text)" text-anchor="middle">読む順: 左上から 1 → 2 → 3 → 4 → 5 → 6</text>
+  </g>
+</svg>
+<figcaption>攻撃事件の十四の心得を自分のアプリに一項目ずつ判定したら連番IDで他人の回答が読める状態だったため、鍵を三重に替え全試験緑を確かめて本番に載せた6コマの物語。</figcaption></figure>
 
         </article>
 
