@@ -1,0 +1,120 @@
+<!-- 素材: source/013_AIにファイルを書き換えさせる前に「いいですか？」と聞かせる話.md -->
+<svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s013c-title s013c-desc">
+  <title id="s013c-title">ファイル書き換え前に確認を求める門番を作った流れ</title>
+  <desc id="s013c-desc">AIが人間の見ていないところで書き換える怖さに対し、書き換え前に確認を求め危険な命令を事前にはねる門番を作り、3機の弱点指摘と嘘の反証を経て力に鍵を付けた6コマの物語。</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <!-- パネル1: 力を渡すと怖さも生まれる（鍵を渡す+勝手に書き換わる×印） -->
+    <rect x="16" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <circle cx="100" cy="94" r="9" fill="none" stroke="var(--amber)" stroke-width="2"/>
+    <line x1="109" y1="94" x2="136" y2="94" stroke="var(--amber)" stroke-width="2"/>
+    <line x1="130" y1="94" x2="130" y2="102" stroke="var(--amber)" stroke-width="2"/>
+    <path d="M 96 106 C 96 118 112 118 120 124" fill="none" stroke="var(--amber)" stroke-width="1.6"/>
+    <polygon points="116,124 124,128 120,118" fill="var(--amber)"/>
+    <rect x="126" y="128" width="32" height="40" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="132" y1="140" x2="152" y2="140" stroke="var(--text-secondary)" stroke-width="1"/>
+    <path d="M 132 156 l 14 14 M 146 156 l -14 14" fill="none" stroke="var(--red)" stroke-width="2.4"/>
+
+    <!-- パネル2: 書き換え前に門番が聞く（ゲート+会話バブル） -->
+    <rect x="496" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="566" y="112" width="7" height="58" fill="var(--text)"/>
+    <rect x="626" y="112" width="7" height="58" fill="var(--text)"/>
+    <rect x="566" y="112" width="67" height="7" fill="var(--text)"/>
+    <rect x="584" y="136" width="26" height="34" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <rect x="598" y="84" width="48" height="24" rx="6" fill="var(--accent-bg)" stroke="var(--accent-dark)" stroke-width="1.2"/>
+    <polygon points="604,108 614,108 606,118" fill="var(--accent-bg)" stroke="var(--accent-dark)" stroke-width="1"/>
+    <line x1="606" y1="96" x2="638" y2="96" stroke="var(--accent-dark)" stroke-width="1.6"/>
+    <line x1="606" y1="102" x2="632" y2="102" stroke="var(--accent-dark)" stroke-width="1.6"/>
+
+    <!-- パネル3: 危険な命令は聞く前にはねる（命令書+大×印） -->
+    <rect x="16" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="92" y="266" width="40" height="50" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="98" y1="280" x2="126" y2="280" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="98" y1="292" x2="126" y2="292" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="98" y1="304" x2="118" y2="304" stroke="var(--text-secondary)" stroke-width="1"/>
+    <path d="M 142 274 l 22 22 M 164 274 l -22 22" fill="none" stroke="var(--red)" stroke-width="3"/>
+
+    <!-- パネル4: 3体のAIに弱点探しを依頼（顔3個+壊れた箇所の稲妻） -->
+    <rect x="496" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <circle cx="566" cy="280" r="11" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="566" cy="304" r="11" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="566" cy="328" r="11" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="580" y1="284" x2="596" y2="294" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="580" y1="304" x2="596" y2="304" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="580" y1="324" x2="596" y2="314" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="600" y="288" width="30" height="38" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <polygon points="636,282 646,296 640,296 652,312 636,296 642,296" fill="var(--amber)"/>
+
+    <!-- パネル5: 嘘の指摘は証拠で退ける（虫メガネ+コード帳+×印） -->
+    <rect x="16" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="92" y="428" width="34" height="44" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="98" y1="440" x2="120" y2="440" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="98" y1="452" x2="120" y2="452" stroke="var(--text-secondary)" stroke-width="1"/>
+    <circle cx="140" cy="446" r="14" fill="none" stroke="var(--text)" stroke-width="1.8"/>
+    <line x1="150" y1="456" x2="162" y2="468" stroke="var(--text)" stroke-width="2.6"/>
+    <path d="M 150 424 l 12 12 M 162 424 l -12 12" fill="none" stroke="var(--red)" stroke-width="2.4"/>
+
+    <!-- パネル6: 力に鍵が付いた（大鍵+鍵穴つき帳+チェック） -->
+    <rect x="496" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="568" y="446" width="34" height="44" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="585" cy="462" r="4" fill="none" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="585" y1="466" x2="585" y2="472" stroke="var(--text)" stroke-width="1.4"/>
+    <circle cx="622" cy="470" r="10" fill="none" stroke="var(--amber)" stroke-width="2.2"/>
+    <line x1="632" y1="470" x2="652" y2="470" stroke="var(--amber)" stroke-width="2.2"/>
+    <line x1="646" y1="470" x2="646" y2="478" stroke="var(--amber)" stroke-width="2.2"/>
+    <line x1="636" y1="470" x2="636" y2="476" stroke="var(--amber)" stroke-width="2.2"/>
+  </g>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+    <!-- 番号丸（accent-bg変数塗り・文字はaccent-dark変数・両テーマ4.5:1以上） -->
+    <circle cx="48" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="111">1</text>
+      <text x="528" y="111">2</text>
+      <text x="48" y="277">3</text>
+      <text x="528" y="277">4</text>
+      <text x="48" y="443">5</text>
+      <text x="528" y="443">6</text>
+    </g>
+
+    <!-- 見出し（1行・text変数） -->
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="178" y="106">力を渡すと怖さも生まれる</text>
+      <text x="658" y="106">書き換え前に門番が聞く</text>
+      <text x="178" y="272">危険な命令は聞く前にはねる</text>
+      <text x="658" y="272">3体のAIに弱点探しを依頼</text>
+      <text x="178" y="438">嘘の指摘は証拠で退ける</text>
+      <text x="658" y="438">力に鍵が付いた</text>
+    </g>
+
+    <!-- キャプション（2行・パネル内側=bg-card変数背景なのでtext-secondary変数） -->
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="178" y="150">見ていないところで勝手に書き換わる。</text>
+      <text x="178" y="172">テスト緑でも本番では必ず落ちる。</text>
+      <text x="658" y="150">作業を止めて“いいですか？”と聞く。</text>
+      <text x="658" y="172">聞ける環境がなければ黙って諦める。</text>
+      <text x="178" y="316">全消し・管理者権限・履歴書き換え系。</text>
+      <text x="178" y="338">人間の目に触れる前に拒否する。</text>
+      <text x="658" y="316">本番で必ず壊れる場所を1体が発見。</text>
+      <text x="658" y="338">テスト用と本番用の道具が別物だった。</text>
+      <text x="178" y="482">実コードを開いて確かめたら嘘だった。</text>
+      <text x="178" y="504">鵜呑みにせず証拠をつけて反証。</text>
+      <text x="658" y="482">拒否されたAIは正直に報告してきた。</text>
+      <text x="658" y="504">大きな仕事をまとめて任せられる。</text>
+    </g>
+
+    <!-- 脚注（ページ背景の上に載るためtext変数） -->
+    <text x="480" y="566" font-size="11" fill="var(--text)" text-anchor="middle">読む順: 左上から 1 → 2 → 3 → 4 → 5 → 6</text>
+  </g>
+</svg>
