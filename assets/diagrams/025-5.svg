@@ -1,0 +1,119 @@
+<!-- 素材: source/025_記録してと言ったら書込先を決めるまでに5回も検問された話.md -->
+<svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s025c-title s025c-desc">
+  <title id="s025c-title">記録の書込先を決める5段検問の流れ</title>
+  <desc id="s025c-desc">保管場所が複数あって書込先が一発に決まらない問題を、検問を5フェーズに分け3軸スコアで数量化し、24マトリクスで失敗パターンを網羅した6コマの物語。</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <!-- パネル1: 記録して、と言っても迷う（帳1個から矢印が3つの場所へ分かれる） -->
+    <rect x="16" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="112" y="92" width="26" height="32" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="117" y1="102" x2="133" y2="102" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="113" y1="128" x2="90" y2="150" stroke="var(--text)" stroke-width="1.6"/>
+    <polygon points="88,146 94,154 84,156" fill="var(--text)"/>
+    <line x1="125" y1="128" x2="125" y2="152" stroke="var(--text)" stroke-width="1.6"/>
+    <polygon points="121,152 129,152 125,160" fill="var(--text)"/>
+    <line x1="137" y1="128" x2="160" y2="150" stroke="var(--text)" stroke-width="1.6"/>
+    <polygon points="156,154 162,146 164,156" fill="var(--text)"/>
+    <rect x="76" y="156" width="24" height="30" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <rect x="113" y="160" width="24" height="30" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <rect x="150" y="156" width="24" height="30" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+
+    <!-- パネル2: 禁止と判定が1か所で混ざる（箱の中に2種が混ざる+×印） -->
+    <rect x="496" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="564" y="100" width="76" height="46" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <circle cx="582" cy="116" r="6" fill="var(--green-bg)" stroke="var(--green)" stroke-width="1.4"/>
+    <circle cx="612" cy="112" r="6" fill="var(--green-bg)" stroke="var(--green)" stroke-width="1.4"/>
+    <polygon points="590,132 598,124 606,132" fill="var(--red-bg)" stroke="var(--red)" stroke-width="1.4"/>
+    <polygon points="616,134 624,126 632,134" fill="var(--red-bg)" stroke="var(--red)" stroke-width="1.4"/>
+    <path d="M 638 150 l 12 12 M 650 150 l -12 12" fill="none" stroke="var(--red)" stroke-width="2.4"/>
+
+    <!-- パネル3: 検問を5フェーズに分けた（ゲート5本+流れ矢印） -->
+    <rect x="16" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="80" y1="284" x2="152" y2="284" stroke="var(--blue)" stroke-width="1.8"/>
+    <polygon points="152,280 152,288 160,284" fill="var(--blue)"/>
+    <rect x="88" y="296" width="5" height="36" fill="var(--text)"/>
+    <rect x="107" y="296" width="5" height="36" fill="var(--text)"/>
+    <rect x="126" y="296" width="5" height="36" fill="var(--text)"/>
+    <rect x="145" y="296" width="5" height="36" fill="var(--text)"/>
+    <rect x="164" y="296" width="5" height="36" fill="var(--text)"/>
+    <line x1="88" y1="296" x2="169" y2="296" stroke="var(--text)" stroke-width="4"/>
+
+    <!-- パネル4: 判定は3軸スコアで数量化（棒グラフ3本+底線） -->
+    <rect x="496" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="578" y="316" width="14" height="38" fill="var(--accent-bg)" stroke="var(--accent-dark)" stroke-width="1.2"/>
+    <rect x="602" y="304" width="14" height="50" fill="var(--accent-bg)" stroke="var(--accent-dark)" stroke-width="1.2"/>
+    <rect x="626" y="312" width="14" height="42" fill="var(--accent-bg)" stroke="var(--accent-dark)" stroke-width="1.2"/>
+    <line x1="570" y1="354" x2="648" y2="354" stroke="var(--text)" stroke-width="1.6"/>
+
+    <!-- パネル5: 実行前にもう一度だけ点検（票+緑チェック+確認ボタン） -->
+    <rect x="16" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="88" y="440" width="42" height="52" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="94" y1="454" x2="124" y2="454" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="94" y1="468" x2="124" y2="468" stroke="var(--text-secondary)" stroke-width="1"/>
+    <rect x="138" y="472" width="34" height="20" rx="10" fill="var(--green-bg)" stroke="var(--green)" stroke-width="1.4"/>
+    <path d="M 147 481 l 4 4 l 8 -9" fill="none" stroke="var(--green)" stroke-width="2"/>
+    <path d="M 134 428 l 12 12 M 146 428 l -12 12" fill="none" stroke="var(--red)" stroke-width="2.4"/>
+
+    <!-- パネル6: 失敗24パターンを網羅（マトリクス表+盾） -->
+    <rect x="496" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="566" y="444" width="70" height="52" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="589" y1="444" x2="589" y2="496" stroke="var(--text)" stroke-width="1"/>
+    <line x1="612" y1="444" x2="612" y2="496" stroke="var(--text)" stroke-width="1"/>
+    <line x1="566" y1="461" x2="636" y2="461" stroke="var(--text)" stroke-width="1"/>
+    <line x1="566" y1="478" x2="636" y2="478" stroke="var(--text)" stroke-width="1"/>
+    <path d="M 636 496 l 5 5 l 11 -13" fill="none" stroke="var(--green)" stroke-width="2.6"/>
+  </g>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+    <!-- 番号丸（accent-bg変数塗り・文字はaccent-dark変数・両テーマ4.5:1以上） -->
+    <circle cx="48" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="111">1</text>
+      <text x="528" y="111">2</text>
+      <text x="48" y="277">3</text>
+      <text x="528" y="277">4</text>
+      <text x="48" y="443">5</text>
+      <text x="528" y="443">6</text>
+    </g>
+
+    <!-- 見出し（1行・text変数） -->
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="178" y="106">記録して、と言っても迷う</text>
+      <text x="658" y="106">禁止と判定が1か所で混ざる</text>
+      <text x="178" y="272">検問を5フェーズに分けた</text>
+      <text x="658" y="272">判定は3軸スコアで数量化</text>
+      <text x="178" y="438">実行前にもう一度だけ点検</text>
+      <text x="658" y="438">失敗24パターンを網羅</text>
+    </g>
+
+    <!-- キャプション（2行・パネル内側=bg-card変数背景なのでtext-secondary変数） -->
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="178" y="150">決定・仕組み・日記の正典が並ぶ。</text>
+      <text x="178" y="172">内容に応じて振り分けが必要。</text>
+      <text x="658" y="150">ミスすると全部やり直しになる。</text>
+      <text x="658" y="172">どこで壊れたかも分からない構造。</text>
+      <text x="178" y="316">入口・構造・判定・意味・実行の5段。</text>
+      <text x="178" y="338">hookは最小責務のまま保てる。</text>
+      <text x="658" y="316">タグ・ハブ・特性で0.0から1.0を出す。</text>
+      <text x="658" y="338">T1からT5のラベルで振り分け。</text>
+      <text x="178" y="482">更新漏れとリンク切れを直前点検。</text>
+      <text x="178" y="504">結果を画面で見せてyesで確定。</text>
+      <text x="658" y="482">6種の失敗×4種の対応で網羅。</text>
+      <text x="658" y="504">レビュー10件で脆さがほぼ消えた。</text>
+    </g>
+
+    <!-- 脚注（ページ背景の上に載るためtext変数） -->
+    <text x="480" y="566" font-size="11" fill="var(--text)" text-anchor="middle">読む順: 左上から 1 → 2 → 3 → 4 → 5 → 6</text>
+  </g>
+</svg>
