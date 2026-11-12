@@ -49,3 +49,5 @@ flowchart TB
 9skill+CLAUDE.mdのcommit手順を一斉移行。設計レビュー3ラウンド（3機51件）+実装レビュー2ラウンド（3機32件・critical 3→1→0で収束）。設計正典: obsidian-ssot `docs/superpowers/specs/2026-09-05_並行セッション巻き込み再設計-design.md`（詳細は01_DECISIONS/claude-code/2026-09-06_並行セッション巻き込み再設計実装.md）。Phase 3（worktree完全分離）は再評価条件付きでバックログ起票済み。
 
 </details>
+
+::: diagram 012-commit3
