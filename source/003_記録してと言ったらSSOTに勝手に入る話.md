@@ -42,3 +42,5 @@ flowchart TB
 - 代替先として `:ssot-record` / `:ssot-search` / `:reflection` の並ぶスキル一覧
 
 </details>
+
+::: diagram 003-ssot
