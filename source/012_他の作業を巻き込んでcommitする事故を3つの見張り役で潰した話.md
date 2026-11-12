@@ -22,7 +22,8 @@
 ```mermaid
 flowchart TB
     A["😱 別タブの作業がcommitに混ざった"] --> B["見張り役を3つに"]
-    B --> subgraph guards["3つの見張り役"]
+    B --> guards
+    subgraph guards["3つの見張り役"]
         C["1️⃣ commit前の中身点検"]
         D["2️⃣ 触るファイルの事前宣言"]
         E["3️⃣ 宣言した分だけcommit"]

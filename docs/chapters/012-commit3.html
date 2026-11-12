@@ -418,7 +418,8 @@
 <p>さらに3つのAIに検品してもらい、特別な名前のファイルで壊れる等の弱点を3回指摘され・直しては試験を増やし、ゼロに減りました。</p>
 <pre class="mermaid">flowchart TB
     A[&quot;😱 別タブの作業がcommitに混ざった&quot;] --&gt; B[&quot;見張り役を3つに&quot;]
-    B --&gt; subgraph guards[&quot;3つの見張り役&quot;]
+    B --&gt; guards
+    subgraph guards[&quot;3つの見張り役&quot;]
         C[&quot;1️⃣ commit前の中身点検&quot;]
         D[&quot;2️⃣ 触るファイルの事前宣言&quot;]
         E[&quot;3️⃣ 宣言した分だけcommit&quot;]
