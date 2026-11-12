@@ -1,0 +1,4 @@
+<svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t d">
+<title id="t">注入欠陥</title><desc id="d">検出テスト用</desc>
+<text x="900" y="550" font-size="16">はみ出し</text>
+</svg>

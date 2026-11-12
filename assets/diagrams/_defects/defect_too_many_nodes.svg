@@ -1,0 +1,8 @@
+<svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t d">
+<title id="t">注入欠陥</title><desc id="d">検出テスト用</desc>
+<rect x="20" y="20" width="400" height="60"/><rect x="440" y="20" width="400" height="60"/>
+<rect x="20" y="100" width="400" height="60"/><rect x="440" y="100" width="400" height="60"/>
+<rect x="20" y="180" width="400" height="60"/><rect x="440" y="180" width="400" height="60"/>
+<rect x="20" y="260" width="400" height="60"/><rect x="440" y="260" width="400" height="60"/>
+<rect x="20" y="340" width="400" height="60"/><rect x="440" y="340" width="400" height="60"/>
+</svg>
