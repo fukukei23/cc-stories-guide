@@ -77,6 +77,7 @@ class CheckResult:
         return f"errors={self.error_count} warnings={self.warning_count}"
 
     def to_dict(self) -> dict:
+        """機械判定出力用のdictに変換する."""
         return {
             "errors": self.errors,
             "warnings": self.warnings,
@@ -144,7 +145,7 @@ def check_svg_text(svg: str, expected_viewbox: tuple[int, int] | None = None) ->
     if _localname(root.tag) != "svg":
         return CheckResult([f"ルート要素がsvgでない: {root.tag}"], [])
 
-    # viewBox整合
+    # viewBox整合（min-x/min-y/width/height の4数値すべてを検証する）
     viewbox = root.get("viewBox")
     if not viewbox:
         errors.append("viewBoxが欠落しています")
@@ -154,6 +155,9 @@ def check_svg_text(svg: str, expected_viewbox: tuple[int, int] | None = None) ->
             errors.append(f"viewBoxの形式が不正: {viewbox}")
         else:
             try:
+                # min-x/min-y も含めて4数値すべてを検証する
+                float(parts[0])
+                float(parts[1])
                 w, h = float(parts[2]), float(parts[3])
             except ValueError:
                 errors.append(f"viewBoxの数値が不正: {viewbox}")

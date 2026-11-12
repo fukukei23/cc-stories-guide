@@ -2,3 +2,4 @@ jinja2
 markdown-it-py
 beautifulsoup4
 requests
+defusedxml

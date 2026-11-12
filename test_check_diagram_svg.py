@@ -75,3 +75,24 @@ def test_error_count_summary_is_returned():
     result = cds.check_svg_text("<svg xmlns='http://www.w3.org/2000/svg'></svg>")
     assert result.error_count >= 1
     assert isinstance(result.summary(), str)
+
+
+def test_invalid_xml_is_error():
+    """XML構文が不正なSVGはエラー1件（他検査に到達しないfatal）."""
+    result = cds.check_svg_text("<svg xmlns='http://www.w3.org/2000/svg'><unclosed></svg>")
+    assert len(result.errors) == 1, f"エラーが1件であること: {result.errors}"
+
+
+def test_non_svg_root_is_error():
+    """ルート要素がsvgでない場合はエラー."""
+    result = cds.check_svg_text(
+        "<html xmlns='http://www.w3.org/1999/xhtml'><body/></html>"
+    )
+    assert any("ルート要素" in e for e in result.errors), f"エラーなし: {result.errors}"
+
+
+def test_viewbox_with_non_numeric_origin_is_error():
+    """viewBoxのmin-x/min-yが数値でない場合はエラー."""
+    svg = VALID_SVG.replace('viewBox="0 0 960 580"', 'viewBox="abc def 960 580"')
+    result = cds.check_svg_text(svg)
+    assert any("viewBox" in e for e in result.errors), f"エラーなし: {result.errors}"
