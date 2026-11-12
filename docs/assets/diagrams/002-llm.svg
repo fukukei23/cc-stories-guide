@@ -1,0 +1,87 @@
+<!-- 素材: source/002_マルチLLMレビューしてと言ったら別の目で見てくれる話.md -->
+<svg viewBox="0 0 960 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s002b-title s002b-desc">
+  <title id="s002b-title">「マルチLLMレビューして」で別々の目が死角を埋める流れ</title>
+  <desc id="s002b-desc">同じ目では同じ死角を見落とす不安から、「マルチLLMレビューして」と一言言うと複数のLLMが互いに見ずに独立で設計を叩き、指摘が統合されて死角が埋まり判断が固まるまでの4段の流れ。</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <!-- 段1〜4のパネル枠 -->
+    <rect x="16" y="48" width="928" height="66" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="16" y="132" width="928" height="66" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="16" y="216" width="928" height="66" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="16" y="300" width="928" height="66" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+
+    <!-- 段1イラスト: 同じ目と同じ見落とし（1つの目+同じ×印2個） -->
+    <g transform="translate(100,81) scale(1.625,1)"><circle cx="0" cy="0" r="16" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/></g>
+    <circle cx="100" cy="81" r="7" fill="var(--text)"/>
+    <path d="M 148 70 l 10 10 M 158 70 l -10 10" fill="none" stroke="var(--red)" stroke-width="2"/>
+    <path d="M 172 70 l 10 10 M 182 70 l -10 10" fill="none" stroke="var(--red)" stroke-width="2"/>
+
+    <!-- 段2イラスト: 発話の吹き出し（人+「マルチLLMレビュー」の吹き出し） -->
+    <circle cx="88" cy="155" r="13" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <path d="M 72 186 Q 88 170 104 186" fill="none" stroke="var(--text)" stroke-width="1.6"/>
+    <rect x="108" y="144" width="132" height="32" rx="10" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.3"/>
+    <path d="M 116 176 L 104 190 L 132 176" fill="none" stroke="var(--text)" stroke-width="1.3"/>
+
+    <!-- 段3イラスト: 複数の目が独立に帳を見る（丸3個+矢印3本+帳） -->
+    <circle cx="84" cy="229" r="9" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="84" cy="250" r="9" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="84" cy="271" r="9" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="95" y1="231" x2="144" y2="234" stroke="var(--accent)" stroke-width="1.5"/>
+    <line x1="95" y1="250" x2="144" y2="246" stroke="var(--accent)" stroke-width="1.5"/>
+    <line x1="95" y1="269" x2="144" y2="258" stroke="var(--accent)" stroke-width="1.5"/>
+    <rect x="150" y="222" width="32" height="40" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="156" y1="234" x2="176" y2="234" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="156" y1="246" x2="172" y2="246" stroke="var(--text-secondary)" stroke-width="1"/>
+
+    <!-- 段4イラスト: 複数の目で見た帳に緑チェック（目2個+帳+チェック丸） -->
+    <g transform="translate(82,322) scale(1.625,1)"><circle cx="0" cy="0" r="8" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/></g>
+    <g transform="translate(82,350) scale(1.625,1)"><circle cx="0" cy="0" r="8" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/></g>
+    <line x1="96" y1="326" x2="138" y2="330" stroke="var(--blue)" stroke-width="1.4"/>
+    <line x1="96" y1="346" x2="138" y2="340" stroke="var(--blue)" stroke-width="1.4"/>
+    <rect x="144" y="314" width="36" height="40" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="150" y1="326" x2="172" y2="326" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="150" y1="338" x2="168" y2="338" stroke="var(--text-secondary)" stroke-width="1"/>
+    <circle cx="188" cy="316" r="9" fill="var(--green-bg)" stroke="var(--green)" stroke-width="1.4"/>
+    <path d="M 184 316 l 3 3 l 5 -6" fill="none" stroke="var(--green)" stroke-width="2"/>
+  </g>
+
+  <!-- 番号丸（accent-bg変数塗り・文字はaccent-dark変数）+ 段4緑チェック -->
+  <circle cx="48" cy="81" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+  <circle cx="48" cy="165" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+  <circle cx="48" cy="249" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+  <circle cx="48" cy="333" r="16" fill="var(--green-bg)" stroke="var(--text)" stroke-width="1.2"/>
+  <path d="M 41 333 l 5 5 l 9 -11" fill="none" stroke="var(--text)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="86">1</text>
+      <text x="48" y="170">2</text>
+      <text x="48" y="254">3</text>
+    </g>
+
+    <!-- 段2の発話（吹き出し内・accent-bg変数の上にaccent-dark変数） -->
+    <text x="174" y="164" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--accent-dark)">マルチLLMレビュー</text>
+
+    <!-- 見出し（1行・text変数） -->
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="260" y="78">同じ目では同じ死角を見落とす</text>
+      <text x="260" y="162">複数の別々の目を呼ぶ</text>
+      <text x="260" y="246">独立の目で叩き統合して返す</text>
+      <text x="260" y="330">死角が埋まり判断が固まる</text>
+    </g>
+
+    <!-- 説明（1行・パネル内側=bg-card変数背景なのでtext-secondary変数） -->
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="260" y="98">3回読んでも慣れで見落とし判断が甘い。</text>
+      <text x="260" y="182">「マルチLLMレビューして」と一言。</text>
+      <text x="260" y="266">レビュアー同士は見ず欠陥を独立で探す。</text>
+      <text x="260" y="350">発表前に別々の目を通す習慣がつく。</text>
+    </g>
+  </g>
+</svg>

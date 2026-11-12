@@ -1,0 +1,88 @@
+<!-- 素材: source/022_引き継ぎと言ったら明日の自分に手紙を書いてくれた話.md -->
+<svg viewBox="0 0 960 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s022b-title s022b-desc">
+  <title id="s022b-title">「引き継ぎ」一言でタブの記憶を手紙に渡す流れ</title>
+  <desc id="s022b-desc">タブの記憶がいっぱいになっても、「引き継ぎ」と一言言えば読める形に整理した手紙が書かれて記録庫にも保存され、新しいタブで続きから始められるまでの4段の流れ。</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <!-- 段1〜4のパネル枠 -->
+    <rect x="16" y="48" width="928" height="66" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="16" y="132" width="928" height="66" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="16" y="216" width="928" height="66" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="16" y="300" width="928" height="66" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+
+    <!-- 段1イラスト: 記憶がいっぱいのタブ（びっしり詰まった線+新規入らない×） -->
+    <rect x="76" y="60" width="74" height="48" rx="6" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <line x1="84" y1="70" x2="142" y2="70" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="84" y1="78" x2="138" y2="78" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="84" y1="86" x2="142" y2="86" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="84" y1="94" x2="134" y2="94" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="84" y1="102" x2="128" y2="102" stroke="var(--text-secondary)" stroke-width="1"/>
+    <path d="M 162 66 l 12 12 M 174 66 l -12 12" fill="none" stroke="var(--red)" stroke-width="2.2"/>
+
+    <!-- 段2イラスト: 発話の吹き出し（人+「引き継ぎ」の吹き出し） -->
+    <circle cx="88" cy="155" r="13" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <path d="M 72 186 Q 88 170 104 186" fill="none" stroke="var(--text)" stroke-width="1.6"/>
+    <rect x="108" y="144" width="112" height="32" rx="10" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.3"/>
+    <path d="M 116 176 L 104 190 L 132 176" fill="none" stroke="var(--text)" stroke-width="1.3"/>
+
+    <!-- 段3イラスト: 手紙が書かれ記録庫へ保存（封筒→矢印→箱） -->
+    <rect x="76" y="226" width="48" height="34" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <polygon points="78,230 100,246 122,230" fill="none" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="130" y1="243" x2="152" y2="243" stroke="var(--text)" stroke-width="1.6"/>
+    <polygon points="152,239 152,247 160,243" fill="var(--text)"/>
+    <rect x="164" y="224" width="48" height="38" rx="3" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="172" y1="236" x2="204" y2="236" stroke="var(--accent-dark)" stroke-width="1"/>
+    <line x1="172" y1="246" x2="198" y2="246" stroke="var(--accent-dark)" stroke-width="1"/>
+
+    <!-- 段4イラスト: 旧タブから新タブへ続きから再開（タブ2個+続く矢印） -->
+    <rect x="76" y="314" width="56" height="40" rx="5" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <line x1="84" y1="328" x2="118" y2="328" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="84" y1="338" x2="112" y2="338" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="136" y1="334" x2="158" y2="334" stroke="var(--text)" stroke-width="1.8"/>
+    <polygon points="158,330 158,338 166,334" fill="var(--text)"/>
+    <rect x="170" y="314" width="56" height="40" rx="5" fill="var(--green-bg)" stroke="var(--green)" stroke-width="1.3"/>
+    <line x1="178" y1="334" x2="212" y2="334" stroke="var(--green)" stroke-width="1.2"/>
+    <line x1="230" y1="334" x2="238" y2="334" stroke="var(--green)" stroke-width="1.8"/>
+    <polygon points="238,330 238,338 245,334" fill="var(--green)"/>
+  </g>
+
+  <!-- 番号丸（accent-bg変数塗り・文字はaccent-dark変数）+ 段4緑チェック -->
+  <circle cx="48" cy="81" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+  <circle cx="48" cy="165" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+  <circle cx="48" cy="249" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+  <circle cx="48" cy="333" r="16" fill="var(--green-bg)" stroke="var(--text)" stroke-width="1.2"/>
+  <path d="M 41 333 l 5 5 l 9 -11" fill="none" stroke="var(--text)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="86">1</text>
+      <text x="48" y="170">2</text>
+      <text x="48" y="254">3</text>
+    </g>
+
+    <!-- 段2の発話（吹き出し内・accent-bg変数の上にaccent-dark変数） -->
+    <text x="164" y="165" text-anchor="middle" font-size="13" font-weight="700" fill="var(--accent-dark)">引き継ぎ</text>
+
+    <!-- 見出し（1行・text変数） -->
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="260" y="78">タブの記憶がいっぱいになる</text>
+      <text x="260" y="162">区切りで手紙を書かせる</text>
+      <text x="260" y="246">読める形に整理し記録庫にも保存</text>
+      <text x="260" y="330">気軽に新しくして続きから始める</text>
+    </g>
+
+    <!-- 説明（1行・パネル内側=bg-card変数背景なのでtext-secondary変数） -->
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="260" y="98">片付けると昨日の経緯が全部消える。</text>
+      <text x="260" y="182">「新セッション」「引き継ぎ」と一言。</text>
+      <text x="260" y="266">何をどこまでやったか手紙にして残す。</text>
+      <text x="260" y="350">忘れていいものだけ忘れて軽くなる。</text>
+    </g>
+  </g>
+</svg>
