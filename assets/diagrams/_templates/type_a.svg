@@ -1,0 +1,84 @@
+<!-- 型Aテンプレート: できごと系6コマ絵本（spec §4.2）viewBox 960x580 -->
+<svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="tpl-a-title tpl-a-desc">
+  <title id="tpl-a-title">【ここに物語の見出しを1行】</title>
+  <desc id="tpl-a-desc">【ここに物語の要約を1行。figcaptionはこのdescから生成される】</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <!-- パネル枠（sketchyフィルタは図形のみ・テキストはフィルタ外で鮮明）
+       イラスト差し替え位置: 各パネルの左帯（番号丸の右〜テキスト開始の左）
+         パネル1/3/5: x=68〜166 / パネル2/4/6: x=548〜646
+         上段 y=78〜196 / 中段 y=244〜362 / 下段 y=410〜528
+       差し替え時は rect/circle/polygon/path を使い Emoji は使わない（豆腐化回避） -->
+  <g filter="url(#sketchy)">
+    <!-- パネル1: 上段左 -->
+    <rect x="16" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <!-- パネル2: 上段右 -->
+    <rect x="496" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <!-- パネル3: 中段左 -->
+    <rect x="16" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <!-- パネル4: 中段右 -->
+    <rect x="496" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <!-- パネル5: 下段左 -->
+    <rect x="16" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <!-- パネル6: 下段右 -->
+    <rect x="496" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+  </g>
+
+  <!-- 番号丸（塗り=accent-bg変数・文字=accent-dark変数・両テーマ4.5:1以上） -->
+  <g>
+    <circle cx="48" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+  </g>
+
+  <!-- テキスト（066話に倣い font-family は g で一括指定） -->
+  <g font-family="'Noto Sans JP', sans-serif">
+
+    <!-- 番号（テキストはsketchy外で鮮明） -->
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="111">1</text>
+      <text x="528" y="111">2</text>
+      <text x="48" y="277">3</text>
+      <text x="528" y="277">4</text>
+      <text x="48" y="443">5</text>
+      <text x="528" y="443">6</text>
+    </g>
+
+    <!-- 見出し（1行）: イラスト帯の右・パネル左端+162から -->
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="178" y="106">【見出し1】</text>
+      <text x="658" y="106">【見出し2】</text>
+      <text x="178" y="272">【見出し3】</text>
+      <text x="658" y="272">【見出し4】</text>
+      <text x="178" y="438">【見出し5】</text>
+      <text x="658" y="438">【見出し6】</text>
+    </g>
+
+    <!-- キャプション（2行）: パネル枠の内側なので背景は bg-card変数 -->
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="178" y="150">【キャプション1行目】</text>
+      <text x="178" y="172">【キャプション2行目】</text>
+      <text x="658" y="150">【キャプション1行目】</text>
+      <text x="658" y="172">【キャプション2行目】</text>
+      <text x="178" y="316">【キャプション1行目】</text>
+      <text x="178" y="338">【キャプション2行目】</text>
+      <text x="658" y="316">【キャプション1行目】</text>
+      <text x="658" y="338">【キャプション2行目】</text>
+      <text x="178" y="482">【キャプション1行目】</text>
+      <text x="178" y="504">【キャプション2行目】</text>
+      <text x="658" y="482">【キャプション1行目】</text>
+      <text x="658" y="504">【キャプション2行目】</text>
+    </g>
+
+    <!-- 脚注（ページ背景の上に載るため text変数を使う） -->
+    <text x="480" y="566" font-size="11" fill="var(--text)" text-anchor="middle">読む順: 左上から 1 → 2 → 3 → 4 → 5 → 6</text>
+  </g>
+</svg>
