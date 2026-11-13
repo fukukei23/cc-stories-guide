@@ -18,3 +18,5 @@
 - 教訓のSSOT反映先: `01_DECISIONS/claude-code/2026-09-10_ssot-recordマルチ起点再設計クローズ判断-Fable相談と3機レビュー.md` の「設計の最後に運用者」節
 
 </details>
+
+::: diagram 049
