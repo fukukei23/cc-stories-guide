@@ -30,3 +30,5 @@ status: published
 - 9c351486 の正体: 9月中旬の `zai-direct-refresh` 増設時に並行セッションが登録、片方だけ reconcile swap の競争で残ったもの（推定）
 - 詳細: 01_DECISIONS/claude-code/2026-10-13_迷子durable-cron9c351486発見と除去.md
 </details>
+
+::: diagram 052
