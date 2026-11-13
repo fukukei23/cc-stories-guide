@@ -30,3 +30,5 @@ flowchart TB
 - **双方向リンク**: sangoku-song と cyber-wa-song のSKILL.md に「他作品を逆コンパイルしてから作ると良い」旨を注記。制作スキルと逆コンパイルスキルが互いを参照する構造
 - **プロ品質の英語プロンプトが出る仕掛け**: マスタープロンプト自体に「ポップス化や軽い音になるのを防ぐ」指示・画風（90s anime OVA aesthetic等）・テクスチャ（Intricate heavy ink line art）・ライティング（Chiaroscuro等）・シチュエーション別3パターン・Negative Prompt を埋め込んでおく。普通の英語プロンプトで出る「AIっぽさ」を構造的に潰す
 </details>
+
+::: diagram 011
