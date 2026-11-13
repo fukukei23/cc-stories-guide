@@ -26,3 +26,5 @@
 
 - 元記録: 01_DECISIONS/ai-music/2026-06-15_reverse-engineer-songスキル_plan.md（要約参照・原文URLは非公開）
 - 関連スキル: `reverse-engineer-song`・`analyze-song`・`make-song`（CC環境で楽曲を扱う3点セット）
+
+::: diagram 021
