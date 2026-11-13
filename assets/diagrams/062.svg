@@ -1,0 +1,113 @@
+<!-- 素材: source/062_わざと汚したテストファイルが検査網の穴を暴いた話.md -->
+<svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s062a-title s062a-desc">
+  <title id="s062a-title">わざと汚したテストファイルが検査網の穴を暴く流れ</title>
+  <desc id="s062a-desc">自動複製の仕組みへ安全点検がHIGH指摘2件を出したため複製ごと消すfail-closed方式と隠し場所ごとの構造的防御へ直し、わざと汚した6個のテストファイルで検査網に通した結果ある書き方が全く検知できない穴を暴き数日前の事故と同じ形だと確認した6コマの物語。</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <!-- パネル1: 複製の仕組み -->
+    <rect x="16" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="78" y="96" width="34" height="42" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <line x1="84" y1="108" x2="106" y2="108" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="84" y1="118" x2="102" y2="118" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="114" y1="117" x2="128" y2="117" stroke="var(--text)" stroke-width="1.6"/>
+    <polygon points="128,113 128,121 136,117" fill="var(--text)"/>
+    <rect x="138" y="96" width="34" height="42" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3" stroke-dasharray="3 2"/>
+    <line x1="144" y1="108" x2="166" y2="108" stroke="var(--text-secondary)" stroke-width="1"/>
+
+    <!-- パネル2: HIGH指摘2件の警告 -->
+    <rect x="496" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <polygon points="570,128 588,96 606,128" fill="none" stroke="var(--red)" stroke-width="1.8"/>
+    <line x1="588" y1="108" x2="588" y2="118" stroke="var(--red)" stroke-width="2"/>
+    <circle cx="588" cy="123" r="1.5" fill="var(--red)"/>
+    <polygon points="616,128 634,96 652,128" fill="none" stroke="var(--red)" stroke-width="1.8"/>
+    <line x1="634" y1="108" x2="634" y2="118" stroke="var(--red)" stroke-width="2"/>
+    <circle cx="634" cy="123" r="1.5" fill="var(--red)"/>
+
+    <!-- パネル3: 複製ごと消す -->
+    <rect x="16" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="82" y="284" width="36" height="42" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <path d="M 92 296 l 16 16 M 108 296 l -16 16" fill="none" stroke="var(--red)" stroke-width="2.2"/>
+    <line x1="126" y1="305" x2="144" y2="305" stroke="var(--red)" stroke-width="1.8"/>
+    <polygon points="144,301 144,309 152,305" fill="var(--red)"/>
+
+    <!-- パネル4: 隠し場所ごとの掃除 -->
+    <rect x="496" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="556" y="284" width="52" height="40" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <circle cx="570" cy="298" r="3" fill="var(--text-secondary)"/>
+    <circle cx="584" cy="310" r="3" fill="var(--text-secondary)"/>
+    <circle cx="596" cy="296" r="3" fill="var(--text-secondary)"/>
+    <line x1="612" y1="304" x2="626" y2="304" stroke="var(--text)" stroke-width="1.6"/>
+    <polygon points="626,300 626,308 634,304" fill="var(--text)"/>
+    <path d="M 636 298 l 10 10 M 646 298 l -10 10" fill="none" stroke="var(--red)" stroke-width="2"/>
+
+    <!-- パネル5: 汚れた6個のテスト -->
+    <rect x="16" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="82" y="420" width="24" height="24" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <path d="M 88 430 l 4 4 l 7 -9" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="114" y="420" width="24" height="24" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <path d="M 120 430 l 4 4 l 7 -9" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="146" y="420" width="24" height="24" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <path d="M 152 430 l 4 4 l 7 -9" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="82" y="450" width="24" height="24" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <path d="M 88 460 l 4 4 l 7 -9" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="114" y="450" width="24" height="24" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <path d="M 120 460 l 4 4 l 7 -9" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="146" y="450" width="24" height="24" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <path d="M 152 458 l 12 12 M 164 458 l -12 12" fill="none" stroke="var(--red)" stroke-width="2"/>
+
+    <!-- パネル6: 拡大鏡で穴を発見 -->
+    <rect x="496" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <circle cx="580" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.8"/>
+    <line x1="592" y1="450" x2="604" y2="462" stroke="var(--text)" stroke-width="2.6"/>
+    <circle cx="630" cy="430" r="10" fill="none" stroke="var(--red)" stroke-width="1.6" stroke-dasharray="3 2"/>
+  </g>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+    <circle cx="48" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="111">1</text>
+      <text x="528" y="111">2</text>
+      <text x="48" y="277">3</text>
+      <text x="528" y="277">4</text>
+      <text x="48" y="443">5</text>
+      <text x="528" y="443">6</text>
+    </g>
+
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="178" y="106">複製仕組みができた直後</text>
+      <text x="658" y="106">安全点検がHIGHを2件出す</text>
+      <text x="178" y="272">見つけたら複製ごと消す</text>
+      <text x="658" y="272">隠し場所ごと掃除する防御</text>
+      <text x="178" y="438">汚した6個で検査網に通す</text>
+      <text x="658" y="438">穴は直近事故と同じ形</text>
+    </g>
+
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="178" y="150">設定を安全な場所へ自動複製。</text>
+      <text x="178" y="172">出来た直後の完成報。</text>
+      <text x="658" y="150">記録だけで保存を止められない。</text>
+      <text x="658" y="172">隠し場所の掃除も抜け。</text>
+      <text x="178" y="316">入口から締め出す方式へ。</text>
+      <text x="178" y="338">検知後は物理削除。</text>
+      <text x="658" y="316">値のパターンに依存しない。</text>
+      <text x="658" y="338">YAGNI判断を撤回。</text>
+      <text x="178" y="482">4個は正しく削除された。</text>
+      <text x="178" y="504">1種が全く検知されない。</text>
+      <text x="658" y="482">綺麗でも検査網の証明にない。</text>
+      <text x="658" y="504">毒を混ぜて初めて見える。</text>
+    </g>
+
+    <text x="480" y="566" font-size="11" fill="var(--text)" text-anchor="middle">読む順: 左上から 1 → 2 → 3 → 4 → 5 → 6</text>
+  </g>
+</svg>
