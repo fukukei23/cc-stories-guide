@@ -1,0 +1,99 @@
+<!-- 素材: source/044_壊れたのは一つだと思ったら二重の故障が互いの正体を隠していた話.md -->
+<svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s044a-title s044a-desc">
+  <title id="s044a-title">二重の故障が互いを隠して入口を閉ざし実測で切り分けた流れ</title>
+  <desc id="s044a-desc">入口の札書き直し忘れと補い役の残り香故障が同時に重なり平時を装ったまま道具が動かなくなり、メモリ不足の言い切りを実測で覆して、付け替えと札の一体作業と実測での原因語りを教訓にした6コマの物語。</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <!-- パネル1: 入口が開かなくなった（閉じた扉+赤×） -->
+    <rect x="16" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="80" y="80" width="44" height="66" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <circle cx="94" cy="112" r="3" fill="var(--text)"/>
+    <path d="M 134 96 l 10 10 M 144 96 l -10 10" stroke="var(--red)" stroke-width="2.2" fill="none"/>
+
+    <!-- パネル2: 原因はきれいな一つではなく二つ（重なる警告丸2つ） -->
+    <rect x="496" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <circle cx="560" cy="92" r="13" fill="var(--amber-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="560" y1="86" x2="560" y2="93" stroke="var(--text)" stroke-width="1.5"/>
+    <circle cx="560" cy="98" r="1.2" fill="var(--text)"/>
+    <circle cx="584" cy="112" r="13" fill="var(--amber-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="584" y1="106" x2="584" y2="113" stroke="var(--text)" stroke-width="1.5"/>
+    <circle cx="584" cy="118" r="1.2" fill="var(--text)"/>
+
+    <!-- パネル3: 二つの故障が互いの正体を隠す（綱の上に乗る2つの丸） -->
+    <rect x="16" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="72" y1="284" x2="164" y2="260" stroke="var(--text)" stroke-width="1.4"/>
+    <circle cx="96" cy="278" r="8" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="136" cy="268" r="8" fill="var(--amber-bg)" stroke="var(--text)" stroke-width="1.2"/>
+
+    <!-- パネル4: 測る前にメモリ不足と言い切った（吹き出し×+実測バー） -->
+    <rect x="496" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="548" y="252" width="52" height="26" rx="8" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <path d="M 560 278 l -4 10 l 10 -10" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <path d="M 610 258 l 10 10 M 620 258 l -10 10" stroke="var(--red)" stroke-width="2" fill="none"/>
+    <rect x="548" y="300" width="40" height="10" rx="2" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1"/>
+
+    <!-- パネル5: 付け替えと札の書き直しは一体で（結合する2ブロック+緑矢印） -->
+    <rect x="16" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="72" y="446" width="34" height="34" rx="3" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.3"/>
+    <rect x="112" y="446" width="34" height="34" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <line x1="106" y1="463" x2="112" y2="463" stroke="var(--text)" stroke-width="1.6"/>
+    <path d="M 152 463 l 10 0" stroke="var(--green)" stroke-width="2.4" fill="none"/>
+    <path d="M 158 457 l 6 6 l -6 6" fill="none" stroke="var(--green)" stroke-width="1.8"/>
+
+    <!-- パネル6: 原因は断定でなく実測で語る（実測バー3本+基準線） -->
+    <rect x="496" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="548" y="430" width="16" height="40" rx="2" fill="var(--accent-dark)"/>
+    <rect x="570" y="442" width="16" height="28" rx="2" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1"/>
+    <rect x="592" y="454" width="16" height="16" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1"/>
+    <line x1="544" y1="472" x2="616" y2="472" stroke="var(--text)" stroke-width="1.4"/>
+  </g>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+    <circle cx="48" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="111">1</text>
+      <text x="528" y="111">2</text>
+      <text x="48" y="277">3</text>
+      <text x="528" y="277">4</text>
+      <text x="48" y="443">5</text>
+      <text x="528" y="443">6</text>
+    </g>
+
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="178" y="106">入口が開かなくなった</text>
+      <text x="658" y="106">原因はきれいな一つではなく二つ</text>
+      <text x="178" y="272">二つの故障が互いの正体を隠す</text>
+      <text x="658" y="272">測る前にメモリ不足と言い切った</text>
+      <text x="178" y="438">付け替えと札の書き直しは一体で</text>
+      <text x="658" y="438">原因は断定でなく実測で語る</text>
+    </g>
+
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="178" y="150">命令は見つかりませんの一行。</text>
+      <text x="178" y="172">毎日の道具が動かない。</text>
+      <text x="658" y="150">版替えで札の書き直し忘れ。</text>
+      <text x="658" y="172">補い役の残り香も故障。</text>
+      <text x="178" y="316">片方だけなら平時のまま。</text>
+      <text x="178" y="338">同時で初めて入口が閉ざされる。</text>
+      <text x="658" y="316">96個ぶんあると一言で覆る。</text>
+      <text x="658" y="338">実際は半分も埋まっていない。</text>
+      <text x="178" y="482">分割すると綱渡り期間が生まれる。</text>
+      <text x="178" y="504">一つの作業として終わらせる。</text>
+      <text x="658" y="482">平時の動作に安心しない。</text>
+      <text x="658" y="504">故障は綱渡りを剥がす審判。</text>
+    </g>
+
+    <text x="480" y="566" font-size="11" fill="var(--text)" text-anchor="middle">読む順: 左上から 1 → 2 → 3 → 4 → 5 → 6</text>
+  </g>
+</svg>
