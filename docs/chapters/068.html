@@ -420,6 +420,122 @@
 <p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどう作ったか&lt;/summary&gt;</p>
 <p>MicroWin（疲れた夜に15分で片付くタスクを1つ出すAndroidアプリ・React Native/Expo）のSprint A Day 1-3。ガチャ抽選drawTask.ts・XP/レベルlevelFromXp.ts・Repository抽象化（InMemory+SQLiteRepository・expo-sqlite+PRAGMA user_version）・連続記録日数streak.ts・CSVエクスポート（RFC 4180+CSV injection対策の引用符プレフィックス）をすべてTDD Red→Greenで実装し、74/74テスト+tsc 0+expo-doctor 21/21を達成。複数LLMレビュー4ラウンドで77 findings→17件採用（rng注入・値域防御・r&lt;0境界・候補正規化・CSV injection対策など。rng注入は3機一致のcritical指摘を構造に反映した代表例・CSV対策は1機単独のhigh指摘でも攻撃経路の重大性で即採用）。SQLiteRepositoryはjestでnative module起動不可のためカバレッジ0%をコメントで明示し、実機ビルド検証はDay 4+範囲として起票済み。詳細: obsidian-ssot 01_DECISIONS/microwin-app/2026-10-16_MicroWin-SprintA-Day1-3実装-drawTask-repository-streak-CSV.md</p>
 <p>&lt;/details&gt;</p>
+<figure class="story-diagram"><!-- 素材: source/068_見えない乱数を差し込める部品にした話.md -->
+<svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s068a-title s068a-desc">
+  <title id="s068a-title">見えない乱数が差し込み口を持ち全パターン試せる流れ</title>
+  <desc id="s068a-desc">くじの抽選を決めるさいころが外から見えず重みと記録と暦の壁が落とし穴に並んだため、さいころを差し込める部品にして束を作る工程と引く工程に分離し、4回の検査で77件の指摘から17件を採用して差し込み口で全パターン試せる形にした6コマの物語。</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <!-- パネル1: 見えないさいころ -->
+    <rect x="16" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="84" y="94" width="36" height="36" rx="6" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.5"/>
+    <circle cx="94" cy="104" r="3" fill="var(--text)"/>
+    <circle cx="114" cy="104" r="3" fill="var(--text)"/>
+    <circle cx="104" cy="120" r="3" fill="var(--text)"/>
+    <path d="M 78 94 A 24 24 0 0 1 126 94" fill="none" stroke="var(--text-secondary)" stroke-width="1.3" stroke-dasharray="3 2"/>
+    <circle cx="138" cy="88" r="8" fill="none" stroke="var(--amber)" stroke-width="1.6"/>
+    <line x1="138" y1="97" x2="138" y2="100" stroke="var(--amber)" stroke-width="1.6"/>
+
+    <!-- パネル2: 三重の落とし穴 -->
+    <rect x="496" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <polygon points="556,104 568,126 580,104" fill="var(--bg-secondary)" stroke="var(--red)" stroke-width="1.5"/>
+    <polygon points="590,104 602,126 614,104" fill="var(--bg-secondary)" stroke="var(--red)" stroke-width="1.5"/>
+    <polygon points="624,104 636,126 648,104" fill="var(--bg-secondary)" stroke="var(--red)" stroke-width="1.5"/>
+    <line x1="536" y1="104" x2="548" y2="104" stroke="var(--text)" stroke-width="1.5"/>
+    <line x1="548" y1="104" x2="548" y2="126" stroke="var(--text)" stroke-width="1.5"/>
+
+    <!-- パネル3: 差し込み部品化 -->
+    <rect x="16" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="80" y="288" width="48" height="30" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="94" y="262" width="20" height="24" rx="4" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.4"/>
+    <circle cx="100" cy="270" r="2" fill="var(--text)"/>
+    <circle cx="108" cy="270" r="2" fill="var(--text)"/>
+    <rect x="126" y="254" width="20" height="24" rx="4" fill="none" stroke="var(--text-secondary)" stroke-width="1.3" stroke-dasharray="3 2"/>
+    <circle cx="136" cy="266" r="2.5" fill="var(--text-secondary)"/>
+    <line x1="136" y1="280" x2="136" y2="284" stroke="var(--amber)" stroke-width="1.6"/>
+    <polygon points="132,283 140,283 136,290" fill="var(--amber)"/>
+
+    <!-- パネル4: 二工程に分離 -->
+    <rect x="496" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="556" y="278" width="28" height="34" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <rect x="562" y="284" width="28" height="34" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <line x1="596" y1="296" x2="608" y2="296" stroke="var(--text)" stroke-width="1.5"/>
+    <polygon points="608,292 608,300 616,296" fill="var(--text)"/>
+    <rect x="620" y="280" width="30" height="34" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="626" y1="292" x2="644" y2="292" stroke="var(--amber)" stroke-width="1.8"/>
+    <path d="M 634 322 l 5 5 l 9 -11" fill="none" stroke="var(--green)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- パネル5: 4つの目と採用 -->
+    <rect x="16" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <circle cx="84" cy="428" r="9" fill="none" stroke="var(--text)" stroke-width="1.4"/>
+    <circle cx="84" cy="428" r="4" fill="var(--text)"/>
+    <circle cx="106" cy="428" r="9" fill="none" stroke="var(--text)" stroke-width="1.4"/>
+    <circle cx="106" cy="428" r="4" fill="var(--text)"/>
+    <circle cx="128" cy="428" r="9" fill="none" stroke="var(--text)" stroke-width="1.4"/>
+    <circle cx="128" cy="428" r="4" fill="var(--text)"/>
+    <circle cx="150" cy="428" r="9" fill="none" stroke="var(--text)" stroke-width="1.4"/>
+    <circle cx="150" cy="428" r="4" fill="var(--text)"/>
+    <path d="M 100 456 l 6 6 l 11 -13" fill="none" stroke="var(--green)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- パネル6: 嵌合する部品とチェック -->
+    <rect x="496" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="552" y="430" width="40" height="30" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="592" y="438" width="12" height="14" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="604" y="428" width="44" height="34" rx="3" fill="none" stroke="var(--text-secondary)" stroke-width="1.3" stroke-dasharray="3 2"/>
+    <rect x="604" y="438" width="12" height="14" fill="var(--bg-card)" stroke="var(--text-secondary)" stroke-width="1.2" stroke-dasharray="2 2"/>
+    <path d="M 634 480 l 5 5 l 9 -11" fill="none" stroke="var(--green)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+    <circle cx="48" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="111">1</text>
+      <text x="528" y="111">2</text>
+      <text x="48" y="277">3</text>
+      <text x="528" y="277">4</text>
+      <text x="48" y="443">5</text>
+      <text x="528" y="443">6</text>
+    </g>
+
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="178" y="106">くじを決めるさいころ不可視</text>
+      <text x="658" y="106">見えない・消えない・暦の壁</text>
+      <text x="178" y="272">さいころを差し込み部品化</text>
+      <text x="658" y="272">束を作る・引くの二工程に</text>
+      <text x="178" y="438">4回の検査で77指摘17採用</text>
+      <text x="658" y="438">差し込み口で全パターン検査</text>
+    </g>
+
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="178" y="150">公平かを確かめる入口がない。</text>
+      <text x="178" y="172">重み付きのくじ。</text>
+      <text x="658" y="150">記録は消えてはいけない。</text>
+      <text x="658" y="172">月またぎ・年末・長い年。</text>
+      <text x="178" y="316">普段は本物・検査は偽物。</text>
+      <text x="178" y="338">出た目が分かる偽を差す。</text>
+      <text x="658" y="316">引く部分を独立に検査。</text>
+      <text x="658" y="338">帳簿も差し替え可能に。</text>
+      <text x="178" y="482">回ごとに別の盲点を拾う。</text>
+      <text x="178" y="504">単独重大は多数決にかけない。</text>
+      <text x="658" y="482">本物を外し偽物を差すだけ。</text>
+      <text x="658" y="504">深い検査が可能になる。</text>
+    </g>
+
+    <text x="480" y="566" font-size="11" fill="var(--text)" text-anchor="middle">読む順: 左上から 1 → 2 → 3 → 4 → 5 → 6</text>
+  </g>
+</svg>
+<figcaption>くじの抽選を決めるさいころが外から見えず重みと記録と暦の壁が落とし穴に並んだため、さいころを差し込める部品にして束を作る工程と引く工程に分離し、4回の検査で77件の指摘から17件を採用して差し込み口で全パターン試せる形にした6コマの物語。</figcaption></figure>
 
         </article>
 

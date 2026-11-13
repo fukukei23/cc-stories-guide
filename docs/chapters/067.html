@@ -422,6 +422,117 @@
 <p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどう作ったか&lt;/summary&gt;</p>
 <p>対象はnemly-app（睡眠記録Androidアプリ）のPhase 2センサー計測検証（Stage 3/4）。Stage 3（実機1時間・FGS health型）はPixel 9a実測で62分40秒の連続稼働を達成し、fail機構も実働確認。Stage 4（実機1晩・第1夜）は7時間40分の連続記録を達成し、有効率のfail不発＝深夜停止なしで、Phase 2の核心fail条件（毎晩死ぬ問題の技術的解決）をクリアした。ただし同一夜で正常な睡眠が「stationary_rate 99% &gt; 閾値10%」により誤fail。真因はfailCheck閾値0.05/10%が実機未校正の初期値のまま、睡眠の実態（振幅の微小さ・寝返りの少なさ）と不一致だったこと（設計と現場のズレ）。対応は実機一晩分の計測データを校正材料として閾値を0.01/90%に組み直すこと。校正判断は複数LLMレビューで根拠を補強し、恒久確定の判定条件（校正版で正常睡眠がfailする夜が最低3夜のうち2回以上出た時、または机に置いたセッションがpassする時）も定義済み。詳細: obsidian-ssot 01_DECISIONS/nemly-app/2026-10-29_Phase2実機検証とfailCheck校正.md</p>
 <p>&lt;/details&gt;</p>
+<figure class="story-diagram"><!-- 素材: source/067_何もしていない夜こそ検査機は不合格を出した話.md -->
+<svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s067a-title s067a-desc">
+  <title id="s067a-title">合格したはずの夜を未校正の目盛りが不合格にする流れ</title>
+  <desc id="s067a-desc">一時間と一晩の試運転に合格した夜が翌朝失格報告を受けたため報告を信じず検査機の数字を開けたらしきい値が人間想定の設計時初期値のままで、実機一晩の眠る人の静けさで測り直して組み直し校正済みの値で次の夜を迎えるまでの6コマの物語。</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <!-- パネル1: 試運転合格の時計と月 -->
+    <rect x="16" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <circle cx="86" cy="106" r="16" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.5"/>
+    <line x1="86" y1="106" x2="86" y2="95" stroke="var(--text)" stroke-width="1.6"/>
+    <line x1="86" y1="106" x2="95" y2="110" stroke="var(--text)" stroke-width="1.6"/>
+    <circle cx="128" cy="100" r="9" fill="none" stroke="var(--amber)" stroke-width="1.8"/>
+    <circle cx="131" cy="97" r="7" fill="var(--bg-card)"/>
+    <path d="M 120 118 l 5 5 l 9 -11" fill="none" stroke="var(--green)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- パネル2: 合格と失格の矛盾 -->
+    <rect x="496" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <path d="M 560 100 l 6 6 l 11 -13" fill="none" stroke="var(--green)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 632 94 l 14 14 M 646 94 l -14 14" fill="none" stroke="var(--red)" stroke-width="2.2"/>
+    <line x1="586" y1="118" x2="604" y2="118" stroke="var(--text)" stroke-width="1.5"/>
+    <polygon points="604,114 604,122 612,118" fill="var(--text)"/>
+    <line x1="648" y1="118" x2="636" y2="118" stroke="var(--text)" stroke-width="1.5"/>
+    <polygon points="636,114 636,122 628,118" fill="var(--text)"/>
+
+    <!-- パネル3: 数字を開ける -->
+    <rect x="16" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="80" y="280" width="56" height="40" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <line x1="88" y1="292" x2="120" y2="292" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="88" y1="302" x2="112" y2="302" stroke="var(--text-secondary)" stroke-width="1"/>
+    <circle cx="88" cy="312" r="1.5" fill="var(--text-secondary)"/>
+    <circle cx="96" cy="312" r="1.5" fill="var(--text-secondary)"/>
+    <circle cx="104" cy="312" r="1.5" fill="var(--text-secondary)"/>
+    <circle cx="146" cy="306" r="11" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.8"/>
+    <line x1="156" y1="316" x2="166" y2="326" stroke="var(--text)" stroke-width="2.6"/>
+
+    <!-- パネル4: 初期値の目盛りと実態の差 -->
+    <rect x="496" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="560" y1="286" x2="560" y2="318" stroke="var(--text)" stroke-width="1.5"/>
+    <line x1="560" y1="318" x2="644" y2="318" stroke="var(--text)" stroke-width="1.5"/>
+    <line x1="560" y1="296" x2="566" y2="296" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="560" y1="306" x2="566" y2="306" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="570" y1="298" x2="640" y2="298" stroke="var(--red)" stroke-width="1.4" stroke-dasharray="4 3"/>
+    <line x1="570" y1="312" x2="640" y2="312" stroke="var(--green)" stroke-width="1.6"/>
+
+    <!-- パネル5: 静かな波形と校正の目盛り -->
+    <rect x="16" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <path d="M 76 444 q 14 -4 28 0 q 14 4 28 0 q 14 -4 28 0" fill="none" stroke="var(--text)" stroke-width="1.5"/>
+    <line x1="76" y1="460" x2="160" y2="460" stroke="var(--green)" stroke-width="1.4"/>
+    <circle cx="90" cy="460" r="2" fill="var(--green)"/>
+    <circle cx="120" cy="460" r="2" fill="var(--green)"/>
+    <circle cx="150" cy="460" r="2" fill="var(--green)"/>
+
+    <!-- パネル6: 校正済みの値で次の夜へ -->
+    <rect x="496" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <circle cx="574" cy="434" r="14" fill="none" stroke="var(--amber)" stroke-width="2"/>
+    <circle cx="578" cy="430" r="11" fill="var(--bg-card)"/>
+    <circle cx="600" cy="424" r="2" fill="var(--text-secondary)"/>
+    <circle cx="612" cy="438" r="1.5" fill="var(--text-secondary)"/>
+    <path d="M 622 438 l 6 6 l 11 -13" fill="none" stroke="var(--green)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+    <circle cx="48" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="111">1</text>
+      <text x="528" y="111">2</text>
+      <text x="48" y="277">3</text>
+      <text x="528" y="277">4</text>
+      <text x="48" y="443">5</text>
+      <text x="528" y="443">6</text>
+    </g>
+
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="178" y="106">1時間も1晩も試運転合格</text>
+      <text x="658" y="106">合格の夜に失格の矛盾</text>
+      <text x="178" y="272">報告を信じず数字を開ける</text>
+      <text x="658" y="272">しきい値は人間想定のまま</text>
+      <text x="178" y="438">実機の夜で目盛りを測り直す</text>
+      <text x="658" y="438">校正済みの値で次の夜へ</text>
+    </g>
+
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="178" y="150">記録は朝まで途切れず。</text>
+      <text x="178" y="172">誰も裏で止めていない。</text>
+      <text x="658" y="150">検査機だけが死んでいる。</text>
+      <text x="658" y="172">矛盾が二つ並立。</text>
+      <text x="178" y="316">失格理由は動きがなさすぎる。</text>
+      <text x="178" y="338">まず見たものを確認。</text>
+      <text x="658" y="316">寝返りの少ない夜を知らない。</text>
+      <text x="658" y="338">動き少=死んだと誤判定。</text>
+      <text x="178" y="482">眠る人の静けさを数字化。</text>
+      <text x="178" y="504">しきい値を組み直す。</text>
+      <text x="658" y="482">目盛りは現場の数字から。</text>
+      <text x="658" y="504">続けば組み直しを疑う約束。</text>
+    </g>
+
+    <text x="480" y="566" font-size="11" fill="var(--text)" text-anchor="middle">読む順: 左上から 1 → 2 → 3 → 4 → 5 → 6</text>
+  </g>
+</svg>
+<figcaption>一時間と一晩の試運転に合格した夜が翌朝失格報告を受けたため報告を信じず検査機の数字を開けたらしきい値が人間想定の設計時初期値のままで、実機一晩の眠る人の静けさで測り直して組み直し校正済みの値で次の夜を迎えるまでの6コマの物語。</figcaption></figure>
 
         </article>
 

@@ -423,6 +423,120 @@
 <p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどう作ったか&lt;/summary&gt;</p>
 <p>対象は claude-config（Claude Code環境の個人開発プロジェクト）。4段構えの対策: ①生成前抑制（proxyのsystem prompt注入・<code>_LANGUAGE_DIRECTIVE</code>）②生成前検知（review_lib側・<code>detect_simplified_chinese</code>）③生成後変換（<code>lang_fix.py</code> + <code>lang_fix_data.py</code>・OpenCC s2t + Unihan kIRG_JSource由来の機械生成・実行時依存ゼロ）④プロキシ応答パスでのSSE text_delta変換（Phase 2・再起動は承認ゲート）。検知基準はJIS X 0208（J0/J1）のみ=日本語で普通に使う字の判定に使えないJ3/J4/J13/J14・JMJ面2を除外。変換先の妥当性判定は別集合（面1系まで許容）で、検知（厳しめ）と変換先（字形妥当性・広め）を分離。生成物 lang_fix_data.py（47KB静的データ）をコミットして両ランタイムから依存なしで利用可能。Phase 1はreview_lib（MLR受入部・TDD 69緑・ruff 0err・<code>3a40447</code>）。Phase 2はproxy応答パス（<code>fb7e947</code>・GLM経路にも言語指示注入を適用）。既知限界: JIS X 0208収録の簡体字形（个/广/价/两）は検知外・日本語にも存在する字による中国語語彙（本次/可以等）は字単位変換で直せない→語彙辞書方式は観察データ蓄積後に再評価。正典: obsidian-ssot <code>01_DECISIONS/claude-code/2026-11-02_簡体字混入対策④-lang_fix実装.md</code> と <code>01_DECISIONS/claude-code/2026-11-03_言語混入対策案B実装とあなたの修正.md</code></p>
 <p>&lt;/details&gt;</p>
+<figure class="story-diagram"><!-- 素材: source/065_AIが書いた日本語に中国語が混ざる話.md -->
+<svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s065a-title s065a-desc">
+  <title id="s065a-title">日本語への混入が中継の強制と2448字辞書で止まる流れ</title>
+  <desc id="s065a-desc">AIが書く日本語に簡体字が混ざり指示書に書いたのに効かないため、プロキシの中継所で日本語のみを強制注入し56字の表を2448字の辞書へ拡大して変換表で返す前に直し、検知が動いている状態まで持っていった6コマの物語。</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <!-- パネル1: 混入のある文書 -->
+    <rect x="16" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="80" y="88" width="52" height="44" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <line x1="86" y1="98" x2="124" y2="98" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="86" y1="108" x2="118" y2="108" stroke="var(--text-secondary)" stroke-width="1"/>
+    <rect x="112" y="104" width="14" height="8" fill="none" stroke="var(--red)" stroke-width="1.6"/>
+    <circle cx="131" cy="94" r="3" fill="var(--red)"/>
+
+    <!-- パネル2: 効かない指示書と疑問 -->
+    <rect x="496" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="556" y="88" width="48" height="40" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <line x1="562" y1="98" x2="596" y2="98" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="562" y1="106" x2="590" y2="106" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="562" y1="114" x2="594" y2="114" stroke="var(--text-secondary)" stroke-width="1"/>
+    <circle cx="622" cy="102" r="9" fill="none" stroke="var(--amber)" stroke-width="1.8"/>
+    <line x1="622" y1="113" x2="622" y2="116" stroke="var(--amber)" stroke-width="1.8"/>
+
+    <!-- パネル3: プロキシ中継での強制注入 -->
+    <rect x="16" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="76" y1="290" x2="92" y2="290" stroke="var(--text)" stroke-width="1.5"/>
+    <polygon points="90,286 90,294 98,290" fill="var(--text)"/>
+    <rect x="100" y="272" width="44" height="36" rx="3" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="114" y1="280" x2="114" y2="300" stroke="var(--accent-dark)" stroke-width="1.2"/>
+    <line x1="122" y1="280" x2="122" y2="300" stroke="var(--accent-dark)" stroke-width="1.2"/>
+    <line x1="130" y1="280" x2="130" y2="300" stroke="var(--accent-dark)" stroke-width="1.2"/>
+    <line x1="146" y1="290" x2="160" y2="290" stroke="var(--text)" stroke-width="1.5"/>
+    <polygon points="158,286 158,294 166,290" fill="var(--text)"/>
+
+    <!-- パネル4: 56字表から2448字辞書へ -->
+    <rect x="496" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="556" y="280" width="26" height="20" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="556" y1="288" x2="582" y2="288" stroke="var(--text-secondary)" stroke-width="0.8"/>
+    <line x1="588" y1="290" x2="600" y2="290" stroke="var(--text)" stroke-width="1.4"/>
+    <polygon points="598,286 598,294 606,290" fill="var(--text)"/>
+    <rect x="608" y="272" width="42" height="42" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="616" y1="272" x2="616" y2="314" stroke="var(--text)" stroke-width="1.1"/>
+    <line x1="624" y1="284" x2="642" y2="284" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="624" y1="294" x2="638" y2="294" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="624" y1="304" x2="640" y2="304" stroke="var(--text-secondary)" stroke-width="1"/>
+
+    <!-- パネル5: 自動直しの文書と戻す矢印 -->
+    <rect x="16" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="80" y="420" width="52" height="44" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <line x1="86" y1="430" x2="124" y2="430" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="86" y1="440" x2="118" y2="440" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="86" y1="452" x2="122" y2="452" stroke="var(--green)" stroke-width="1.6"/>
+    <path d="M 150 430 a 14 14 0 1 1 -8 -12" fill="none" stroke="var(--amber)" stroke-width="1.8"/>
+    <polygon points="137,414 145,415 142,423" fill="var(--amber)"/>
+
+    <!-- パネル6: 動いている検知とログ -->
+    <rect x="496" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="556" y="422" width="56" height="34" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <line x1="562" y1="432" x2="592" y2="432" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="562" y1="440" x2="586" y2="440" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="562" y1="448" x2="590" y2="448" stroke="var(--green)" stroke-width="1.4"/>
+    <path d="M 622 434 l 5 5 l 9 -11" fill="none" stroke="var(--green)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+    <circle cx="48" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="111">1</text>
+      <text x="528" y="111">2</text>
+      <text x="48" y="277">3</text>
+      <text x="528" y="277">4</text>
+      <text x="48" y="443">5</text>
+      <text x="528" y="443">6</text>
+    </g>
+
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="178" y="106">書いた日本語に他の字混入</text>
+      <text x="658" y="106">指示書に書いたのに効かない</text>
+      <text x="178" y="272">中継所で日本語のみを強制</text>
+      <text x="658" y="272">56字表を2448字辞書に拡大</text>
+      <text x="178" y="438">返す前に機械で自動直し</text>
+      <text x="658" y="438">検知が動く状態に一変</text>
+    </g>
+
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="178" y="150">読めるが妙な色がある。</text>
+      <text x="178" y="172">汚染された感覚。</text>
+      <text x="658" y="150">性能か書き方か不明。</text>
+      <text x="658" y="172">毎回同じ形の混入。</text>
+      <text x="178" y="316">全依頼がプロキシ経由。</text>
+      <text x="178" y="338">指示書より中継の強制。</text>
+      <text x="658" y="316">56字では範囲が狭すぎた。</text>
+      <text x="658" y="338">変換表も同時に作成。</text>
+      <text x="178" y="482">変換表で字を置き換える。</text>
+      <text x="178" y="504">掛かった箇所はログに残る。</text>
+      <text x="658" y="482">確率でなく動作で担保。</text>
+      <text x="658" y="504">名前と中身の乖離も発見。</text>
+    </g>
+
+    <text x="480" y="566" font-size="11" fill="var(--text)" text-anchor="middle">読む順: 左上から 1 → 2 → 3 → 4 → 5 → 6</text>
+  </g>
+</svg>
+<figcaption>AIが書く日本語に簡体字が混ざり指示書に書いたのに効かないため、プロキシの中継所で日本語のみを強制注入し56字の表を2448字の辞書へ拡大して変換表で返す前に直し、検知が動いている状態まで持っていった6コマの物語。</figcaption></figure>
 
         </article>
 

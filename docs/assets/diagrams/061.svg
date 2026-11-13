@@ -1,0 +1,108 @@
+<!-- 素材: source/061_その作業は無理と決めつける前に引き出しを開けよう.md -->
+<svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s061a-title s061a-desc">
+  <title id="s061a-title">無理という結論が一言の問い返しでひっくり返る流れ</title>
+  <desc id="s061a-desc">実機確認で操作できないと断定して人間に頼んだAIが一言の問い返しで手元を調べ直し道具一式が最初から揃っていたことを発見して検証を一人で完遂し、二度目の同型事故から先に開ける行動ルールと手引書登録まで残した6コマの物語。</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <!-- パネル1: 人とスマホと断定の× -->
+    <rect x="16" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <circle cx="88" cy="100" r="12" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.4"/>
+    <path d="M 74 130 Q 88 116 102 130" fill="none" stroke="var(--text)" stroke-width="1.6"/>
+    <rect x="118" y="96" width="26" height="42" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <line x1="124" y1="106" x2="138" y2="106" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="124" y1="114" x2="134" y2="114" stroke="var(--text-secondary)" stroke-width="1"/>
+    <path d="M 152 100 l 12 12 M 164 100 l -12 12" fill="none" stroke="var(--red)" stroke-width="2"/>
+
+    <!-- パネル2: 問い返しの吹き出し -->
+    <rect x="496" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="556" y="86" width="90" height="34" rx="10" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.4"/>
+    <path d="M 568 120 L 556 134 L 590 120" fill="none" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="566" y1="98" x2="610" y2="98" stroke="var(--accent-dark)" stroke-width="1.6"/>
+    <line x1="566" y1="108" x2="596" y2="108" stroke="var(--accent-dark)" stroke-width="1.2"/>
+    <circle cx="610" cy="106" r="6" fill="none" stroke="var(--accent-dark)" stroke-width="1.6"/>
+    <line x1="610" y1="116" x2="610" y2="119" stroke="var(--accent-dark)" stroke-width="1.6"/>
+
+    <!-- パネル3: 開いた引き出しと道具箱 -->
+    <rect x="16" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="78" y="268" width="88" height="60" fill="none" stroke="var(--text)" stroke-width="1.6"/>
+    <line x1="78" y1="298" x2="166" y2="298" stroke="var(--text)" stroke-width="1.3"/>
+    <rect x="88" y="276" width="44" height="16" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="104" y1="284" x2="116" y2="284" stroke="var(--text-secondary)" stroke-width="1.4"/>
+    <line x1="84" y1="310" x2="112" y2="310" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="84" y1="318" x2="104" y2="318" stroke="var(--text-secondary)" stroke-width="1"/>
+
+    <!-- パネル4: 仮想スマホと完遂のチェック -->
+    <rect x="496" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="560" y="268" width="36" height="60" rx="4" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="566" y1="280" x2="590" y2="280" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="566" y1="290" x2="586" y2="290" stroke="var(--text-secondary)" stroke-width="1"/>
+    <circle cx="578" cy="320" r="3" fill="none" stroke="var(--text)" stroke-width="1.2"/>
+    <path d="M 606 290 l 6 6 l 11 -13" fill="none" stroke="var(--green)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- パネル5: 画像と目（見えていた） -->
+    <rect x="16" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="78" y="420" width="48" height="38" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <polygon points="84,452 96,436 108,452" fill="none" stroke="var(--text-secondary)" stroke-width="1.2"/>
+    <circle cx="92" cy="430" r="4" fill="none" stroke="var(--text-secondary)" stroke-width="1.2"/>
+    <path d="M 138 438 Q 152 426 166 438 Q 152 450 138 438" fill="none" stroke="var(--text)" stroke-width="1.6"/>
+    <circle cx="152" cy="438" r="5" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.4"/>
+
+    <!-- パネル6: 日誌にルールを記す -->
+    <rect x="496" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="560" y="416" width="52" height="44" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="568" y1="416" x2="568" y2="460" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="576" y1="426" x2="604" y2="426" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="576" y1="436" x2="600" y2="436" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="576" y1="446" x2="604" y2="446" stroke="var(--text-secondary)" stroke-width="1"/>
+    <path d="M 624 434 l 5 5 l 9 -11" fill="none" stroke="var(--green)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+    <circle cx="48" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="111">1</text>
+      <text x="528" y="111">2</text>
+      <text x="48" y="277">3</text>
+      <text x="528" y="277">4</text>
+      <text x="48" y="443">5</text>
+      <text x="528" y="443">6</text>
+    </g>
+
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="178" y="106">無理と結論して人間に頼む</text>
+      <text x="658" y="106">一言の問い返しで見直す</text>
+      <text x="178" y="272">引き出しに道具箱があった</text>
+      <text x="658" y="272">仮想スマホで検証を完遂</text>
+      <text x="178" y="438">前にも同じ誤断定があった</text>
+      <text x="658" y="438">先に開けるを日誌に記す</text>
+    </g>
+
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="178" y="150">実機確認の段階で断定。</text>
+      <text x="178" y="172">AIがお願いする形に。</text>
+      <text x="658" y="150">相手はたった一言返す。</text>
+      <text x="658" y="172">結論の見直しが始まる。</text>
+      <text x="178" y="316">SDK一式・設定まで実在。</text>
+      <text x="178" y="338">思い込みが全てだった。</text>
+      <text x="658" y="316">起動・導入・データ・写真。</text>
+      <text x="658" y="338">たった一人で完遂。</text>
+      <text x="178" y="482">見えないと頼んだら見えた。</text>
+      <text x="178" y="504">二度目の同型事故。</text>
+      <text x="658" y="482">道具の置き場所も手引書化。</text>
+      <text x="658" y="504">仲間も迷わず使える。</text>
+    </g>
+
+    <text x="480" y="566" font-size="11" fill="var(--text)" text-anchor="middle">読む順: 左上から 1 → 2 → 3 → 4 → 5 → 6</text>
+  </g>
+</svg>

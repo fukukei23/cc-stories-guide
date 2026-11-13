@@ -423,6 +423,127 @@
 <p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどう作ったか&lt;/summary&gt;</p>
 <p>対象は NexusCore（AIエージェントによる開発自動化フレームワーク・個人開発）の夜間harness（毎日23:43のsystem cronで run_harness_task.py を実行・題庫からお題を抽出して計測run）。2026-10-25〜31に題庫（お題プール）枯渇で7晩連続STOP。2026-10-06の前回対応（Discord通知+補充15件）は通知としては実働した（7晩とも送信成功・.notify.fail退避ゼロ実測）が再発を防げず、「検知→対処」の接続欠落が本質と特定。恒久対策はsentaku L2マトリクス（6案・49点）で「3晩連続STOP→obsidian-ssotのバックログへP1自動起票（冪等・エピソード単位制・repo identity確認・flock）」案を採用し、MLR 5機31指摘を統合してPhase 0を「実装検証（0a）と効果検証（0b）」に二段階化・予防線（残≤3でP2起票）を追加。TDDで16テスト新設（tests/harness/test_pool_ticket.py）+既存283テスト無傷+実機dry-run合格。効果検証は2027-02-01発火のdurable cron（絶対基準「起票→3営業日以内に補充」・無発火時は自動終了禁止）。設計正典: obsidian-ssot 60_MLR_LOGS/2026-11-01_harness枯渇STOP恒久改善D案レビュー/revised_proposal.md</p>
 <p>&lt;/details&gt;</p>
+<figure class="story-diagram"><!-- 素材: source/064_毎晩お知らせは届いていたのに7日間誰も動かなかった話.md -->
+<svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s064a-title s064a-desc">
+  <title id="s064a-title">毎晩届くお知らせが誰にも読まれない半年の再発を止める流れ</title>
+  <desc id="s064a-desc">夜間診断が在庫切れで正しく叫んで帰り7日間誰も動かなかった再発に対し3日連続の警報を朝の点検が必ず通る仕事表へ自動起票する仕組みと予防線を作り、読み忘れという性質を朝の点検が肩代わりして効果判定の予約まで入れた6コマの物語。</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <!-- パネル1: 診断機と在庫切れの叫び -->
+    <rect x="16" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="76" y="96" width="44" height="36" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="82" y1="108" x2="106" y2="108" stroke="var(--text-secondary)" stroke-width="1"/>
+    <rect x="126" y="84" width="38" height="24" rx="8" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.3"/>
+    <path d="M 134 108 L 126 118 L 148 108" fill="none" stroke="var(--text)" stroke-width="1.3"/>
+    <line x1="132" y1="92" x2="158" y2="92" stroke="var(--accent-dark)" stroke-width="1.2"/>
+    <line x1="132" y1="99" x2="150" y2="99" stroke="var(--accent-dark)" stroke-width="1.2"/>
+    <circle cx="152" cy="124" r="7" fill="none" stroke="var(--text-secondary)" stroke-width="1.3"/>
+
+    <!-- パネル2: 7日間のカレンダーと無反応の人 -->
+    <rect x="496" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="556" y="84" width="60" height="48" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <line x1="556" y1="94" x2="616" y2="94" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="573" y1="94" x2="573" y2="132" stroke="var(--text-secondary)" stroke-width="0.8"/>
+    <line x1="590" y1="94" x2="590" y2="132" stroke="var(--text-secondary)" stroke-width="0.8"/>
+    <line x1="607" y1="94" x2="607" y2="132" stroke="var(--text-secondary)" stroke-width="0.8"/>
+    <path d="M 624 100 l 12 12 M 636 100 l -12 12" fill="none" stroke="var(--red)" stroke-width="2"/>
+    <circle cx="630" cy="124" r="8" fill="none" stroke="var(--text-secondary)" stroke-width="1.3"/>
+    <path d="M 620 138 Q 630 130 640 138" fill="none" stroke="var(--text-secondary)" stroke-width="1.2"/>
+
+    <!-- パネル3: 浅い修理と深い根 -->
+    <rect x="16" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="84" y1="286" x2="112" y2="286" stroke="var(--text)" stroke-width="1.5"/>
+    <polygon points="112,282 112,290 120,286" fill="var(--text)"/>
+    <circle cx="84" cy="306" r="5" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.1"/>
+    <circle cx="98" cy="306" r="5" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.1"/>
+    <circle cx="112" cy="306" r="5" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.1"/>
+    <line x1="140" y1="286" x2="140" y2="320" stroke="var(--text)" stroke-width="1.5"/>
+    <polygon points="136,318 144,318 140,328" fill="var(--text)"/>
+
+    <!-- パネル4: 仕事表と自動ペン -->
+    <rect x="496" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="556" y="278" width="64" height="44" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <line x1="556" y1="294" x2="620" y2="294" stroke="var(--text)" stroke-width="1"/>
+    <line x1="556" y1="308" x2="620" y2="308" stroke="var(--text)" stroke-width="1"/>
+    <line x1="578" y1="278" x2="578" y2="322" stroke="var(--text)" stroke-width="1"/>
+    <line x1="599" y1="278" x2="599" y2="322" stroke="var(--text)" stroke-width="1"/>
+    <line x1="634" y1="290" x2="634" y2="318" stroke="var(--amber)" stroke-width="2.2"/>
+    <polygon points="631,318 637,318 634,324" fill="var(--amber)"/>
+    <circle cx="645" cy="292" r="6" fill="none" stroke="var(--amber)" stroke-width="1.4" stroke-dasharray="2 2"/>
+
+    <!-- パネル5: 三重の鍵と予防線 -->
+    <rect x="16" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <circle cx="86" cy="428" r="6" fill="none" stroke="var(--text)" stroke-width="1.8"/>
+    <line x1="92" y1="428" x2="108" y2="428" stroke="var(--text)" stroke-width="2.2"/>
+    <line x1="102" y1="428" x2="102" y2="434" stroke="var(--text)" stroke-width="1.8"/>
+    <circle cx="86" cy="448" r="6" fill="none" stroke="var(--text)" stroke-width="1.8"/>
+    <line x1="92" y1="448" x2="108" y2="448" stroke="var(--text)" stroke-width="2.2"/>
+    <line x1="102" y1="448" x2="102" y2="454" stroke="var(--text)" stroke-width="1.8"/>
+    <circle cx="86" cy="468" r="6" fill="none" stroke="var(--text)" stroke-width="1.8"/>
+    <line x1="92" y1="468" x2="108" y2="468" stroke="var(--text)" stroke-width="2.2"/>
+    <line x1="102" y1="468" x2="102" y2="474" stroke="var(--text)" stroke-width="1.8"/>
+    <line x1="130" y1="424" x2="130" y2="440" stroke="var(--amber)" stroke-width="1.6"/>
+    <polygon points="126,438 134,438 130,446" fill="var(--amber)"/>
+
+    <!-- パネル6: 時計と効果判定の予約 -->
+    <rect x="496" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <circle cx="576" cy="438" r="18" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.5"/>
+    <line x1="576" y1="438" x2="576" y2="426" stroke="var(--text)" stroke-width="1.8"/>
+    <line x1="576" y1="438" x2="586" y2="442" stroke="var(--text)" stroke-width="1.8"/>
+    <path d="M 606 456 Q 620 456 626 444" fill="none" stroke="var(--text-secondary)" stroke-width="1.2" stroke-dasharray="3 2"/>
+    <path d="M 610 430 l 6 6 l 11 -13" fill="none" stroke="var(--green)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+    <circle cx="48" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="111">1</text>
+      <text x="528" y="111">2</text>
+      <text x="48" y="277">3</text>
+      <text x="528" y="277">4</text>
+      <text x="48" y="443">5</text>
+      <text x="528" y="443">6</text>
+    </g>
+
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="178" y="106">診断は正しく叫んで帰る</text>
+      <text x="658" y="106">鳴ったのに7日誰も読まず</text>
+      <text x="178" y="272">目の前と根の二箇所を直す</text>
+      <text x="658" y="272">3日連続で仕事表へ自動記入</text>
+      <text x="178" y="438">戸締まり三重と予防線追加</text>
+      <text x="658" y="438">効果は3ヶ月後の予約判定</text>
+    </g>
+
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="178" y="150">課題の在庫が尽きてSTOP。</text>
+      <text x="178" y="172">お知らせは7晩連続届く。</text>
+      <text x="658" y="150">前回事故から半年で再発。</text>
+      <text x="658" y="172">警報を聞く人がいない。</text>
+      <text x="178" y="316">在庫は15個足せば復活。</text>
+      <text x="178" y="338">検知→対処の接続欠落。</text>
+      <text x="658" y="316">朝の点検が必ず通る場所。</text>
+      <text x="658" y="338">読む人から書く工程へ。</text>
+      <text x="178" y="482">試験を先に書いて落とす。</text>
+      <text x="178" y="504">16新設・283無傷。</text>
+      <text x="658" y="482">次に止まった時まで未知。</text>
+      <text x="658" y="504">動くのはタスクだけ。</text>
+    </g>
+
+    <text x="480" y="566" font-size="11" fill="var(--text)" text-anchor="middle">読む順: 左上から 1 → 2 → 3 → 4 → 5 → 6</text>
+  </g>
+</svg>
+<figcaption>夜間診断が在庫切れで正しく叫んで帰り7日間誰も動かなかった再発に対し3日連続の警報を朝の点検が必ず通る仕事表へ自動起票する仕組みと予防線を作り、読み忘れという性質を朝の点検が肩代わりして効果判定の予約まで入れた6コマの物語。</figcaption></figure>
 
         </article>
 

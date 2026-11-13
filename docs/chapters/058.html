@@ -436,6 +436,117 @@
 <li>作業記録の正典: obsidian-ssot <code>01_DECISIONS/claude-code/</code> 配下（公開サイトから内部SSOTへの到達経路は遮断）</li>
 </ul>
 <p>&lt;/details&gt;</p>
+<figure class="story-diagram"><!-- 素材: source/058_テスト全合格なのに繋がっていなかった話.md -->
+<svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s058a-title s058a-desc">
+  <title id="s058a-title">全合格だったテストが結合の配線不足を暴かれるまでの流れ</title>
+  <desc id="s058a-desc">設計図だけ読んでゼロから書いた6部品が114テスト全合格だったのに本体へ設定が届かない結合欠陥を外部の検査役が指摘し、繋ぎ目を疑う診断テストを追加して欠陥9件を直し118本で欠陥ゼロに至った6コマの物語。</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <!-- パネル1: 設計図の紙とペン -->
+    <rect x="16" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="82" y="90" width="64" height="46" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <rect x="90" y="98" width="20" height="16" fill="none" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="118" y1="104" x2="138" y2="104" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="90" y1="124" x2="130" y2="124" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="118" y1="112" x2="136" y2="112" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="154" y1="94" x2="154" y2="128" stroke="var(--amber)" stroke-width="2.4"/>
+    <polygon points="151,128 157,128 154,134" fill="var(--amber)"/>
+
+    <!-- パネル2: テスト列と全緑チェック -->
+    <rect x="496" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="556" y="88" width="56" height="13" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1"/>
+    <rect x="556" y="107" width="56" height="13" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1"/>
+    <rect x="556" y="126" width="56" height="13" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1"/>
+    <path d="M 620 92 l 4 4 l 7 -8" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 620 111 l 4 4 l 7 -8" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 620 130 l 4 4 l 7 -8" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- パネル3: 切れた配線と×印 -->
+    <rect x="16" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="76" y="286" width="34" height="28" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <line x1="82" y1="300" x2="104" y2="300" stroke="var(--text-secondary)" stroke-width="1"/>
+    <rect x="138" y="286" width="28" height="28" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <line x1="110" y1="300" x2="117" y2="300" stroke="var(--text)" stroke-width="1.6"/>
+    <path d="M 120 294 l 12 12 M 132 294 l -12 12" fill="none" stroke="var(--red)" stroke-width="2"/>
+    <line x1="133" y1="300" x2="138" y2="300" stroke="var(--text)" stroke-width="1.6"/>
+
+    <!-- パネル4: 二本の切れた配線 -->
+    <rect x="496" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="554" y="272" width="32" height="24" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="586" y1="284" x2="594" y2="284" stroke="var(--text)" stroke-width="1.5"/>
+    <path d="M 597 278 l 10 10 M 607 278 l -10 10" fill="none" stroke="var(--red)" stroke-width="1.8"/>
+    <rect x="614" y="272" width="30" height="24" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <rect x="554" y="304" width="32" height="24" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="586" y1="316" x2="594" y2="316" stroke="var(--text)" stroke-width="1.5"/>
+    <path d="M 597 310 l 10 10 M 607 310 l -10 10" fill="none" stroke="var(--red)" stroke-width="1.8"/>
+    <rect x="614" y="304" width="30" height="24" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+
+    <!-- パネル5: 繋がった配線と緑チェック -->
+    <rect x="16" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="76" y="452" width="30" height="26" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <rect x="136" y="452" width="30" height="26" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <line x1="106" y1="465" x2="136" y2="465" stroke="var(--text)" stroke-width="2"/>
+    <circle cx="121" cy="465" r="4" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <path d="M 114 444 l 5 5 l 9 -11" fill="none" stroke="var(--green)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- パネル6: 公開の箱と欠陥ゼロ -->
+    <rect x="496" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="556" y="446" width="56" height="34" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <line x1="564" y1="456" x2="604" y2="456" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="564" y1="464" x2="596" y2="464" stroke="var(--text-secondary)" stroke-width="1"/>
+    <path d="M 622 448 l 6 6 l 11 -13" fill="none" stroke="var(--green)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+    <circle cx="48" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="111">1</text>
+      <text x="528" y="111">2</text>
+      <text x="48" y="277">3</text>
+      <text x="528" y="277">4</text>
+      <text x="48" y="443">5</text>
+      <text x="528" y="443">6</text>
+    </g>
+
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="178" y="106">設計図だけ読んでゼロから書く</text>
+      <text x="658" y="106">114個のテスト全部合格</text>
+      <text x="178" y="272">届いていないと指摘される</text>
+      <text x="658" y="272">もう一つ同じ穴が見つかる</text>
+      <text x="178" y="438">繋ぎ目を疑う診断テスト追加</text>
+      <text x="658" y="438">欠陥9件を直して欠陥ゼロへ</text>
+    </g>
+
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="178" y="150">写さず自作の方式を選択。</text>
+      <text x="178" y="172">公開の自由まで決まった。</text>
+      <text x="658" y="150">型検査もエラーなし。</text>
+      <text x="658" y="172">これで完成と思われた。</text>
+      <text x="178" y="316">部品は完璧・配線が抜けた。</text>
+      <text x="178" y="338">調整値が本体へ未接続。</text>
+      <text x="658" y="316">全体の設定も本体未達。</text>
+      <text x="658" y="338">片方だけ直した顔だった。</text>
+      <text x="178" y="482">設定が最後まで届くか。</text>
+      <text x="178" y="504">結合テスト4本を新設。</text>
+      <text x="658" y="482">5種の目×4回・68指摘。</text>
+      <text x="658" y="504">繋いだかを必ず問う。</text>
+    </g>
+
+    <text x="480" y="566" font-size="11" fill="var(--text)" text-anchor="middle">読む順: 左上から 1 → 2 → 3 → 4 → 5 → 6</text>
+  </g>
+</svg>
+<figcaption>設計図だけ読んでゼロから書いた6部品が114テスト全合格だったのに本体へ設定が届かない結合欠陥を外部の検査役が指摘し、繋ぎ目を疑う診断テストを追加して欠陥9件を直し118本で欠陥ゼロに至った6コマの物語。</figcaption></figure>
 
         </article>
 
