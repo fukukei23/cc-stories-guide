@@ -180,3 +180,9 @@
   confidence: high
   episode: '067'
   source: 01_DECISIONS/nemly-app/2026-10-29_Phase2実機検証とfailCheck校正.md
+- date: 2026-11-13
+  type: 新しい仕組み
+  reason: 見えない乱数を差し込める部品（rng注入）にして全パターン検査を可能にし、単独でも重大な指摘（CSV injection）を多数決にかけず即採用した実録
+  confidence: high
+  episode: '068'
+  source: 01_DECISIONS/microwin-app/2026-10-16_MicroWin-SprintA-Day1-3実装-drawTask-repository-streak-CSV.md
