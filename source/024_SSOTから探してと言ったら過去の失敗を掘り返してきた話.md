@@ -33,3 +33,5 @@
 - **所在**: SSOT の検索ガイド（ssot-search v2章・Recall実測値つき）
 
 </details>
+
+::: diagram 024
