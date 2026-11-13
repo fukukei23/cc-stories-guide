@@ -446,6 +446,97 @@
 <li>メール実行: SSOTの<code>~/.claude/skills/send-email/SKILL.md</code>（送信ラッパー）</li>
 </ul>
 <p>&lt;/details&gt;</p>
+<figure class="story-diagram"><!-- 素材: source/008_返信文を書いてと言ったら5禁止に気をつけて整えてくれる話.md -->
+<svg viewBox="0 0 960 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s008b-title s008b-desc">
+  <title id="s008b-title">「返信文書いて」一言で5禁止の検査込みで文面が整う流れ</title>
+  <desc id="s008b-desc">書き始めるたび止まっていた外向き文面を「返信文書いて」の一言で精読と5禁止の機械判定が走り、結論から並ぶ型のある文面として送信前検査まで済むまでの4段の流れ。</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <!-- 段1〜4のパネル枠 -->
+    <rect x="16" y="48" width="928" height="66" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="16" y="132" width="928" height="66" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="16" y="216" width="928" height="66" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="16" y="300" width="928" height="66" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+
+    <!-- 段1イラスト: 書き方の候補2つ+迷いの? -->
+    <rect x="72" y="64" width="24" height="30" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="77" y1="74" x2="91" y2="74" stroke="var(--text-secondary)" stroke-width="1"/>
+    <rect x="100" y="64" width="24" height="30" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="105" y1="74" x2="119" y2="74" stroke="var(--text-secondary)" stroke-width="1"/>
+
+    <!-- 段2イラスト: 発話の吹き出し（人+「返信文書いて」） -->
+    <circle cx="88" cy="160" r="12" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <path d="M 72 190 Q 88 174 104 190" fill="none" stroke="var(--text)" stroke-width="1.6"/>
+    <rect x="108" y="150" width="118" height="30" rx="10" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.3"/>
+    <path d="M 116 180 L 104 194 L 140 180" fill="none" stroke="var(--text)" stroke-width="1.3"/>
+
+    <!-- 段3イラスト: 5禁止の検査（紙+チェック付き丸3つ） -->
+    <rect x="72" y="226" width="36" height="44" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="78" y1="238" x2="102" y2="238" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="78" y1="248" x2="98" y2="248" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="78" y1="258" x2="102" y2="258" stroke="var(--text-secondary)" stroke-width="1"/>
+    <circle cx="124" cy="232" r="7" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1"/>
+    <path d="M 121 232 l 2 2 l 4 -4" fill="none" stroke="var(--green)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="124" cy="248" r="7" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1"/>
+    <path d="M 121 248 l 2 2 l 4 -4" fill="none" stroke="var(--green)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="124" cy="264" r="7" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1"/>
+    <path d="M 121 264 l 2 2 l 4 -4" fill="none" stroke="var(--green)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- 段4イラスト: 整った文面から送信箱へ -->
+    <rect x="72" y="322" width="36" height="30" rx="3" fill="var(--bg-secondary)" stroke="var(--green)" stroke-width="1.4"/>
+    <line x1="78" y1="332" x2="102" y2="332" stroke="var(--green)" stroke-width="1"/>
+    <line x1="78" y1="342" x2="98" y2="342" stroke="var(--green)" stroke-width="1"/>
+    <line x1="112" y1="337" x2="126" y2="337" stroke="var(--text)" stroke-width="1.6"/>
+    <polygon points="126,333 126,341 134,337" fill="var(--text)"/>
+    <rect x="138" y="322" width="30" height="30" rx="3" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="144" y1="332" x2="162" y2="332" stroke="var(--accent-dark)" stroke-width="1"/>
+    <line x1="144" y1="342" x2="158" y2="342" stroke="var(--accent-dark)" stroke-width="1"/>
+  </g>
+
+  <!-- 番号丸（accent-bg変数塗り・文字はaccent-dark変数）+ 段4緑チェック -->
+  <circle cx="48" cy="81" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+  <circle cx="48" cy="165" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+  <circle cx="48" cy="249" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+  <circle cx="48" cy="333" r="16" fill="var(--green-bg)" stroke="var(--text)" stroke-width="1.2"/>
+  <path d="M 41 333 l 5 5 l 9 -11" fill="none" stroke="var(--text)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="86">1</text>
+      <text x="48" y="170">2</text>
+      <text x="48" y="254">3</text>
+    </g>
+
+    <!-- 段1の迷いの?（紙の上方・帯内） -->
+    <text x="98" y="62" text-anchor="middle" font-size="13" font-weight="700" fill="var(--accent-dark)">?</text>
+
+    <!-- 段2の発話（吹き出し内・accent-bg変数の上にaccent-dark変数） -->
+    <text x="167" y="170" text-anchor="middle" font-size="13" font-weight="700" fill="var(--accent-dark)">返信文書いて</text>
+
+    <!-- 見出し（1行・text変数） -->
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="260" y="78">外向き文面は書き始めるたび止まる</text>
+      <text x="260" y="162">「返信文書いて」と投げるだけ</text>
+      <text x="260" y="246">5禁止を機械判定して型で整える</text>
+      <text x="260" y="330">型があるから応募返信が安定する</text>
+    </g>
+
+    <!-- 説明（1行・パネル内側=bg-card変数背景なのでtext-secondary変数） -->
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="260" y="98">丁寧すぎ堅苦く砕けすぎ失礼の間で揺れる。</text>
+      <text x="260" y="182">宛先の温度感と要件を精読シートで分解。</text>
+      <text x="260" y="266">結論→根拠→次の動作の順に50〜200字。</text>
+      <text x="260" y="350">送信前チェッカーが欄上限と残骸を検知。</text>
+    </g>
+  </g>
+</svg>
+<figcaption>書き始めるたび止まっていた外向き文面を「返信文書いて」の一言で精読と5禁止の機械判定が走り、結論から並ぶ型のある文面として送信前検査まで済むまでの4段の流れ。</figcaption></figure>
 
         </article>
 

@@ -439,6 +439,110 @@
 <li><strong>所在</strong>: SSOT のX運用プロジェクト記録（2026-07-02付）・原文URL非公開（内部到達経路遮断）</li>
 </ul>
 <p>&lt;/details&gt;</p>
+<figure class="story-diagram"><!-- 素材: source/005_自動で呟かせる前夜調べたら地雷が一杯だった話.md -->
+<svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s005a-title s005a-desc">
+  <title id="s005a-title">公開前に土地のルールを調べて設計を組み替えた流れ</title>
+  <desc id="s005a-desc">自動宣伝の初期案が公開直前の調査で裏目と分かり、リンクを外し間隔を空け自動を補助に格下げして凍結リスクのない設計に変えた6コマの物語。</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <!-- パネル1: 記事を自動宣伝したい（紙+小吹き出し2つ） -->
+    <rect x="16" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="76" y="90" width="36" height="44" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <line x1="83" y1="102" x2="105" y2="102" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="83" y1="112" x2="101" y2="112" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="83" y1="122" x2="105" y2="122" stroke="var(--text-secondary)" stroke-width="1"/>
+    <rect x="120" y="92" width="24" height="16" rx="5" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <rect x="120" y="114" width="24" height="16" rx="5" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+
+    <!-- パネル2: テスト成功で回すだけ（ループ円+緑チェック） -->
+    <rect x="496" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <circle cx="582" cy="118" r="16" fill="none" stroke="var(--text)" stroke-width="2.2"/>
+    <polygon points="596,104 604,110 594,114" fill="var(--text)"/>
+    <path d="M 606 138 l 8 8 l 16 -18" fill="none" stroke="var(--green)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- パネル3: 調べたら地雷が一杯（警告三角+×3つ） -->
+    <rect x="16" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <polygon points="100,260 124,300 76,300" fill="var(--amber-bg)" stroke="var(--amber)" stroke-width="1.8"/>
+    <line x1="100" y1="274" x2="100" y2="286" stroke="var(--amber)" stroke-width="2.4"/>
+    <circle cx="100" cy="292" r="1.6" fill="var(--amber)"/>
+    <path d="M 80 316 l 6 6 M 86 316 l -6 6" fill="none" stroke="var(--red)" stroke-width="2"/>
+    <path d="M 98 316 l 6 6 M 104 316 l -6 6" fill="none" stroke="var(--red)" stroke-width="2"/>
+    <path d="M 116 316 l 6 6 M 122 316 l -6 6" fill="none" stroke="var(--red)" stroke-width="2"/>
+
+    <!-- パネル4: 土地のルールを調べる（開いた本） -->
+    <rect x="496" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <polygon points="556,292 584,284 584,318 556,326" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <polygon points="584,284 612,292 612,326 584,318" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <line x1="562" y1="300" x2="578" y2="296" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="562" y1="308" x2="578" y2="304" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="590" y1="296" x2="606" y2="300" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="590" y1="304" x2="606" y2="308" stroke="var(--text-secondary)" stroke-width="1"/>
+
+    <!-- パネル5: 間隔を空けて補助に（投稿2つ+長い間隔矢印） -->
+    <rect x="16" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="70" y="440" width="26" height="30" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="75" y1="450" x2="90" y2="450" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="75" y1="458" x2="88" y2="458" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="102" y1="455" x2="132" y2="455" stroke="var(--text)" stroke-width="1.6" stroke-dasharray="4 3"/>
+    <polygon points="132,451 132,459 140,455" fill="var(--text)"/>
+    <rect x="144" y="440" width="24" height="30" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="149" y1="450" x2="163" y2="450" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="149" y1="458" x2="161" y2="458" stroke="var(--text-secondary)" stroke-width="1"/>
+
+    <!-- パネル6: 凍結リスクなしで開始（盾+内側緑チェック） -->
+    <rect x="496" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <path d="M 574 430 l 14 -7 l 14 7 v 10 c 0 12 -14 17 -14 17 c 0 0 -14 -5 -14 -17 z" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.3"/>
+    <path d="M 581 438 l 6 6 l 11 -13" fill="none" stroke="var(--green)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+    <!-- 番号丸（accent-bg変数塗り・文字はaccent-dark変数） -->
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="111">1</text>
+      <text x="528" y="111">2</text>
+      <text x="48" y="277">3</text>
+      <text x="528" y="277">4</text>
+      <text x="48" y="443">5</text>
+      <text x="528" y="443">6</text>
+    </g>
+
+    <!-- 見出し（1行・text変数） -->
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="178" y="106">記事を自動で呟いて広げたい</text>
+      <text x="658" y="106">テスト成功であとは回すだけ</text>
+      <text x="178" y="272">調べたら初期案がほぼ全部裏目</text>
+      <text x="658" y="272">道具より先に土地の規約を調べる</text>
+      <text x="178" y="438">戦略を「補助」まで格下げして設計</text>
+      <text x="658" y="438">最初の一発で凍結リスクなしに</text>
+    </g>
+
+    <!-- キャプション（2行・パネル内側=bg-card変数背景なのでtext-secondary変数） -->
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="178" y="150">過去の記事をXで自動宣伝する案。</text>
+      <text x="178" y="172">URL付き投稿を定期で並べる設計。</text>
+      <text x="658" y="150">初期案はシンプルで動いた。</text>
+      <text x="658" y="172">公開直前まで問題はないはずだった。</text>
+      <text x="178" y="316">リンク付きは届く人数が大きく減る。</text>
+      <text x="178" y="338">類似投稿の自動連投は規約でアウト。</text>
+      <text x="658" y="316">テキストだけの投稿が一番届く。</text>
+      <text x="658" y="338">返信の評価はいいねの百倍以上重い。</text>
+      <text x="178" y="482">リンクは本文に流さず言葉で語る。</text>
+      <text x="178" y="504">間隔は空けAI文は手を入れて流す。</text>
+      <text x="658" y="482">凍結されたら復帰はほぼ望めない。</text>
+      <text x="658" y="504">速度より生存で設計思想ごと寄せた。</text>
+    </g>
+
+    <!-- 脚注（ページ背景の上に載るため text変数を使う） -->
+    <text x="480" y="566" font-size="11" fill="var(--text)" text-anchor="middle">読む順: 左上から 1 → 2 → 3 → 4 → 5 → 6</text>
+  </g>
+</svg>
+<figcaption>自動宣伝の初期案が公開直前の調査で裏目と分かり、リンクを外し間隔を空け自動を補助に格下げして凍結リスクのない設計に変えた6コマの物語。</figcaption></figure>
 
         </article>
 

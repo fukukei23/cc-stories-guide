@@ -1,0 +1,91 @@
+<!-- 素材: source/006_定期実行作ってと言ったら排他込みで組んでくれる話.md -->
+<svg viewBox="0 0 960 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s006b-title s006b-desc">
+  <title id="s006b-title">「定期実行作って」一言で排他込みの仕組みができる流れ</title>
+  <desc id="s006b-desc">定期実行の怖さを「定期実行作って」の一言で排他・ログ・正典登録まで一気に組み、同日2回目のスキップまで実測して怖さが消えるまでの4段の流れ。</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <!-- 段1〜4のパネル枠 -->
+    <rect x="16" y="48" width="928" height="66" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="16" y="132" width="928" height="66" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="16" y="216" width="928" height="66" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="16" y="300" width="928" height="66" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+
+    <!-- 段1イラスト: 時計と手作業の繰り返し+疲労の× -->
+    <circle cx="88" cy="80" r="13" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="88" y1="80" x2="88" y2="72" stroke="var(--text)" stroke-width="1.5"/>
+    <line x1="88" y1="80" x2="94" y2="84" stroke="var(--text)" stroke-width="1.5"/>
+    <rect x="112" y="66" width="22" height="18" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="117" y1="75" x2="129" y2="75" stroke="var(--text-secondary)" stroke-width="1"/>
+    <rect x="138" y="66" width="22" height="18" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="143" y1="75" x2="155" y2="75" stroke="var(--text-secondary)" stroke-width="1"/>
+    <rect x="164" y="66" width="22" height="18" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="169" y1="75" x2="181" y2="75" stroke="var(--text-secondary)" stroke-width="1"/>
+    <path d="M 200 70 l 10 10 M 210 70 l -10 10" fill="none" stroke="var(--red)" stroke-width="2.2"/>
+
+    <!-- 段2イラスト: 発話の吹き出し（人+「定期実行作って」） -->
+    <circle cx="88" cy="160" r="12" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <path d="M 72 190 Q 88 174 104 190" fill="none" stroke="var(--text)" stroke-width="1.6"/>
+    <rect x="108" y="150" width="126" height="30" rx="10" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.3"/>
+    <path d="M 116 180 L 104 194 L 144 180" fill="none" stroke="var(--text)" stroke-width="1.3"/>
+
+    <!-- 段3イラスト: 鍵（排他）+ログ（紙）+登録（チェック箱） -->
+    <circle cx="84" cy="244" r="8" fill="none" stroke="var(--text)" stroke-width="1.6"/>
+    <line x1="92" y1="244" x2="106" y2="244" stroke="var(--text)" stroke-width="1.6"/>
+    <line x1="100" y1="244" x2="100" y2="250" stroke="var(--text)" stroke-width="1.6"/>
+    <line x1="106" y1="244" x2="106" y2="250" stroke="var(--text)" stroke-width="1.6"/>
+    <rect x="124" y="234" width="28" height="24" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="130" y1="242" x2="146" y2="242" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="130" y1="250" x2="142" y2="250" stroke="var(--text-secondary)" stroke-width="1"/>
+    <rect x="166" y="234" width="28" height="24" rx="3" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <path d="M 172 246 l 4 4 l 8 -9" fill="none" stroke="var(--green)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- 段4イラスト: 毎日続く実行（箱→箱+緑チェック） -->
+    <rect x="76" y="322" width="28" height="26" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="82" y1="334" x2="98" y2="334" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="108" y1="335" x2="122" y2="335" stroke="var(--text)" stroke-width="1.6"/>
+    <polygon points="122,331 122,339 130,335" fill="var(--text)"/>
+    <rect x="134" y="322" width="28" height="26" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="140" y1="334" x2="156" y2="334" stroke="var(--text-secondary)" stroke-width="1"/>
+    <path d="M 172 328 l 8 8 l 16 -18" fill="none" stroke="var(--green)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- 番号丸（accent-bg変数塗り・文字はaccent-dark変数）+ 段4緑チェック -->
+  <circle cx="48" cy="81" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+  <circle cx="48" cy="165" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+  <circle cx="48" cy="249" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+  <circle cx="48" cy="333" r="16" fill="var(--green-bg)" stroke="var(--text)" stroke-width="1.2"/>
+  <path d="M 41 333 l 5 5 l 9 -11" fill="none" stroke="var(--text)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="86">1</text>
+      <text x="48" y="170">2</text>
+      <text x="48" y="254">3</text>
+    </g>
+
+    <!-- 段2の発話（吹き出し内・accent-bg変数の上にaccent-dark変数） -->
+    <text x="171" y="170" text-anchor="middle" font-size="13" font-weight="700" fill="var(--accent-dark)">定期実行作って</text>
+
+    <!-- 見出し（1行・text変数） -->
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="260" y="78">手動で回すのが続かず後回し</text>
+      <text x="260" y="162">「定期実行作って」と一言投げる</text>
+      <text x="260" y="246">排他・ログ・正典登録まで一気に組む</text>
+      <text x="260" y="330">怖さが消え一言で形にして寝られる</text>
+    </g>
+
+    <!-- 説明（1行・パネル内側=bg-card変数背景なのでtext-secondary変数） -->
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="260" y="98">設定をしくじる不安で定期実行が怖いもの化。</text>
+      <text x="260" y="182">cron-setupが設計から記録まで担当する。</text>
+      <text x="260" y="266">同日2回目は静かにスキップまで実測して報告。</text>
+      <text x="260" y="350">2回走り事故が構造的に消えログで読める。</text>
+    </g>
+  </g>
+</svg>

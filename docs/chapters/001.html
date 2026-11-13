@@ -445,6 +445,114 @@
 <li>実装記録: SSOTの 01_DECISIONS/claude-code/2026-09-01_テストは充分-体系化実装-POC〜Phase1完走.md</li>
 </ul>
 <p>&lt;/details&gt;</p>
+<figure class="story-diagram"><!-- 素材: source/001_テストは充分.md -->
+<svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s001a-title s001a-desc">
+  <title id="s001a-title">「テストは充分？」を機械の照合に置き換えた流れ</title>
+  <desc id="s001a-desc">二日続いた見逃し事故を機に、注意文でなく証拠との突合せ照合に替え、レビューで落とし穴を潰して三つの門番を完成させた6コマの物語。</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <!-- パネル1: 二日連続の同じ失敗（報告ボックス2個・片方は検査の欠け） -->
+    <rect x="16" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="76" y="96" width="40" height="36" rx="4" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <line x1="84" y1="108" x2="108" y2="108" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="84" y1="118" x2="104" y2="118" stroke="var(--text-secondary)" stroke-width="1"/>
+    <rect x="124" y="96" width="40" height="36" rx="4" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <line x1="132" y1="108" x2="156" y2="108" stroke="var(--text-secondary)" stroke-width="1"/>
+    <path d="M 132 116 l 12 12 M 144 116 l -12 12" fill="none" stroke="var(--red)" stroke-width="2.2"/>
+
+    <!-- パネル2: 「テストは充分？」の問いかけ（人+吹き出し） -->
+    <rect x="496" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <circle cx="570" cy="112" r="13" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <path d="M 554 143 Q 570 127 586 143" fill="none" stroke="var(--text)" stroke-width="1.6"/>
+    <rect x="588" y="100" width="54" height="30" rx="9" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.3"/>
+    <path d="M 596 130 L 584 144 L 612 130" fill="none" stroke="var(--text)" stroke-width="1.3"/>
+
+    <!-- パネル3: 注意文は読まれるだけ（紙+確認の欠け×） -->
+    <rect x="16" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="82" y="258" width="40" height="46" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="90" y1="272" x2="114" y2="272" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="90" y1="282" x2="110" y2="282" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="90" y1="292" x2="114" y2="292" stroke="var(--text-secondary)" stroke-width="1"/>
+    <path d="M 128 258 l 16 16 M 144 258 l -16 16" fill="none" stroke="var(--red)" stroke-width="2.4"/>
+
+    <!-- パネル4: 申告と証拠の照合（2箱を等号で結ぶ） -->
+    <rect x="496" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="552" y="292" width="38" height="30" rx="4" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="559" y1="306" x2="583" y2="306" stroke="var(--accent-dark)" stroke-width="1"/>
+    <line x1="594" y1="302" x2="606" y2="302" stroke="var(--text)" stroke-width="1.6"/>
+    <line x1="594" y1="310" x2="606" y2="310" stroke="var(--text)" stroke-width="1.6"/>
+    <rect x="610" y="292" width="36" height="30" rx="4" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="617" y1="302" x2="639" y2="302" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="617" y1="310" x2="635" y2="310" stroke="var(--text-secondary)" stroke-width="1"/>
+
+    <!-- パネル5: 三社四回のレビュー（3つの指摘矢印+丸） -->
+    <rect x="16" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="80" y1="434" x2="80" y2="443" stroke="var(--text)" stroke-width="1.6"/>
+    <line x1="114" y1="434" x2="114" y2="443" stroke="var(--text)" stroke-width="1.6"/>
+    <line x1="148" y1="434" x2="148" y2="443" stroke="var(--text)" stroke-width="1.6"/>
+    <circle cx="80" cy="458" r="11" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="114" cy="458" r="11" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="148" cy="458" r="11" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+
+    <!-- パネル6: 三つの門番完成（シールド3つ+緑チェック） -->
+    <rect x="496" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <path d="M 558 442 l 12 -6 l 12 6 v 9 c 0 10 -12 15 -12 15 c 0 0 -12 -5 -12 -15 z" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <path d="M 590 442 l 12 -6 l 12 6 v 9 c 0 10 -12 15 -12 15 c 0 0 -12 -5 -12 -15 z" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <path d="M 622 442 l 12 -6 l 12 6 v 9 c 0 10 -12 15 -12 15 c 0 0 -12 -5 -12 -15 z" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <path d="M 600 486 l 9 9 l 18 -20" fill="none" stroke="var(--green)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+    <!-- 番号丸（accent-bg変数塗り・文字はaccent-dark変数） -->
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="111">1</text>
+      <text x="528" y="111">2</text>
+      <text x="48" y="277">3</text>
+      <text x="528" y="277">4</text>
+      <text x="48" y="443">5</text>
+      <text x="528" y="443">6</text>
+    </g>
+
+    <!-- パネル2の吹き出し内の問い（accent-bg変数の上にaccent-dark変数） -->
+    <text x="615" y="122" text-anchor="middle" font-size="16" font-weight="700" fill="var(--accent-dark)">?</text>
+
+    <!-- 見出し（1行・text変数） -->
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="178" y="106">二日連続で同じ形の失敗</text>
+      <text x="658" y="106">「テストは充分？」で見つかる</text>
+      <text x="178" y="272">注意文を増やしても守られない</text>
+      <text x="658" y="272">方針を「申告」から「照合」へ</text>
+      <text x="178" y="438">三社四回のレビューで穴を潰す</text>
+      <text x="658" y="438">三つの門番が完成・当日に効果</text>
+    </g>
+
+    <!-- キャプション（2行・パネル内側=bg-card変数背景なのでtext-secondary変数） -->
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="178" y="150">テストは正常系だけ試していた。</text>
+      <text x="178" y="172">調べた鍵は大事なソフトで使われていた。</text>
+      <text x="658" y="150">二件とも一言の問いかけがきっかけ。</text>
+      <text x="658" y="172">聞かれないと自分では気づけない。</text>
+      <text x="178" y="316">「ちゃんとやりなさい」は読まれるだけ。</text>
+      <text x="178" y="338">実際に二日連続で効かなかった。</text>
+      <text x="658" y="316">やったと書かせず証拠と突き合わせる。</text>
+      <text x="658" y="338">機械が一致を確かめる方式に替えた。</text>
+      <text x="178" y="482">止めすぎ・動かない等の指摘を潰した。</text>
+      <text x="178" y="504">そのたびに設計を直して進めた。</text>
+      <text x="658" y="482">テスト18個は全部合格。</text>
+      <text x="658" y="504">その日のうちに偽PASSを発見し直した。</text>
+    </g>
+
+    <!-- 脚注（ページ背景の上に載るため text変数を使う） -->
+    <text x="480" y="566" font-size="11" fill="var(--text)" text-anchor="middle">読む順: 左上から 1 → 2 → 3 → 4 → 5 → 6</text>
+  </g>
+</svg>
+<figcaption>二日続いた見逃し事故を機に、注意文でなく証拠との突合せ照合に替え、レビューで落とし穴を潰して三つの門番を完成させた6コマの物語。</figcaption></figure>
 
         </article>
 

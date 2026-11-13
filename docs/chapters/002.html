@@ -446,6 +446,113 @@
 <li>関連: 2026-08-30の「並行セッションstaged巻き込み-Windows版hook未登録の真因特定」で第2段対応済み</li>
 </ul>
 <p>&lt;/details&gt;</p>
+<figure class="story-diagram"><!-- 素材: source/002_防災フックが鳴らなかった話.md -->
+<svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s002a-title s002a-desc">
+  <title id="s002a-title">25個の警報が鳴らなかった事故と真因の流れ</title>
+  <desc id="s002a-desc">27個の警報装置のうち25個が一度も鳴らず、目印の観測で呼び出しの住所が勝手に書き換わっていた真因を突き止め、全装置を正しい形式に直して定期テストまで足した6コマの物語。</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <!-- パネル1: 警報装置27個（ベル3つ） -->
+    <rect x="16" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <path d="M 78 106 a 6 6 0 0 1 12 0 l 3 6 l -18 0 z" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <circle cx="84" cy="116" r="1.8" fill="var(--text)"/>
+    <path d="M 106 106 a 6 6 0 0 1 12 0 l 3 6 l -18 0 z" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <circle cx="112" cy="116" r="1.8" fill="var(--text)"/>
+    <path d="M 134 106 a 6 6 0 0 1 12 0 l 3 6 l -18 0 z" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <circle cx="140" cy="116" r="1.8" fill="var(--text)"/>
+
+    <!-- パネル2: 25個は一度も鳴っていない（ベル+無音の×） -->
+    <rect x="496" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <path d="M 574 106 a 6 6 0 0 1 12 0 l 3 6 l -18 0 z" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <circle cx="580" cy="116" r="1.8" fill="var(--text)"/>
+    <path d="M 600 96 l 18 18 M 618 96 l -18 18" fill="none" stroke="var(--red)" stroke-width="2.6"/>
+
+    <!-- パネル3: 設定を直しても鳴らない（箱→箱+×） -->
+    <rect x="16" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="74" y="282" width="32" height="28" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="80" y1="291" x2="100" y2="291" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="80" y1="300" x2="96" y2="300" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="110" y1="296" x2="124" y2="296" stroke="var(--text)" stroke-width="1.6"/>
+    <polygon points="124,292 124,300 132,296" fill="var(--text)"/>
+    <rect x="136" y="282" width="32" height="28" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="142" y1="291" x2="162" y2="291" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="142" y1="300" x2="158" y2="300" stroke="var(--text-secondary)" stroke-width="1"/>
+    <path d="M 142 258 l 14 14 M 156 258 l -14 14" fill="none" stroke="var(--red)" stroke-width="2.4"/>
+
+    <!-- パネル4: 目印を仕込んで観測（虫眼鏡+呼ばれない×） -->
+    <rect x="496" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <circle cx="578" cy="286" r="16" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.6"/>
+    <circle cx="578" cy="286" r="6" fill="none" stroke="var(--text-secondary)" stroke-width="1" stroke-dasharray="3 3"/>
+    <line x1="592" y1="300" x2="610" y2="318" stroke="var(--text)" stroke-width="2.6"/>
+    <path d="M 620 270 l 14 14 M 634 270 l -14 14" fill="none" stroke="var(--red)" stroke-width="2.2"/>
+
+    <!-- パネル5: 住所が勝手に書き換わる（旧住所→赤枠の新住所+×） -->
+    <rect x="16" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="70" y="446" width="36" height="26" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="76" y1="459" x2="100" y2="459" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="110" y1="459" x2="124" y2="459" stroke="var(--text)" stroke-width="1.6"/>
+    <polygon points="124,455 124,463 132,459" fill="var(--text)"/>
+    <rect x="138" y="446" width="32" height="26" rx="3" fill="var(--bg-secondary)" stroke="var(--red)" stroke-width="1.4"/>
+    <line x1="144" y1="459" x2="164" y2="459" stroke="var(--red)" stroke-width="1"/>
+    <path d="M 146 424 l 12 12 M 158 424 l -12 12" fill="none" stroke="var(--red)" stroke-width="2.2"/>
+
+    <!-- パネル6: 正しい形式で全鳴る（ベル+音波+緑チェック） -->
+    <rect x="496" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <path d="M 572 446 a 6 6 0 0 1 12 0 l 3 6 l -18 0 z" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <circle cx="578" cy="456" r="1.8" fill="var(--text)"/>
+    <path d="M 596 440 q 6 8 0 16" fill="none" stroke="var(--text)" stroke-width="1.6"/>
+    <path d="M 604 436 q 10 12 0 24" fill="none" stroke="var(--text)" stroke-width="1.6"/>
+    <path d="M 618 458 l 8 8 l 16 -18" fill="none" stroke="var(--green)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+    <!-- 番号丸（accent-bg変数塗り・文字はaccent-dark変数） -->
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="111">1</text>
+      <text x="528" y="111">2</text>
+      <text x="48" y="277">3</text>
+      <text x="528" y="277">4</text>
+      <text x="48" y="443">5</text>
+      <text x="528" y="443">6</text>
+    </g>
+
+    <!-- 見出し（1行・text変数） -->
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="178" y="106">危ない命令を止める警報27個</text>
+      <text x="658" y="106">25個が一度も鳴っていなかった</text>
+      <text x="178" y="272">設定ミスと直したが直らない</text>
+      <text x="658" y="272">目印を仕込んで呼び出しを観測</text>
+      <text x="178" y="438">真因は住所の書き換えだった</text>
+      <text x="658" y="438">全27個を正しい形式に書き直す</text>
+    </g>
+
+    <!-- キャプション（2行・パネル内側=bg-card変数背景なのでtext-secondary変数） -->
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="178" y="150">危ない命令を出したら止める警報。</text>
+      <text x="178" y="172">27個の装置が入っていた。</text>
+      <text x="658" y="150">火事になっても2個しか鳴らない。</text>
+      <text x="658" y="172">動いていないのは画面に出ない。</text>
+      <text x="178" y="316">三日がかりであちこち直した。</text>
+      <text x="178" y="338">警報器はやっぱり鳴らなかった。</text>
+      <text x="658" y="316">スクリプトに一時的な記録を仕込む。</text>
+      <text x="658" y="338">普通の呼び出しでは呼ばれていなかった。</text>
+      <text x="178" y="482">呼び出し文の住所が勝手に書き換わる。</text>
+      <text x="178" y="504">装置は場所がないと音もなく停止。</text>
+      <text x="658" y="482">書き換えを逃れる形式へ一括変換。</text>
+      <text x="658" y="504">定期テストで小さな火事を流す。</text>
+    </g>
+
+    <!-- 脚注（ページ背景の上に載るため text変数を使う） -->
+    <text x="480" y="566" font-size="11" fill="var(--text)" text-anchor="middle">読む順: 左上から 1 → 2 → 3 → 4 → 5 → 6</text>
+  </g>
+</svg>
+<figcaption>27個の警報装置のうち25個が一度も鳴らず、目印の観測で呼び出しの住所が勝手に書き換わっていた真因を突き止め、全装置を正しい形式に直して定期テストまで足した6コマの物語。</figcaption></figure>
 
         </article>
 

@@ -445,6 +445,83 @@
 <li>関連スキル:なし（単独で品質を上げる入口）</li>
 </ul>
 <p>&lt;/details&gt;</p>
+<figure class="story-diagram"><!-- 素材: source/009_リポジトリレビューしてと言ったら品質を点数で出してくれる話.md -->
+<svg viewBox="0 0 960 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s009b-title s009b-desc">
+  <title id="s009b-title">「リポジトリレビューして」一言で実測ベースの点数が出る流れ</title>
+  <desc id="s009b-desc">公開に不安のあるリポジトリを「リポジトリレビューして」の一言で種別判定と実測走査が走り、推測でない計測値の点数と最重要3点の改善案が出るまでの4段の流れ。</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <!-- 段1〜4のパネル枠 -->
+    <rect x="16" y="48" width="928" height="66" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="16" y="132" width="928" height="66" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="16" y="216" width="928" height="66" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="16" y="300" width="928" height="66" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+
+    <!-- 段1イラスト: 棚上げの箱+欠落の×3つ -->
+    <rect x="72" y="70" width="30" height="24" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="78" y1="82" x2="96" y2="82" stroke="var(--text-secondary)" stroke-width="1"/>
+    <path d="M 112 62 l 8 8 M 120 62 l -8 8" fill="none" stroke="var(--red)" stroke-width="1.8"/>
+    <path d="M 112 76 l 8 8 M 120 76 l -8 8" fill="none" stroke="var(--red)" stroke-width="1.8"/>
+    <path d="M 112 90 l 8 8 M 120 90 l -8 8" fill="none" stroke="var(--red)" stroke-width="1.8"/>
+
+    <!-- 段2イラスト: 発話の吹き出し（人+「リポジトリレビューして」） -->
+    <circle cx="80" cy="160" r="12" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <path d="M 64 190 Q 80 174 96 190" fill="none" stroke="var(--text)" stroke-width="1.6"/>
+    <rect x="98" y="150" width="152" height="30" rx="10" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.3"/>
+    <path d="M 106 180 L 94 194 L 130 180" fill="none" stroke="var(--text)" stroke-width="1.3"/>
+
+    <!-- 段3イラスト: 実測の点数バー+緑チェック -->
+    <rect x="72" y="240" width="54" height="12" rx="6" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <rect x="74" y="242" width="38" height="8" rx="4" fill="var(--green)"/>
+    <path d="M 136 240 l 6 6 l 12 -14" fill="none" stroke="var(--green)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- 段4イラスト: 改善の上昇グラフ -->
+    <path d="M 72 320 L 72 348 L 128 348" fill="none" stroke="var(--text)" stroke-width="1.6"/>
+    <path d="M 78 342 L 96 334 L 110 338 L 126 326" fill="none" stroke="var(--green)" stroke-width="2.4"/>
+    <polygon points="128,324 119,327 123,332" fill="var(--green)"/>
+  </g>
+
+  <!-- 番号丸（accent-bg変数塗り・文字はaccent-dark変数）+ 段4緑チェック -->
+  <circle cx="48" cy="81" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+  <circle cx="48" cy="165" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+  <circle cx="48" cy="249" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+  <circle cx="48" cy="333" r="16" fill="var(--green-bg)" stroke="var(--text)" stroke-width="1.2"/>
+  <path d="M 41 333 l 5 5 l 9 -11" fill="none" stroke="var(--text)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="86">1</text>
+      <text x="48" y="170">2</text>
+      <text x="48" y="254">3</text>
+    </g>
+
+    <!-- 段2の発話（吹き出し内・accent-bg変数の上にaccent-dark変数） -->
+    <text x="174" y="170" text-anchor="middle" font-size="13" font-weight="700" fill="var(--accent-dark)">リポジトリレビューして</text>
+
+    <!-- 見出し（1行・text変数） -->
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="260" y="78">見せたいリポが棚上げされる</text>
+      <text x="260" y="162">「リポジトリレビューして」と一言</text>
+      <text x="260" y="246">計測値で点数と最重要3点を出す</text>
+      <text x="260" y="330">点数と根拠で改善が前に進む</text>
+    </g>
+
+    <!-- 説明（1行・パネル内側=bg-card変数背景なのでtext-secondary変数） -->
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="260" y="98">README・テスト・CIの不安で直す手が迷う。</text>
+      <text x="260" y="182">種別を判定して当てはまる評価軸で点検。</text>
+      <text x="260" y="266">行数・テスト数・hashまで推測でなく実測。</text>
+      <text x="260" y="350">点数・fail条件・観測出力で直した感を防ぐ。</text>
+    </g>
+  </g>
+</svg>
+<figcaption>公開に不安のあるリポジトリを「リポジトリレビューして」の一言で種別判定と実測走査が走り、推測でない計測値の点数と最重要3点の改善案が出るまでの4段の流れ。</figcaption></figure>
 
         </article>
 
