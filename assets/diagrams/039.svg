@@ -1,0 +1,103 @@
+<!-- 素材: source/039_必須タグがなくても8割の点数が出てしまった話.md -->
+<svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s039a-title s039a-desc">
+  <title id="s039a-title">必須タグ不一致でも高得点が出る採点式を上限ルール1行で直した流れ</title>
+  <desc id="s039a-desc">必須タグが無いのにタグ軸0.8・合計0.62で自動確定ラインを超えた採点式の欠陥を、必須不一致時にスコア上限0.6へ閉じる1行のルールでLLM仲裁ゾーンへ落とし、確認される構造に直した6コマの物語。</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <!-- パネル1: 3軸の点数方式を導入した（配点バー3本+合計矢印） -->
+    <rect x="16" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="72" y1="92" x2="120" y2="92" stroke="var(--accent-dark)" stroke-width="5"/>
+    <line x1="72" y1="106" x2="104" y2="106" stroke="var(--text-secondary)" stroke-width="5"/>
+    <line x1="72" y1="120" x2="104" y2="120" stroke="var(--text-secondary)" stroke-width="5"/>
+    <line x1="130" y1="92" x2="130" y2="118" stroke="var(--text)" stroke-width="1"/>
+    <polygon points="126,116 134,116 130,124" fill="var(--text)"/>
+
+    <!-- パネル2: 実データ試算で変なケース発覚（必須枠×・追加枠一致・高得点バー） -->
+    <rect x="496" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="548" y="86" width="26" height="16" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.1"/>
+    <path d="M 556 90 l 8 8 M 564 90 l -8 8" stroke="var(--red)" stroke-width="1.6"/>
+    <rect x="580" y="86" width="26" height="16" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.1"/>
+    <line x1="585" y1="94" x2="601" y2="94" stroke="var(--accent-dark)" stroke-width="1.8"/>
+    <line x1="612" y1="94" x2="636" y2="94" stroke="var(--green)" stroke-width="3"/>
+
+    <!-- パネル3: 一致割合×0.8＋bonus0.2の式（白紙答案+緑バー） -->
+    <rect x="16" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="88" y="252" width="42" height="52" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="140" y1="258" x2="140" y2="298" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="152" y1="296" x2="152" y2="270" stroke="var(--green)" stroke-width="3"/>
+    <line x1="160" y1="296" x2="160" y2="282" stroke="var(--green)" stroke-width="3"/>
+
+    <!-- パネル4: 合計0.62で自動確定ライン超過（閾値線を超えるバー+警告丸） -->
+    <rect x="496" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="552" y1="292" x2="624" y2="292" stroke="var(--red)" stroke-width="1.4" stroke-dasharray="4 3"/>
+    <line x1="552" y1="282" x2="610" y2="282" stroke="var(--accent-dark)" stroke-width="4"/>
+    <line x1="552" y1="310" x2="580" y2="310" stroke="var(--text-secondary)" stroke-width="4"/>
+    <circle cx="634" cy="286" r="11" fill="var(--amber-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="634" y1="280" x2="634" y2="287" stroke="var(--text)" stroke-width="1.6"/>
+    <circle cx="634" cy="292" r="1.2" fill="var(--text)"/>
+
+    <!-- パネル5: 必須不一致は上限0.6に閉じる（バーがゲートで止まる） -->
+    <rect x="16" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="72" y1="452" x2="122" y2="452" stroke="var(--accent-dark)" stroke-width="4"/>
+    <line x1="130" y1="438" x2="130" y2="486" stroke="var(--text)" stroke-width="2.4"/>
+    <circle cx="152" cy="462" r="10" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <path d="M 147 462 l 4 4 l 6 -8" fill="none" stroke="var(--accent-dark)" stroke-width="1.4"/>
+
+    <!-- パネル6: 満点の取り方を先に疑う（答案+虫眼鏡） -->
+    <rect x="496" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="552" y="424" width="36" height="44" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="559" y1="438" x2="581" y2="438" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="559" y1="450" x2="575" y2="450" stroke="var(--accent-dark)" stroke-width="2"/>
+    <circle cx="606" cy="468" r="15" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.5"/>
+    <line x1="617" y1="479" x2="631" y2="493" stroke="var(--text)" stroke-width="2.6"/>
+  </g>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+    <circle cx="48" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="111">1</text>
+      <text x="528" y="111">2</text>
+      <text x="48" y="277">3</text>
+      <text x="528" y="277">4</text>
+      <text x="48" y="443">5</text>
+      <text x="528" y="443">6</text>
+    </g>
+
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="178" y="106">3軸の点数方式を導入した</text>
+      <text x="658" y="106">実データ試算で変なケース発覚</text>
+      <text x="178" y="272">一致割合とbonusを合算する式</text>
+      <text x="658" y="272">合計0.62で自動確定ライン超過</text>
+      <text x="178" y="438">必須不一致は上限0.6に閉じる</text>
+      <text x="658" y="438">満点の取り方を先に疑う</text>
+    </g>
+
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="178" y="150">タグ0.4・ハブ0.3・特性0.3。</text>
+      <text x="178" y="172">合計点で行き先を決める。</text>
+      <text x="658" y="150">必須タグが1つも無い記録。</text>
+      <text x="658" y="172">タグ軸だけで0.8を取る。</text>
+      <text x="178" y="316">必須が外れても0.8が成立。</text>
+      <text x="178" y="338">白紙でも他が満点なら8割。</text>
+      <text x="658" y="316">どの記録か分からないまま。</text>
+      <text x="658" y="338">確認なしで書き込まれる。</text>
+      <text x="178" y="482">1行のルールで0.62→0.51。</text>
+      <text x="178" y="504">LLM仲裁ゾーンへ落ちる。</text>
+      <text x="658" y="482">重み変更は実計算で悪化。</text>
+      <text x="658" y="504">確認される構造に直った。</text>
+    </g>
+
+    <text x="480" y="566" font-size="11" fill="var(--text)" text-anchor="middle">読む順: 左上から 1 → 2 → 3 → 4 → 5 → 6</text>
+  </g>
+</svg>
