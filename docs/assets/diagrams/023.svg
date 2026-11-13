@@ -1,0 +1,82 @@
+<!-- 素材: source/023_比較してと言ったら選択肢を深掘りして推奨まで出してきた話.md -->
+<svg viewBox="0 0 960 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s023b-title s023b-desc">
+  <title id="s023b-title">「比較して」一言で選択肢を点数化して推奨と理由まで出してくる流れ</title>
+  <desc id="s023b-desc">選択肢が並ぶだけで決められない問題を「比較して」の一言で評価軸を決めて点数化し5段階の深さで深掘りして推奨と理由まで持ち帰り、推奨を読んで決められるまでの4段の流れ。</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <!-- 段1〜4のパネル枠 -->
+    <rect x="16" y="48" width="928" height="66" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="16" y="132" width="928" height="66" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="16" y="216" width="928" height="66" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="16" y="300" width="928" height="66" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+
+    <!-- 段1イラスト: 候補3箱が並ぶだけ+迷いの丸と? -->
+    <rect x="72" y="66" width="30" height="30" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <rect x="106" y="66" width="30" height="30" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <rect x="140" y="66" width="30" height="30" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <path d="M 186 74 c 8 0 8 8 0 8 c -3 2 -3 4 -3 4" fill="none" stroke="var(--text)" stroke-width="1.6"/>
+    <circle cx="183" cy="92" r="1.4" fill="var(--text)"/>
+
+    <!-- 段2イラスト: 人+「比較して」吹き出し -->
+    <circle cx="88" cy="160" r="12" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <path d="M 72 190 Q 88 174 104 190" fill="none" stroke="var(--text)" stroke-width="1.6"/>
+    <rect x="108" y="150" width="86" height="30" rx="10" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.3"/>
+    <path d="M 116 180 L 104 194 L 144 180" fill="none" stroke="var(--text)" stroke-width="1.3"/>
+
+    <!-- 段3イラスト: 評価軸の棒グラフ3本+深掘り矢印 -->
+    <rect x="88" y="254" width="12" height="22" fill="var(--accent-bg)" stroke="var(--accent-dark)" stroke-width="1.2"/>
+    <rect x="106" y="244" width="12" height="32" fill="var(--accent-bg)" stroke="var(--accent-dark)" stroke-width="1.2"/>
+    <rect x="124" y="250" width="12" height="26" fill="var(--accent-bg)" stroke="var(--accent-dark)" stroke-width="1.2"/>
+    <line x1="82" y1="276" x2="144" y2="276" stroke="var(--text)" stroke-width="1.6"/>
+    <line x1="152" y1="264" x2="168" y2="252" stroke="var(--text)" stroke-width="1.6"/>
+    <polygon points="166,248 174,246 172,254" fill="var(--text)"/>
+
+    <!-- 段4イラスト: 推奨の票+緑チェック+過去記録の蓄積箱 -->
+    <rect x="76" y="322" width="30" height="26" rx="3" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <path d="M 83 334 l 4 4 l 9 -10" fill="none" stroke="var(--green)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="112" y="330" width="24" height="18" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="117" y1="339" x2="131" y2="339" stroke="var(--text-secondary)" stroke-width="1"/>
+    <rect x="140" y="330" width="24" height="18" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="145" y1="339" x2="159" y2="339" stroke="var(--text-secondary)" stroke-width="1"/>
+  </g>
+
+  <!-- 番号丸（accent-bg変数塗り・文字はaccent-dark変数）+ 段4緑チェック -->
+  <circle cx="48" cy="81" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+  <circle cx="48" cy="165" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+  <circle cx="48" cy="249" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+  <circle cx="48" cy="333" r="16" fill="var(--green-bg)" stroke="var(--text)" stroke-width="1.2"/>
+  <path d="M 41 333 l 5 5 l 9 -11" fill="none" stroke="var(--text)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="86">1</text>
+      <text x="48" y="170">2</text>
+      <text x="48" y="254">3</text>
+    </g>
+
+    <!-- 段2の発話（吹き出し内・accent-bg変数の上にaccent-dark変数） -->
+    <text x="151" y="170" text-anchor="middle" font-size="13" font-weight="700" fill="var(--accent-dark)">比較して</text>
+
+    <!-- 見出し（1行・text変数） -->
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="260" y="78">選択肢3つ4つで決められない</text>
+      <text x="260" y="162">「比較して」と一言投げる</text>
+      <text x="260" y="246">点数化と深掘りで推奨まで出す</text>
+      <text x="260" y="330">推奨と理由だけ読んで決められる</text>
+    </g>
+
+    <!-- 説明（1行・パネル内側=bg-card変数背景なのでtext-secondary変数） -->
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="260" y="98">で、どれがいいの？で止まりエネルギーも取られる。</text>
+      <text x="260" y="182">メリデメ教えて・お勧めは？でも同じく動く。</text>
+      <text x="260" y="266">軽い相談は候補固定・重い決断は複数AIに反対意見も言わせる。</text>
+      <text x="260" y="350">過去の判断が蓄積し同じ種類の議論を二度しない。</text>
+    </g>
+  </g>
+</svg>

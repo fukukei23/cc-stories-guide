@@ -437,6 +437,126 @@
 <p><strong>既存資産統合</strong>: cyber-wa-song / sangoku-song / reverse-engineer-song の作曲フェーズを本スキルへ委譲。各スキルは固有カタログだけ残してスリム化（YAGNI徹底）。</p>
 <p><strong>素材出典</strong>: <code>obsidian-ssot/01_DECISIONS/ai-music/2026-06-16_AI作曲スキル_design.md</code>（259行・full design spec）
 &lt;/details&gt;</p>
+<figure class="story-diagram"><!-- 素材: source/019_作曲を頼んだらAIの癖に振り回されない道具立てになった話.md -->
+<svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s019a-title s019a-desc">
+  <title id="s019a-title">AI依存で積み上がった作曲の工夫を4象限と5棚で持ち替え可能にした流れ</title>
+  <desc id="s019a-desc">AI固有で積み上がり紙くず化の恐れがあった作曲の工夫を、残るか×確かめられたかの4象限に仕分け5つの棚に重ね、刻印で区別し固有の棚だけ書き直す運用にした6コマの物語。</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <!-- パネル1: 工夫がAI依存のまま積み上がる（紙の山3枚+依存の小丸） -->
+    <rect x="16" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="86" y="98" width="42" height="30" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <rect x="90" y="88" width="42" height="30" rx="3" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.2"/>
+    <rect x="94" y="78" width="42" height="30" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="146" cy="76" r="9" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.3"/>
+    <line x1="146" y1="82" x2="132" y2="94" stroke="var(--text)" stroke-width="1.4" stroke-dasharray="3 2"/>
+
+    <!-- パネル2: AIが変われば全部紙くずになる（崩れて散らばる紙+×印） -->
+    <rect x="496" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="548" y="106" width="30" height="22" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2" transform="rotate(-18 563 117)"/>
+    <rect x="588" y="120" width="30" height="22" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2" transform="rotate(14 603 131)"/>
+    <rect x="628" y="102" width="30" height="22" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2" transform="rotate(-9 643 113)"/>
+    <path d="M 596 88 l 10 10 M 606 88 l -10 10" fill="none" stroke="var(--red)" stroke-width="2.2"/>
+
+    <!-- パネル3: 2軸で4象限に仕分ける（十字線+4つの升に丸） -->
+    <rect x="16" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="82" y="250" width="84" height="80" fill="none" stroke="var(--text)" stroke-width="1.3"/>
+    <line x1="124" y1="250" x2="124" y2="330" stroke="var(--text)" stroke-width="1.3"/>
+    <line x1="82" y1="290" x2="166" y2="290" stroke="var(--text)" stroke-width="1.3"/>
+    <circle cx="145" cy="270" r="8" fill="var(--green-bg)" stroke="var(--green)" stroke-width="1.4"/>
+    <circle cx="103" cy="270" r="8" fill="var(--bg-secondary)" stroke="var(--text-secondary)" stroke-width="1.2"/>
+    <circle cx="145" cy="310" r="8" fill="var(--accent-bg)" stroke="var(--accent-dark)" stroke-width="1.4"/>
+    <circle cx="103" cy="310" r="8" fill="none" stroke="var(--text-secondary)" stroke-width="1.2" stroke-dasharray="3 2"/>
+
+    <!-- パネル4: 5つの棚に重ねて整理（横板5本・固有の棚だけ色違い） -->
+    <rect x="496" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="548" y="262" width="76" height="8" fill="var(--text)"/>
+    <rect x="548" y="282" width="76" height="8" fill="var(--text)"/>
+    <rect x="548" y="302" width="76" height="8" fill="var(--text)"/>
+    <rect x="548" y="322" width="76" height="10" fill="var(--accent-dark)" stroke="var(--text)" stroke-width="1"/>
+    <rect x="548" y="342" width="76" height="8" fill="var(--text)"/>
+
+    <!-- パネル5: [L1][L2]の刻印で一目で区別（紙2枚にラベル帯） -->
+    <rect x="16" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="76" y="420" width="42" height="62" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <rect x="76" y="420" width="42" height="16" fill="var(--green-bg)" stroke="var(--text)" stroke-width="1"/>
+    <line x1="82" y1="450" x2="112" y2="450" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="82" y1="462" x2="112" y2="462" stroke="var(--text-secondary)" stroke-width="1"/>
+    <rect x="126" y="420" width="42" height="62" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <rect x="126" y="420" width="42" height="16" fill="var(--amber-bg)" stroke="var(--text)" stroke-width="1"/>
+    <line x1="132" y1="450" x2="162" y2="450" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="132" y1="462" x2="156" y2="462" stroke="var(--text-secondary)" stroke-width="1"/>
+
+    <!-- パネル6: 固有の棚だけ書き直す運用（棚+1枚だけ緑で差し替わる板） -->
+    <rect x="496" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="548" y="422" width="76" height="8" fill="var(--text)"/>
+    <rect x="548" y="442" width="76" height="8" fill="var(--text)"/>
+    <rect x="548" y="462" width="76" height="10" fill="var(--green)" stroke="var(--text)" stroke-width="1"/>
+    <rect x="548" y="482" width="76" height="8" fill="var(--text)"/>
+    <path d="M 640 456 l 10 10 l 20 -24" fill="none" stroke="var(--green)" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="560" y1="406" x2="564" y2="398" stroke="var(--amber)" stroke-width="1.8"/>
+    <line x1="580" y1="402" x2="582" y2="396" stroke="var(--amber)" stroke-width="1.8"/>
+    <line x1="600" y1="406" x2="604" y2="400" stroke="var(--amber)" stroke-width="1.8"/>
+  </g>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+    <!-- 番号丸（accent-bg変数塗り・文字はaccent-dark変数・両テーマ4.5:1以上） -->
+    <circle cx="48" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="111">1</text>
+      <text x="528" y="111">2</text>
+      <text x="48" y="277">3</text>
+      <text x="528" y="277">4</text>
+      <text x="48" y="443">5</text>
+      <text x="528" y="443">6</text>
+    </g>
+
+    <!-- パネル5の棚ラベル（ラベル帯の上にaccent-dark変数） -->
+    <text x="97" y="433" text-anchor="middle" font-size="11" font-weight="700" fill="var(--accent-dark)">L1</text>
+    <text x="147" y="433" text-anchor="middle" font-size="11" font-weight="700" fill="var(--accent-dark)">L2</text>
+
+    <!-- 見出し（1行・text変数） -->
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="178" y="106">工夫がAI依存のまま積み上がる</text>
+      <text x="658" y="106">AIが変われば全部紙くずになる</text>
+      <text x="178" y="272">2軸で4象限に仕分ける</text>
+      <text x="658" y="272">5つの棚に重ねて整理</text>
+      <text x="178" y="438">頭の刻印でどの棚か一目で区別</text>
+      <text x="658" y="438">固有の棚だけ書き直す運用</text>
+    </g>
+
+    <!-- キャプション（2行・パネル内側=bg-card変数背景なのでtext-secondary変数） -->
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="178" y="150">A社で効く小技がB社では効かない。</text>
+      <text x="178" y="172">何が大事か自分でも分からない。</text>
+      <text x="658" y="150">培った工夫が朝にはただの紙くず。</text>
+      <text x="658" y="172">芯は保ったまま差分だけ替えたい。</text>
+      <text x="178" y="316">残るかで縦・確かめられたかで横。</text>
+      <text x="178" y="338">未確かの物は升目の隅へ追いやる。</text>
+      <text x="658" y="316">姿勢・理論・流行・実測・制作記録。</text>
+      <text x="658" y="338">基礎はそのまま固有だけ書き直す。</text>
+      <text x="178" y="482">どの棚の話か頭の刻印で判別。</text>
+      <text x="178" y="504">見直すべきは刻印付きの棚だけ。</text>
+      <text x="658" y="482">流行は月で固有は実測で反映。</text>
+      <text x="658" y="504">軽くても本格仕様でも応じられる。</text>
+    </g>
+
+    <!-- 脚注（ページ背景の上に載るためtext変数） -->
+    <text x="480" y="566" font-size="11" fill="var(--text)" text-anchor="middle">読む順: 左上から 1 → 2 → 3 → 4 → 5 → 6</text>
+  </g>
+</svg>
+<figcaption>AI固有で積み上がり紙くず化の恐れがあった作曲の工夫を、残るか×確かめられたかの4象限に仕分け5つの棚に重ね、刻印で区別し固有の棚だけ書き直す運用にした6コマの物語。</figcaption></figure>
 
         </article>
 

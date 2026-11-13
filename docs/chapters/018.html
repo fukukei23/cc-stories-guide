@@ -431,6 +431,122 @@
 </ul>
 <p>累計: 73指摘・採用12・fail-open実バグ2個+表示バグ1個修復・回帰テスト47件全緑・本番発火テスト（block/allow両経路）実測。詳細記録はSSOT内部に保存（非公開）。</p>
 <p>&lt;/details&gt;</p>
+<figure class="story-diagram"><!-- 素材: source/018_検問の穴を塞ぐと別の穴が開いて最後は自分の違和感が正しかった話.md -->
+<svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s018a-title s018a-desc">
+  <title id="s018a-title">検問の穴塞ぎ連鎖を規則で断ち切り違和感から古い壊れまで掘り当てた流れ</title>
+  <desc id="s018a-desc">検問の抜け道を塞ぐたび別の穴が開く連鎖を、前回内容を隠した3回審査と混ぜない規則で断ち切り、全緑後の違和感から作成時から壊れていた説明文まで掘り当てた6コマの物語。</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <!-- パネル1: 検問の細かい抜け道を指摘される（ゲート2本+正規経路矢印+点線の回り込み経路） -->
+    <rect x="16" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="92" y1="88" x2="92" y2="192" stroke="var(--text)" stroke-width="3"/>
+    <line x1="120" y1="88" x2="120" y2="192" stroke="var(--text)" stroke-width="3"/>
+    <line x1="70" y1="140" x2="84" y2="140" stroke="var(--blue)" stroke-width="1.8"/>
+    <polygon points="84,136 84,144 92,140" fill="var(--blue)"/>
+    <path d="M 100 186 Q 130 158 108 96" fill="none" stroke="var(--red)" stroke-width="1.6" stroke-dasharray="5 4"/>
+    <polygon points="104,100 112,98 108,108" fill="var(--red)"/>
+
+    <!-- パネル2: 塞ぐたび別の穴が開く連鎖（曲がるパイプ+漏れ位置の移動と×2つ） -->
+    <rect x="496" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <path d="M 548 96 h 44 v 34 h 44" fill="none" stroke="var(--text)" stroke-width="5"/>
+    <line x1="556" y1="104" x2="566" y2="112" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="566" y1="104" x2="556" y2="112" stroke="var(--text-secondary)" stroke-width="1"/>
+    <path d="M 600 138 l 9 9 M 609 138 l -9 9" fill="none" stroke="var(--red)" stroke-width="2.2"/>
+    <path d="M 640 178 l 9 9 M 649 178 l -9 9" fill="none" stroke="var(--red)" stroke-width="2.2"/>
+
+    <!-- パネル3: 前回内容を隠して3回見てもらう（審査員丸3体+遮断破線） -->
+    <rect x="16" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <circle cx="82" cy="300" r="13" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <circle cx="116" cy="300" r="13" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <circle cx="150" cy="300" r="13" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <line x1="99" y1="282" x2="99" y2="318" stroke="var(--red)" stroke-width="1.6" stroke-dasharray="4 3"/>
+    <line x1="133" y1="282" x2="133" y2="318" stroke="var(--red)" stroke-width="1.6" stroke-dasharray="4 3"/>
+
+    <!-- パネル4: 直し方に一本の規則が定まる（規則の縦板+入り口/出口の2矢印） -->
+    <rect x="496" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="546" y="266" width="34" height="64" rx="3" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.3"/>
+    <line x1="552" y1="278" x2="574" y2="278" stroke="var(--accent-dark)" stroke-width="1.6"/>
+    <line x1="552" y1="292" x2="574" y2="292" stroke="var(--accent-dark)" stroke-width="1.6"/>
+    <line x1="552" y1="306" x2="574" y2="306" stroke="var(--accent-dark)" stroke-width="1.6"/>
+    <line x1="592" y1="286" x2="616" y2="286" stroke="var(--text)" stroke-width="1.6"/>
+    <polygon points="616,282 616,290 624,286" fill="var(--text)"/>
+    <line x1="648" y1="310" x2="624" y2="310" stroke="var(--text)" stroke-width="1.6"/>
+    <polygon points="624,306 624,314 616,310" fill="var(--text)"/>
+
+    <!-- パネル5: 全緑の後に点検係の違和感（緑チェック2つ+拡大鏡） -->
+    <rect x="16" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="76" y="424" width="24" height="28" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <path d="M 78 436 l 4 4 l 7 -8" fill="none" stroke="var(--green)" stroke-width="2"/>
+    <rect x="108" y="424" width="24" height="28" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <path d="M 110 436 l 4 4 l 7 -8" fill="none" stroke="var(--green)" stroke-width="2"/>
+    <circle cx="132" cy="488" r="15" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.8"/>
+    <line x1="143" y1="499" x2="158" y2="514" stroke="var(--text)" stroke-width="3"/>
+    <path d="M 126 488 a 6 6 0 0 1 12 0" fill="none" stroke="var(--accent-dark)" stroke-width="1.4"/>
+
+    <!-- パネル6: 作成時から壊れていた説明文（紙+壊れ印+直しチェック） -->
+    <rect x="496" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="546" y="418" width="52" height="64" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <line x1="552" y1="432" x2="592" y2="432" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="552" y1="444" x2="592" y2="444" stroke="var(--red)" stroke-width="2"/>
+    <line x1="552" y1="456" x2="592" y2="456" stroke="var(--text-secondary)" stroke-width="1"/>
+    <path d="M 608 428 l 10 10 M 618 428 l -10 10" fill="none" stroke="var(--red)" stroke-width="2.2"/>
+    <path d="M 608 462 l 8 8 l 16 -18" fill="none" stroke="var(--green)" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+    <!-- 番号丸（accent-bg変数塗り・文字はaccent-dark変数・両テーマ4.5:1以上） -->
+    <circle cx="48" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="111">1</text>
+      <text x="528" y="111">2</text>
+      <text x="48" y="277">3</text>
+      <text x="528" y="277">4</text>
+      <text x="48" y="443">5</text>
+      <text x="528" y="443">6</text>
+    </g>
+
+    <!-- 見出し（1行・text変数） -->
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="178" y="106">検問の細かい抜け道を指摘される</text>
+      <text x="658" y="106">塞ぐたび別の穴が開く連鎖</text>
+      <text x="178" y="272">前回内容を隠して3回見てもらう</text>
+      <text x="658" y="272">直し方に一本の規則が定まる</text>
+      <text x="178" y="438">全緑の後に点検係の違和感</text>
+      <text x="658" y="438">作成時から壊れていた説明文</text>
+    </g>
+
+    <!-- キャプション（2行・パネル内側=bg-card変数背景なのでtext-secondary変数） -->
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="178" y="150">名前の一部だけ同じ経路で素通り。</text>
+      <text x="178" y="172">直して「完璧」だと思っていても。</text>
+      <text x="658" y="150">テープを巻き直すたび漏れが移動。</text>
+      <text x="658" y="172">直し方が次の抜け道を作っていた。</text>
+      <text x="178" y="316">1回目と2回目で新しい穴が2つ。</text>
+      <text x="178" y="338">3回目は新規ゼロに収束した。</text>
+      <text x="658" y="316">入り口から測るか出口から測るか。</text>
+      <text x="658" y="338">混ぜないという規則だけにまとまった。</text>
+      <text x="178" y="482">エラー文がいつも同じ決まり文句。</text>
+      <text x="178" y="504">違和感は、掘る価値のある根拠。</text>
+      <text x="658" y="482">検問と別の場所で壊れ続けていた。</text>
+      <text x="658" y="504">捨てた指摘の結論も正しかった。</text>
+    </g>
+
+    <!-- 脚注（ページ背景の上に載るためtext変数） -->
+    <text x="480" y="566" font-size="11" fill="var(--text)" text-anchor="middle">読む順: 左上から 1 → 2 → 3 → 4 → 5 → 6</text>
+  </g>
+</svg>
+<figcaption>検問の抜け道を塞ぐたび別の穴が開く連鎖を、前回内容を隠した3回審査と混ぜない規則で断ち切り、全緑後の違和感から作成時から壊れていた説明文まで掘り当てた6コマの物語。</figcaption></figure>
 
         </article>
 

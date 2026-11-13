@@ -441,6 +441,143 @@
 <li>詳細な設計記録は自身のSSOT（非公開）にあり、このガイドから内部リポジトリへの到達経路は遮断している</li>
 </ul>
 <p>&lt;/details&gt;</p>
+<figure class="story-diagram"><!-- 素材: source/015_設定を1枚の帳票に集めて書き忘れ事故を潰した話.md -->
+<svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s015a-title s015a-desc">
+  <title id="s015a-title">2か所に重複した設定値を1枚の帳票に集めて直し忘れ事故を潰した流れ</title>
+  <desc id="s015a-desc">手順書とプログラムに同じ値が重複して直し忘れる事故を、値を1枚の設定帳票に集め、帳票を見に行く方式とコミット時の直書き検知で潰した6コマの物語。</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <!-- パネル1: 数値設定が2か所に重複（文書2枚に同じ強調行・両者を結ぶ線+警告丸） -->
+    <rect x="16" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="84" y="82" width="38" height="44" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="90" y1="94" x2="116" y2="94" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="90" y1="106" x2="116" y2="106" stroke="var(--accent-dark)" stroke-width="2.4"/>
+    <line x1="90" y1="117" x2="110" y2="117" stroke="var(--text-secondary)" stroke-width="1"/>
+    <rect x="84" y="150" width="38" height="44" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="90" y1="162" x2="116" y2="162" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="90" y1="174" x2="116" y2="174" stroke="var(--accent-dark)" stroke-width="2.4"/>
+    <line x1="90" y1="185" x2="110" y2="185" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="108" y1="106" x2="108" y2="174" stroke="var(--text)" stroke-width="1.2" stroke-dasharray="3 3"/>
+    <circle cx="146" cy="140" r="11" fill="var(--amber-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="146" y1="134" x2="146" y2="141" stroke="var(--text)" stroke-width="1.6"/>
+    <circle cx="146" cy="146" r="1.2" fill="var(--text)"/>
+
+    <!-- パネル2: 片方だけ直す直し忘れ事故（直した側=緑チェック・古い側=赤×） -->
+    <rect x="496" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="552" y="82" width="38" height="44" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="558" y1="94" x2="584" y2="94" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="558" y1="106" x2="584" y2="106" stroke="var(--green)" stroke-width="2.4"/>
+    <line x1="558" y1="117" x2="578" y2="117" stroke="var(--text-secondary)" stroke-width="1"/>
+    <path d="M 598 100 l 7 7 M 605 100 l -7 7" fill="none" stroke="var(--green)" stroke-width="2.2"/>
+    <rect x="552" y="150" width="38" height="44" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="558" y1="162" x2="584" y2="162" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="558" y1="174" x2="584" y2="174" stroke="var(--red)" stroke-width="2.4"/>
+    <line x1="558" y1="185" x2="578" y2="185" stroke="var(--text-secondary)" stroke-width="1"/>
+    <path d="M 598 168 l 7 7 M 605 168 l -7 7" fill="none" stroke="var(--red)" stroke-width="2.2"/>
+
+    <!-- パネル3: 値を1枚の帳票に集める（設定帳票1枚+値リスト） -->
+    <rect x="16" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="88" y="252" width="56" height="72" rx="3" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="88" y="252" width="56" height="14" fill="var(--accent-dark)"/>
+    <line x1="94" y1="278" x2="138" y2="278" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="94" y1="292" x2="138" y2="292" stroke="var(--accent-dark)" stroke-width="2.2"/>
+    <line x1="94" y1="306" x2="138" y2="306" stroke="var(--text-secondary)" stroke-width="1"/>
+
+    <!-- パネル4: 帳票を見に行く方式へ書き換え（帳票から2つの文書へ矢印） -->
+    <rect x="496" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="544" y="264" width="42" height="56" rx="3" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="544" y="264" width="42" height="11" fill="var(--accent-dark)"/>
+    <line x1="596" y1="284" x2="618" y2="268" stroke="var(--text)" stroke-width="1.6"/>
+    <polygon points="616,264 624,270 616,272" fill="var(--text)"/>
+    <line x1="596" y1="300" x2="618" y2="316" stroke="var(--text)" stroke-width="1.6"/>
+    <polygon points="616,314 624,316 620,308" fill="var(--text)"/>
+    <rect x="622" y="250" width="26" height="30" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="627" y1="260" x2="643" y2="260" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="627" y1="270" x2="640" y2="270" stroke="var(--text-secondary)" stroke-width="1"/>
+    <rect x="622" y="306" width="26" height="30" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="627" y1="316" x2="643" y2="316" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="627" y1="326" x2="640" y2="326" stroke="var(--text-secondary)" stroke-width="1"/>
+
+    <!-- パネル5: 見張り役が直書きを止める（ゲート+流入矢印+赤×） -->
+    <rect x="16" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="86" y1="420" x2="86" y2="524" stroke="var(--text)" stroke-width="3"/>
+    <circle cx="86" cy="472" r="14" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.4"/>
+    <path d="M 80 468 l 5 4 M 86 472 c 3 2 2 8 -4 6" fill="none" stroke="var(--accent-dark)" stroke-width="1.6"/>
+    <line x1="102" y1="460" x2="124" y2="460" stroke="var(--blue)" stroke-width="1.8"/>
+    <polygon points="124,456 124,464 132,460" fill="var(--blue)"/>
+    <rect x="134" y="444" width="26" height="32" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="139" y1="454" x2="155" y2="454" stroke="var(--red)" stroke-width="2"/>
+    <path d="M 156 492 l 11 11 M 167 492 l -11 11" fill="none" stroke="var(--red)" stroke-width="2.6"/>
+
+    <!-- パネル6: 事故の起き方そのものが消える（帳票+大きな緑チェック+輝き線） -->
+    <rect x="496" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="556" y="420" width="48" height="62" rx="3" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="556" y="420" width="48" height="12" fill="var(--accent-dark)"/>
+    <line x1="562" y1="444" x2="598" y2="444" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="562" y1="458" x2="598" y2="458" stroke="var(--accent-dark)" stroke-width="2.2"/>
+    <line x1="562" y1="472" x2="598" y2="472" stroke="var(--text-secondary)" stroke-width="1"/>
+    <path d="M 620 452 l 12 14 l 28 -34" fill="none" stroke="var(--green)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <g stroke="var(--amber)" stroke-width="1.8">
+      <line x1="566" y1="414" x2="570" y2="404"/>
+      <line x1="588" y1="410" x2="590" y2="400"/>
+      <line x1="608" y1="414" x2="612" y2="406"/>
+    </g>
+  </g>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+    <!-- 番号丸（accent-bg変数塗り・文字はaccent-dark変数・両テーマ4.5:1以上） -->
+    <circle cx="48" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="111">1</text>
+      <text x="528" y="111">2</text>
+      <text x="48" y="277">3</text>
+      <text x="528" y="277">4</text>
+      <text x="48" y="443">5</text>
+      <text x="528" y="443">6</text>
+    </g>
+
+    <!-- 見出し（1行・text変数） -->
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="178" y="106">数値設定が2か所に重複</text>
+      <text x="658" y="106">片方だけ直す直し忘れ事故</text>
+      <text x="178" y="272">値を1枚の帳票に集める</text>
+      <text x="658" y="272">帳票を見に行く方式へ書き換え</text>
+      <text x="178" y="438">見張り役が直書きを止める</text>
+      <text x="658" y="438">事故の起き方そのものが消える</text>
+    </g>
+
+    <!-- キャプション（2行・パネル内側=bg-card変数背景なのでtext-secondary変数） -->
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="178" y="150">手順書とプログラムに同じ値が並ぶ。</text>
+      <text x="178" y="172">読み手が違うため分かれたまま。</text>
+      <text x="658" y="150">もう片方を直し忘れる事故が発生。</text>
+      <text x="658" y="172">設定が増えるほど確率が上がる。</text>
+      <text x="178" y="316">散らばった値を帳票に1枚集めた。</text>
+      <text x="178" y="338">値の正本がここだけになる。</text>
+      <text x="658" y="316">作業前に帳票を必ず読む番兵付き。</text>
+      <text x="658" y="338">読めない時は黙って諦めず停止。</text>
+      <text x="178" y="482">コミットの瞬間に機械で直書き検知。</text>
+      <text x="178" y="504">注入した直書きが実際に拒否された。</text>
+      <text x="658" y="482">帳票を直せば全員が分かる。</text>
+      <text x="658" y="504">間違いが外に出る前に気がつける。</text>
+    </g>
+
+    <!-- 脚注（ページ背景の上に載るためtext変数） -->
+    <text x="480" y="566" font-size="11" fill="var(--text)" text-anchor="middle">読む順: 左上から 1 → 2 → 3 → 4 → 5 → 6</text>
+  </g>
+</svg>
+<figcaption>手順書とプログラムに同じ値が重複して直し忘れる事故を、値を1枚の設定帳票に集め、帳票を見に行く方式とコミット時の直書き検知で潰した6コマの物語。</figcaption></figure>
 
         </article>
 
