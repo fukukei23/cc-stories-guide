@@ -77,8 +77,8 @@
     <circle cx="618" cy="456" r="9" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.3"/>
     <path d="M 614 453 c 4 -4 8 0 4 3 c -2 1 -2 2 -2 3" fill="none" stroke="var(--accent-dark)" stroke-width="1.3"/>
     <circle cx="619" cy="462" r="1" fill="var(--accent-dark)"/>
-    <line x1="630" y1="486" x2="656" y2="486" stroke="var(--text)" stroke-width="1.6"/>
-    <polygon points="656,482 656,490 664,486" fill="var(--text)"/>
+    <line x1="616" y1="486" x2="632" y2="486" stroke="var(--text)" stroke-width="1.6"/>
+    <polygon points="632,482 632,490 640,486" fill="var(--text)"/>
   </g>
 
   <g font-family="'Noto Sans JP', sans-serif">
