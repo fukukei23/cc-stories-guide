@@ -20,3 +20,5 @@ nemotron-3.5-lightning と dots-studio はこうして自動昇格した。「�
 
 正典: `01_DECISIONS/claude-code/2026-09-03_orp.py機能拡張-blacklist反映・死亡スモーク・新規探索実装.md`
 </details>
+
+::: diagram 045
