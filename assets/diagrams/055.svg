@@ -1,0 +1,116 @@
+<!-- 素材: source/055_見えないはずのAIがスライドの文字を読んでいた話.md -->
+<svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s055a-title s055a-desc">
+  <title id="s055a-title">見えないはずという前提を2段の実験がひっくり返すまでの流れ</title>
+  <desc id="s055a-desc">画像が見えないという前提が説明書にも記憶にも書かれて疑う人が誰もいなかったため、答えを知るテストと見たことのないテストの二段構えで実測し、定説をひっくり返して4か所の資産を同じ日に書き換え、前提を毎月点検する仕組みまで作った6コマの物語。</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <!-- パネル1: 見えないはずの前提（目隠しの顔+外渡しの箱） -->
+    <rect x="16" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <circle cx="88" cy="112" r="16" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="76" y1="106" x2="100" y2="110" stroke="var(--text)" stroke-width="2.2"/>
+    <line x1="108" y1="98" x2="122" y2="98" stroke="var(--amber)" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <rect x="128" y="90" width="26" height="20" rx="3" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="133" y1="98" x2="149" y2="98" stroke="var(--accent-dark)" stroke-width="1.2"/>
+    <line x1="133" y1="104" x2="145" y2="104" stroke="var(--accent-dark)" stroke-width="1"/>
+
+    <!-- パネル2: 誰も前提を疑わなかった（手帳から手帳へ写る矢印） -->
+    <rect x="496" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="556" y="90" width="30" height="40" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="562" y1="100" x2="580" y2="100" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="562" y1="110" x2="576" y2="110" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="592" y1="110" x2="608" y2="110" stroke="var(--amber)" stroke-width="1.5"/>
+    <polygon points="606,106 614,110 606,114" fill="var(--amber)"/>
+    <rect x="620" y="90" width="30" height="40" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="626" y1="100" x2="644" y2="100" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="626" y1="110" x2="640" y2="110" stroke="var(--text-secondary)" stroke-width="1"/>
+
+    <!-- パネル3: 答えを知るテストで見えている（開いた目+スライドカード） -->
+    <rect x="16" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <circle cx="88" cy="298" r="15" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.5"/>
+    <circle cx="88" cy="298" r="6" fill="var(--text)"/>
+    <line x1="80" y1="288" x2="74" y2="282" stroke="var(--amber)" stroke-width="1.6"/>
+    <line x1="96" y1="288" x2="102" y2="282" stroke="var(--amber)" stroke-width="1.6"/>
+    <rect x="116" y="278" width="52" height="40" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="124" y1="290" x2="152" y2="290" stroke="var(--accent-dark)" stroke-width="1.6"/>
+    <line x1="124" y1="300" x2="146" y2="300" stroke="var(--text-secondary)" stroke-width="1.1"/>
+    <line x1="124" y1="308" x2="150" y2="308" stroke="var(--text-secondary)" stroke-width="1.1"/>
+
+    <!-- パネル4: 未見でも読み定説がひっくり返る（札+回転矢印） -->
+    <rect x="496" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="556" y="286" width="40" height="26" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="563" y1="295" x2="589" y2="295" stroke="var(--text-secondary)" stroke-width="1.1"/>
+    <line x1="563" y1="304" x2="583" y2="304" stroke="var(--text-secondary)" stroke-width="1.1"/>
+    <path d="M 608 300 a 16 16 0 1 1 8 -14" fill="none" stroke="var(--amber)" stroke-width="1.8"/>
+    <polygon points="620,282 626,274 612,278" fill="var(--amber)"/>
+    <path d="M 640 288 l 7 8 l 15 -17" fill="none" stroke="var(--green)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- パネル5: 4か所の資産を同じ日に直す（書類4枚+チェック） -->
+    <rect x="16" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="68" y="428" width="22" height="30" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.1"/>
+    <rect x="94" y="428" width="22" height="30" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.1"/>
+    <rect x="120" y="428" width="22" height="30" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.1"/>
+    <rect x="146" y="428" width="22" height="30" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.1"/>
+    <path d="M 73 438 l 3 3 l 5 -6" fill="none" stroke="var(--green)" stroke-width="1.5"/>
+    <path d="M 99 438 l 3 3 l 5 -6" fill="none" stroke="var(--green)" stroke-width="1.5"/>
+    <path d="M 125 438 l 3 3 l 5 -6" fill="none" stroke="var(--green)" stroke-width="1.5"/>
+    <path d="M 151 438 l 3 3 l 5 -6" fill="none" stroke="var(--green)" stroke-width="1.5"/>
+
+    <!-- パネル6: 前提の点検を毎月の仕組みへ（カレンダー+ループ矢印） -->
+    <rect x="496" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="552" y="424" width="48" height="40" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <line x1="552" y1="434" x2="600" y2="434" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="560" y1="420" x2="560" y2="426" stroke="var(--text)" stroke-width="2"/>
+    <line x1="592" y1="420" x2="592" y2="426" stroke="var(--text)" stroke-width="2"/>
+    <path d="M 610 466 a 20 20 0 1 1 12 -34" fill="none" stroke="var(--amber)" stroke-width="1.7"/>
+    <polygon points="626,430 634,428 630,436" fill="var(--amber)"/>
+  </g>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+    <circle cx="48" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="111">1</text>
+      <text x="528" y="111">2</text>
+      <text x="48" y="277">3</text>
+      <text x="528" y="277">4</text>
+      <text x="48" y="443">5</text>
+      <text x="528" y="443">6</text>
+    </g>
+
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="178" y="106">見えないはずという前提が支配</text>
+      <text x="658" y="106">疑われた人は誰もいなかった</text>
+      <text x="178" y="272">答えを知るテストで見えている</text>
+      <text x="658" y="272">未見でも読み定説がひっくり返る</text>
+      <text x="178" y="438">4か所の資産を同じ日に直す</text>
+      <text x="658" y="438">前提の点検を毎月の仕組みへ</text>
+    </g>
+
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="178" y="150">画像は外のサービスへ預ける。</text>
+      <text x="178" y="172">回数制限のたびに気をもむ。</text>
+      <text x="658" y="150">一度の確認が手帳から手帳へ。</text>
+      <text x="658" y="172">誰も再測定しなかった。</text>
+      <text x="178" y="316">文脈に無い細部まで正確。</text>
+      <text x="178" y="338">もらっちゃった記憶ではない。</text>
+      <text x="658" y="316">中継箱も開かずに届く設計。</text>
+      <text x="658" y="338">この時点で定説は覆る。</text>
+      <text x="178" y="482">説明書と一覧と案内と記憶。</text>
+      <text x="178" y="504">外のサービスは第二意見の枠へ。</text>
+      <text x="658" y="482">疑って実測した人が動けた。</text>
+      <text x="658" y="504">教訓ごと仕組みに保存。</text>
+    </g>
+
+    <text x="480" y="566" font-size="11" fill="var(--text)" text-anchor="middle">読む順: 左上から 1 → 2 → 3 → 4 → 5 → 6</text>
+  </g>
+</svg>
