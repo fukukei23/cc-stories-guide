@@ -459,6 +459,117 @@
 <li>公開判定: <strong>publish</strong>
 &lt;/details&gt;</li>
 </ul>
+<figure class="story-diagram"><!-- 素材: source/054_構造的失敗を先に作る勇気でDBマイグレーションを書き直した話.md -->
+<svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s054a-title s054a-desc">
+  <title id="s054a-title">失敗を先に作るテストで3度挫折したDBマイグレーションを書き直す流れ</title>
+  <desc id="s054a-desc">冪等性の担保で3度挫折したDBマイグレーション設計に、恥ずかしい失敗テストを先に書く手法を試し、破損した中間状態も3度実行で必ず収束するプロトコルに変換して111テスト緑を達成し、失敗を先に作るのは設計の強度を測る試験だと学んだ6コマの物語。</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <!-- パネル1: マイグレーション設計に3度挫折（崩れた積みブロック） -->
+    <rect x="16" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="88" y="100" width="40" height="16" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.1"/>
+    <rect x="94" y="118" width="28" height="14" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.1"/>
+    <rect x="132" y="126" width="30" height="14" rx="2" fill="var(--red-bg)" stroke="var(--red)" stroke-width="1.2"/>
+    <line x1="136" y1="146" x2="158" y2="156" stroke="var(--red)" stroke-width="1.4"/>
+    <line x1="158" y1="146" x2="136" y2="156" stroke="var(--red)" stroke-width="1.4"/>
+
+    <!-- パネル2: 恥ずかしい失敗テストを先に書く（リスト+×の予行） -->
+    <rect x="496" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="560" y="84" width="52" height="60" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <path d="M 568 96 l 4 4 l 7 -8" fill="none" stroke="var(--red)" stroke-width="1.5" stroke-dasharray="2 2"/>
+    <line x1="584" y1="97" x2="602" y2="97" stroke="var(--text-secondary)" stroke-width="1"/>
+    <path d="M 568 114 l 4 4 l 7 -8" fill="none" stroke="var(--red)" stroke-width="1.5" stroke-dasharray="2 2"/>
+    <line x1="584" y1="115" x2="600" y2="115" stroke="var(--text-secondary)" stroke-width="1"/>
+    <path d="M 568 132 l 4 4 l 7 -8" fill="none" stroke="var(--red)" stroke-width="1.5" stroke-dasharray="2 2"/>
+    <line x1="584" y1="133" x2="602" y2="133" stroke="var(--text-secondary)" stroke-width="1"/>
+
+    <!-- パネル3: 翌朝、恥ずかしいコードが動く（朝日+コーヒー） -->
+    <rect x="16" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <path d="M 74 306 a 18 18 0 0 1 36 0" fill="var(--amber)" stroke="var(--text)" stroke-width="1.3"/>
+    <line x1="92" y1="280" x2="92" y2="286" stroke="var(--amber)" stroke-width="1.6"/>
+    <line x1="74" y1="288" x2="78" y2="292" stroke="var(--amber)" stroke-width="1.6"/>
+    <line x1="110" y1="288" x2="106" y2="292" stroke="var(--amber)" stroke-width="1.6"/>
+    <rect x="126" y="284" width="26" height="22" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <path d="M 152 288 q 8 4 0 12" fill="none" stroke="var(--text)" stroke-width="1.3"/>
+
+    <!-- パネル4: 破損状態も3度実行で収束（破線DB→ループ矢印→実線DB） -->
+    <rect x="496" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <path d="M 560 282 h 34 v 20 c 0 5 -34 5 -34 0 z" fill="none" stroke="var(--red)" stroke-width="1.3" stroke-dasharray="4 3"/>
+    <path d="M 560 282 c 0 -5 34 -5 34 0" fill="none" stroke="var(--red)" stroke-width="1.3" stroke-dasharray="4 3"/>
+    <path d="M 606 292 a 18 14 0 1 1 -6 14" fill="none" stroke="var(--amber)" stroke-width="1.6"/>
+    <polygon points="604,306 598,310 606,312" fill="var(--amber)"/>
+    <path d="M 626 282 h 34 v 20 c 0 5 -34 5 -34 0 z" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.3"/>
+    <path d="M 626 282 c 0 -5 34 -5 34 0" fill="none" stroke="var(--text)" stroke-width="1.3"/>
+
+    <!-- パネル5: 111テスト緑・coverage 98%（テスト列+緑バー） -->
+    <rect x="16" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <path d="M 78 434 l 4 4 l 8 -9" fill="none" stroke="var(--green)" stroke-width="2"/>
+    <line x1="96" y1="435" x2="122" y2="435" stroke="var(--text-secondary)" stroke-width="1.2"/>
+    <path d="M 78 454 l 4 4 l 8 -9" fill="none" stroke="var(--green)" stroke-width="2"/>
+    <line x1="96" y1="455" x2="118" y2="455" stroke="var(--text-secondary)" stroke-width="1.2"/>
+    <path d="M 78 474 l 4 4 l 8 -9" fill="none" stroke="var(--green)" stroke-width="2"/>
+    <line x1="96" y1="475" x2="120" y2="475" stroke="var(--text-secondary)" stroke-width="1.2"/>
+    <line x1="140" y1="456" x2="164" y2="456" stroke="var(--bg-secondary)" stroke-width="9" stroke-linecap="round"/>
+    <line x1="140" y1="456" x2="162" y2="456" stroke="var(--green)" stroke-width="5" stroke-linecap="round"/>
+
+    <!-- パネル6: 恥ずかしさが誇りに変わる（旗+上向き矢印） -->
+    <rect x="496" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="560" y1="428" x2="560" y2="484" stroke="var(--text)" stroke-width="1.8"/>
+    <polygon points="560,428 584,434 560,440" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.1"/>
+    <line x1="596" y1="478" x2="596" y2="456" stroke="var(--green)" stroke-width="2.4"/>
+    <polygon points="592,458 600,458 596,450" fill="var(--green)"/>
+  </g>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+    <circle cx="48" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="111">1</text>
+      <text x="528" y="111">2</text>
+      <text x="48" y="277">3</text>
+      <text x="528" y="277">4</text>
+      <text x="48" y="443">5</text>
+      <text x="528" y="443">6</text>
+    </g>
+
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="178" y="106">マイグレーション設計に3度挫折</text>
+      <text x="658" y="106">恥ずかしい失敗テストを先に書く</text>
+      <text x="178" y="272">翌朝、恥ずかしいコードが動く</text>
+      <text x="658" y="272">破損状態も3度実行で収束する</text>
+      <text x="178" y="438">111テスト緑で夜の仕事が実る</text>
+      <text x="658" y="438">失敗を先に作るのは強度の試験</text>
+    </g>
+
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="178" y="150">冪等性の担保で毎回詰まる。</text>
+      <text x="178" y="172">user_version方式の3度目の夜。</text>
+      <text x="658" y="150">stepごと・一気実行・接続切断。</text>
+      <text x="658" y="172">書き終えてコーヒーを淹れる。</text>
+      <text x="178" y="316">挫折の夜に書いたredが動く。</text>
+      <text x="178" y="338">恥ずかしさが確認に変わる。</text>
+      <text x="658" y="316">冪等でない遷移を収束に変換。</text>
+      <text x="658" y="338">接続切断からも自動でrecovery。</text>
+      <text x="178" y="482">coverage 98%・tsc=0を実測。</text>
+      <text x="178" y="504">失敗ケースまで網羅の証。</text>
+      <text x="658" y="482">逃げではなく試験だと分かる。</text>
+      <text x="658" y="504">恥ずかしさが誇りに変わる。</text>
+    </g>
+
+    <text x="480" y="566" font-size="11" fill="var(--text)" text-anchor="middle">読む順: 左上から 1 → 2 → 3 → 4 → 5 → 6</text>
+  </g>
+</svg>
+<figcaption>冪等性の担保で3度挫折したDBマイグレーション設計に、恥ずかしい失敗テストを先に書く手法を試し、破損した中間状態も3度実行で必ず収束するプロトコルに変換して111テスト緑を達成し、失敗を先に作るのは設計の強度を測る試験だと学んだ6コマの物語。</figcaption></figure>
 
         </article>
 

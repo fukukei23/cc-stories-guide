@@ -437,6 +437,118 @@
 <li>注意: 本話は2026-10-09〜11時点の記録。2026-10-13に同スクリプトはPlaywright実ブラウザ経路へ置換済み（第52話以降の候補）</li>
 </ul>
 <p>&lt;/details&gt;</p>
+<figure class="story-diagram"><!-- 素材: source/051_毎日正午の再試行を予約したらその予約が自分で自分を消し忘れていた話.md -->
+<svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s051a-title s051a-desc">
+  <title id="s051a-title">自分で自分を消せない予約と販売前に帰るリトライの2重バグを直す流れ</title>
+  <desc id="s051a-desc">毎日正午の再試行を予約した使い捨てスクリプトが、exit行の後ろに置いた片付け処理が到達不能で自分自身を消せず残り続け、さらにリトライ設計も販売開始の2分前に終わるため、exit移動と条件付き除去・発売後まで粘る方式への逆転で直した6コマの物語。</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <!-- パネル1: 毎日正午の再試行を予約（時計+毎日のループ矢印） -->
+    <rect x="16" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <circle cx="92" cy="112" r="14" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="92" y1="112" x2="92" y2="103" stroke="var(--text)" stroke-width="1.6"/>
+    <line x1="92" y1="112" x2="99" y2="116" stroke="var(--text)" stroke-width="1.6"/>
+    <path d="M 118 98 a 22 22 0 1 1 -4 34" fill="none" stroke="var(--amber)" stroke-width="1.7"/>
+    <polygon points="116,132 124,136 118,140" fill="var(--amber)"/>
+
+    <!-- パネル2: 消し忘れの予約がcrontabに残る（リストカード+残骸行） -->
+    <rect x="496" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="560" y="88" width="60" height="54" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="568" y1="98" x2="606" y2="98" stroke="var(--accent-dark)" stroke-width="1.4"/>
+    <line x1="568" y1="108" x2="600" y2="108" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="568" y1="118" x2="604" y2="118" stroke="var(--red)" stroke-width="1.4" stroke-dasharray="3 2"/>
+    <line x1="568" y1="128" x2="596" y2="128" stroke="var(--text-secondary)" stroke-width="1"/>
+
+    <!-- パネル3: exitの後ろは到達不能（コード行+壁+後ろの死んだ行） -->
+    <rect x="16" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="76" y1="274" x2="112" y2="274" stroke="var(--accent-dark)" stroke-width="3"/>
+    <line x1="76" y1="288" x2="104" y2="288" stroke="var(--text-secondary)" stroke-width="2"/>
+    <rect x="122" y="266" width="7" height="40" rx="1" fill="var(--text)"/>
+    <line x1="140" y1="284" x2="168" y2="284" stroke="var(--text-secondary)" stroke-width="2" stroke-dasharray="4 3"/>
+    <line x1="140" y1="298" x2="162" y2="298" stroke="var(--text-secondary)" stroke-width="2" stroke-dasharray="4 3"/>
+    <path d="M 180 278 l 9 9 M 189 278 l -9 9" stroke="var(--red)" stroke-width="1.7" fill="none"/>
+
+    <!-- パネル4: リトライは販売2分前に帰宅（正午の時計+帰りの家） -->
+    <rect x="496" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <circle cx="556" cy="300" r="13" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="556" y1="300" x2="556" y2="291" stroke="var(--text)" stroke-width="1.5"/>
+    <line x1="556" y1="300" x2="563" y2="304" stroke="var(--text)" stroke-width="1.5"/>
+    <line x1="572" y1="300" x2="592" y2="300" stroke="var(--amber)" stroke-width="1.6"/>
+    <polygon points="590,296 598,300 590,304" fill="var(--amber)"/>
+    <polygon points="610,294 621,284 632,294" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.1"/>
+    <rect x="612" y="294" width="18" height="16" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.1"/>
+
+    <!-- パネル5: exitを末尾へ移し条件付きで消す（移動矢印+鍵+緑チェック） -->
+    <rect x="16" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="76" y1="432" x2="108" y2="432" stroke="var(--accent-dark)" stroke-width="3"/>
+    <path d="M 92 440 q 0 16 16 16" fill="none" stroke="var(--text)" stroke-width="1.5"/>
+    <polygon points="106,452 114,456 106,460" fill="var(--text)"/>
+    <line x1="76" y1="466" x2="130" y2="466" stroke="var(--accent-dark)" stroke-width="3"/>
+    <circle cx="150" cy="454" r="7" fill="none" stroke="var(--text)" stroke-width="1.8"/>
+    <line x1="157" y1="454" x2="170" y2="454" stroke="var(--text)" stroke-width="2"/>
+    <line x1="164" y1="454" x2="164" y2="460" stroke="var(--text)" stroke-width="2"/>
+    <path d="M 120 478 l 6 7 l 14 -15" fill="none" stroke="var(--green)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- パネル6: 発売の12分後まで粘る設計へ（時計+上向き緑矢印+粘るバー） -->
+    <rect x="496" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <circle cx="552" cy="466" r="13" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="552" y1="466" x2="552" y2="457" stroke="var(--text)" stroke-width="1.5"/>
+    <line x1="552" y1="466" x2="559" y2="470" stroke="var(--text)" stroke-width="1.5"/>
+    <line x1="576" y1="474" x2="576" y2="452" stroke="var(--green)" stroke-width="2.4"/>
+    <polygon points="572,454 580,454 576,446" fill="var(--green)"/>
+    <line x1="596" y1="468" x2="636" y2="468" stroke="var(--accent-dark)" stroke-width="5" stroke-linecap="round"/>
+  </g>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+    <circle cx="48" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="111">1</text>
+      <text x="528" y="111">2</text>
+      <text x="48" y="277">3</text>
+      <text x="528" y="277">4</text>
+      <text x="48" y="443">5</text>
+      <text x="528" y="443">6</text>
+    </g>
+
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="178" y="106">終わったら自分で片付ける設計</text>
+      <text x="658" y="106">消し忘れの予約がcrontabに残る</text>
+      <text x="178" y="272">exitの後ろは永遠に実行されない</text>
+      <text x="658" y="272">リトライは販売2分前に帰宅する</text>
+      <text x="178" y="438">exitを動かし条件付きで消す</text>
+      <text x="658" y="438">いつまで粘るかを先に決める</text>
+    </g>
+
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="178" y="150">明日の正午に再試行、成功まで毎日。</text>
+      <text x="178" y="172">余計なものを残さない完璧なはず。</text>
+      <text x="658" y="150">日付指定つきの残骸が静かに残る。</text>
+      <text x="658" y="172">何週間も気付けない静かなバグ。</text>
+      <text x="178" y="316">終了行に到達した瞬間に終わる。</text>
+      <text x="178" y="338">後ろに何を書いても到達不能。</text>
+      <text x="658" y="316">待ち構えるはずの再試行が先に帰る。</text>
+      <text x="658" y="338">打ち切り時刻が発売の2分前。</text>
+      <text x="178" y="482">消すのは成功したときだけ。</text>
+      <text x="178" y="504">期限が過ぎたらそのときに消す。</text>
+      <text x="658" y="482">諦める時刻より粘る時刻が先。</text>
+      <text x="658" y="504">回し続ける段階でしか出ないバグ。</text>
+    </g>
+
+    <text x="480" y="566" font-size="11" fill="var(--text)" text-anchor="middle">読む順: 左上から 1 → 2 → 3 → 4 → 5 → 6</text>
+  </g>
+</svg>
+<figcaption>毎日正午の再試行を予約した使い捨てスクリプトが、exit行の後ろに置いた片付け処理が到達不能で自分自身を消せず残り続け、さらにリトライ設計も販売開始の2分前に終わるため、exit移動と条件付き除去・発売後まで粘る方式への逆転で直した6コマの物語。</figcaption></figure>
 
         </article>
 

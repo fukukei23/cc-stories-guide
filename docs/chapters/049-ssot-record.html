@@ -425,6 +425,122 @@
 <li>教訓のSSOT反映先: <code>01_DECISIONS/claude-code/2026-09-10_ssot-recordマルチ起点再設計クローズ判断-Fable相談と3機レビュー.md</code> の「設計の最後に運用者」節</li>
 </ul>
 <p>&lt;/details&gt;</p>
+<figure class="story-diagram"><!-- 素材: source/049_ssot-recordデータフロー判定アルゴリズム-美しく設計したが実行主体不在で廃案になった話.md -->
+<svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s049a-title s049a-desc">
+  <title id="s049a-title">美しい判定アルゴリズムの設計が実行主体不在で凍結されるまで</title>
+  <desc id="s049a-desc">記録の保管場所を自動判定するアルゴリズムを3軸スコアリングで美しく設計したが、半年後に誰が・いつ実行するかが決まっていない「実行主体不在」で凍結され、設計の最後に運用者の顔を置く癖を学んだ6コマの物語。</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <!-- パネル1: 「記録して」から判定アルゴリズム設計（吹き出し+3軸バー） -->
+    <rect x="16" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="74" y="86" width="60" height="20" rx="8" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <path d="M 84 106 L 78 116 L 96 106" fill="none" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="82" y1="126" x2="112" y2="126" stroke="var(--accent-dark)" stroke-width="4"/>
+    <line x1="82" y1="138" x2="102" y2="138" stroke="var(--text-secondary)" stroke-width="4"/>
+    <line x1="82" y1="150" x2="108" y2="150" stroke="var(--text-secondary)" stroke-width="4"/>
+
+    <!-- パネル2: 指摘を全部取り込んだ美しい仕様書（分厚い書類+行線） -->
+    <rect x="496" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="560" y="96" width="12" height="18" rx="2" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1"/>
+    <rect x="576" y="84" width="44" height="58" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="584" y1="96" x2="612" y2="96" stroke="var(--accent-dark)" stroke-width="1.5"/>
+    <line x1="584" y1="106" x2="608" y2="106" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="584" y1="116" x2="612" y2="116" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="584" y1="126" x2="606" y2="126" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="584" y1="136" x2="612" y2="136" stroke="var(--text-secondary)" stroke-width="1"/>
+
+    <!-- パネル3: 半年後、設計書は凍結（フラグ付き書類+霜の結晶） -->
+    <rect x="16" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="86" y1="256" x2="86" y2="264" stroke="var(--text)" stroke-width="1.6"/>
+    <polygon points="86,256 100,260 86,265" fill="var(--red)" stroke="var(--red)" stroke-width="1"/>
+    <rect x="82" y="264" width="44" height="54" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2" stroke-dasharray="5 3"/>
+    <line x1="90" y1="276" x2="116" y2="276" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="90" y1="286" x2="112" y2="286" stroke="var(--text-secondary)" stroke-width="1"/>
+    <path d="M 146 282 l 0 16 M 139 286 l 14 8 M 153 286 l -14 8" stroke="var(--text-secondary)" stroke-width="1.3" fill="none"/>
+
+    <!-- パネル4: 理由は実行主体不在（頭の無い空席+空欄の枠） -->
+    <rect x="496" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <circle cx="568" cy="296" r="10" fill="none" stroke="var(--text-secondary)" stroke-width="1.3" stroke-dasharray="3 2"/>
+    <path d="M 554 322 Q 568 306 582 322" fill="none" stroke="var(--text)" stroke-width="1.5"/>
+    <rect x="602" y="296" width="30" height="26" rx="2" fill="none" stroke="var(--red)" stroke-width="1.3" stroke-dasharray="4 3"/>
+    <path d="M 608 304 l 10 10 M 618 304 l -10 10" stroke="var(--red)" stroke-width="1.5" fill="none"/>
+
+    <!-- パネル5: 設計の最後に運用者の顔を置く（人+3つの札） -->
+    <rect x="16" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="70" y="428" width="26" height="14" rx="2" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.1"/>
+    <rect x="95" y="422" width="26" height="14" rx="2" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.1"/>
+    <rect x="120" y="428" width="26" height="14" rx="2" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.1"/>
+    <line x1="83" y1="442" x2="100" y2="456" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="108" y1="436" x2="108" y2="456" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="133" y1="442" x2="116" y2="456" stroke="var(--text-secondary)" stroke-width="1"/>
+    <circle cx="108" cy="466" r="10" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.3"/>
+    <path d="M 94 490 Q 108 476 122 490" fill="none" stroke="var(--text)" stroke-width="1.5"/>
+
+    <!-- パネル6: 3点が書かれて初めてspecは完成（書類+緑チェック） -->
+    <rect x="496" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="560" y="422" width="44" height="58" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <path d="M 568 436 l 3 3 l 6 -7" fill="none" stroke="var(--green)" stroke-width="1.6"/>
+    <line x1="580" y1="437" x2="596" y2="437" stroke="var(--text-secondary)" stroke-width="1"/>
+    <path d="M 568 452 l 3 3 l 6 -7" fill="none" stroke="var(--green)" stroke-width="1.6"/>
+    <line x1="580" y1="453" x2="594" y2="453" stroke="var(--text-secondary)" stroke-width="1"/>
+    <path d="M 568 468 l 3 3 l 6 -7" fill="none" stroke="var(--green)" stroke-width="1.6"/>
+    <line x1="580" y1="469" x2="598" y2="469" stroke="var(--text-secondary)" stroke-width="1"/>
+    <path d="M 618 468 l 7 8 l 15 -17" fill="none" stroke="var(--green)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+    <circle cx="48" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="111">1</text>
+      <text x="528" y="111">2</text>
+      <text x="48" y="277">3</text>
+      <text x="528" y="277">4</text>
+      <text x="48" y="443">5</text>
+      <text x="528" y="443">6</text>
+    </g>
+
+    <!-- パネル1の吹き出し内テキスト（sketchy外で鮮明） -->
+    <text x="104" y="101" text-anchor="middle" font-size="11" font-weight="700" fill="var(--accent-dark)">記録して</text>
+
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="178" y="106">保管場所の自動判定を設計開始</text>
+      <text x="658" y="106">指摘を全部取り込んだ美しい仕様書</text>
+      <text x="178" y="272">半年後、設計書は凍結された</text>
+      <text x="658" y="272">理由は「実行主体不在」</text>
+      <text x="178" y="438">設計の最後に運用者の顔を置く</text>
+      <text x="658" y="438">3点が書かれるまでspecは未完成</text>
+    </g>
+
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="178" y="150">3軸のスコアで5段階に振り分け。</text>
+      <text x="178" y="172">「記録して」の一言で判定。</text>
+      <text x="658" y="150">10件の指摘も実行順序も網羅。</text>
+      <text x="658" y="172">失敗パターンの対応も完了。</text>
+      <text x="178" y="316">書庫の片隅に理由が残る。</text>
+      <text x="178" y="338">未稼働のまま廃案。</text>
+      <text x="658" y="316">誰が・いつ・実行するのかが無い。</text>
+      <text x="658" y="338">美しい仕様書はただの文章。</text>
+      <text x="178" y="482">誰が・いつ・何の権限で決めるか。</text>
+      <text x="178" y="504">その癖を失敗から学ぶ。</text>
+      <text x="658" y="482">運用者の三点が揃って初めて。</text>
+      <text x="658" y="504">設計は動き出す。</text>
+    </g>
+
+    <text x="480" y="566" font-size="11" fill="var(--text)" text-anchor="middle">読む順: 左上から 1 → 2 → 3 → 4 → 5 → 6</text>
+  </g>
+</svg>
+<figcaption>記録の保管場所を自動判定するアルゴリズムを3軸スコアリングで美しく設計したが、半年後に誰が・いつ実行するかが決まっていない「実行主体不在」で凍結され、設計の最後に運用者の顔を置く癖を学んだ6コマの物語。</figcaption></figure>
 
         </article>
 
