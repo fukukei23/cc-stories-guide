@@ -21,3 +21,5 @@
 **残った仕組み** — 2026-09-15 現在の `~/.claude/skills/ssot-record/SKILL.md` では `enforce-ssot-record.sh` hook が f-1/f-4 を物理ブロックし、`ssot-record-detect-targets.py` が tag_match / hub_match のスコアを返して人間が判断する設計に落ち着いた。スコア式は使われなかったが「3軸で評価する」「信頼度でT1-T5に分ける」という概念だけは関連パターン判定の3値ルール（関連パターン検知あり/なし/起票）として受け継がれている。正典: `obsidian-ssot/01_DECISIONS/claude-code/2026-07-12_ssot-recordマルチ起点再設計-セクション3-データフロー判定アルゴリズム.md`。
 
 </details>
+
+::: diagram 026
