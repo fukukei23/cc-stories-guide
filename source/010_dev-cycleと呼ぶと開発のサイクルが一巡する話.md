@@ -41,3 +41,5 @@ flowchart TB
 - 関連スキル: code-reviewer（レビュー専門）, code-simplify（簡素化専門）, multi-llm-review（多機レビュー）, repo-review（品質全体の入口）
 
 </details>
+
+::: diagram 010
