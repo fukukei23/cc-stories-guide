@@ -1,0 +1,116 @@
+<!-- 素材: source/041_スコアが全部同じだった構造的不具合は仕組みを変えないと動かない話.md -->
+<svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s041a-title s041a-desc">
+  <title id="s041a-title">差分レビューが同値で固定される構造を判断欄の追加で動かす流れ</title>
+  <desc id="s041a-desc">前回差分レビューが未解消6件の同値で帰る原因が、コマンドで動く項目と判断でしか動かない項目の違いにあり、owner・due・decision_statusの列を足して欄が埋まるまで完了にしない運用へ直した6コマの物語。</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <!-- パネル1: 前回差分レビューが同値で帰る（同数値のレポート2枚+等号） -->
+    <rect x="16" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="72" y="82" width="34" height="46" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.1"/>
+    <line x1="78" y1="94" x2="100" y2="94" stroke="var(--accent-dark)" stroke-width="2.2"/>
+    <line x1="78" y1="104" x2="96" y2="104" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="78" y1="114" x2="98" y2="114" stroke="var(--text-secondary)" stroke-width="1"/>
+    <rect x="114" y="82" width="34" height="46" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.1"/>
+    <line x1="120" y1="94" x2="142" y2="94" stroke="var(--accent-dark)" stroke-width="2.2"/>
+    <line x1="120" y1="104" x2="138" y2="104" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="120" y1="114" x2="140" y2="114" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="154" y1="101" x2="166" y2="101" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="154" y1="109" x2="166" y2="109" stroke="var(--text)" stroke-width="1.4"/>
+
+    <!-- パネル2: 解決と未解決がきれいに分かれた（矢印が緑と赤へ分岐） -->
+    <rect x="496" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="548" y1="112" x2="572" y2="112" stroke="var(--text)" stroke-width="1.6"/>
+    <line x1="572" y1="112" x2="590" y2="98" stroke="var(--green)" stroke-width="1.6"/>
+    <polygon points="588,94 596,98 590,104" fill="var(--green)"/>
+    <line x1="572" y1="112" x2="590" y2="126" stroke="var(--red)" stroke-width="1.6"/>
+    <polygon points="588,128 596,124 590,118" fill="var(--red)"/>
+
+    <!-- パネル3: 差分レビューは数値比較が本体（モニタの同値バー+台座） -->
+    <rect x="16" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="88" y="252" width="56" height="42" rx="4" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="96" y1="266" x2="136" y2="266" stroke="var(--accent-dark)" stroke-width="2.2"/>
+    <line x1="96" y1="276" x2="136" y2="276" stroke="var(--accent-dark)" stroke-width="2.2"/>
+    <line x1="110" y1="294" x2="124" y2="294" stroke="var(--text)" stroke-width="2"/>
+    <polygon points="106,300 128,300 117,290" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.1"/>
+
+    <!-- パネル4: 足りないのは判断を生成する仕組み（CI緑チェック+判断欄の空欄） -->
+    <rect x="496" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="548" y="252" width="42" height="30" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.1"/>
+    <path d="M 558 264 l 6 7 l 12 -14" fill="none" stroke="var(--green)" stroke-width="2.4"/>
+    <rect x="548" y="292" width="42" height="30" rx="3" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.1" stroke-dasharray="3 3"/>
+    <line x1="556" y1="307" x2="582" y2="307" stroke="var(--text-secondary)" stroke-width="1"/>
+
+    <!-- パネル5: owner・due・decisionの列を足す（3列表・第3列を強調） -->
+    <rect x="16" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="72" y="424" width="96" height="54" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.1"/>
+    <line x1="72" y1="442" x2="168" y2="442" stroke="var(--text)" stroke-width="1"/>
+    <line x1="104" y1="424" x2="104" y2="478" stroke="var(--text)" stroke-width="1"/>
+    <line x1="136" y1="424" x2="136" y2="478" stroke="var(--accent-dark)" stroke-width="1.6"/>
+    <line x1="78" y1="433" x2="98" y2="433" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="110" y1="433" x2="130" y2="433" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="142" y1="433" x2="162" y2="433" stroke="var(--accent-dark)" stroke-width="1.8"/>
+    <line x1="78" y1="456" x2="98" y2="456" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="110" y1="456" x2="130" y2="456" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="142" y1="456" x2="162" y2="456" stroke="var(--accent-dark)" stroke-width="1.8"/>
+
+    <!-- パネル6: 同値の固定も観測事実になる（平らな折れ線+緑の出口矢印） -->
+    <rect x="496" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="548" y1="476" x2="564" y2="460" stroke="var(--text-secondary)" stroke-width="1.6"/>
+    <line x1="564" y1="460" x2="612" y2="460" stroke="var(--accent-dark)" stroke-width="1.8"/>
+    <circle cx="564" cy="460" r="2.2" fill="var(--accent-dark)"/>
+    <circle cx="580" cy="460" r="2.2" fill="var(--accent-dark)"/>
+    <circle cx="596" cy="460" r="2.2" fill="var(--accent-dark)"/>
+    <circle cx="612" cy="460" r="2.2" fill="var(--accent-dark)"/>
+    <line x1="612" y1="460" x2="628" y2="446" stroke="var(--green)" stroke-width="1.8"/>
+    <polygon points="626,442 634,444 628,452" fill="var(--green)"/>
+  </g>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+    <circle cx="48" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="111">1</text>
+      <text x="528" y="111">2</text>
+      <text x="48" y="277">3</text>
+      <text x="528" y="277">4</text>
+      <text x="48" y="443">5</text>
+      <text x="528" y="443">6</text>
+    </g>
+
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="178" y="106">前回差分レビューが同値で帰る</text>
+      <text x="658" y="106">解決と未解決がきれいに分かれた</text>
+      <text x="178" y="272">差分レビューは数値比較が本体</text>
+      <text x="658" y="272">足りないのは判断を生成する仕組み</text>
+      <text x="178" y="438">owner・due・decisionの列を足す</text>
+      <text x="658" y="438">同値の固定も観測事実になる</text>
+    </g>
+
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="178" y="150">循環依存5組・エッジ28のまま。</text>
+      <text x="178" y="172">構造課題6件は一度も動かない。</text>
+      <text x="658" y="150">前者はコマンド一発で動く。</text>
+      <text x="658" y="172">後者は判断して初めて動く。</text>
+      <text x="178" y="316">機械的改善は差分に出る。</text>
+      <text x="178" y="338">判断待ちは数値も同じまま。</text>
+      <text x="658" y="316">CIはexit codeで自動化。</text>
+      <text x="658" y="338">判断欄の無い課題は止まる。</text>
+      <text x="178" y="482">誰が・いつまで・どう決めるか。</text>
+      <text x="178" y="504">欄が埋まるまで完了にしない。</text>
+      <text x="658" y="482">3回連続の同値は証拠。</text>
+      <text x="658" y="504">ループの出口設計を変える。</text>
+    </g>
+
+    <text x="480" y="566" font-size="11" fill="var(--text)" text-anchor="middle">読む順: 左上から 1 → 2 → 3 → 4 → 5 → 6</text>
+  </g>
+</svg>

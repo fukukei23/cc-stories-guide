@@ -434,6 +434,106 @@
 <li><strong>記録</strong>: 詳細は個人ナレッジベースの dev-knowledge-shorts プロジェクト配下（2026-08-06 制作パイプライン知見まとめ・2026-08-08 字幕タイミング最終解の追記を含む）</li>
 </ul>
 <p>&lt;/details&gt;</p>
+<figure class="story-diagram"><!-- 素材: source/038_字幕が一文字も出ていない動画をAIは出ていますと答えた話.md -->
+<svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s038a-title s038a-desc">
+  <title id="s038a-title">字幕の空焼き付けをフォントの直接指定と音声時計で直した流れ</title>
+  <desc id="s038a-desc">フォント名指定が無視され字幕が空のままAIは「出ています」と誤答したが、フォントの置き場所を直接指す方式へ切り替え、時計も音声の発話時刻に合わせて字幕と確認方法を立て直した6コマの物語。</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <!-- パネル1: フォント名を指定して焼き付けた（動画フレーム+字幕帯） -->
+    <rect x="16" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="88" y="78" width="44" height="72" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <rect x="94" y="128" width="32" height="10" rx="2" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1"/>
+
+    <!-- パネル2: AIは「出ています」と答えた（吹き出し+赤×） -->
+    <rect x="496" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="548" y="86" width="60" height="26" rx="8" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <path d="M 560 112 l -4 10 l 10 -10" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <path d="M 618 94 l 10 10 M 628 94 l -10 10" fill="none" stroke="var(--red)" stroke-width="2.2"/>
+
+    <!-- パネル3: フォント名が勝手にすり替えられていた（字体ブロック置換+空の字幕帯） -->
+    <rect x="16" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="72" y="256" width="30" height="30" rx="3" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="80" y1="266" x2="94" y2="266" stroke="var(--accent-dark)" stroke-width="2"/>
+    <line x1="80" y1="276" x2="90" y2="276" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="108" y1="271" x2="122" y2="271" stroke="var(--text)" stroke-width="1.4"/>
+    <polygon points="120,267 128,271 120,275" fill="var(--text)"/>
+    <rect x="132" y="256" width="26" height="30" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <rect x="72" y="302" width="86" height="12" rx="2" fill="var(--bg-card)" stroke="var(--text-secondary)" stroke-width="1" stroke-dasharray="3 3"/>
+
+    <!-- パネル4: 名前でなく置き場所を直接指す（フォント現物+緑チェック） -->
+    <rect x="496" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="552" y="256" width="40" height="48" rx="4" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="560" y1="272" x2="584" y2="272" stroke="var(--accent-dark)" stroke-width="2"/>
+    <line x1="560" y1="284" x2="580" y2="284" stroke="var(--accent-dark)" stroke-width="2"/>
+    <path d="M 604 284 l 9 11 l 20 -24" fill="none" stroke="var(--green)" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- パネル5: 時計は音声のほうにあった（音声波形+時計） -->
+    <rect x="16" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <path d="M 68 480 q 5 -12 10 0 t 10 0 t 10 0 t 10 0 t 10 0" fill="none" stroke="var(--accent-dark)" stroke-width="1.8"/>
+    <circle cx="132" cy="478" r="15" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="132" y1="478" x2="132" y2="468" stroke="var(--text)" stroke-width="1.6"/>
+    <line x1="132" y1="478" x2="141" y2="483" stroke="var(--text)" stroke-width="1.4"/>
+
+    <!-- パネル6: 確認は言葉でなく数字で取る（天秤+緑チェック） -->
+    <rect x="496" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="584" y1="452" x2="584" y2="466" stroke="var(--text)" stroke-width="1.8"/>
+    <line x1="566" y1="466" x2="602" y2="466" stroke="var(--text)" stroke-width="1.8"/>
+    <circle cx="566" cy="474" r="7" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.1"/>
+    <circle cx="602" cy="474" r="7" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.1"/>
+    <path d="M 622 454 l 8 10 l 18 -24" fill="none" stroke="var(--green)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+    <circle cx="48" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="111">1</text>
+      <text x="528" y="111">2</text>
+      <text x="48" y="277">3</text>
+      <text x="528" y="277">4</text>
+      <text x="48" y="443">5</text>
+      <text x="528" y="443">6</text>
+    </g>
+
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="178" y="106">フォント名を指定して焼き付けた</text>
+      <text x="658" y="106">AIは出ていますと答えた</text>
+      <text x="178" y="272">フォント名が勝手にすり替わる</text>
+      <text x="658" y="272">名前でなく置き場所を直接指す</text>
+      <text x="178" y="438">時計は音声のほうにあった</text>
+      <text x="658" y="438">確認は言葉でなく数字で取る</text>
+    </g>
+
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="178" y="150">30秒動画の最後の工程。</text>
+      <text x="178" y="172">名前で呼ぶ指定だった。</text>
+      <text x="658" y="150">見えないものを見たと返事。</text>
+      <text x="658" y="172">実物には一文字も無かった。</text>
+      <text x="178" y="316">日本語を持たない字体へ置換。</text>
+      <text x="178" y="338">描ける形が無く何も出ない。</text>
+      <text x="658" y="316">フォントの現物を指させる。</text>
+      <text x="658" y="338">すり替える余地が消えた。</text>
+      <text x="178" y="482">映像の切れ目では累積ズレ。</text>
+      <text x="178" y="504">音声から区切りの時刻を実測。</text>
+      <text x="658" y="482">ファイルの重さを見比べる。</text>
+      <text x="658" y="504">基準はいちばん動かないもの。</text>
+    </g>
+
+    <text x="480" y="566" font-size="11" fill="var(--text)" text-anchor="middle">読む順: 左上から 1 → 2 → 3 → 4 → 5 → 6</text>
+  </g>
+</svg>
+<figcaption>フォント名指定が無視され字幕が空のままAIは「出ています」と誤答したが、フォントの置き場所を直接指す方式へ切り替え、時計も音声の発話時刻に合わせて字幕と確認方法を立て直した6コマの物語。</figcaption></figure>
 
         </article>
 

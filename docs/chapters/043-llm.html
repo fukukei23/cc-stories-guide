@@ -427,6 +427,115 @@
 <li>関連スキル: &lt;code&gt;ssot-record&lt;/code&gt;（記録の保管場所判定）
 &lt;/details&gt;</li>
 </ul>
+<figure class="story-diagram"><!-- 素材: source/043_機械の点数は当てにならないと思ったらLLMの判定にも曖昧さが残った話.md -->
+<svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s043a-title s043a-desc">
+  <title id="s043a-title">機械の点数方式をLLM仲裁に強化した先で曖昧さの線引きが要になった流れ</title>
+  <desc id="s043a-desc">タグ点数の1位が内容とちぐはぐなため拮抗時のLLM仲裁を足し、実機検証は成功したが判定順序・自信度の約束・戻り先の3点が残り、confidenceの線引きと中程度の人間確認で曖昧さを潰した6コマの物語。</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <!-- パネル1: 点数1位の棚が内容とちぐはぐ（棚3段+間違った棚へ入りかけのメモ） -->
+    <rect x="16" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="72" y="82" width="60" height="60" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.1"/>
+    <line x1="72" y1="102" x2="132" y2="102" stroke="var(--text)" stroke-width="1"/>
+    <line x1="72" y1="122" x2="132" y2="122" stroke="var(--text)" stroke-width="1"/>
+    <rect x="92" y="106" width="18" height="14" rx="2" fill="var(--amber-bg)" stroke="var(--text)" stroke-width="1"/>
+
+    <!-- パネル2: 拮抗したときだけAIに仲裁を足す（機械丸→AI丸の二段） -->
+    <rect x="496" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <circle cx="560" cy="96" r="14" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.3"/>
+    <circle cx="592" cy="96" r="9" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="582" y1="96" x2="576" y2="96" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="560" y1="114" x2="560" y2="124" stroke="var(--text)" stroke-width="1.4"/>
+    <polygon points="556,122 564,122 560,130" fill="var(--text)"/>
+    <circle cx="560" cy="146" r="14" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.3"/>
+
+    <!-- パネル3: 実機検証はまず成功した（書類+別の棚へ矢印+緑チェック） -->
+    <rect x="16" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="88" y="256" width="34" height="42" rx="3" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="95" y1="270" x2="115" y2="270" stroke="var(--accent-dark)" stroke-width="1.6"/>
+    <line x1="95" y1="280" x2="110" y2="280" stroke="var(--accent-dark)" stroke-width="1.6"/>
+    <line x1="128" y1="278" x2="144" y2="268" stroke="var(--text)" stroke-width="1.5"/>
+    <polygon points="142,264 150,268 144,274" fill="var(--text)"/>
+    <path d="M 132 300 l 8 10 l 18 -22" fill="none" stroke="var(--green)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- パネル4: 記録を読み返すと気になる点が3つ（警告丸3つ） -->
+    <rect x="496" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <circle cx="548" cy="262" r="11" fill="var(--amber-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="548" y1="256" x2="548" y2="263" stroke="var(--text)" stroke-width="1.5"/>
+    <circle cx="548" cy="268" r="1.2" fill="var(--text)"/>
+    <circle cx="580" cy="262" r="11" fill="var(--amber-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="580" y1="256" x2="580" y2="263" stroke="var(--text)" stroke-width="1.5"/>
+    <circle cx="580" cy="268" r="1.2" fill="var(--text)"/>
+    <circle cx="612" cy="262" r="11" fill="var(--amber-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="612" y1="256" x2="612" y2="263" stroke="var(--text)" stroke-width="1.5"/>
+    <circle cx="612" cy="268" r="1.2" fill="var(--text)"/>
+
+    <!-- パネル5: 線引きを後から決めた（ゲージ+境界線2本+赤点線） -->
+    <rect x="16" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="72" y1="452" x2="160" y2="452" stroke="var(--bg-secondary)" stroke-width="10" stroke-linecap="round"/>
+    <line x1="94" y1="442" x2="94" y2="462" stroke="var(--text)" stroke-width="1.6"/>
+    <line x1="116" y1="442" x2="116" y2="462" stroke="var(--text)" stroke-width="1.6"/>
+    <line x1="138" y1="442" x2="138" y2="462" stroke="var(--red)" stroke-width="1.6" stroke-dasharray="3 2"/>
+
+    <!-- パネル6: 穴は一段直すたびに次の段へ移る（階段+上へ逃げる矢印） -->
+    <rect x="496" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="548" y="500" width="26" height="16" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.1"/>
+    <rect x="574" y="484" width="26" height="16" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.1"/>
+    <rect x="600" y="468" width="26" height="16" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.1"/>
+    <path d="M 552 490 q 30 -40 60 -36" fill="none" stroke="var(--amber)" stroke-width="1.8"/>
+    <polygon points="608,448 616,452 610,458" fill="var(--text)"/>
+  </g>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+    <circle cx="48" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="111">1</text>
+      <text x="528" y="111">2</text>
+      <text x="48" y="277">3</text>
+      <text x="528" y="277">4</text>
+      <text x="48" y="443">5</text>
+      <text x="528" y="443">6</text>
+    </g>
+
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="178" y="106">点数1位の棚が内容とちぐはぐ</text>
+      <text x="658" y="106">拮抗したときだけAIに仲裁を足す</text>
+      <text x="178" y="272">実機検証はまず成功した</text>
+      <text x="658" y="272">記録を読み返すと気になる点が3つ</text>
+      <text x="178" y="438">線引きを後から決めた</text>
+      <text x="658" y="438">穴は一段直すたびに次の段へ移る</text>
+    </g>
+
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="178" y="150">調べものメモが日記の棚へ。</text>
+      <text x="178" y="172">点数は合うのに意味が合わない。</text>
+      <text x="658" y="150">機械はタグ・AIは意味まで。</text>
+      <text x="658" y="172">二段構成にした。</text>
+      <text x="178" y="316">JSON仕様どおりの出力。</text>
+      <text x="178" y="338">機械の1位を押さえて別の棚。</text>
+      <text x="658" y="316">判定順序が決まっていない。</text>
+      <text x="658" y="338">自信度の数字に約束がない。</text>
+      <text x="178" y="482">0.7以上は自動確定。</text>
+      <text x="178" y="504">中程度だけ人間に一度確認。</text>
+      <text x="658" y="482">何を見て・どの順で・どこまで。</text>
+      <text x="658" y="504">枠組みの書き下ろしが最後に必要。</text>
+    </g>
+
+    <text x="480" y="566" font-size="11" fill="var(--text)" text-anchor="middle">読む順: 左上から 1 → 2 → 3 → 4 → 5 → 6</text>
+  </g>
+</svg>
+<figcaption>タグ点数の1位が内容とちぐはぐなため拮抗時のLLM仲裁を足し、実機検証は成功したが判定順序・自信度の約束・戻り先の3点が残り、confidenceの線引きと中程度の人間確認で曖昧さを潰した6コマの物語。</figcaption></figure>
 
         </article>
 

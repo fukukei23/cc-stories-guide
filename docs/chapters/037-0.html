@@ -423,6 +423,114 @@
 <p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどうなってるか&lt;/summary&gt;</p>
 <p><code>compute_tag_match()</code> に必須タグ判定 <code>has_required_match</code> を導入し、<code>False</code> 時に <code>score = min(score, 0.6)</code> のクランプを挿入。重み配分 <code>0.4+0.3+0.3</code> は維持。ハブマッチは <code>embed</code> ベースから <code>extract_keywords</code> + 必須/追加タグの二段判定に置換（セクション 4 案X）。関連: <code>01_DECISIONS/claude-code/2026-07-12_ssot-recordマルチ起点再設計-セクション3-データフロー判定アルゴリズム.md</code> / <code>01_DECISIONS/claude-code/2026-07-11_ssot-recordマルチ起点再設計-01_DECISIONS中心バイアス根絶.md</code>。残課題: T1-T5 閾値の1ヶ月後再評価・LLM 仲裁プロンプト実機検証。</p>
 <p>&lt;/details&gt;</p>
+<figure class="story-diagram"><!-- 素材: source/037_スコア式を0点に合わせたら逆に必要なものが見えてきた話.md -->
+<svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s037a-title s037a-desc">
+  <title id="s037a-title">必須タグ不一致のスコア上限を0.6に切ってT3へ流す調整の流れ</title>
+  <desc id="s037a-desc">プロジェクト不明の記録が0.62でT2自動確定する誤判定を、必須タグ不一致時のスコア上限0.6クランプで0.51・T3へ沈め、重みは据え置きのまま3ケース再計算で意図どおりにした6コマの物語。</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <!-- パネル1: 総合0.62でT2確定と書いた（記録カード+警告丸） -->
+    <rect x="16" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="84" y="82" width="52" height="60" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="92" y1="96" x2="128" y2="96" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="92" y1="108" x2="128" y2="108" stroke="var(--accent-dark)" stroke-width="2.4"/>
+    <line x1="92" y1="120" x2="118" y2="120" stroke="var(--text-secondary)" stroke-width="1"/>
+    <circle cx="148" cy="112" r="12" fill="var(--amber-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="148" y1="106" x2="148" y2="113" stroke="var(--text)" stroke-width="1.6"/>
+    <circle cx="148" cy="118" r="1.2" fill="var(--text)"/>
+
+    <!-- パネル2: タグマッチという名前の思い込み（部分一致2片+加点上矢印） -->
+    <rect x="496" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="552" y="92" width="26" height="16" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.1"/>
+    <rect x="582" y="92" width="26" height="16" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.1"/>
+    <line x1="558" y1="100" x2="572" y2="100" stroke="var(--accent-dark)" stroke-width="1.8"/>
+    <line x1="588" y1="100" x2="602" y2="100" stroke="var(--text-secondary)" stroke-width="1.2"/>
+    <line x1="604" y1="128" x2="604" y2="112" stroke="var(--text)" stroke-width="1.6"/>
+    <polygon points="600,114 608,114 604,106" fill="var(--text)"/>
+
+    <!-- パネル3: T3へ流す設計のはずと指摘（設計者が計算式カードを指差す） -->
+    <rect x="16" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <circle cx="90" cy="256" r="12" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.4"/>
+    <path d="M 74 312 c 0 -20 32 -20 32 0" fill="none" stroke="var(--text)" stroke-width="1.8"/>
+    <line x1="104" y1="272" x2="122" y2="262" stroke="var(--text)" stroke-width="1.6"/>
+    <polygon points="118,258 128,262 122,270" fill="var(--text)"/>
+    <rect x="132" y="250" width="26" height="34" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.1"/>
+    <line x1="138" y1="262" x2="152" y2="262" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="138" y1="272" x2="148" y2="272" stroke="var(--text-secondary)" stroke-width="1"/>
+
+    <!-- パネル4: 必須タグ不一致は上限0.6に切る（スコアバーが落ちる+ゲート線） -->
+    <rect x="496" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="552" y1="266" x2="600" y2="266" stroke="var(--accent-dark)" stroke-width="5"/>
+    <line x1="552" y1="286" x2="580" y2="286" stroke="var(--text-secondary)" stroke-width="5"/>
+    <line x1="552" y1="306" x2="566" y2="306" stroke="var(--text-secondary)" stroke-width="5"/>
+    <line x1="600" y1="266" x2="600" y2="302" stroke="var(--text)" stroke-width="1.2" stroke-dasharray="3 3"/>
+    <polygon points="596,300 604,300 600,308" fill="var(--text)"/>
+
+    <!-- パネル5: 重みは据え置き（同じ高さの3本バー+鍵） -->
+    <rect x="16" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="76" y1="452" x2="104" y2="452" stroke="var(--accent-dark)" stroke-width="5"/>
+    <line x1="112" y1="452" x2="132" y2="452" stroke="var(--text-secondary)" stroke-width="5"/>
+    <line x1="140" y1="452" x2="156" y2="452" stroke="var(--text-secondary)" stroke-width="5"/>
+    <rect x="128" y="474" width="20" height="14" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <path d="M 133 474 v -5 a 5 5 0 0 1 10 0 v 5" fill="none" stroke="var(--text)" stroke-width="1.2"/>
+
+    <!-- パネル6: 3ケースの再計算で意図どおり（長さ違いの3本バー） -->
+    <rect x="496" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="552" y1="440" x2="576" y2="440" stroke="var(--green)" stroke-width="6"/>
+    <line x1="584" y1="470" x2="608" y2="470" stroke="var(--amber)" stroke-width="6"/>
+    <line x1="616" y1="488" x2="640" y2="488" stroke="var(--red)" stroke-width="6"/>
+  </g>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+    <circle cx="48" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="111">1</text>
+      <text x="528" y="111">2</text>
+      <text x="48" y="277">3</text>
+      <text x="528" y="277">4</text>
+      <text x="48" y="443">5</text>
+      <text x="528" y="443">6</text>
+    </g>
+
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="178" y="106">総合0.62でT2確定と書いた</text>
+      <text x="658" y="106">タグマッチという名前の思い込み</text>
+      <text x="178" y="272">T3へ流す設計のはずと指摘</text>
+      <text x="658" y="272">必須タグ不一致は上限0.6に切る</text>
+      <text x="178" y="438">重み0.4・0.3・0.3は据え置き</text>
+      <text x="658" y="438">3ケースの再計算で意図どおり</text>
+    </g>
+
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="178" y="150">プロジェクト不明なのに自動確定。</text>
+      <text x="178" y="172">警告なく記録が流れ落ちる。</text>
+      <text x="658" y="150">部分一致だけで加点が進む。</text>
+      <text x="658" y="172">必須タグが無くても高得点が出る。</text>
+      <text x="178" y="316">設計者が数字をじっと見る。</text>
+      <text x="178" y="338">計算式の見直しが始まった。</text>
+      <text x="658" y="316">0.62は0.51に落ちてT3へ。</text>
+      <text x="658" y="338">一行の追加で流れが変わる。</text>
+      <text x="178" y="482">タグは二値判定・特性は表照合。</text>
+      <text x="178" y="504">別の意味層なので触らない。</text>
+      <text x="658" y="482">0.82でT1・0.51でT3・0.33でT4。</text>
+      <text x="658" y="504">必要なケースだけ一段降りる。</text>
+    </g>
+
+    <text x="480" y="566" font-size="11" fill="var(--text)" text-anchor="middle">読む順: 左上から 1 → 2 → 3 → 4 → 5 → 6</text>
+  </g>
+</svg>
+<figcaption>プロジェクト不明の記録が0.62でT2自動確定する誤判定を、必須タグ不一致時のスコア上限0.6クランプで0.51・T3へ沈め、重みは据え置きのまま3ケース再計算で意図どおりにした6コマの物語。</figcaption></figure>
 
         </article>
 

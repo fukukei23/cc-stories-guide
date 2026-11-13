@@ -424,6 +424,118 @@
 <p><strong>TDDの拡張</strong> — Phase 1 の17テストを継承しつつ、実測ベースの新規テスト5本を追加。fixtures には失敗事例 <code>v2_低音ウィスパー.wav</code> と成功事例 <code>祭礼前夜_chorus.wav</code> を用意し、「失敗が検出できること」「成功が検出できること」の双方向を確認する。エラーハンドリングは wav 不在=終了コード2、音程推定全滅=「実測不可」表示、librosa 未導入時は対話的に pip 導入を案内。</p>
 <p>正典: <code>obsidian-ssot/01_DECISIONS/ai-music/2026-07-12_音節密度ルール拡張-Phase2実測オーディオ解析導入.md</code></p>
 <p>&lt;/details&gt;</p>
+<figure class="story-diagram"><!-- 素材: source/029_歌詞は合格点なのに歌は冴えなかった話.md -->
+<svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s029a-title s029a-desc">
+  <title id="s029a-title">歌詞の点検は合格でも生成音は冴えず、音そのものを実測する装置を追加した流れ</title>
+  <desc id="s029a-desc">歌詞の文字点検は合格でも生成音源は低音で冴えず、声の明るさと音程の揺れを実測して文字列判定と半々で融合し、失敗曲を点検の教材に採用した6コマの物語。</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <!-- パネル1: 歌詞の点検は合格と言う（歌詞カード+緑チェック） -->
+    <rect x="16" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="84" y="86" width="52" height="64" rx="4" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="92" y1="100" x2="128" y2="100" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="92" y1="114" x2="128" y2="114" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="92" y1="128" x2="120" y2="128" stroke="var(--text-secondary)" stroke-width="1"/>
+    <path d="M 118 118 l 10 12 l 20 -26" fill="none" stroke="var(--green)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- パネル2: 生成された音は冴えないと言う（小さな音波のスピーカー+警告丸） -->
+    <rect x="496" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="552" y="96" width="24" height="28" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <polygon points="576,96 590,86 590,134 576,124" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <path d="M 598 106 a 8 8 0 0 1 0 16" fill="none" stroke="var(--text)" stroke-width="1.4"/>
+    <circle cx="626" cy="112" r="11" fill="var(--amber-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="626" y1="106" x2="626" y2="113" stroke="var(--text)" stroke-width="1.6"/>
+    <circle cx="626" cy="118" r="1.2" fill="var(--text)"/>
+
+    <!-- パネル3: 点検係は文字しか見ていなかった（歌詞カードを虫眼鏡で覗く） -->
+    <rect x="16" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="68" y="256" width="48" height="56" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="76" y1="270" x2="108" y2="270" stroke="var(--text-secondary)" stroke-width="1"/>
+    <line x1="76" y1="284" x2="108" y2="284" stroke="var(--accent-dark)" stroke-width="2.2"/>
+    <line x1="76" y1="298" x2="100" y2="298" stroke="var(--text-secondary)" stroke-width="1"/>
+    <circle cx="122" cy="300" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.6"/>
+    <line x1="134" y1="314" x2="150" y2="330" stroke="var(--text)" stroke-width="3"/>
+
+    <!-- パネル4: 音そのものを実測する装置を追加（揺れる波形+実測メーター） -->
+    <rect x="496" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <path d="M 552 300 q 7 -16 14 0 t 14 0 t 14 0 t 14 0" fill="none" stroke="var(--accent-dark)" stroke-width="2"/>
+    <line x1="612" y1="288" x2="612" y2="312" stroke="var(--text-secondary)" stroke-width="1" stroke-dasharray="3 3"/>
+    <circle cx="626" cy="300" r="17" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="626" y1="300" x2="626" y2="287" stroke="var(--text)" stroke-width="1.6"/>
+    <line x1="626" y1="300" x2="636" y2="308" stroke="var(--text)" stroke-width="1.4"/>
+
+    <!-- パネル5: 実測と文字列を半々で融合（2色に分かれた円+波形と文字行） -->
+    <rect x="16" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <circle cx="106" cy="460" r="20" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <path d="M 106 440 a 20 20 0 0 0 0 40 z" fill="var(--accent-bg)"/>
+    <line x1="106" y1="440" x2="106" y2="480" stroke="var(--text)" stroke-width="1.2"/>
+    <path d="M 74 466 q 4 -10 8 0 t 8 0" fill="none" stroke="var(--accent-dark)" stroke-width="1.6"/>
+    <line x1="128" y1="454" x2="150" y2="454" stroke="var(--text-secondary)" stroke-width="1.4"/>
+    <line x1="128" y1="462" x2="146" y2="462" stroke="var(--text-secondary)" stroke-width="1.4"/>
+
+    <!-- パネル6: 失敗曲が点検の教材になる（音源ファイル+緑チェック+輝き線） -->
+    <rect x="496" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="552" y="424" width="44" height="56" rx="4" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.4"/>
+    <path d="M 560 448 q 4 -10 8 0 t 8 0 t 8 0" fill="none" stroke="var(--accent-dark)" stroke-width="1.6"/>
+    <path d="M 560 462 q 4 -10 8 0 t 8 0" fill="none" stroke="var(--accent-dark)" stroke-width="1.6"/>
+    <path d="M 606 466 l 10 12 l 24 -30" fill="none" stroke="var(--green)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <g stroke="var(--amber)" stroke-width="1.8">
+      <line x1="564" y1="416" x2="568" y2="406"/>
+      <line x1="584" y1="412" x2="586" y2="402"/>
+      <line x1="602" y1="416" x2="606" y2="408"/>
+    </g>
+  </g>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+    <circle cx="48" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="111">1</text>
+      <text x="528" y="111">2</text>
+      <text x="48" y="277">3</text>
+      <text x="528" y="277">4</text>
+      <text x="48" y="443">5</text>
+      <text x="528" y="443">6</text>
+    </g>
+
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="178" y="106">歌詞の点検は合格と言う</text>
+      <text x="658" y="106">生成された音は冴えないと言う</text>
+      <text x="178" y="272">点検係は文字しか見ていなかった</text>
+      <text x="658" y="272">音そのものを実測する装置を追加</text>
+      <text x="178" y="438">実測と文字列を半々で融合</text>
+      <text x="658" y="438">失敗曲が点検の教材になる</text>
+    </g>
+
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="178" y="150">力強い言葉と抑揚の構成が揃う。</text>
+      <text x="178" y="172">紙の上の点検では合格だった。</text>
+      <text x="658" y="150">音源は低い声で囁くような歌。</text>
+      <text x="658" y="172">言葉と音が別の答えを出した。</text>
+      <text x="178" y="316">破裂音と音節のばらつきを数えるだけ。</text>
+      <text x="178" y="338">紙の上では立派に見えてしまう。</text>
+      <text x="658" y="316">声の明るさと音程の揺れを実測。</text>
+      <text x="658" y="338">ステージの音を直接判定できる。</text>
+      <text x="178" y="482">17本のテストはそのまま継承。</text>
+      <text x="178" y="504">重みは運用しながら調整できる。</text>
+      <text x="658" y="482">あの音源を問題集として採用。</text>
+      <text x="658" y="504">失敗と成功の両方を試せる。</text>
+    </g>
+
+    <text x="480" y="566" font-size="11" fill="var(--text)" text-anchor="middle">読む順: 左上から 1 → 2 → 3 → 4 → 5 → 6</text>
+  </g>
+</svg>
+<figcaption>歌詞の文字点検は合格でも生成音源は低音で冴えず、声の明るさと音程の揺れを実測して文字列判定と半々で融合し、失敗曲を点検の教材に採用した6コマの物語。</figcaption></figure>
 
         </article>
 

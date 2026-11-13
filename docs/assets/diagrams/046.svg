@@ -1,0 +1,111 @@
+<!-- 素材: source/046_測ってみたら95.5%が間違いだった話-AI校正ツールの部分採用判断.md -->
+<svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s046a-title s046a-desc">
+  <title id="s046a-title">誤検知率95.5%の実測から2検出器の部分採用と人間確認の3段構えへ</title>
+  <desc id="s046a-desc">本番運用前の定量評価で179件の指摘の正解は8件・誤検知率95.5%を測定し、誤検知ゼロの2検出器だけを信頼区間の背押しで部分採用し、AIの直し案も人間が読むチェックリストで3段構えにした6コマの物語。</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <!-- パネル1: 測定が終わるまで本番運用はしない（立て札） -->
+    <rect x="16" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="95" y1="72" x2="95" y2="82" stroke="var(--text)" stroke-width="2"/>
+    <rect x="80" y="82" width="34" height="48" rx="3" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.3"/>
+    <line x1="86" y1="96" x2="108" y2="96" stroke="var(--accent-dark)" stroke-width="1.6"/>
+    <line x1="86" y1="106" x2="104" y2="106" stroke="var(--accent-dark)" stroke-width="1.6"/>
+    <line x1="86" y1="116" x2="106" y2="116" stroke="var(--accent-dark)" stroke-width="1.6"/>
+
+    <!-- パネル2: 179件の指摘で正解は8件（×の大量+緑1本） -->
+    <rect x="496" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <g stroke="var(--red)" stroke-width="1.3" fill="none">
+      <path d="M 552 84 l 6 6 M 558 84 l -6 6"/>
+      <path d="M 566 84 l 6 6 M 572 84 l -6 6"/>
+      <path d="M 580 84 l 6 6 M 586 84 l -6 6"/>
+      <path d="M 552 98 l 6 6 M 558 98 l -6 6"/>
+      <path d="M 566 98 l 6 6 M 572 98 l -6 6"/>
+      <path d="M 580 98 l 6 6 M 586 98 l -6 6"/>
+    </g>
+    <path d="M 600 88 l 8 8 M 608 88 l -8 8" stroke="var(--red)" stroke-width="2" fill="none"/>
+    <line x1="618" y1="92" x2="640" y2="92" stroke="var(--green)" stroke-width="3"/>
+
+    <!-- パネル3: 全面採用なら偽の警報が鳴り響く（サイレン+音波3重弧） -->
+    <rect x="16" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <path d="M 92 300 l 10 -10 l 10 10 v 16 c 0 8 -20 8 -20 0 z" fill="var(--red-bg)" stroke="var(--red)" stroke-width="1.4"/>
+    <path d="M 120 286 a 10 10 0 0 1 0 20" fill="none" stroke="var(--amber)" stroke-width="1.4"/>
+    <path d="M 128 280 a 16 16 0 0 1 0 32" fill="none" stroke="var(--amber)" stroke-width="1.4"/>
+    <path d="M 136 274 a 22 22 0 0 1 0 44" fill="none" stroke="var(--text-secondary)" stroke-width="1.2"/>
+
+    <!-- パネル4: 2つの検出器だけは成績が際立つ（グレー4本+緑2本） -->
+    <rect x="496" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="552" y1="290" x2="576" y2="290" stroke="var(--text-secondary)" stroke-width="5"/>
+    <line x1="584" y1="262" x2="608" y2="262" stroke="var(--green)" stroke-width="6"/>
+    <line x1="616" y1="290" x2="640" y2="290" stroke="var(--text-secondary)" stroke-width="5"/>
+    <line x1="552" y1="306" x2="576" y2="306" stroke="var(--text-secondary)" stroke-width="5"/>
+    <line x1="584" y1="306" x2="608" y2="306" stroke="var(--text-secondary)" stroke-width="5"/>
+    <line x1="616" y1="274" x2="640" y2="274" stroke="var(--green)" stroke-width="6"/>
+
+    <!-- パネル5: 統計で背押しして本番へ昇格（信頼区間ゲージ+緑チェック） -->
+    <rect x="16" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <line x1="72" y1="452" x2="160" y2="452" stroke="var(--bg-secondary)" stroke-width="10" stroke-linecap="round"/>
+    <line x1="86" y1="442" x2="86" y2="462" stroke="var(--text)" stroke-width="1.6"/>
+    <line x1="112" y1="444" x2="112" y2="460" stroke="var(--accent-dark)" stroke-width="2"/>
+    <line x1="128" y1="446" x2="128" y2="458" stroke="var(--red)" stroke-width="1.4" stroke-dasharray="3 2"/>
+    <path d="M 142 458 l 7 8 l 16 -18" fill="none" stroke="var(--green)" stroke-width="3"/>
+
+    <!-- パネル6: 最後は人間が読む3段構え（3つの丸+矢印2本） -->
+    <rect x="496" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <circle cx="556" cy="462" r="12" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="590" cy="462" r="12" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="624" cy="462" r="12" fill="var(--green-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <line x1="568" y1="462" x2="578" y2="462" stroke="var(--text)" stroke-width="1.3"/>
+    <polygon points="576,459 584,462 576,465" fill="var(--text)"/>
+    <line x1="602" y1="462" x2="612" y2="462" stroke="var(--text)" stroke-width="1.3"/>
+    <polygon points="610,459 618,462 610,465" fill="var(--text)"/>
+  </g>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+    <circle cx="48" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="111">1</text>
+      <text x="528" y="111">2</text>
+      <text x="48" y="277">3</text>
+      <text x="528" y="277">4</text>
+      <text x="48" y="443">5</text>
+      <text x="528" y="443">6</text>
+    </g>
+
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="178" y="106">測定が終わるまで本番運用はしない</text>
+      <text x="658" y="106">179件の指摘で正解は8件</text>
+      <text x="178" y="272">全面採用なら偽の警報が鳴り響く</text>
+      <text x="658" y="272">2つの検出器だけは成績が際立つ</text>
+      <text x="178" y="438">統計で背押しして本番へ昇格</text>
+      <text x="658" y="438">最後は人間が読む3段構え</text>
+    </g>
+
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="178" y="150">導入前に家の掟が立ちはだかる。</text>
+      <text x="178" y="172">50本文書で測ることに。</text>
+      <text x="658" y="150">誤検知率95.5%を実測。</text>
+      <text x="658" y="172">20回指摘で19回が間違い。</text>
+      <text x="178" y="316">誰も警報を聞かなくなる。</text>
+      <text x="178" y="338">火事場で鳴り続ける誤報。</text>
+      <text x="658" y="316">冗長な動詞と誇張表現。</text>
+      <text x="658" y="338">6回の試験で1度も間違えない。</text>
+      <text x="178" y="482">誤検知は30%未満と証明。</text>
+      <text x="178" y="504">試験期間を待たず部分採用。</text>
+      <text x="658" y="482">AIの直し案も壊れることがある。</text>
+      <text x="658" y="504">機械と統計の先に人間。</text>
+    </g>
+
+    <text x="480" y="566" font-size="11" fill="var(--text)" text-anchor="middle">読む順: 左上から 1 → 2 → 3 → 4 → 5 → 6</text>
+  </g>
+</svg>
