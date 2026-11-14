@@ -198,3 +198,9 @@
   confidence: high
   episode: '070'
   source: 01_DECISIONS/claude-code/2026-11-14_ssot-record-skill軽量化実装.md
+- date: 2026-11-14
+  type: 事故解決
+  reason: 毎晩自動で動く見張り番スクリプトがcronでは名札（USER変数）を持たずに倒れる潜在バグを発見・冒頭1行の名札自動生成で封じ・さらにAI検査官の2機一致指摘で「kill成功側が未確認」という検証の偏りを実測で埋め11経路を全部確認した
+  confidence: high
+  episode: '069'
+  source: 01_DECISIONS/claude-code/2026-11-14_playwright-chrome-guard.sh-USER未定義修正.md

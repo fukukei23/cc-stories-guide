@@ -1,0 +1,130 @@
+<!-- 素材: source/069_夜の見張り番が自分の名前を忘れて倒れていた話.md -->
+<svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="d069-title d069-desc">
+  <title id="d069-title">夜の見張り番が自分の名前を忘れて倒れていた話</title>
+  <desc id="d069-desc">夜の自動運転では名前が配られないため見張り番が転倒する潜在バグを、冒頭1行の名札自動生成で封じ、AI検査官の指摘で成功する側の確認も実測して11の通り道を全部通った6コマの物語</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <rect x="16" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="496" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="16" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="496" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="16" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="496" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+  </g>
+
+  <g>
+    <circle cx="48" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+  </g>
+
+  <!-- イラスト1: 見張り番と窓（パネル1・x=68-166・y=78-196） -->
+  <g stroke="var(--text)" stroke-width="1.6">
+    <circle cx="100" cy="125" r="11" fill="var(--accent-bg)"/>
+    <rect x="92" y="138" width="16" height="26" rx="4" fill="var(--accent-bg)"/>
+    <line x1="97" y1="164" x2="97" y2="180"/>
+    <line x1="105" y1="164" x2="105" y2="180"/>
+    <line x1="112" y1="142" x2="124" y2="136"/>
+    <rect x="128" y="122" width="32" height="42" rx="3" fill="none"/>
+    <line x1="144" y1="136" x2="144" y2="150"/>
+  </g>
+
+  <!-- イラスト2: 欠け月と空の名札置き場（パネル2・x=548-646・y=78-196） -->
+  <g stroke="var(--text)" stroke-width="1.6">
+    <path d="M 576 118 A 14 14 0 1 1 572 90 A 11 11 0 1 0 576 118 Z" fill="var(--accent-bg)"/>
+    <rect x="606" y="150" width="34" height="18" rx="3" fill="none" stroke-dasharray="4 3"/>
+  </g>
+  <g font-family="'Noto Sans JP', sans-serif">
+    <text x="623" y="163" font-size="10" fill="var(--text-secondary)" text-anchor="middle">空欄</text>
+  </g>
+
+  <!-- イラスト3: 転倒する見張り番（パネル3・x=68-166・y=244-362） -->
+  <g stroke="var(--text)" stroke-width="1.6">
+    <circle cx="92" cy="296" r="11" fill="var(--accent-bg)"/>
+    <rect x="84" y="306" width="16" height="26" rx="4" fill="var(--accent-bg)" transform="rotate(28 92 319)"/>
+    <line x1="86" y1="338" x2="76" y2="350"/>
+    <line x1="98" y1="342" x2="104" y2="352"/>
+    <line x1="126" y1="350" x2="160" y2="350"/>
+  </g>
+  <g font-family="'Noto Sans JP', sans-serif">
+    <text x="146" y="306" font-size="16" fill="var(--accent-dark)" font-weight="700">!</text>
+  </g>
+
+  <!-- イラスト4: 自分で書く名札カード（パネル4・x=548-646・y=244-362） -->
+  <g stroke="var(--text)" stroke-width="1.6">
+    <rect x="568" y="294" width="52" height="28" rx="4" fill="var(--accent-bg)"/>
+    <line x1="626" y1="288" x2="638" y2="278"/>
+  </g>
+  <g font-family="'Noto Sans JP', sans-serif">
+    <text x="594" y="312" font-size="11" fill="var(--accent-dark)" text-anchor="middle" font-weight="700">自分の名前</text>
+  </g>
+
+  <!-- イラスト5: 3人のAI検査官と虫眼鏡（パネル5・x=68-166・y=410-528） -->
+  <g stroke="var(--text)" stroke-width="1.6">
+    <circle cx="86" cy="450" r="9" fill="var(--accent-bg)"/>
+    <circle cx="112" cy="450" r="9" fill="var(--accent-bg)"/>
+    <circle cx="138" cy="450" r="9" fill="var(--accent-bg)"/>
+    <rect x="78" y="462" width="16" height="18" rx="3" fill="var(--accent-bg)"/>
+    <rect x="104" y="462" width="16" height="18" rx="3" fill="var(--accent-bg)"/>
+    <rect x="130" y="462" width="16" height="18" rx="3" fill="var(--accent-bg)"/>
+    <circle cx="150" cy="490" r="8" fill="none"/>
+    <line x1="156" y1="496" x2="164" y2="504"/>
+  </g>
+  <g font-family="'Noto Sans JP', sans-serif">
+    <text x="86" y="492" font-size="11" fill="var(--accent-dark)" text-anchor="middle">3人</text>
+  </g>
+
+  <!-- イラスト6: 合格のチェックと旗（パネル6・x=548-646・y=410-528） -->
+  <g>
+    <path d="M 564 488 L 582 508 L 618 448" fill="none" stroke="var(--green)" stroke-width="6" stroke-linecap="round"/>
+    <line x1="630" y1="508" x2="630" y2="452" stroke="var(--text)" stroke-width="1.6"/>
+    <polygon points="630,452 650,460 630,468" fill="var(--green)" stroke="none"/>
+  </g>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="111">1</text>
+      <text x="528" y="111">2</text>
+      <text x="48" y="277">3</text>
+      <text x="528" y="277">4</text>
+      <text x="48" y="443">5</text>
+      <text x="528" y="443">6</text>
+    </g>
+
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="178" y="106">毎晩回る見張り番</text>
+      <text x="658" y="106">夜は名札が来ない</text>
+      <text x="178" y="272">名前を確認して転倒</text>
+      <text x="658" y="272">1行で名札を作る</text>
+      <text x="178" y="438">検査官からの指摘</text>
+      <text x="658" y="438">11の道を全部通過</text>
+    </g>
+
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="178" y="150">放置された窓を勝手に</text>
+      <text x="178" y="172">閉めてくれる番人</text>
+      <text x="658" y="150">自動運転モードでは</text>
+      <text x="658" y="172">名前を教える人がいない</text>
+      <text x="178" y="316">「自分の名前は？」で</text>
+      <text x="178" y="338">つまずいて止まる</text>
+      <text x="658" y="316">「無ければ自分で書く」</text>
+      <text x="658" y="338">命令を一番先頭に足した</text>
+      <text x="178" y="482">「成功する側の確認が</text>
+      <text x="178" y="504">抜けている」と2人が一致</text>
+      <text x="658" y="482">偽物のブラウザまで作り</text>
+      <text x="658" y="504">未確認ゼロで合格</text>
+    </g>
+
+    <text x="480" y="566" font-size="11" fill="var(--text)" text-anchor="middle">読む順: 左上から 1 → 2 → 3 → 4 → 5 → 6</text>
+  </g>
+</svg>

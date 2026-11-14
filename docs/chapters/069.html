@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夜の見張り番が自分の名前を忘れて倒れていた話 — CC Stories</title>
+    <meta name="description" content="CC Stories — 作業の物語集: 夜の見張り番が自分の名前を忘れて倒れていた話">
+    <meta property="og:title" content="夜の見張り番が自分の名前を忘れて倒れていた話 — CC Stories">
+    <meta property="og:description" content="夜の見張り番が自分の名前を忘れて倒れていた話 — 専門用語なしの物語と技術解説のペア">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/069.html">
+    <meta property="og:image" content="https://fukukei23.github.io/cc-stories-guide/assets/ogp.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="../assets/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+</head>
+<body>
+    <header class="site-header">
+        <button class="menu-toggle" aria-label="メニュー" id="menuToggle">
+            <span></span><span></span><span></span>
+        </button>
+        <a href="../index.html" class="site-title">📚 CC Stories</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="テーマ切替">
+            <span class="icon-light">☀️</span>
+            <span class="icon-dark">🌙</span>
+        </button>
+    </header>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="../index.html">🏠 ホーム</a>
+        </div>
+        
+        <a href="002-llm.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「マルチLLMレビューして」と言ったら別々の目で見てくれる話
+        </a>
+        
+        <a href="003.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「おはよう」と言ったら昨日が戻ってきた話
+        </a>
+        
+        <a href="003-ssot.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「記録して」と言ったらSSOTに勝手に入る話
+        </a>
+        
+        <a href="006.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「定期実行作って」と言ったら排他込みで組んでくれる話
+        </a>
+        
+        <a href="007.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「今夜はミニマックス」と言ったら裏側のレート制限を切り替えてくれる話
+        </a>
+        
+        <a href="008-5.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「返信文を書いて」と言ったら5禁止に気をつけて整えてくれる話
+        </a>
+        
+        <a href="009.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「リポジトリレビューして」と言ったら品質を点数で出してくれる話
+        </a>
+        
+        <a href="010-dev-cycle.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「dev-cycle」と言うと開発のサイクルが一巡する話
+        </a>
+        
+        <a href="022.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「引き継ぎ」と言ったら明日の自分に手紙を書いてくれた話
+        </a>
+        
+        <a href="023.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「比較して」と言ったら選択肢を深掘りして推奨まで出してきた話
+        </a>
+        
+        <a href="024-ssot.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「SSOTから探して」と言ったら過去の失敗を掘り返してきた話
+        </a>
+        
+        <a href="029.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            歌詞は合格点なのに歌は冴えなかった話——品質チェックが「言葉」から「音」へ進んだ話
+        </a>
+        
+        <a href="039-8.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            必須タグがなくても8割の点数が出てしまった話
+        </a>
+        
+        <a href="001.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            「テストは充分？」という一言
+        </a>
+        
+        <a href="002.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            防災フックが鳴らなかった話
+        </a>
+        
+        <a href="004.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            作業物語 「歌詞は合ってるのに、なぜか曲が盛り上がらない話」
+        </a>
+        
+        <a href="005.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            作業物語 「自動で呟かせる前夜、調べたら地雷が一杯だった話」
+        </a>
+        
+        <a href="011-youtubeai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「YouTubeを投げる」と言ったら生成AI用プロンプト仕様書が出てくる話
+        </a>
+        
+        <a href="012-commit3.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            他の作業を巻き込んでcommitする事故を3つの見張り役で潰した話
+        </a>
+        
+        <a href="013-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AIにファイルを書き換えさせる前に「いいですか？」と聞かせる話
+        </a>
+        
+        <a href="014-ai3.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AIの直し提案が3体そろって否定された話
+        </a>
+        
+        <a href="015-1.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            設定を1枚の帳票に集めて書き忘れ事故を潰した話
+        </a>
+        
+        <a href="016-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AI審査員の盲点を人間の一言と説明書の改良で塞いだ話
+        </a>
+        
+        <a href="017-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AIに下調べの省略をさせない検問を作った話
+        </a>
+        
+        <a href="018.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            検問の穴を塞ぐと別の穴が開いて、最後は自分の違和感が正しかった話
+        </a>
+        
+        <a href="019-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            作業物語 「曲作って」と言ったらAIの癖に振り回されない道具立てになっていた話
+        </a>
+        
+        <a href="021-reverse-engineer-song.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            013の次に見えた「聴くだけじゃ足りない」
+        </a>
+        
+        <a href="025-5.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            記録してと言ったら書込先を決めるまでに5回も検問された話
+        </a>
+        
+        <a href="026-ssot-record.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            「保存先くらい機械に任せて」という一言から始まった設計が、気づけば禁止条件だらけになっていた話
+        </a>
+        
+        <a href="027.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            宿題の答え合わせをしたら、直っていたのは「機械で直せるところ」だけだった話
+        </a>
+        
+        <a href="028-1000.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            差分1000件の正体は作りかけの絵だった話
+        </a>
+        
+        <a href="037-0.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スコア式を0点に合わせたら逆に必要なものが見えてきた話
+        </a>
+        
+        <a href="038-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            字幕が一文字も出ていない動画を、AIは「出ています」と答えた話
+        </a>
+        
+        <a href="041.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スコアが全部同じだった構造的不具合は仕組みを変えないと動かない話
+        </a>
+        
+        <a href="042.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            宣言を書かないだけで全部素通りできた話
+        </a>
+        
+        <a href="043-llm.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            機械の点数は当てにならないと思ったらLLMの判定にも曖昧さが残った話
+        </a>
+        
+        <a href="044.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            壊れたのは一つだと思ったら二重の故障が互いの正体を隠していた話
+        </a>
+        
+        <a href="045-nemotronorp.py3.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            幽霊モデルという見えない故障 ― Nemotron死亡事象とorp.pyの3層防御
+        </a>
+        
+        <a href="046-95.5%-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            測ってみたら95.5%が間違いだった話 ― AI校正ツールの部分採用判断
+        </a>
+        
+        <a href="047-2-44+1.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            補強2+4採用と4セル検証+1週間試験運用 ― symlinkの想定外UNC解決との付き合い方
+        </a>
+        
+        <a href="048.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            毎回出る確認ダイアログの正体は、使い捨ての道具だった
+        </a>
+        
+        <a href="049-ssot-record.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            ssot-recordデータフロー判定アルゴリズム
+        </a>
+        
+        <a href="050-url30%.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            「自動でつぶやく機械を作った」のに、走り出す前に止まってくれた話
+        </a>
+        
+        <a href="051.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            「毎日正午の再試行を予約した」ら、その予約が自分で自分を消せずに残り続けていた話
+        </a>
+        
+        <a href="052-durable-cron9c351486.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            &#34;迷子のdurable-cronが9c351486を発射していた話&#34;
+        </a>
+        
+        <a href="053-12.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            「測定器が壊れている」せいで、直っていたはずの合格が12件も眠っていた話
+        </a>
+        
+        <a href="054-db.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            構造的失敗を先に作る勇気でDBマイグレーションを書き直した話
+        </a>
+        
+        <a href="055-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            「見えないはずのAIがスライドの文字を読んでいた話」
+        </a>
+        
+        <a href="056.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            バージョン番号ひとつで壊れる世界
+        </a>
+        
+        <a href="057-207.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            道具207個の工具箱は導入初日に鍵をかけた話
+        </a>
+        
+        <a href="058.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            テスト全合格なのに繋がっていなかった話
+        </a>
+        
+        <a href="059.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            外部ツールのインストーラが中枢設定を勝手に書こうとした話
+        </a>
+        
+        <a href="060-ai30.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AIが作った検査機械は本番投入前に人間が30件採点する話
+        </a>
+        
+        <a href="061.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            その作業は無理と決めつける前に引き出しを開けよう
+        </a>
+        
+        <a href="062.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            わざと汚したテストファイルが、検査網の穴を暴いた話
+        </a>
+        
+        <a href="063.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            攻撃事件の教訓チェックリストで自分のアプリの金庫が開いていた話
+        </a>
+        
+        <a href="064-7.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            毎晩「お知らせ」は届いていたのに、7日間誰も動かなかった話
+        </a>
+        
+        <a href="065-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AIが書いた日本語に、中国語の字が混ざっていた話
+        </a>
+        
+        <a href="066-4.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            4日間閉まっていた家が、警備員を全員出勤停止にした話
+        </a>
+        
+        <a href="067.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            何もしていない夜こそ、検査機は不合格を出した話
+        </a>
+        
+        <a href="068.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            見えない乱数を、差し込める部品にした話
+        </a>
+        
+        <a href="069.html"
+           class="sidebar-link active">
+            <span class="sidebar-icon">📄</span>
+            夜の見張り番が自分の名前を忘れて倒れていた話
+        </a>
+        
+        <a href="070.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            作業物語 「記録して」と言ったら説明書を全部読んでいた。目次引きに作り直した話
+        </a>
+        
+    </nav>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main class="content">
+        <div class="chapter-nav-top">
+            
+            <a href="068.html" class="nav-prev">← 見えない乱数を、差し込める部品にした話</a>
+            
+            
+            <a href="070.html" class="nav-next">作業物語 「記録して」と言ったら説明書を全部読んでいた。目次引きに作り直した話 →</a>
+            
+        </div>
+
+        <div class="episode-badge">第69話</div>
+        <article class="chapter-body">
+            <h1>夜の見張り番が自分の名前を忘れて倒れていた話</h1>
+<p>ある家には、毎晩決まった時刻に庭を見回る「見張り番」がいる。放置された窓が開いたままになっていたら、勝手に閉めてくれるのが仕事だ。</p>
+<figure class="story-diagram"><!-- 素材: source/069_夜の見張り番が自分の名前を忘れて倒れていた話.md -->
+<svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="d069-title d069-desc">
+  <title id="d069-title">夜の見張り番が自分の名前を忘れて倒れていた話</title>
+  <desc id="d069-desc">夜の自動運転では名前が配られないため見張り番が転倒する潜在バグを、冒頭1行の名札自動生成で封じ、AI検査官の指摘で成功する側の確認も実測して11の通り道を全部通った6コマの物語</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <rect x="16" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="496" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="16" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="496" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="16" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="496" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+  </g>
+
+  <g>
+    <circle cx="48" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+  </g>
+
+  <!-- イラスト1: 見張り番と窓（パネル1・x=68-166・y=78-196） -->
+  <g stroke="var(--text)" stroke-width="1.6">
+    <circle cx="100" cy="125" r="11" fill="var(--accent-bg)"/>
+    <rect x="92" y="138" width="16" height="26" rx="4" fill="var(--accent-bg)"/>
+    <line x1="97" y1="164" x2="97" y2="180"/>
+    <line x1="105" y1="164" x2="105" y2="180"/>
+    <line x1="112" y1="142" x2="124" y2="136"/>
+    <rect x="128" y="122" width="32" height="42" rx="3" fill="none"/>
+    <line x1="144" y1="136" x2="144" y2="150"/>
+  </g>
+
+  <!-- イラスト2: 欠け月と空の名札置き場（パネル2・x=548-646・y=78-196） -->
+  <g stroke="var(--text)" stroke-width="1.6">
+    <path d="M 576 118 A 14 14 0 1 1 572 90 A 11 11 0 1 0 576 118 Z" fill="var(--accent-bg)"/>
+    <rect x="606" y="150" width="34" height="18" rx="3" fill="none" stroke-dasharray="4 3"/>
+  </g>
+  <g font-family="'Noto Sans JP', sans-serif">
+    <text x="623" y="163" font-size="10" fill="var(--text-secondary)" text-anchor="middle">空欄</text>
+  </g>
+
+  <!-- イラスト3: 転倒する見張り番（パネル3・x=68-166・y=244-362） -->
+  <g stroke="var(--text)" stroke-width="1.6">
+    <circle cx="92" cy="296" r="11" fill="var(--accent-bg)"/>
+    <rect x="84" y="306" width="16" height="26" rx="4" fill="var(--accent-bg)" transform="rotate(28 92 319)"/>
+    <line x1="86" y1="338" x2="76" y2="350"/>
+    <line x1="98" y1="342" x2="104" y2="352"/>
+    <line x1="126" y1="350" x2="160" y2="350"/>
+  </g>
+  <g font-family="'Noto Sans JP', sans-serif">
+    <text x="146" y="306" font-size="16" fill="var(--accent-dark)" font-weight="700">!</text>
+  </g>
+
+  <!-- イラスト4: 自分で書く名札カード（パネル4・x=548-646・y=244-362） -->
+  <g stroke="var(--text)" stroke-width="1.6">
+    <rect x="568" y="294" width="52" height="28" rx="4" fill="var(--accent-bg)"/>
+    <line x1="626" y1="288" x2="638" y2="278"/>
+  </g>
+  <g font-family="'Noto Sans JP', sans-serif">
+    <text x="594" y="312" font-size="11" fill="var(--accent-dark)" text-anchor="middle" font-weight="700">自分の名前</text>
+  </g>
+
+  <!-- イラスト5: 3人のAI検査官と虫眼鏡（パネル5・x=68-166・y=410-528） -->
+  <g stroke="var(--text)" stroke-width="1.6">
+    <circle cx="86" cy="450" r="9" fill="var(--accent-bg)"/>
+    <circle cx="112" cy="450" r="9" fill="var(--accent-bg)"/>
+    <circle cx="138" cy="450" r="9" fill="var(--accent-bg)"/>
+    <rect x="78" y="462" width="16" height="18" rx="3" fill="var(--accent-bg)"/>
+    <rect x="104" y="462" width="16" height="18" rx="3" fill="var(--accent-bg)"/>
+    <rect x="130" y="462" width="16" height="18" rx="3" fill="var(--accent-bg)"/>
+    <circle cx="150" cy="490" r="8" fill="none"/>
+    <line x1="156" y1="496" x2="164" y2="504"/>
+  </g>
+  <g font-family="'Noto Sans JP', sans-serif">
+    <text x="86" y="492" font-size="11" fill="var(--accent-dark)" text-anchor="middle">3人</text>
+  </g>
+
+  <!-- イラスト6: 合格のチェックと旗（パネル6・x=548-646・y=410-528） -->
+  <g>
+    <path d="M 564 488 L 582 508 L 618 448" fill="none" stroke="var(--green)" stroke-width="6" stroke-linecap="round"/>
+    <line x1="630" y1="508" x2="630" y2="452" stroke="var(--text)" stroke-width="1.6"/>
+    <polygon points="630,452 650,460 630,468" fill="var(--green)" stroke="none"/>
+  </g>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="111">1</text>
+      <text x="528" y="111">2</text>
+      <text x="48" y="277">3</text>
+      <text x="528" y="277">4</text>
+      <text x="48" y="443">5</text>
+      <text x="528" y="443">6</text>
+    </g>
+
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="178" y="106">毎晩回る見張り番</text>
+      <text x="658" y="106">夜は名札が来ない</text>
+      <text x="178" y="272">名前を確認して転倒</text>
+      <text x="658" y="272">1行で名札を作る</text>
+      <text x="178" y="438">検査官からの指摘</text>
+      <text x="658" y="438">11の道を全部通過</text>
+    </g>
+
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="178" y="150">放置された窓を勝手に</text>
+      <text x="178" y="172">閉めてくれる番人</text>
+      <text x="658" y="150">自動運転モードでは</text>
+      <text x="658" y="172">名前を教える人がいない</text>
+      <text x="178" y="316">「自分の名前は？」で</text>
+      <text x="178" y="338">つまずいて止まる</text>
+      <text x="658" y="316">「無ければ自分で書く」</text>
+      <text x="658" y="338">命令を一番先頭に足した</text>
+      <text x="178" y="482">「成功する側の確認が</text>
+      <text x="178" y="504">抜けている」と2人が一致</text>
+      <text x="658" y="482">偽物のブラウザまで作り</text>
+      <text x="658" y="504">未確認ゼロで合格</text>
+    </g>
+
+    <text x="480" y="566" font-size="11" fill="var(--text)" text-anchor="middle">読む順: 左上から 1 → 2 → 3 → 4 → 5 → 6</text>
+  </g>
+</svg>
+<figcaption>夜の自動運転では名前が配られないため見張り番が転倒する潜在バグを、冒頭1行の名札自動生成で封じ、AI検査官の指摘で成功する側の確認も実測して11の通り道を全部通った6コマの物語</figcaption></figure>
+<h2>困ったこと</h2>
+<p>やることリストを見ていたら「見張り番が10月の夜からエラーで倒れている」という記録を見つけた。調べてみると、そのエラーの記録は10月の夜の残骸で、実際には見張り番は倒れていなかった。でも、倒れる仕組み自体はそのまま残っていた。</p>
+<p>夜の自動運転では、見張り番に名前を教える人がいない。それなのに見張り番は「自分の名前を確認してから動く」という約束で書かれていた。名前がある昼の話し方では問題ないのに、夜の自動運転では名前が無い段階でつまずいて倒れる。しかもこれは「いつか窓が開きっぱなしになった夜に倒れる」潜伏バグで、普段は静かに眠っていた。</p>
+<h2>どう解決したか</h2>
+<p>直し方は1行だけ。「名札が無ければ、自分で調べて名前を書く」という命令を見張り番の一番先頭に足した。これで夜でも自分の名前を持って動ける。</p>
+<p>ただ、直して終わりにはしなかった。3人のAI検査官に回覧したところ、うち2人がまったく同じ場所を指摘した。「閉められなかった場合の確認はしているが、閉められた場合の確認が一度もない」。確かに、動きはしたが結果が変わらない&quot;安全側&quot;の通り道だけを確認していた。</p>
+<p>そこで本物そっくりの偽物ブラウザ（名前だけ本物に見せかけたテスト用の物体）を作り、本当に閉められるかを実測した。さらに「勤務表を見て延期になる経路」や「強制的に閉める経路」も別々に確認した。最終的に11の通り道を全部通って、未確認はゼロになった。</p>
+<h2>何が変わったか</h2>
+<p>見張り番は夜の自動運転でも自分の名前を思い出せるようになり、動く方向の全てが安全確認済みになった。</p>
+<p>この「名前の忘れ方」を調べると、過去に起きた2つの事故（夜に道具が見つからない・夜に鍵が読めない）と同じ仕組みだった。夜の自動運転は昼と違って周囲の設定を教えてくれない。今回で3つ目の罠として見張り方法に記録し、次からは夜用の設定を最初から渡すことにした。</p>
+<p>教えられたのは、「直した」で終わらせないこと。検査官が2人そろって同じ穴を指摘するのは、作った本人の目に見えない偏りがある合図だった。</p>
+<p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどう作ったか&lt;/summary&gt;</p>
+<p>Playwrightで使うブラウザ放置を自動検出・killするcronスクリプト（15分間隔）が、<code>set -u</code>（未定義変数を即エラーにする設定）環境下で <code>$USER</code> 未定義参照により死亡する潜在バグだった。cronは非対話シェルなのでUSERを設定しない（過去にPATH不在・APIキー読込失敗の2事故と同族の「非対話シェル環境変数罠」の第3事例）。修正は冒頭に <code>USER=&quot;$(id -un)&quot;</code> を追加（実UID名を常に正とする）。修正前に <code>env -i bash -uc 'set -u; echo &quot;$USER&quot;'</code> でEXIT=127の死亡を再現し、修正後にskip/stale cleanup/フラグ作成/救済窓口/kill中止/kill成功/kill -9/heartbeat救済/pid非数値/HOME未定義/USER偽装の11経路を実測（EXIT=0）。検証の偏りはmulti-llm-reviewのMiniMax+GLM 2機独立指摘で発見し、comm=chromeのダミープロセス（prctl PR_SET_NAME）で成功側を実測した。正典は個人SSOTのclaude-code配下（2026-11-14記録）・ MLR記録は60_MLR_LOGS配下。</p>
+<p>&lt;/details&gt;</p>
+
+        </article>
+
+        <nav class="chapter-nav-bottom">
+            
+            <a href="068.html" class="nav-card prev">
+                <span class="nav-label">← 前の章</span>
+                <span class="nav-title">📄 見えない乱数を、差し込める部品にした話</span>
+            </a>
+            
+            
+            <a href="070.html" class="nav-card next">
+                <span class="nav-label">次の章 →</span>
+                <span class="nav-title">📄 作業物語 「記録して」と言ったら説明書を全部読んでいた。目次引きに作り直した話</span>
+            </a>
+            
+        </nav>
+    </main>
+
+    <footer class="site-footer">
+        <p>CC Stories — <a href="https://github.com/fukukei23/cc-stories-guide">GitHub</a>
+         · <a href="https://fukukei23.github.io/ssot-guide/">SSOT Guide</a>
+         · <a href="https://fukukei23.github.io/loop-engineering-guide/">Loop Engineering Guide</a>
+         · <a href="https://fukukei23.github.io/guides/">技術ガイド集</a>
+         · <a href="https://fukukei23.github.io/">fukukei23</a></p>
+    </footer>
+
+    <script src="../assets/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default',
+            themeVariables: { fontSize: '14px' }
+        });
+    </script>
+</body>
+</html>
