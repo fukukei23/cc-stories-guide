@@ -1,0 +1,126 @@
+<!-- 素材: source/070_毎回全部読んでいた説明書を目次引きで軽くした話.md -->
+<!-- 型A: できごと系6コマ絵本 viewBox 960x580 -->
+<svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s070-title s070-desc">
+  <title id="s070-title">説明書を目次引きに作り直した6コマ</title>
+  <desc id="s070-desc">1349行の説明書を毎回全量読み込みしていた記録係を、目次+本体+引き出し2冊に分割し、使い方を実測して高頻度章を本体へ戻し、17.3%の軽量化で確定させた話</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <rect x="16" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="496" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="16" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="496" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="16" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="496" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+  </g>
+
+  <g>
+    <circle cx="48" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+  </g>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="111">1</text>
+      <text x="528" y="111">2</text>
+      <text x="48" y="277">3</text>
+      <text x="528" y="277">4</text>
+      <text x="48" y="443">5</text>
+      <text x="528" y="443">6</text>
+    </g>
+
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="178" y="106">重すぎる説明書</text>
+      <text x="658" y="106">目次引きに作り直す</text>
+      <text x="178" y="272">使い方を実測する</text>
+      <text x="658" y="272">高頻度の章は本体へ</text>
+      <text x="178" y="438">あいまいでも安全側</text>
+      <text x="658" y="438">17.3%軽くて決着</text>
+    </g>
+
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="178" y="150">1349行を毎回最初から最後まで読み込み</text>
+      <text x="178" y="172">おかず3皿分の力を消していた</text>
+      <text x="658" y="150">目次を先頭に置き必要な章だけ開く</text>
+      <text x="658" y="172">たまに使う章は引き出し2冊へ移した</text>
+      <text x="178" y="316">過去の記録を数えて頻度を実測したら</text>
+      <text x="178" y="338">あと片付けの章は8割近く必要だった</text>
+      <text x="658" y="316">実測でよく使う章を本体へ戻し</text>
+      <text x="658" y="338">理屈でなく実測で本棚を組み直した</text>
+      <text x="178" y="482">あいまいな頼まれ方では両方開けと決め</text>
+      <text x="178" y="504">読み漏れの筋を最初から塞いだ</text>
+      <text x="658" y="482">半分の目標には届かず17.3%で決着</text>
+      <text x="658" y="504">読み込みの実感は改善を確定させた</text>
+    </g>
+
+    <!-- パネル1: 重い本の山 -->
+    <g>
+      <rect x="82" y="152" width="70" height="20" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+      <rect x="84" y="130" width="66" height="20" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+      <rect x="80" y="96" width="74" height="30" rx="3" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.6"/>
+      <line x1="88" y1="105" x2="146" y2="105" stroke="var(--text-secondary)" stroke-width="1"/>
+      <line x1="88" y1="112" x2="146" y2="112" stroke="var(--text-secondary)" stroke-width="1"/>
+      <line x1="88" y1="119" x2="146" y2="119" stroke="var(--text-secondary)" stroke-width="1"/>
+      <line x1="117" y1="178" x2="117" y2="190" stroke="var(--text)" stroke-width="1.6"/>
+      <polygon points="111,186 123,186 117,193" fill="var(--text)"/>
+    </g>
+
+    <!-- パネル2: 目次タブ付き薄い本体+引き出し2冊 -->
+    <g>
+      <rect x="560" y="118" width="56" height="64" rx="3" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.4"/>
+      <line x1="566" y1="134" x2="608" y2="134" stroke="var(--text-secondary)" stroke-width="1"/>
+      <line x1="566" y1="144" x2="608" y2="144" stroke="var(--text-secondary)" stroke-width="1"/>
+      <line x1="566" y1="154" x2="608" y2="154" stroke="var(--text-secondary)" stroke-width="1"/>
+      <rect x="620" y="124" width="20" height="16" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+      <rect x="620" y="146" width="20" height="16" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+      <rect x="566" y="192" width="30" height="0" fill="none"/>
+    </g>
+
+    <!-- パネル3: 頻度グラフ（棒2本+50%基準線） -->
+    <g>
+      <line x1="78" y1="262" x2="78" y2="336" stroke="var(--text)" stroke-width="1.2"/>
+      <line x1="78" y1="336" x2="156" y2="336" stroke="var(--text)" stroke-width="1.2"/>
+      <rect x="92" y="310" width="18" height="26" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+      <rect x="124" y="268" width="18" height="68" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+      <line x1="78" y1="302" x2="156" y2="302" stroke="var(--text-secondary)" stroke-width="1" stroke-dasharray="4 3"/>
+    </g>
+
+    <!-- パネル4: 章を本体へ戻す矢印 -->
+    <g>
+      <rect x="560" y="258" width="40" height="34" rx="3" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.4"/>
+      <rect x="598" y="302" width="42" height="26" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+      <line x1="619" y1="296" x2="619" y2="272" stroke="var(--text)" stroke-width="1.6"/>
+      <polygon points="613,278 625,278 619,270" fill="var(--text)"/>
+    </g>
+
+    <!-- パネル5: 引き出し2冊を両方開く+合格チェック -->
+    <g>
+      <rect x="86" y="452" width="32" height="44" rx="3" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.4"/>
+      <rect x="122" y="452" width="32" height="44" rx="3" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.4"/>
+      <line x1="90" y1="464" x2="114" y2="464" stroke="var(--text-secondary)" stroke-width="1"/>
+      <line x1="126" y1="464" x2="150" y2="464" stroke="var(--text-secondary)" stroke-width="1"/>
+      <path d="M84,436 L94,446 L116,424" fill="none" stroke="var(--green)" stroke-width="3"/>
+    </g>
+
+    <!-- パネル6: 薄くなった本+下矢印 -->
+    <g>
+      <rect x="566" y="440" width="56" height="40" rx="3" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.4"/>
+      <line x1="572" y1="454" x2="616" y2="454" stroke="var(--text-secondary)" stroke-width="1"/>
+      <line x1="572" y1="462" x2="616" y2="462" stroke="var(--text-secondary)" stroke-width="1"/>
+      <line x1="636" y1="444" x2="636" y2="468" stroke="var(--text)" stroke-width="1.6"/>
+      <polygon points="630,464 642,464 636,472" fill="var(--text)"/>
+    </g>
+
+    <text x="480" y="566" font-size="11" fill="var(--text)" text-anchor="middle">読む順: 左上から 1 → 2 → 3 → 4 → 5 → 6</text>
+  </g>
+</svg>

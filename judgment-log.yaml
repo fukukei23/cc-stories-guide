@@ -186,3 +186,15 @@
   confidence: high
   episode: '068'
   source: 01_DECISIONS/microwin-app/2026-10-16_MicroWin-SprintA-Day1-3実装-drawTask-repository-streak-CSV.md
+- date: 2026-11-14
+  type: 反復解消
+  reason: 検査ツール5種を作っても機械検査を素通しする描画ミスが計画段階5件+製造段階12件出続け、計画コードの実行検証とスクショ目視省略不可の二段構えが品質を安定させた
+  confidence: high
+  episode: '069'
+  source: 01_DECISIONS/cc-stories-guide/2026-11-14_story図解全話展開フェーズ2-3実装.md
+- date: 2026-11-14
+  type: スキル作成・改修
+  reason: 毎回全量読み込みの説明書（85KB）を実測駆動で目次+本体+引き出し2冊の3分割に作り直し、実測で高頻度章を本体へ戻す再分割判断と「50%目標未達でも今で良し」の決着まで完遂した
+  confidence: high
+  episode: '070'
+  source: 01_DECISIONS/claude-code/2026-11-14_ssot-record-skill軽量化実装.md

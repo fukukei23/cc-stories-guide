@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作業物語 「記録して」と言ったら説明書を全部読んでいた。目次引きに作り直した話 — CC Stories</title>
+    <meta name="description" content="CC Stories — 作業の物語集: 作業物語 「記録して」と言ったら説明書を全部読んでいた。目次引きに作り直した話">
+    <meta property="og:title" content="作業物語 「記録して」と言ったら説明書を全部読んでいた。目次引きに作り直した話 — CC Stories">
+    <meta property="og:description" content="作業物語 「記録して」と言ったら説明書を全部読んでいた。目次引きに作り直した話 — 専門用語なしの物語と技術解説のペア">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/070.html">
+    <meta property="og:image" content="https://fukukei23.github.io/cc-stories-guide/assets/ogp.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="../assets/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+</head>
+<body>
+    <header class="site-header">
+        <button class="menu-toggle" aria-label="メニュー" id="menuToggle">
+            <span></span><span></span><span></span>
+        </button>
+        <a href="../index.html" class="site-title">📚 CC Stories</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="テーマ切替">
+            <span class="icon-light">☀️</span>
+            <span class="icon-dark">🌙</span>
+        </button>
+    </header>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="../index.html">🏠 ホーム</a>
+        </div>
+        
+        <a href="002-llm.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「マルチLLMレビューして」と言ったら別々の目で見てくれる話
+        </a>
+        
+        <a href="003.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「おはよう」と言ったら昨日が戻ってきた話
+        </a>
+        
+        <a href="003-ssot.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「記録して」と言ったらSSOTに勝手に入る話
+        </a>
+        
+        <a href="006.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「定期実行作って」と言ったら排他込みで組んでくれる話
+        </a>
+        
+        <a href="007.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「今夜はミニマックス」と言ったら裏側のレート制限を切り替えてくれる話
+        </a>
+        
+        <a href="008-5.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「返信文を書いて」と言ったら5禁止に気をつけて整えてくれる話
+        </a>
+        
+        <a href="009.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「リポジトリレビューして」と言ったら品質を点数で出してくれる話
+        </a>
+        
+        <a href="010-dev-cycle.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「dev-cycle」と言うと開発のサイクルが一巡する話
+        </a>
+        
+        <a href="022.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「引き継ぎ」と言ったら明日の自分に手紙を書いてくれた話
+        </a>
+        
+        <a href="023.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「比較して」と言ったら選択肢を深掘りして推奨まで出してきた話
+        </a>
+        
+        <a href="024-ssot.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「SSOTから探して」と言ったら過去の失敗を掘り返してきた話
+        </a>
+        
+        <a href="029.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            歌詞は合格点なのに歌は冴えなかった話——品質チェックが「言葉」から「音」へ進んだ話
+        </a>
+        
+        <a href="039-8.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            必須タグがなくても8割の点数が出てしまった話
+        </a>
+        
+        <a href="001.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            「テストは充分？」という一言
+        </a>
+        
+        <a href="002.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            防災フックが鳴らなかった話
+        </a>
+        
+        <a href="004.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            作業物語 「歌詞は合ってるのに、なぜか曲が盛り上がらない話」
+        </a>
+        
+        <a href="005.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            作業物語 「自動で呟かせる前夜、調べたら地雷が一杯だった話」
+        </a>
+        
+        <a href="011-youtubeai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「YouTubeを投げる」と言ったら生成AI用プロンプト仕様書が出てくる話
+        </a>
+        
+        <a href="012-commit3.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            他の作業を巻き込んでcommitする事故を3つの見張り役で潰した話
+        </a>
+        
+        <a href="013-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AIにファイルを書き換えさせる前に「いいですか？」と聞かせる話
+        </a>
+        
+        <a href="014-ai3.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AIの直し提案が3体そろって否定された話
+        </a>
+        
+        <a href="015-1.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            設定を1枚の帳票に集めて書き忘れ事故を潰した話
+        </a>
+        
+        <a href="016-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AI審査員の盲点を人間の一言と説明書の改良で塞いだ話
+        </a>
+        
+        <a href="017-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AIに下調べの省略をさせない検問を作った話
+        </a>
+        
+        <a href="018.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            検問の穴を塞ぐと別の穴が開いて、最後は自分の違和感が正しかった話
+        </a>
+        
+        <a href="019-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            作業物語 「曲作って」と言ったらAIの癖に振り回されない道具立てになっていた話
+        </a>
+        
+        <a href="021-reverse-engineer-song.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            013の次に見えた「聴くだけじゃ足りない」
+        </a>
+        
+        <a href="025-5.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            記録してと言ったら書込先を決めるまでに5回も検問された話
+        </a>
+        
+        <a href="026-ssot-record.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            「保存先くらい機械に任せて」という一言から始まった設計が、気づけば禁止条件だらけになっていた話
+        </a>
+        
+        <a href="027.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            宿題の答え合わせをしたら、直っていたのは「機械で直せるところ」だけだった話
+        </a>
+        
+        <a href="028-1000.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            差分1000件の正体は作りかけの絵だった話
+        </a>
+        
+        <a href="037-0.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スコア式を0点に合わせたら逆に必要なものが見えてきた話
+        </a>
+        
+        <a href="038-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            字幕が一文字も出ていない動画を、AIは「出ています」と答えた話
+        </a>
+        
+        <a href="041.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スコアが全部同じだった構造的不具合は仕組みを変えないと動かない話
+        </a>
+        
+        <a href="042.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            宣言を書かないだけで全部素通りできた話
+        </a>
+        
+        <a href="043-llm.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            機械の点数は当てにならないと思ったらLLMの判定にも曖昧さが残った話
+        </a>
+        
+        <a href="044.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            壊れたのは一つだと思ったら二重の故障が互いの正体を隠していた話
+        </a>
+        
+        <a href="045-nemotronorp.py3.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            幽霊モデルという見えない故障 ― Nemotron死亡事象とorp.pyの3層防御
+        </a>
+        
+        <a href="046-95.5%-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            測ってみたら95.5%が間違いだった話 ― AI校正ツールの部分採用判断
+        </a>
+        
+        <a href="047-2-44+1.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            補強2+4採用と4セル検証+1週間試験運用 ― symlinkの想定外UNC解決との付き合い方
+        </a>
+        
+        <a href="048.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            毎回出る確認ダイアログの正体は、使い捨ての道具だった
+        </a>
+        
+        <a href="049-ssot-record.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            ssot-recordデータフロー判定アルゴリズム
+        </a>
+        
+        <a href="050-url30%.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            「自動でつぶやく機械を作った」のに、走り出す前に止まってくれた話
+        </a>
+        
+        <a href="051.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            「毎日正午の再試行を予約した」ら、その予約が自分で自分を消せずに残り続けていた話
+        </a>
+        
+        <a href="052-durable-cron9c351486.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            &#34;迷子のdurable-cronが9c351486を発射していた話&#34;
+        </a>
+        
+        <a href="053-12.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            「測定器が壊れている」せいで、直っていたはずの合格が12件も眠っていた話
+        </a>
+        
+        <a href="054-db.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            構造的失敗を先に作る勇気でDBマイグレーションを書き直した話
+        </a>
+        
+        <a href="055-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            「見えないはずのAIがスライドの文字を読んでいた話」
+        </a>
+        
+        <a href="056.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            バージョン番号ひとつで壊れる世界
+        </a>
+        
+        <a href="057-207.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            道具207個の工具箱は導入初日に鍵をかけた話
+        </a>
+        
+        <a href="058.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            テスト全合格なのに繋がっていなかった話
+        </a>
+        
+        <a href="059.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            外部ツールのインストーラが中枢設定を勝手に書こうとした話
+        </a>
+        
+        <a href="060-ai30.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AIが作った検査機械は本番投入前に人間が30件採点する話
+        </a>
+        
+        <a href="061.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            その作業は無理と決めつける前に引き出しを開けよう
+        </a>
+        
+        <a href="062.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            わざと汚したテストファイルが、検査網の穴を暴いた話
+        </a>
+        
+        <a href="063.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            攻撃事件の教訓チェックリストで自分のアプリの金庫が開いていた話
+        </a>
+        
+        <a href="064-7.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            毎晩「お知らせ」は届いていたのに、7日間誰も動かなかった話
+        </a>
+        
+        <a href="065-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AIが書いた日本語に、中国語の字が混ざっていた話
+        </a>
+        
+        <a href="066-4.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            4日間閉まっていた家が、警備員を全員出勤停止にした話
+        </a>
+        
+        <a href="067.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            何もしていない夜こそ、検査機は不合格を出した話
+        </a>
+        
+        <a href="068.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            見えない乱数を、差し込める部品にした話
+        </a>
+        
+        <a href="070.html"
+           class="sidebar-link active">
+            <span class="sidebar-icon">📄</span>
+            作業物語 「記録して」と言ったら説明書を全部読んでいた。目次引きに作り直した話
+        </a>
+        
+    </nav>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main class="content">
+        <div class="chapter-nav-top">
+            
+            <a href="068.html" class="nav-prev">← 見えない乱数を、差し込める部品にした話</a>
+            
+            
+        </div>
+
+        <div class="episode-badge">第70話</div>
+        <article class="chapter-body">
+            <h1>第70話 作業物語 「記録して」と言ったら説明書を全部読んでいた。目次引きに作り直した話</h1>
+<h2>困ったこと</h2>
+<p>CCには「記録して」と言うだけで、何をどこに書き留めるか判断して書いてくれるお手伝い係がいる。この係には説明書があり、それが日々の決めごとの追加でどんどん膨らんで、<strong>1349行の大きな一冊</strong>になっていた。</p>
+<p>問題は、係が仕事に着くたびに、その説明書を<strong>最初のページから最後のページまで全部読んでいた</strong>こと。1回の仕事につき、食事でいうとおかず3皿分くらいの力（2万〜2.5万口分）を説明書の読み込みだけで消費していた。実際に使うのはどこか一部分。大半のページはその場では誰にも読まれないまま、毎朝どこかで同じように読み返されていた。</p>
+<h2>どう解決したか</h2>
+<p>作り直した。<strong>目次を本の最初に置き、その場で必要な章だけ引き出しから開く</strong>方式にした。</p>
+<p>本体は目次とよく使う手順だけに薄くし、たまにしか使わない手順は<strong>引き出し2冊</strong>（連携の章・あと片付けの章）へ移した。分ける時には「それぞれの章は実際どれくらいの頻度で必要になるか」を、過去の記録を機械的に数えて実測した。すると予想に反して、あと片付けの章は<strong>8割近くの頻度で必要</strong>だと分かった。そこで設計をやり直し、よく使う章を本体へ戻して引き出しを薄くした——紙の上の理屈でなく実測で本棚を組み直す形だ。ふくけいがその変更を承認した。</p>
+<p>結果は<strong>17.3%の軽量化</strong>。当初の半分にしたい、という目標には届かなかった。理由は「毎回必ず必要な部分」がそもそも本体の大半で、分けられる余地が構造的に少なかった。ふくけいは「今で良しとする」と決めて、この形で確定させた。</p>
+<h2>何が変わったか</h2>
+<p>係はもう説明書を全部読まない。目次を見て、必要な章だけ開く。あいまいな頼まれ方をされた時は<strong>安全側に倒して両方の引き出しを開ける</strong>ので、読み漏れで書き忘れが起きる事故の筋は最初から塞いだ。</p>
+<p>数値だけ見ると控えめだが、読み込みの実感と判断の単純さは確実に改善している。そして今回効いたのは、かつて「分割しない方が良い」と決めた時に**「行数が1200を超えたら再検討する」という条件を一緒に書いておいた**こと。その条件がちょうど満たされて、黙って再検討が始められた。決めごとの後に「いつ見直すか」を書いておくのは、紙くずにならない唯一の癖だった。</p>
+<p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどう作ったか&lt;/summary&gt;</p>
+<p><strong>核心構造（Progressive Disclosure・3分割）</strong>:</p>
+<ul>
+<li>SKILL.md 85KB・1349行 ≈ 20-25kトークンを発火のたびに全量読み込みしていたのが根本原因</li>
+<li>「判定表（frontmatter直後）＋コア7フェーズ＋references 2ファイル」へ軽量化（1063行）</li>
+<li><code>references/inventory.md</code> = 連携更新系5フェーズ（自動化md・CCガイド・プロジェクトdocs・ハブ更新・ガイド転記）</li>
+<li><code>references/aftercare.md</code> = 低頻度3フェーズ（outcome逆引き・セッション終了確認・横断総括）</li>
+</ul>
+<p><strong>判定表の分岐（安全側デフォルト込み）</strong>:</p>
+<ul>
+<li>第1判定源=機械シグナル（検出結果・tags・CCガイド対象）→ inventory読込</li>
+<li>第2判定源=outcome逆引き・セッション終了確認 → aftercare読込</li>
+<li>判定不能=<strong>両方読む</strong>（安全側デフォルト）・明確な否定文=非読込</li>
+<li>完了報告に「読了reference」列挙行を強制し、読み漏れを観測可能にした</li>
+</ul>
+<p><strong>再分割判断（実測駆動）</strong>:</p>
+<ul>
+<li>aftercare発火率を実測: 初回計算91.3% → 精緻化78-81%（過去の日記エントリを機械分類）</li>
+<li>閾値50%超のため当初案から修正・ふくけい承認で 3.5（バックログ完了チェック）/3.6（未解決起票）をコアへ戻し、aftercare.md は低頻度部のみに縮小</li>
+</ul>
+<p><strong>測定と検証</strong>:</p>
+<ul>
+<li>主指標17.3%削減（28446→23523トークン概算）・50%目標未達の原因=コア必須フェーズ（判定プロンプト197行/確認ゲート194行/テンプレート190行）の構造上限・ふくけい「今で良しとする」で確定</li>
+<li>E2E: ケース6（否定入力→非読込）PASS・ケース7（判定不能→両読込）PASS・ケース2（機械シグナル→inventory）PASS・ケース4は再分割で完了記録→aftercare非該当に挙動更新・ケース1/3/5は実運用観察</li>
+<li>skill-test 0件・skill-drift baseline更新・E2Eは実スキル発動で動作実測</li>
+</ul>
+<p><strong>設計経緯</strong>: multi-llm-review r1 4機45指摘（採用30）→r2 blind 3機45指摘（採用42）で設計v2確定。かつて2026-07-07に「物理分割不要」と判断した際、再検討条件「1200行超/省略再発/別LLMで省略発生」を併記しており、1349行化で条件発動した。</p>
+<p><strong>素材出典</strong>: <code>obsidian-ssot/01_DECISIONS/claude-code/2026-11-14_ssot-record-skill軽量化実装.md</code>（E2E実績表・再分割経緯含む）
+&lt;/details&gt;</p>
+<figure class="story-diagram"><!-- 素材: source/070_毎回全部読んでいた説明書を目次引きで軽くした話.md -->
+<!-- 型A: できごと系6コマ絵本 viewBox 960x580 -->
+<svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="s070-title s070-desc">
+  <title id="s070-title">説明書を目次引きに作り直した6コマ</title>
+  <desc id="s070-desc">1349行の説明書を毎回全量読み込みしていた記録係を、目次+本体+引き出し2冊に分割し、使い方を実測して高頻度章を本体へ戻し、17.3%の軽量化で確定させた話</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <rect x="16" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="496" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="16" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="496" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="16" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="496" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+  </g>
+
+  <g>
+    <circle cx="48" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+  </g>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="111">1</text>
+      <text x="528" y="111">2</text>
+      <text x="48" y="277">3</text>
+      <text x="528" y="277">4</text>
+      <text x="48" y="443">5</text>
+      <text x="528" y="443">6</text>
+    </g>
+
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="178" y="106">重すぎる説明書</text>
+      <text x="658" y="106">目次引きに作り直す</text>
+      <text x="178" y="272">使い方を実測する</text>
+      <text x="658" y="272">高頻度の章は本体へ</text>
+      <text x="178" y="438">あいまいでも安全側</text>
+      <text x="658" y="438">17.3%軽くて決着</text>
+    </g>
+
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="178" y="150">1349行を毎回最初から最後まで読み込み</text>
+      <text x="178" y="172">おかず3皿分の力を消していた</text>
+      <text x="658" y="150">目次を先頭に置き必要な章だけ開く</text>
+      <text x="658" y="172">たまに使う章は引き出し2冊へ移した</text>
+      <text x="178" y="316">過去の記録を数えて頻度を実測したら</text>
+      <text x="178" y="338">あと片付けの章は8割近く必要だった</text>
+      <text x="658" y="316">実測でよく使う章を本体へ戻し</text>
+      <text x="658" y="338">理屈でなく実測で本棚を組み直した</text>
+      <text x="178" y="482">あいまいな頼まれ方では両方開けと決め</text>
+      <text x="178" y="504">読み漏れの筋を最初から塞いだ</text>
+      <text x="658" y="482">半分の目標には届かず17.3%で決着</text>
+      <text x="658" y="504">読み込みの実感は改善を確定させた</text>
+    </g>
+
+    <!-- パネル1: 重い本の山 -->
+    <g>
+      <rect x="82" y="152" width="70" height="20" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+      <rect x="84" y="130" width="66" height="20" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+      <rect x="80" y="96" width="74" height="30" rx="3" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.6"/>
+      <line x1="88" y1="105" x2="146" y2="105" stroke="var(--text-secondary)" stroke-width="1"/>
+      <line x1="88" y1="112" x2="146" y2="112" stroke="var(--text-secondary)" stroke-width="1"/>
+      <line x1="88" y1="119" x2="146" y2="119" stroke="var(--text-secondary)" stroke-width="1"/>
+      <line x1="117" y1="178" x2="117" y2="190" stroke="var(--text)" stroke-width="1.6"/>
+      <polygon points="111,186 123,186 117,193" fill="var(--text)"/>
+    </g>
+
+    <!-- パネル2: 目次タブ付き薄い本体+引き出し2冊 -->
+    <g>
+      <rect x="560" y="118" width="56" height="64" rx="3" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.4"/>
+      <line x1="566" y1="134" x2="608" y2="134" stroke="var(--text-secondary)" stroke-width="1"/>
+      <line x1="566" y1="144" x2="608" y2="144" stroke="var(--text-secondary)" stroke-width="1"/>
+      <line x1="566" y1="154" x2="608" y2="154" stroke="var(--text-secondary)" stroke-width="1"/>
+      <rect x="620" y="124" width="20" height="16" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+      <rect x="620" y="146" width="20" height="16" rx="2" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+      <rect x="566" y="192" width="30" height="0" fill="none"/>
+    </g>
+
+    <!-- パネル3: 頻度グラフ（棒2本+50%基準線） -->
+    <g>
+      <line x1="78" y1="262" x2="78" y2="336" stroke="var(--text)" stroke-width="1.2"/>
+      <line x1="78" y1="336" x2="156" y2="336" stroke="var(--text)" stroke-width="1.2"/>
+      <rect x="92" y="310" width="18" height="26" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+      <rect x="124" y="268" width="18" height="68" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+      <line x1="78" y1="302" x2="156" y2="302" stroke="var(--text-secondary)" stroke-width="1" stroke-dasharray="4 3"/>
+    </g>
+
+    <!-- パネル4: 章を本体へ戻す矢印 -->
+    <g>
+      <rect x="560" y="258" width="40" height="34" rx="3" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.4"/>
+      <rect x="598" y="302" width="42" height="26" rx="3" fill="var(--bg-secondary)" stroke="var(--text)" stroke-width="1.2"/>
+      <line x1="619" y1="296" x2="619" y2="272" stroke="var(--text)" stroke-width="1.6"/>
+      <polygon points="613,278 625,278 619,270" fill="var(--text)"/>
+    </g>
+
+    <!-- パネル5: 引き出し2冊を両方開く+合格チェック -->
+    <g>
+      <rect x="86" y="452" width="32" height="44" rx="3" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.4"/>
+      <rect x="122" y="452" width="32" height="44" rx="3" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.4"/>
+      <line x1="90" y1="464" x2="114" y2="464" stroke="var(--text-secondary)" stroke-width="1"/>
+      <line x1="126" y1="464" x2="150" y2="464" stroke="var(--text-secondary)" stroke-width="1"/>
+      <path d="M84,436 L94,446 L116,424" fill="none" stroke="var(--green)" stroke-width="3"/>
+    </g>
+
+    <!-- パネル6: 薄くなった本+下矢印 -->
+    <g>
+      <rect x="566" y="440" width="56" height="40" rx="3" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.4"/>
+      <line x1="572" y1="454" x2="616" y2="454" stroke="var(--text-secondary)" stroke-width="1"/>
+      <line x1="572" y1="462" x2="616" y2="462" stroke="var(--text-secondary)" stroke-width="1"/>
+      <line x1="636" y1="444" x2="636" y2="468" stroke="var(--text)" stroke-width="1.6"/>
+      <polygon points="630,464 642,464 636,472" fill="var(--text)"/>
+    </g>
+
+    <text x="480" y="566" font-size="11" fill="var(--text)" text-anchor="middle">読む順: 左上から 1 → 2 → 3 → 4 → 5 → 6</text>
+  </g>
+</svg>
+<figcaption>1349行の説明書を毎回全量読み込みしていた記録係を、目次+本体+引き出し2冊に分割し、使い方を実測して高頻度章を本体へ戻し、17.3%の軽量化で確定させた話</figcaption></figure>
+
+        </article>
+
+        <nav class="chapter-nav-bottom">
+            
+            <a href="068.html" class="nav-card prev">
+                <span class="nav-label">← 前の章</span>
+                <span class="nav-title">📄 見えない乱数を、差し込める部品にした話</span>
+            </a>
+            
+            
+        </nav>
+    </main>
+
+    <footer class="site-footer">
+        <p>CC Stories — <a href="https://github.com/fukukei23/cc-stories-guide">GitHub</a>
+         · <a href="https://fukukei23.github.io/ssot-guide/">SSOT Guide</a>
+         · <a href="https://fukukei23.github.io/loop-engineering-guide/">Loop Engineering Guide</a>
+         · <a href="https://fukukei23.github.io/guides/">技術ガイド集</a>
+         · <a href="https://fukukei23.github.io/">fukukei23</a></p>
+    </footer>
+
+    <script src="../assets/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default',
+            themeVariables: { fontSize: '14px' }
+        });
+    </script>
+</body>
+</html>
