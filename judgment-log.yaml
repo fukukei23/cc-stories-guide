@@ -204,3 +204,9 @@
   confidence: high
   episode: '069'
   source: 01_DECISIONS/claude-code/2026-11-14_playwright-chrome-guard.sh-USER未定義修正.md
+- date: 2026-11-17
+  type: 自動化・cron
+  reason: 翌日の正午1回だけ試す設定を「毎日動く設定」から「1回動いて自分で消える設定」に変え、翌日11時58分発火とキュー通過まで実測。手順書の80%予測は購入ボタン押下で未実証と正直に記録し、残った未実証を明示的に残した
+  confidence: high
+  episode: '071'
+  source: 01_DECISIONS/mellojoy-autobuy/2026-08-25_Phase2明日11時58分自動発火crontab登録完了と中断.md
