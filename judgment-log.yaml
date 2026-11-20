@@ -210,3 +210,9 @@
   confidence: high
   episode: '071'
   source: 01_DECISIONS/mellojoy-autobuy/2026-08-25_Phase2明日11時58分自動発火crontab登録完了と中断.md
+- date: 2026-11-20
+  type: 事故解決
+  reason: 盾（安全装置）が特定のパスで動かなくなった原因を、「合図の指定が悪い」という2つの説で説明しようとしたが両方とも誤りだった。ちゃんと動いていた2本を同じ環境で比べたところ、原因は Windows 側の道しるべ（パス変換）が /home/... を C:/Users/... に化けて黙って失敗させていたことだった。区別していたのは合図の指定ではなく起動の書き方の差で、区切り文字1バイト（/ と \）の非対称が原因だった。計測器（測る器）自体も壊れていたため、「動く例と動かない例を並べる」ことだけが撤回の根拠になった
+  confidence: high
+  episode: '072'
+  source: 01_DECISIONS/claude-code/2026-08-22_hook不発の真因はwsl-bash-posixパス変換-matcher説を撤回.md
