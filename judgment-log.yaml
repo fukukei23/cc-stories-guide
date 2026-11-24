@@ -216,3 +216,9 @@
   confidence: high
   episode: '072'
   source: 01_DECISIONS/claude-code/2026-08-22_hook不発の真因はwsl-bash-posixパス変換-matcher説を撤回.md
+- date: 2026-11-24
+  type: できごと（事故未然防止）
+  reason: 1,680行の書き換えを50行ずつ36回の小分け+3機合議（2票以上多数決・割れた行と迷い行のみ人間）+機械の3層チェック（dry-run/blind audit/混入assert）で約1,350行を誤置換0・逆転事故0で完走。初版スクリプトの連番混同バグ（第三者行を誤変換する案）を適用前に機械が捕捉した実例
+  confidence: high
+  episode: '073'
+  source: 01_DECISIONS/claude-code/2026-08-30_呼称1680行段階的置換-batch1-2完走と実測.md
