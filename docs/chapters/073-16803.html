@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作業物語 1,680行の書き換えを36回の小分けと3人のAI合議で間違いゼロで終わらせた話 — CC Stories</title>
+    <meta name="description" content="CC Stories — 作業の物語集: 作業物語 1,680行の書き換えを36回の小分けと3人のAI合議で間違いゼロで終わらせた話">
+    <meta property="og:title" content="作業物語 1,680行の書き換えを36回の小分けと3人のAI合議で間違いゼロで終わらせた話 — CC Stories">
+    <meta property="og:description" content="作業物語 1,680行の書き換えを36回の小分けと3人のAI合議で間違いゼロで終わらせた話 — 専門用語なしの物語と技術解説のペア">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fukukei23.github.io/cc-stories-guide/chapters/073-16803.html">
+    <meta property="og:image" content="https://fukukei23.github.io/cc-stories-guide/assets/ogp.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="../assets/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+</head>
+<body>
+    <header class="site-header">
+        <button class="menu-toggle" aria-label="メニュー" id="menuToggle">
+            <span></span><span></span><span></span>
+        </button>
+        <a href="../index.html" class="site-title">📚 CC Stories</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="テーマ切替">
+            <span class="icon-light">☀️</span>
+            <span class="icon-dark">🌙</span>
+        </button>
+    </header>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="../index.html">🏠 ホーム</a>
+        </div>
+        
+        <a href="002-llm.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「マルチLLMレビューして」と言ったら別々の目で見てくれる話
+        </a>
+        
+        <a href="003.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「おはよう」と言ったら昨日が戻ってきた話
+        </a>
+        
+        <a href="003-ssot.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「記録して」と言ったらSSOTに勝手に入る話
+        </a>
+        
+        <a href="006.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「定期実行作って」と言ったら排他込みで組んでくれる話
+        </a>
+        
+        <a href="007.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「今夜はミニマックス」と言ったら裏側のレート制限を切り替えてくれる話
+        </a>
+        
+        <a href="008-5.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「返信文を書いて」と言ったら5禁止に気をつけて整えてくれる話
+        </a>
+        
+        <a href="009.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「リポジトリレビューして」と言ったら品質を点数で出してくれる話
+        </a>
+        
+        <a href="010-dev-cycle.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「dev-cycle」と言うと開発のサイクルが一巡する話
+        </a>
+        
+        <a href="022.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「引き継ぎ」と言ったら明日の自分に手紙を書いてくれた話
+        </a>
+        
+        <a href="023.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「比較して」と言ったら選択肢を深掘りして推奨まで出してきた話
+        </a>
+        
+        <a href="024-ssot.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「SSOTから探して」と言ったら過去の失敗を掘り返してきた話
+        </a>
+        
+        <a href="029.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            歌詞は合格点なのに歌は冴えなかった話——品質チェックが「言葉」から「音」へ進んだ話
+        </a>
+        
+        <a href="039-8.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            必須タグがなくても8割の点数が出てしまった話
+        </a>
+        
+        <a href="001.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            「テストは充分？」という一言
+        </a>
+        
+        <a href="002.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            防災フックが鳴らなかった話
+        </a>
+        
+        <a href="004.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            作業物語 「歌詞は合ってるのに、なぜか曲が盛り上がらない話」
+        </a>
+        
+        <a href="005.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            作業物語 「自動で呟かせる前夜、調べたら地雷が一杯だった話」
+        </a>
+        
+        <a href="011-youtubeai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スキル物語 「YouTubeを投げる」と言ったら生成AI用プロンプト仕様書が出てくる話
+        </a>
+        
+        <a href="012-commit3.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            他の作業を巻き込んでcommitする事故を3つの見張り役で潰した話
+        </a>
+        
+        <a href="013-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AIにファイルを書き換えさせる前に「いいですか？」と聞かせる話
+        </a>
+        
+        <a href="014-ai3.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AIの直し提案が3体そろって否定された話
+        </a>
+        
+        <a href="015-1.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            設定を1枚の帳票に集めて書き忘れ事故を潰した話
+        </a>
+        
+        <a href="016-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AI審査員の盲点を人間の一言と説明書の改良で塞いだ話
+        </a>
+        
+        <a href="017-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AIに下調べの省略をさせない検問を作った話
+        </a>
+        
+        <a href="018.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            検問の穴を塞ぐと別の穴が開いて、最後は自分の違和感が正しかった話
+        </a>
+        
+        <a href="019-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            作業物語 「曲作って」と言ったらAIの癖に振り回されない道具立てになっていた話
+        </a>
+        
+        <a href="021-reverse-engineer-song.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            013の次に見えた「聴くだけじゃ足りない」
+        </a>
+        
+        <a href="025-5.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            記録してと言ったら書込先を決めるまでに5回も検問された話
+        </a>
+        
+        <a href="026-ssot-record.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            「保存先くらい機械に任せて」という一言から始まった設計が、気づけば禁止条件だらけになっていた話
+        </a>
+        
+        <a href="027.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            宿題の答え合わせをしたら、直っていたのは「機械で直せるところ」だけだった話
+        </a>
+        
+        <a href="028-1000.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            差分1000件の正体は作りかけの絵だった話
+        </a>
+        
+        <a href="037-0.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スコア式を0点に合わせたら逆に必要なものが見えてきた話
+        </a>
+        
+        <a href="038-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            字幕が一文字も出ていない動画を、AIは「出ています」と答えた話
+        </a>
+        
+        <a href="041.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            スコアが全部同じだった構造的不具合は仕組みを変えないと動かない話
+        </a>
+        
+        <a href="042.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            宣言を書かないだけで全部素通りできた話
+        </a>
+        
+        <a href="043-llm.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            機械の点数は当てにならないと思ったらLLMの判定にも曖昧さが残った話
+        </a>
+        
+        <a href="044.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            壊れたのは一つだと思ったら二重の故障が互いの正体を隠していた話
+        </a>
+        
+        <a href="045-nemotronorp.py3.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            幽霊モデルという見えない故障 ― Nemotron死亡事象とorp.pyの3層防御
+        </a>
+        
+        <a href="046-95.5%-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            測ってみたら95.5%が間違いだった話 ― AI校正ツールの部分採用判断
+        </a>
+        
+        <a href="047-2-44+1.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            補強2+4採用と4セル検証+1週間試験運用 ― symlinkの想定外UNC解決との付き合い方
+        </a>
+        
+        <a href="048.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            毎回出る確認ダイアログの正体は、使い捨ての道具だった
+        </a>
+        
+        <a href="049-ssot-record.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            ssot-recordデータフロー判定アルゴリズム
+        </a>
+        
+        <a href="050-url30%.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            「自動でつぶやく機械を作った」のに、走り出す前に止まってくれた話
+        </a>
+        
+        <a href="051.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            「毎日正午の再試行を予約した」ら、その予約が自分で自分を消せずに残り続けていた話
+        </a>
+        
+        <a href="052-durable-cron9c351486.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            &#34;迷子のdurable-cronが9c351486を発射していた話&#34;
+        </a>
+        
+        <a href="053-12.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            「測定器が壊れている」せいで、直っていたはずの合格が12件も眠っていた話
+        </a>
+        
+        <a href="054-db.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            構造的失敗を先に作る勇気でDBマイグレーションを書き直した話
+        </a>
+        
+        <a href="055-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            「見えないはずのAIがスライドの文字を読んでいた話」
+        </a>
+        
+        <a href="056.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            バージョン番号ひとつで壊れる世界
+        </a>
+        
+        <a href="057-207.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            道具207個の工具箱は導入初日に鍵をかけた話
+        </a>
+        
+        <a href="058.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            テスト全合格なのに繋がっていなかった話
+        </a>
+        
+        <a href="059.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            外部ツールのインストーラが中枢設定を勝手に書こうとした話
+        </a>
+        
+        <a href="060-ai30.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AIが作った検査機械は本番投入前に人間が30件採点する話
+        </a>
+        
+        <a href="061.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            その作業は無理と決めつける前に引き出しを開けよう
+        </a>
+        
+        <a href="062.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            わざと汚したテストファイルが、検査網の穴を暴いた話
+        </a>
+        
+        <a href="063.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            攻撃事件の教訓チェックリストで自分のアプリの金庫が開いていた話
+        </a>
+        
+        <a href="064-7.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            毎晩「お知らせ」は届いていたのに、7日間誰も動かなかった話
+        </a>
+        
+        <a href="065-ai.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            AIが書いた日本語に、中国語の字が混ざっていた話
+        </a>
+        
+        <a href="066-4.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            4日間閉まっていた家が、警備員を全員出勤停止にした話
+        </a>
+        
+        <a href="067.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            何もしていない夜こそ、検査機は不合格を出した話
+        </a>
+        
+        <a href="068.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            見えない乱数を、差し込める部品にした話
+        </a>
+        
+        <a href="069.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            夜の見張り番が自分の名前を忘れて倒れていた話
+        </a>
+        
+        <a href="070.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            作業物語 「記録して」と言ったら説明書を全部読んでいた。目次引きに作り直した話
+        </a>
+        
+        <a href="071-1-putaway.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            作業物語 「明日12時に試します」を、残り時間1回だけの設定にした話
+        </a>
+        
+        <a href="072.html"
+           class="sidebar-link">
+            <span class="sidebar-icon">📄</span>
+            作業物語 「フックが動かない」と言って設定を直しかけたら、原因の読み違えだった話
+        </a>
+        
+        <a href="073-16803.html"
+           class="sidebar-link active">
+            <span class="sidebar-icon">📄</span>
+            作業物語 1,680行の書き換えを36回の小分けと3人のAI合議で間違いゼロで終わらせた話
+        </a>
+        
+    </nav>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main class="content">
+        <div class="chapter-nav-top">
+            
+            <a href="072.html" class="nav-prev">← 作業物語 「フックが動かない」と言って設定を直しかけたら、原因の読み違えだった話</a>
+            
+            
+        </div>
+
+        <div class="episode-badge">第73話</div>
+        <article class="chapter-body">
+            <h1>第73話 作業物語 1,680行の書き換えを36回の小分けと3人のAI合議で間違いゼロで終わらせた話</h1>
+<h2>困ったこと</h2>
+<p>日記帳（作業の記録）に、ある言葉が<strong>1,680行</strong>も残っていた。「お客さま」という言葉だ。でもこの言葉、本当は<strong>主人（ふくけい）のこと</strong>を指して書かれていた行がほとんど。全部「ふくけい」という名前に書き換えたい。</p>
+<p>ところが話はそう簡単ではない。同じ「お客さま」でも、<strong>本当に客のことを指している行が60行</strong>ある。さらに、<strong>機械の設定文の中</strong>や<strong>誰かの発言を写した引用の中</strong>には、書き換えてはいけない行がある。全部まとめて一気に書き換えると、<strong>書いちゃいけない行まで書き換える</strong>事故が起きる。</p>
+<p>1行ずつ人間が目で見て直すには日がかかる。かといってAIに一括でやらせると事故が出る。<strong>「早さ」と「安全」が両立しない</strong>見えた。</p>
+<h2>どう解決したか</h2>
+<p><strong>36回に小分け</strong>した。1回は50行だけ。1回ごとに記録を残すので、もし何か起きても「どの回で起きたか」がすぐ分かる。</p>
+<p>判定は<strong>3人のAIに合議させた</strong>。2票以上そろった行だけ自動で書き換え、**意見が割れた行は「迷い行」**として人間だけに聞く。さらに安全のため、「判定をしたAI自身が迷った行」は他の2人が一致していても迷い行に回すルールを足した。</p>
+<p>最後の門は<strong>機械のチェック</strong>。「客を指す行が混ざっていないか」「行の並びがズレていないか」を書き換えの前に機械が確かめる。実際、最初の試し方に**「順番の番号」と「ファイルの中の行番号」を取り違える<strong>欠陥があり、客の行を書き換えてしまう案が出てきたが、この機械の門が</strong>適用の前に止めた**。</p>
+<p>結果は<strong>約1,350行を書き換え、間違いゼロ</strong>。客の行を主人と書き換える<strong>逆転事故もゼロ</strong>。残りは機械が守る行（設定文・引用など）だけで、書き換えるべき行は無くなった。</p>
+<h2>何が学べるか</h2>
+<p>大きな書き換えは、**「少しずつ」「機械の門」「複数の判定者の合議」**の3つで安全にできる。危険な作業ほど、<strong>1回の変更を小さく</strong>して「どこで何が起きたか」を追える形にするのが近道だった。</p>
+<p>&lt;details&gt;&lt;summary&gt;▶ 技術的にどうなってるか&lt;/summary&gt;</p>
+<p>パイプラインは6段: ①<code>select_batch.py</code> で決定論的に50行を抽出（コードブロック・引用・第三者は機械保護）→ ②3機判定（CC=flash ホスト内・MiniMax・Gemini の2票以上多数決・迷い行は人間裁定。CC が曖昧にした行は2票でも迷い行へ=安全側ルール）→ ③dry-run diff を人間承認 → ④blind audit（3行無作為照合）→ ⑤apply（行ズレ text 照合・第三者混入 assert）→ ⑥1バッチ1コミット。</p>
+<ul>
+<li>初版スクリプトの<strong>バッチ内連番とファイル内行番号の混同バグ</strong>が「マルチユーザー化」を「マルチふくけい化」にする誤案を生成したが、dry-run＋blind audit＋混入 assert の3層で適用前に捕捉</li>
+<li>判定済み対象外行が pending に残り続けて未判定行を飛ばす<strong>ドリフト問題</strong>は <code>judged_skip.json</code> の ledger 機構で解消（batch34 実測: 残156行のうち67行が判定済み→89行に収束して完走）</li>
+<li>教訓: <code>git commit -- pathspec</code> は staged を上書きする罠・<code>| tail</code> パイプで exit code を見間違いコミット消失2件（生 exit code 添付ルールの自らの違反を機械で再発見）</li>
+</ul>
+<p>依存: <code>50_PROJECTS/呼称1680/</code>（select_batch.py・apply_batch.py・judged_skip.json）。作った経緯: 呼称・主語ルール実装（08-29）で新規記録は対応済みだったが既存1,680行が放置されており、進め方は3機レビュー（triple）で「単価未確認で決めるな」指摘→バッチ1で両モデル実測比較→ふくけいが flash 続行を決定。</p>
+<p>&lt;/details&gt;</p>
+
+        </article>
+
+        <nav class="chapter-nav-bottom">
+            
+            <a href="072.html" class="nav-card prev">
+                <span class="nav-label">← 前の章</span>
+                <span class="nav-title">📄 作業物語 「フックが動かない」と言って設定を直しかけたら、原因の読み違えだった話</span>
+            </a>
+            
+            
+        </nav>
+    </main>
+
+    <footer class="site-footer">
+        <p>CC Stories — <a href="https://github.com/fukukei23/cc-stories-guide">GitHub</a>
+         · <a href="https://fukukei23.github.io/ssot-guide/">SSOT Guide</a>
+         · <a href="https://fukukei23.github.io/loop-engineering-guide/">Loop Engineering Guide</a>
+         · <a href="https://fukukei23.github.io/guides/">技術ガイド集</a>
+         · <a href="https://fukukei23.github.io/">fukukei23</a></p>
+    </footer>
+
+    <script src="../assets/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default',
+            themeVariables: { fontSize: '14px' }
+        });
+    </script>
+</body>
+</html>
