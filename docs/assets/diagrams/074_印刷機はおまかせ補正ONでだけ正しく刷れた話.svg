@@ -1,0 +1,67 @@
+<!-- 素材: source/074_印刷機はおまかせ補正ONでだけ正しく刷れた話.md -->
+<svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="tpl-a-title tpl-a-desc">
+  <title id="tpl-a-title">表紙が白紙ばかりの原因を3つの実験で印刷機の設定まで突き止めた話</title>
+  <desc id="tpl-a-desc">表紙を頼んだら19枚中1枚しか成功せず、お題を変えても全敗・前回の成功例を一字一句再現しても全敗だったため、設定スイッチを一つ切り替えたら9枚全部正しく描けるようになった。</desc>
+  <defs>
+    <filter id="sketchy" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="1.2"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sketchy)">
+    <rect x="16" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="496" y="64" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="16" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="496" y="230" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="16" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+    <rect x="496" y="396" width="448" height="146" rx="8" fill="var(--bg-card)" stroke="var(--text)" stroke-width="1.4"/>
+  </g>
+
+  <g>
+    <circle cx="48" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="106" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="272" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="48" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+    <circle cx="528" cy="438" r="16" fill="var(--accent-bg)" stroke="var(--text)" stroke-width="1.2"/>
+  </g>
+
+  <g font-family="'Noto Sans JP', sans-serif">
+
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="var(--accent-dark)">
+      <text x="48" y="111">1</text>
+      <text x="528" y="111">2</text>
+      <text x="48" y="277">3</text>
+      <text x="528" y="277">4</text>
+      <text x="48" y="443">5</text>
+      <text x="528" y="443">6</text>
+    </g>
+
+    <g font-size="16.5" font-weight="700" fill="var(--text)">
+      <text x="178" y="106">表紙がほぼ全部白紙に</text>
+      <text x="658" y="106">10日前は全員合格だった</text>
+      <text x="178" y="272">お題を変えても全敗</text>
+      <text x="658" y="272">あの成功例をそのまま再現</text>
+      <text x="178" y="438">設定を一つだけ切替</text>
+      <text x="658" y="438">9冊そろって復活</text>
+    </g>
+
+    <g font-size="13" fill="var(--text-secondary)">
+      <text x="178" y="150">19枚描いて成功は1枚だけ</text>
+      <text x="178" y="172">白紙と文字だらけの返品</text>
+      <text x="658" y="150">同じやり方で10枚全部成功</text>
+      <text x="658" y="172">それなのに今回は多発</text>
+      <text x="178" y="316">短くしたお題でも失敗続き</text>
+      <text x="178" y="338">お題のせいではなさそう</text>
+      <text x="658" y="316">一字一句同じお題で3回試す</text>
+      <text x="658" y="338">3回とも失敗=犯人は機械側</text>
+      <text x="178" y="482">おまかせ補正をオンにする</text>
+      <text x="178" y="504">同じお題できれいに描けた</text>
+      <text x="658" y="482">9枚全部合格で棚に並べ直し</text>
+      <text x="658" y="504">手順書にも日付入りで記録</text>
+    </g>
+
+    <text x="480" y="566" font-size="11" fill="var(--text)" text-anchor="middle">読む順: 左上から 1 → 2 → 3 → 4 → 5 → 6</text>
+  </g>
+</svg>

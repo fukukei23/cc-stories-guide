@@ -222,3 +222,4 @@
   confidence: high
   episode: '073'
   source: 01_DECISIONS/claude-code/2026-08-30_呼称1680行段階的置換-batch1-2完走と実測.md
+- date: 2026-11-26 / type: 事故解決 / reason: MiniMax画像APIのoptimizer=false障害を3実験（引数確認・同一prompt再現・optimizer切替）で機械分離し恒久運用を反転・前回成功実績との対比が決め手 / confidence: 高 / episode: '074' / source: 01_DECISIONS/zenn/2026-11-26_MiniMax画像生成optimizer障害調査と恒久運用変更.md
