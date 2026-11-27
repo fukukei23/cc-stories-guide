@@ -228,3 +228,9 @@
   confidence: 高
   episode: '074'
   source: 01_DECISIONS/zenn/2026-11-26_MiniMax画像生成optimizer障害調査と恒久運用変更.md
+- date: 2026-11-27
+  type: ノウハウ
+  reason: 最上位候補（第2の脳移植DoD第8回判定・4.23点）を物語化・機械基準7/7と実質2/7の乖離と実体不在の補強2を「記録と実績は別物」の教訓に統合・judgment-log.yamlの074エントリ構文エラー（フロー形式）修復も同時実施
+  confidence: high
+  episode: '075'
+  source: 01_DECISIONS/claude-code/2026-10-19_第2の脳移植-Phase1-DoD再判定第8回と補強2試験運用判定.md
